@@ -5,7 +5,7 @@ pragma solidity ^0.8.24;
 import { IAuthentication } from "../solidity-utils/helpers/IAuthentication.sol";
 
 /**
- * @notice Base interface for a Balancer Pool Factory.
+ * @notice Base interface for a Bush Pool Factory.
  * @dev All pool factories should be derived from `BasePoolFactory` to enable common behavior for all pool types
  * (e.g., address prediction, tracking deployed pools, and governance-facilitated migration).
  */

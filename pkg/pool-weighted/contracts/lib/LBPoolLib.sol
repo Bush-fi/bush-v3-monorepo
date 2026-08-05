@@ -2,9 +2,9 @@
 
 pragma solidity ^0.8.24;
 
-import { IWeightedPool } from "@balancer-labs/v3-interfaces/contracts/pool-weighted/IWeightedPool.sol";
+import { IWeightedPool } from "@bush/v3-interfaces/contracts/pool-weighted/IWeightedPool.sol";
 
-import { FixedPoint } from "@balancer-labs/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
 
 library LBPoolLib {
     // Matches Weighted Pool min weight.

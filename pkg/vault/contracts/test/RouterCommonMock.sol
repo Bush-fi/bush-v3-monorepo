@@ -6,10 +6,10 @@ import { IAllowanceTransfer } from "permit2/src/interfaces/IAllowanceTransfer.so
 import { IPermit2 } from "permit2/src/interfaces/IPermit2.sol";
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
-import { IWETH } from "@balancer-labs/v3-interfaces/contracts/solidity-utils/misc/IWETH.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import { IWETH } from "@bush/v3-interfaces/contracts/solidity-utils/misc/IWETH.sol";
 
-import { StorageSlotExtension } from "@balancer-labs/v3-solidity-utils/contracts/openzeppelin/StorageSlotExtension.sol";
+import { StorageSlotExtension } from "@bush/v3-solidity-utils/contracts/openzeppelin/StorageSlotExtension.sol";
 
 import { RouterCommon } from "../../contracts/RouterCommon.sol";
 import { SenderGuard } from "../../contracts/SenderGuard.sol";

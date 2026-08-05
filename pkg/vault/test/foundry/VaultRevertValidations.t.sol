@@ -6,14 +6,14 @@ import "forge-std/Test.sol";
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { IProtocolFeeController } from "@balancer-labs/v3-interfaces/contracts/vault/IProtocolFeeController.sol";
-import { VaultSwapParams, SwapKind } from "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
-import { IVaultExtension } from "@balancer-labs/v3-interfaces/contracts/vault/IVaultExtension.sol";
-import { IVaultErrors } from "@balancer-labs/v3-interfaces/contracts/vault/IVaultErrors.sol";
-import { IAuthorizer } from "@balancer-labs/v3-interfaces/contracts/vault/IAuthorizer.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
+import { IProtocolFeeController } from "@bush/v3-interfaces/contracts/vault/IProtocolFeeController.sol";
+import { VaultSwapParams, SwapKind } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IVaultExtension } from "@bush/v3-interfaces/contracts/vault/IVaultExtension.sol";
+import { IVaultErrors } from "@bush/v3-interfaces/contracts/vault/IVaultErrors.sol";
+import { IAuthorizer } from "@bush/v3-interfaces/contracts/vault/IAuthorizer.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
 
-import { ERC20TestToken } from "@balancer-labs/v3-solidity-utils/contracts/test/ERC20TestToken.sol";
+import { ERC20TestToken } from "@bush/v3-solidity-utils/contracts/test/ERC20TestToken.sol";
 
 import { BasicAuthorizerMock } from "../../contracts/test/BasicAuthorizerMock.sol";
 import { BaseVaultTest } from "./utils/BaseVaultTest.sol";

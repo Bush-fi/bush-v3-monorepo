@@ -2,17 +2,17 @@
 
 pragma solidity ^0.8.24;
 
-import { IPoolVersion } from "@balancer-labs/v3-interfaces/contracts/solidity-utils/helpers/IPoolVersion.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
+import { IPoolVersion } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IPoolVersion.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
 import {
     TokenConfig,
     PoolRoleAccounts,
     LiquidityManagement
-} from "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+} from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { MinTokenBalanceLib } from "@balancer-labs/v3-vault/contracts/lib/MinTokenBalanceLib.sol";
-import { BasePoolFactory } from "@balancer-labs/v3-pool-utils/contracts/BasePoolFactory.sol";
-import { Version } from "@balancer-labs/v3-solidity-utils/contracts/helpers/Version.sol";
+import { MinTokenBalanceLib } from "@bush/v3-vault/contracts/lib/MinTokenBalanceLib.sol";
+import { BasePoolFactory } from "@bush/v3-pool-utils/contracts/BasePoolFactory.sol";
+import { Version } from "@bush/v3-solidity-utils/contracts/helpers/Version.sol";
 
 import { WeightedPool } from "./WeightedPool.sol";
 

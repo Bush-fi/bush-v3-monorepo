@@ -5,14 +5,14 @@ pragma solidity ^0.8.24;
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import { IPermit2 } from "permit2/src/interfaces/IPermit2.sol";
 
-import { IBasePool } from "@balancer-labs/v3-interfaces/contracts/vault/IBasePool.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
-import "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IBasePool } from "@bush/v3-interfaces/contracts/vault/IBasePool.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { ERC20TestToken } from "@balancer-labs/v3-solidity-utils/contracts/test/ERC20TestToken.sol";
-import { InputHelpers } from "@balancer-labs/v3-solidity-utils/contracts/helpers/InputHelpers.sol";
-import { FixedPoint } from "@balancer-labs/v3-solidity-utils/contracts/math/FixedPoint.sol";
-import { SwapMedusaTest } from "@balancer-labs/v3-vault/test/foundry/fuzz/Swap.medusa.sol";
+import { ERC20TestToken } from "@bush/v3-solidity-utils/contracts/test/ERC20TestToken.sol";
+import { InputHelpers } from "@bush/v3-solidity-utils/contracts/helpers/InputHelpers.sol";
+import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { SwapMedusaTest } from "@bush/v3-vault/test/foundry/fuzz/Swap.medusa.sol";
 
 import { WeightedPoolFactory } from "../../../contracts/WeightedPoolFactory.sol";
 import { WeightedPool } from "../../../contracts/WeightedPool.sol";

@@ -2,8 +2,8 @@
 
 pragma solidity ^0.8.24;
 
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
-import { PoolSwapParams } from "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import { PoolSwapParams } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 
 import { StableSurgeHook } from "./../StableSurgeHook.sol";
 

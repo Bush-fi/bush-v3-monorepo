@@ -1,5 +1,5 @@
 {
-  "name": "@balancer-labs/v3-benchmarks",
+  "name": "@bush/v3-benchmarks",
   "description": "Gas measurements",
   "private": true,
   "version": "1.0.0",
@@ -17,11 +17,11 @@
     "gas": "forge test -vvv --gas-report"
   },
   "devDependencies": {
-    "@balancer-labs/solidity-toolbox": "workspace:*",
-    "@balancer-labs/v3-interfaces": "workspace:*",
-    "@balancer-labs/v3-pool-weighted": "workspace:*",
-    "@balancer-labs/v3-solidity-utils": "workspace:*",
-    "@balancer-labs/v3-vault": "workspace:*",
+    "@bush/solidity-toolbox": "workspace:*",
+    "@bush/v3-interfaces": "workspace:*",
+    "@bush/v3-pool-weighted": "workspace:*",
+    "@bush/v3-solidity-utils": "workspace:*",
+    "@bush/v3-vault": "workspace:*",
     "@nomicfoundation/hardhat-ethers": "^3.0.0",
     "@types/lodash": "^4.14.186",
     "@types/node": "^14.14.31",

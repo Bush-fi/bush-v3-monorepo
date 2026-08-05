@@ -7,14 +7,14 @@ import { Ownable2Step } from "@openzeppelin/contracts/access/Ownable2Step.sol";
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
 
-import { FixedPoint } from "@balancer-labs/v3-solidity-utils/contracts/math/FixedPoint.sol";
-import { IVaultErrors } from "@balancer-labs/v3-interfaces/contracts/vault/IVaultErrors.sol";
-import { ISenderGuard } from "@balancer-labs/v3-interfaces/contracts/vault/ISenderGuard.sol";
-import "@balancer-labs/v3-interfaces/contracts/pool-weighted/ILBPCommon.sol";
+import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { IVaultErrors } from "@bush/v3-interfaces/contracts/vault/IVaultErrors.sol";
+import { ISenderGuard } from "@bush/v3-interfaces/contracts/vault/ISenderGuard.sol";
+import "@bush/v3-interfaces/contracts/pool-weighted/ILBPCommon.sol";
 
-import { InputHelpers } from "@balancer-labs/v3-solidity-utils/contracts/helpers/InputHelpers.sol";
-import { BaseHooks } from "@balancer-labs/v3-vault/contracts/BaseHooks.sol";
-import "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { InputHelpers } from "@bush/v3-solidity-utils/contracts/helpers/InputHelpers.sol";
+import { BaseHooks } from "@bush/v3-vault/contracts/BaseHooks.sol";
+import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 
 import { LBPValidation } from "./LBPValidation.sol";
 
@@ -27,7 +27,7 @@ abstract contract LBPCommon is ILBPCommon, Ownable2Step, BaseHooks {
     // LBPs are constrained to two tokens: project and reserve.
     uint256 internal constant _TWO_TOKENS = 2;
 
-    // LBPools are deployed with the Balancer standard router address, which we know reliably reports the true sender.
+    // LBPools are deployed with the Bush standard router address, which we know reliably reports the true sender.
     address internal immutable _trustedRouter;
 
     // The project token is the one being launched (i.e., sold).

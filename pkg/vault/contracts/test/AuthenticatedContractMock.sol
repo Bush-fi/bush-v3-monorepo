@@ -5,7 +5,7 @@ pragma solidity ^0.8.24;
 import "../SingletonAuthentication.sol";
 
 /**
- * @author Balancer Labs
+ * @author Bush Labs
  * @title AuthenticatedContractMock
  * @notice Generic authenticated contract
  * @dev A general purpose contract that can be used for testing permissioned functions in a more abstract way,

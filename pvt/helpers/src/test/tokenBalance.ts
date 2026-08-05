@@ -125,10 +125,10 @@ export async function internalBalanceTracker(
 // You can also track *internal* balance changes by passing an optional vault parameter
 //
 // await expectBalanceChange(
-//   balancer.joinSwap(...),
+//   bush.joinSwap(...),
 //   tokens,
 //   { account, changes: { 'DAI': 50, 'USDC': -50 } },
-//   balancerVaultContract
+//   bushVaultContract
 // });
 //
 // Returns the result of calling `promise`.

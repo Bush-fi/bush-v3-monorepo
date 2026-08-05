@@ -9,7 +9,7 @@ import TimelockAuthorizerDeployer from './TimelockAuthorizerDeployer';
 import { TimelockAuthorizerDeployment } from './types';
 import { Account, NAry, TxParams } from '../types/types';
 import { advanceToTimestamp } from '../../time';
-import { TimelockAuthorizer } from '@balancer-labs/v3-vault/typechain-types';
+import { TimelockAuthorizer } from '@bush/v3-vault/typechain-types';
 
 export default class TimelockAuthorizerHelper {
   static EVERYWHERE = ANY_ADDRESS;

@@ -8,7 +8,7 @@ import { WrappingDirection } from "../vault/VaultTypes.sol";
 import { SwapPathStep } from "../vault/BatchRouterTypes.sol";
 import { IProtocolFeeBurner } from "./IProtocolFeeBurner.sol";
 
-interface IBalancerFeeBurner is IProtocolFeeBurner {
+interface IBushFeeBurner is IProtocolFeeBurner {
     /**
      * @notice Buffer not initialized for the wrapped token.
      * @param wrappedToken The wrapped token address.

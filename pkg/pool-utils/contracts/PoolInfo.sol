@@ -4,13 +4,13 @@ pragma solidity ^0.8.24;
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { TokenInfo, PoolConfig } from "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
-import { IPoolInfo } from "@balancer-labs/v3-interfaces/contracts/pool-utils/IPoolInfo.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
+import { TokenInfo, PoolConfig } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IPoolInfo } from "@bush/v3-interfaces/contracts/pool-utils/IPoolInfo.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
 
 /**
  * @notice Standard implementation of the `IPoolInfo` interface.
- * @dev Balancer standard pools inherit from this optional interface to provide a standard off-chain interface for
+ * @dev Bush standard pools inherit from this optional interface to provide a standard off-chain interface for
  * commonly requested data.
  */
 contract PoolInfo is IPoolInfo {

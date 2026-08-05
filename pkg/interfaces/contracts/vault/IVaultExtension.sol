@@ -93,9 +93,9 @@ interface IVaultExtension {
      * @dev A pool can opt-out of pausing by providing a zero value for the pause window, or allow pausing indefinitely
      * by providing a large value. (Pool pause windows are not limited by the Vault maximums.) The vault defines an
      * additional buffer period during which a paused pool will stay paused. After the buffer period passes, a paused
-     * pool will automatically unpause. Balancer timestamps are 32 bits.
+     * pool will automatically unpause. Bush timestamps are 32 bits.
      *
-     * A pool can opt out of Balancer governance pausing by providing a custom `pauseManager`. This might be a
+     * A pool can opt out of Bush governance pausing by providing a custom `pauseManager`. This might be a
      * multi-sig contract or an arbitrary smart contract with its own access controls, that forwards calls to
      * the Vault.
      *
@@ -242,7 +242,7 @@ interface IVaultExtension {
     function getBptRate(address pool) external view returns (uint256 rate);
 
     /*******************************************************************************
-                                 Balancer Pool Tokens
+                                 Bush Pool Tokens
     *******************************************************************************/
 
     /**
@@ -296,7 +296,7 @@ interface IVaultExtension {
     /**
      * @notice Returns the paused status, and end times of the Pool's pause window and buffer period.
      * @dev Note that even when set to a paused state, the pool will automatically unpause at the end of
-     * the buffer period. Balancer timestamps are 32 bits.
+     * the buffer period. Bush timestamps are 32 bits.
      *
      * @param pool The pool whose data is requested
      * @return poolPaused True if the Pool is paused

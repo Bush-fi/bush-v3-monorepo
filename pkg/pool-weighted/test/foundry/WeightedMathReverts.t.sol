@@ -3,8 +3,8 @@ pragma solidity ^0.8.24;
 
 import "forge-std/Test.sol";
 
-import { WeightedMath } from "@balancer-labs/v3-solidity-utils/contracts/math/WeightedMath.sol";
-import { FixedPoint } from "@balancer-labs/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { WeightedMath } from "@bush/v3-solidity-utils/contracts/math/WeightedMath.sol";
+import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
 
 /**
  * @notice Minimal, security-relevant tests to cover WeightedMath's revert branches.

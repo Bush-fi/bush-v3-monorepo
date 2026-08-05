@@ -4,13 +4,13 @@ pragma solidity ^0.8.24;
 
 import { Math } from "@openzeppelin/contracts/utils/math/Math.sol";
 
-import { Rounding } from "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { Rounding } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { BasePoolMathMock } from "@balancer-labs/v3-vault/contracts/test/BasePoolMathMock.sol";
-import { FixedPoint } from "@balancer-labs/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { BasePoolMathMock } from "@bush/v3-vault/contracts/test/BasePoolMathMock.sol";
+import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
 
 // Mock UniswapV2 to test rounding in BasePoolMath for consistency with other implementations.
-// This example is from the Balancer V3 documentation.
+// This example is from the Bush V3 documentation.
 contract UniswapV2BasePoolMathMock is BasePoolMathMock {
     using FixedPoint for uint256;
 

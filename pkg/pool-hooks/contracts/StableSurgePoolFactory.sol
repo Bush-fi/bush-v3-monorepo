@@ -2,15 +2,15 @@
 
 pragma solidity ^0.8.24;
 
-import { IPoolVersion } from "@balancer-labs/v3-interfaces/contracts/solidity-utils/helpers/IPoolVersion.sol";
-import { IVaultErrors } from "@balancer-labs/v3-interfaces/contracts/vault/IVaultErrors.sol";
-import "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IPoolVersion } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IPoolVersion.sol";
+import { IVaultErrors } from "@bush/v3-interfaces/contracts/vault/IVaultErrors.sol";
+import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { SingletonAuthentication } from "@balancer-labs/v3-vault/contracts/SingletonAuthentication.sol";
-import { BasePoolFactory } from "@balancer-labs/v3-pool-utils/contracts/BasePoolFactory.sol";
-import { StableMath } from "@balancer-labs/v3-solidity-utils/contracts/math/StableMath.sol";
-import { Version } from "@balancer-labs/v3-solidity-utils/contracts/helpers/Version.sol";
-import { StablePool } from "@balancer-labs/v3-pool-stable/contracts/StablePool.sol";
+import { SingletonAuthentication } from "@bush/v3-vault/contracts/SingletonAuthentication.sol";
+import { BasePoolFactory } from "@bush/v3-pool-utils/contracts/BasePoolFactory.sol";
+import { StableMath } from "@bush/v3-solidity-utils/contracts/math/StableMath.sol";
+import { Version } from "@bush/v3-solidity-utils/contracts/helpers/Version.sol";
+import { StablePool } from "@bush/v3-pool-stable/contracts/StablePool.sol";
 
 import { StableSurgeHook } from "./StableSurgeHook.sol";
 

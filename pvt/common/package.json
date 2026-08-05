@@ -1,5 +1,5 @@
 {
-  "name": "@balancer-labs/v3-common",
+  "name": "@bush/v3-common",
   "description": "Common configuration",
   "private": true,
   "version": "1.0.0",

@@ -4,13 +4,13 @@ pragma solidity ^0.8.24;
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
-import "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { BalancerPoolToken } from "@balancer-labs/v3-vault/contracts/BalancerPoolToken.sol";
+import { BushPoolToken } from "@bush/v3-vault/contracts/BushPoolToken.sol";
 import {
     AddAndRemoveLiquidityMedusaTest
-} from "@balancer-labs/v3-vault/test/foundry/fuzz/AddAndRemoveLiquidity.medusa.sol";
+} from "@bush/v3-vault/test/foundry/fuzz/AddAndRemoveLiquidity.medusa.sol";
 
 import { WeightedPoolFactory } from "../../../contracts/WeightedPoolFactory.sol";
 import { WeightedPool } from "../../../contracts/WeightedPool.sol";
@@ -65,7 +65,7 @@ contract AddAndRemoveLiquidityWeightedMedusaTest is AddAndRemoveLiquidityMedusaT
             )
         );
 
-        // Cannot set the pool creator directly on a standard Balancer weighted pool factory.
+        // Cannot set the pool creator directly on a standard Bush weighted pool factory.
         vault.manualSetPoolCreator(address(newPool), lp);
 
         // Initialize liquidity of weighted pool.
@@ -103,14 +103,14 @@ contract AddAndRemoveLiquidityWeightedMedusaTest is AddAndRemoveLiquidityMedusaT
         (, , uint256[] memory balancesRaw, ) = vault.getPoolTokenInfo(address(pool));
         // Cap at 3% of pool balance — well within the ~30% invariant ratio limit for weighted pools
         uint256 maxDeposit = balancesRaw[tokenIndex] / 33;
-        uint256 lpBalance = BalancerPoolToken(address(pool)).balanceOf(lp);
+        uint256 lpBalance = BushPoolToken(address(pool)).balanceOf(lp);
         maxDeposit = maxDeposit < lpBalance ? maxDeposit : lpBalance;
         if (maxDeposit < _MINIMUM_TRADE_AMOUNT) return 0;
         return bound(tokenAmountIn, 0, maxDeposit);
     }
 
     function boundBptMint(uint256 bptAmount) internal view override returns (uint256) {
-        uint256 totalSupply = BalancerPoolToken(address(pool)).totalSupply();
+        uint256 totalSupply = BushPoolToken(address(pool)).totalSupply();
         // 3% of supply max — proportional adds scale linearly with BPT,
         // but single-token adds are much more constrained on weighted pools
         uint256 maxMint = totalSupply / 33;
@@ -119,8 +119,8 @@ contract AddAndRemoveLiquidityWeightedMedusaTest is AddAndRemoveLiquidityMedusaT
     }
 
     function boundBptBurn(uint256 bptAmt) internal view override returns (uint256) {
-        uint256 totalSupply = BalancerPoolToken(address(pool)).totalSupply();
-        uint256 lpBalance = BalancerPoolToken(address(pool)).balanceOf(lp);
+        uint256 totalSupply = BushPoolToken(address(pool)).totalSupply();
+        uint256 lpBalance = BushPoolToken(address(pool)).balanceOf(lp);
         // 1% max burn — InvariantRatioBelowMin hits fast on weighted pools
         uint256 maxBurn = totalSupply / 100;
         if (maxBurn > lpBalance) maxBurn = lpBalance;

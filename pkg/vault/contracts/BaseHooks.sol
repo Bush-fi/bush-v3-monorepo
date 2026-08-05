@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.24;
 
-import { IHooks } from "@balancer-labs/v3-interfaces/contracts/vault/IHooks.sol";
+import { IHooks } from "@bush/v3-interfaces/contracts/vault/IHooks.sol";
 import {
     AddLiquidityKind,
     HookFlags,
@@ -11,7 +11,7 @@ import {
     TokenConfig,
     PoolSwapParams,
     AfterSwapParams
-} from "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+} from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 
 /**
  * @notice Base for pool hooks contracts.

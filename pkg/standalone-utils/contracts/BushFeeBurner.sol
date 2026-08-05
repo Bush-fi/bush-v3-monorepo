@@ -5,22 +5,22 @@ pragma solidity ^0.8.24;
 import { SafeERC20 } from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { IProtocolFeeBurner } from "@balancer-labs/v3-interfaces/contracts/standalone-utils/IProtocolFeeBurner.sol";
-import { IBalancerFeeBurner } from "@balancer-labs/v3-interfaces/contracts/standalone-utils/IBalancerFeeBurner.sol";
-import { IProtocolFeeSweeper } from "@balancer-labs/v3-interfaces/contracts/standalone-utils/IProtocolFeeSweeper.sol";
-import { SwapPathStep } from "@balancer-labs/v3-interfaces/contracts/vault/BatchRouterTypes.sol";
-import { IVaultErrors } from "@balancer-labs/v3-interfaces/contracts/vault/IVaultErrors.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
-import "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IProtocolFeeBurner } from "@bush/v3-interfaces/contracts/standalone-utils/IProtocolFeeBurner.sol";
+import { IBushFeeBurner } from "@bush/v3-interfaces/contracts/standalone-utils/IBushFeeBurner.sol";
+import { IProtocolFeeSweeper } from "@bush/v3-interfaces/contracts/standalone-utils/IProtocolFeeSweeper.sol";
+import { SwapPathStep } from "@bush/v3-interfaces/contracts/vault/BatchRouterTypes.sol";
+import { IVaultErrors } from "@bush/v3-interfaces/contracts/vault/IVaultErrors.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 
 import {
     ReentrancyGuardTransient
-} from "@balancer-labs/v3-solidity-utils/contracts/openzeppelin/ReentrancyGuardTransient.sol";
-import { VaultGuard } from "@balancer-labs/v3-vault/contracts/VaultGuard.sol";
+} from "@bush/v3-solidity-utils/contracts/openzeppelin/ReentrancyGuardTransient.sol";
+import { VaultGuard } from "@bush/v3-vault/contracts/VaultGuard.sol";
 
 import { FeeBurnerAuthentication } from "./FeeBurnerAuthentication.sol";
 
-contract BalancerFeeBurner is IBalancerFeeBurner, ReentrancyGuardTransient, VaultGuard, FeeBurnerAuthentication {
+contract BushFeeBurner is IBushFeeBurner, ReentrancyGuardTransient, VaultGuard, FeeBurnerAuthentication {
     using SafeERC20 for IERC20;
 
     mapping(IERC20 => SwapPathStep[]) private _burnSteps;
@@ -33,7 +33,7 @@ contract BalancerFeeBurner is IBalancerFeeBurner, ReentrancyGuardTransient, Vaul
         protocolFeeSweeper = _protocolFeeSweeper;
     }
 
-    /// @inheritdoc IBalancerFeeBurner
+    /// @inheritdoc IBushFeeBurner
     function setBurnPath(IERC20 feeToken, SwapPathStep[] calldata steps) external onlyFeeRecipientOrOwner {
         delete _burnSteps[feeToken];
 
@@ -70,7 +70,7 @@ contract BalancerFeeBurner is IBalancerFeeBurner, ReentrancyGuardTransient, Vaul
         }
     }
 
-    /// @inheritdoc IBalancerFeeBurner
+    /// @inheritdoc IBushFeeBurner
     function getBurnPath(IERC20 feeToken) external view returns (SwapPathStep[] memory steps) {
         return _getBurnPath(feeToken);
     }
@@ -95,7 +95,7 @@ contract BalancerFeeBurner is IBalancerFeeBurner, ReentrancyGuardTransient, Vaul
     ) external onlyProtocolFeeSweeper {
         _vault.unlock(
             abi.encodeCall(
-                BalancerFeeBurner.burnHook,
+                BushFeeBurner.burnHook,
                 BurnHookParams({
                     pool: pool,
                     sender: msg.sender,

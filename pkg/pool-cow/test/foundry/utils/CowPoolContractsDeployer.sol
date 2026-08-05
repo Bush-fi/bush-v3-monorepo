@@ -4,9 +4,9 @@ pragma solidity ^0.8.24;
 
 import "forge-std/Test.sol";
 
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
 
-import { BaseContractsDeployer } from "@balancer-labs/v3-solidity-utils/test/foundry/utils/BaseContractsDeployer.sol";
+import { BaseContractsDeployer } from "@bush/v3-solidity-utils/test/foundry/utils/BaseContractsDeployer.sol";
 
 import { CowPoolFactory } from "../../../contracts/CowPoolFactory.sol";
 import { CowRouter } from "../../../contracts/CowRouter.sol";
@@ -21,8 +21,8 @@ contract CowPoolContractsDeployer is BaseContractsDeployer {
 
     constructor() {
         // if this external artifact path exists, it means we are running outside of this repo
-        if (vm.exists("artifacts/@balancer-labs/v3-pool-cow/")) {
-            artifactsRootDir = "artifacts/@balancer-labs/v3-pool-cow/";
+        if (vm.exists("artifacts/@bush/v3-pool-cow/")) {
+            artifactsRootDir = "artifacts/@bush/v3-pool-cow/";
         }
     }
 

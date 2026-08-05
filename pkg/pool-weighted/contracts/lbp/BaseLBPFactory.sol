@@ -4,16 +4,16 @@ pragma solidity ^0.8.24;
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { IPoolVersion } from "@balancer-labs/v3-interfaces/contracts/solidity-utils/helpers/IPoolVersion.sol";
-import { LBPCommonParams } from "@balancer-labs/v3-interfaces/contracts/pool-weighted/ILBPCommon.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
-import "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IPoolVersion } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IPoolVersion.sol";
+import { LBPCommonParams } from "@bush/v3-interfaces/contracts/pool-weighted/ILBPCommon.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 
 import {
     ReentrancyGuardTransient
-} from "@balancer-labs/v3-solidity-utils/contracts/openzeppelin/ReentrancyGuardTransient.sol";
-import { BasePoolFactory } from "@balancer-labs/v3-pool-utils/contracts/BasePoolFactory.sol";
-import { Version } from "@balancer-labs/v3-solidity-utils/contracts/helpers/Version.sol";
+} from "@bush/v3-solidity-utils/contracts/openzeppelin/ReentrancyGuardTransient.sol";
+import { BasePoolFactory } from "@bush/v3-pool-utils/contracts/BasePoolFactory.sol";
+import { Version } from "@bush/v3-solidity-utils/contracts/helpers/Version.sol";
 
 import { LBPValidation } from "./LBPValidation.sol";
 

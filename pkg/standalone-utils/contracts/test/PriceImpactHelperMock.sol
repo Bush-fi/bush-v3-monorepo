@@ -2,8 +2,8 @@
 
 pragma solidity ^0.8.24;
 
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
-import { IRouter } from "@balancer-labs/v3-interfaces/contracts/vault/IRouter.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import { IRouter } from "@bush/v3-interfaces/contracts/vault/IRouter.sol";
 
 import { PriceImpactHelper } from "../PriceImpactHelper.sol";
 

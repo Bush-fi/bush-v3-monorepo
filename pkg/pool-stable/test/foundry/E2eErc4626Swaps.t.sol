@@ -4,15 +4,15 @@ pragma solidity ^0.8.24;
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { TokenConfig, PoolRoleAccounts } from "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
-import "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { TokenConfig, PoolRoleAccounts } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { FixedPoint } from "@balancer-labs/v3-solidity-utils/contracts/math/FixedPoint.sol";
-import { ScalingHelpers } from "@balancer-labs/v3-solidity-utils/contracts/helpers/ScalingHelpers.sol";
+import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { ScalingHelpers } from "@bush/v3-solidity-utils/contracts/helpers/ScalingHelpers.sol";
 
-import { E2eErc4626SwapsTest } from "@balancer-labs/v3-vault/test/foundry/E2eErc4626Swaps.t.sol";
-import { PoolHooksMock } from "@balancer-labs/v3-vault/contracts/test/PoolHooksMock.sol";
+import { E2eErc4626SwapsTest } from "@bush/v3-vault/test/foundry/E2eErc4626Swaps.t.sol";
+import { PoolHooksMock } from "@bush/v3-vault/contracts/test/PoolHooksMock.sol";
 
 import { StablePoolContractsDeployer } from "./utils/StablePoolContractsDeployer.sol";
 import { StablePoolFactory } from "../../contracts/StablePoolFactory.sol";
@@ -56,7 +56,7 @@ contract E2eErc4626SwapsStableTest is E2eErc4626SwapsTest, StablePoolContractsDe
         );
         vm.label(address(newPool), name);
 
-        // Cannot set the pool creator directly on a standard Balancer stable pool factory.
+        // Cannot set the pool creator directly on a standard Bush stable pool factory.
         vault.manualSetPoolCreator(address(newPool), lp);
 
         poolArgs = abi.encode(

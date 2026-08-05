@@ -2,16 +2,16 @@
 
 pragma solidity ^0.8.24;
 
-import { IAuthentication } from "@balancer-labs/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
-import { IBasePool } from "@balancer-labs/v3-interfaces/contracts/vault/IBasePool.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
-import { PoolRoleAccounts } from "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IAuthentication } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
+import { IBasePool } from "@bush/v3-interfaces/contracts/vault/IBasePool.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import { PoolRoleAccounts } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { CastingHelpers } from "@balancer-labs/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
-import { StableMath } from "@balancer-labs/v3-solidity-utils/contracts/math/StableMath.sol";
+import { CastingHelpers } from "@bush/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
+import { StableMath } from "@bush/v3-solidity-utils/contracts/math/StableMath.sol";
 
-import { PoolHooksMock } from "@balancer-labs/v3-vault/contracts/test/PoolHooksMock.sol";
-import { LiquidityApproximationTest } from "@balancer-labs/v3-vault/test/foundry/LiquidityApproximation.t.sol";
+import { PoolHooksMock } from "@bush/v3-vault/contracts/test/PoolHooksMock.sol";
+import { LiquidityApproximationTest } from "@bush/v3-vault/test/foundry/LiquidityApproximation.t.sol";
 
 import { StablePoolFactory } from "../../contracts/StablePoolFactory.sol";
 import { StablePool } from "../../contracts/StablePool.sol";

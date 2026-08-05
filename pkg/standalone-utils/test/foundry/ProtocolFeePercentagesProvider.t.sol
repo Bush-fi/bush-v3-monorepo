@@ -4,31 +4,31 @@ pragma solidity ^0.8.24;
 
 import "forge-std/Test.sol";
 
-import { IAuthentication } from "@balancer-labs/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
-import { IProtocolFeeController } from "@balancer-labs/v3-interfaces/contracts/vault/IProtocolFeeController.sol";
-import { IVaultErrors } from "@balancer-labs/v3-interfaces/contracts/vault/IVaultErrors.sol";
-import { IPoolInfo } from "@balancer-labs/v3-interfaces/contracts/pool-utils/IPoolInfo.sol";
+import { IAuthentication } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
+import { IProtocolFeeController } from "@bush/v3-interfaces/contracts/vault/IProtocolFeeController.sol";
+import { IVaultErrors } from "@bush/v3-interfaces/contracts/vault/IVaultErrors.sol";
+import { IPoolInfo } from "@bush/v3-interfaces/contracts/pool-utils/IPoolInfo.sol";
 import {
     IProtocolFeePercentagesProvider
-} from "@balancer-labs/v3-interfaces/contracts/vault/IProtocolFeePercentagesProvider.sol";
+} from "@bush/v3-interfaces/contracts/vault/IProtocolFeePercentagesProvider.sol";
 import {
-    IBalancerContractRegistry,
+    IBushContractRegistry,
     ContractType
-} from "@balancer-labs/v3-interfaces/contracts/standalone-utils/IBalancerContractRegistry.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
+} from "@bush/v3-interfaces/contracts/standalone-utils/IBushContractRegistry.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
 
-import { ProtocolFeeController } from "@balancer-labs/v3-vault/contracts/ProtocolFeeController.sol";
-import { PoolFactoryMock } from "@balancer-labs/v3-vault/contracts/test/PoolFactoryMock.sol";
-import { BaseVaultTest } from "@balancer-labs/v3-vault/test/foundry/utils/BaseVaultTest.sol";
+import { ProtocolFeeController } from "@bush/v3-vault/contracts/ProtocolFeeController.sol";
+import { PoolFactoryMock } from "@bush/v3-vault/contracts/test/PoolFactoryMock.sol";
+import { BaseVaultTest } from "@bush/v3-vault/test/foundry/utils/BaseVaultTest.sol";
 
 import { ProtocolFeePercentagesProvider } from "../../contracts/ProtocolFeePercentagesProvider.sol";
-import { BalancerContractRegistry } from "../../contracts/BalancerContractRegistry.sol";
+import { BushContractRegistry } from "../../contracts/BushContractRegistry.sol";
 
 contract ProtocolFeePercentagesProviderTest is BaseVaultTest {
     address internal constant INVALID_ADDRESS = address(0x1234);
 
     IProtocolFeePercentagesProvider internal percentagesProvider;
-    BalancerContractRegistry internal trustedContractRegistry;
+    BushContractRegistry internal trustedContractRegistry;
 
     IAuthentication internal percentagesProviderAuth;
     IAuthentication internal feeControllerAuth;
@@ -41,20 +41,20 @@ contract ProtocolFeePercentagesProviderTest is BaseVaultTest {
     function setUp() public override {
         BaseVaultTest.setUp();
 
-        trustedContractRegistry = new BalancerContractRegistry(vault);
+        trustedContractRegistry = new BushContractRegistry(vault);
         percentagesProvider = new ProtocolFeePercentagesProvider(vault, trustedContractRegistry);
 
         // Mark the poolFactory as trusted, so that operations on it won't fail.
         authorizer.grantRole(
-            trustedContractRegistry.getActionId(BalancerContractRegistry.registerBalancerContract.selector),
+            trustedContractRegistry.getActionId(BushContractRegistry.registerBushContract.selector),
             admin
         );
         authorizer.grantRole(
-            trustedContractRegistry.getActionId(BalancerContractRegistry.deprecateBalancerContract.selector),
+            trustedContractRegistry.getActionId(BushContractRegistry.deprecateBushContract.selector),
             admin
         );
         vm.prank(admin);
-        trustedContractRegistry.registerBalancerContract(ContractType.POOL_FACTORY, "MockFactory", poolFactory);
+        trustedContractRegistry.registerBushContract(ContractType.POOL_FACTORY, "MockFactory", poolFactory);
 
         percentagesProviderAuth = IAuthentication(address(percentagesProvider));
         feeControllerAuth = IAuthentication(address(feeController));
@@ -78,11 +78,11 @@ contract ProtocolFeePercentagesProviderTest is BaseVaultTest {
         );
     }
 
-    function testGetBalancerContractRegistry() public view {
+    function testGetBushContractRegistry() public view {
         assertEq(
-            address(percentagesProvider.getBalancerContractRegistry()),
+            address(percentagesProvider.getBushContractRegistry()),
             address(trustedContractRegistry),
-            "Wrong Balancer contract registry"
+            "Wrong Bush contract registry"
         );
     }
 
@@ -123,7 +123,7 @@ contract ProtocolFeePercentagesProviderTest is BaseVaultTest {
         PoolFactoryMock(poolFactory).manualSetPoolFromFactory(address(0));
 
         vm.prank(admin);
-        trustedContractRegistry.deprecateBalancerContract(poolFactory);
+        trustedContractRegistry.deprecateBushContract(poolFactory);
 
         vm.expectRevert(abi.encodeWithSelector(IProtocolFeePercentagesProvider.UnknownFactory.selector, poolFactory));
         vm.prank(admin);

@@ -4,9 +4,9 @@ pragma solidity ^0.8.24;
 
 import "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
 
-import { IPoolHelperCommon } from "@balancer-labs/v3-interfaces/contracts/standalone-utils/IPoolHelperCommon.sol";
-import { IVaultErrors } from "@balancer-labs/v3-interfaces/contracts/vault/IVaultErrors.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
+import { IPoolHelperCommon } from "@bush/v3-interfaces/contracts/standalone-utils/IPoolHelperCommon.sol";
+import { IVaultErrors } from "@bush/v3-interfaces/contracts/vault/IVaultErrors.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
 
 import { OwnableAuthentication } from "./OwnableAuthentication.sol";
 

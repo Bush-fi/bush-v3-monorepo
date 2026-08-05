@@ -7,15 +7,15 @@ import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import { Math } from "@openzeppelin/contracts/utils/math/Math.sol";
 import { Errors } from "@openzeppelin/contracts/utils/Errors.sol";
 
-import { TokenConfig, TokenType, PoolRoleAccounts } from "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
-import { IRateProvider } from "@balancer-labs/v3-interfaces/contracts/solidity-utils/helpers/IRateProvider.sol";
-import { IVaultMock } from "@balancer-labs/v3-interfaces/contracts/test/IVaultMock.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
+import { TokenConfig, TokenType, PoolRoleAccounts } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IRateProvider } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IRateProvider.sol";
+import { IVaultMock } from "@bush/v3-interfaces/contracts/test/IVaultMock.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
 
-import { VaultContractsDeployer } from "@balancer-labs/v3-vault/test/foundry/utils/VaultContractsDeployer.sol";
-import { ERC20TestToken } from "@balancer-labs/v3-solidity-utils/contracts/test/ERC20TestToken.sol";
-import { MinTokenBalanceLib } from "@balancer-labs/v3-vault/contracts/lib/MinTokenBalanceLib.sol";
-import { RateProviderMock } from "@balancer-labs/v3-vault/contracts/test/RateProviderMock.sol";
+import { VaultContractsDeployer } from "@bush/v3-vault/test/foundry/utils/VaultContractsDeployer.sol";
+import { ERC20TestToken } from "@bush/v3-solidity-utils/contracts/test/ERC20TestToken.sol";
+import { MinTokenBalanceLib } from "@bush/v3-vault/contracts/lib/MinTokenBalanceLib.sol";
+import { RateProviderMock } from "@bush/v3-vault/contracts/test/RateProviderMock.sol";
 
 import { WeightedPoolContractsDeployer } from "./utils/WeightedPoolContractsDeployer.sol";
 import { WeightedPool8020Factory } from "../../contracts/WeightedPool8020Factory.sol";
@@ -67,7 +67,7 @@ contract WeightedPool8020FactoryTest is WeightedPoolContractsDeployer, VaultCont
 
         bytes memory poolArgs = abi.encode(
             WeightedPool.NewPoolParams({
-                name: "Balancer 80 TKNA 20 TKNB",
+                name: "Bush 80 TKNA 20 TKNB",
                 symbol: "B-80TKNA-20TKNB",
                 numTokens: 2,
                 normalizedWeights: poolWeights,
@@ -92,7 +92,7 @@ contract WeightedPool8020FactoryTest is WeightedPoolContractsDeployer, VaultCont
         uint256[] memory poolWeights = pool.getNormalizedWeights();
         assertEq(poolWeights[highWeightIdx], 80e16, "Higher weight token is not 80%");
         assertEq(poolWeights[lowWeightIdx], 20e16, "Lower weight token is not 20%");
-        assertEq(pool.name(), "Balancer 80 TKNA 20 TKNB", "Wrong pool name");
+        assertEq(pool.name(), "Bush 80 TKNA 20 TKNB", "Wrong pool name");
         assertEq(pool.symbol(), "B-80TKNA-20TKNB", "Wrong pool symbol");
     }
 

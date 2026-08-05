@@ -4,18 +4,18 @@ pragma solidity ^0.8.24;
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { IWeightedPool } from "@balancer-labs/v3-interfaces/contracts/pool-weighted/IWeightedPool.sol";
-import { IPoolInfo } from "@balancer-labs/v3-interfaces/contracts/pool-utils/IPoolInfo.sol";
-import { IVaultAdmin } from "@balancer-labs/v3-interfaces/contracts/vault/IVaultAdmin.sol";
-import { IBasePool } from "@balancer-labs/v3-interfaces/contracts/vault/IBasePool.sol";
-import "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IWeightedPool } from "@bush/v3-interfaces/contracts/pool-weighted/IWeightedPool.sol";
+import { IPoolInfo } from "@bush/v3-interfaces/contracts/pool-utils/IPoolInfo.sol";
+import { IVaultAdmin } from "@bush/v3-interfaces/contracts/vault/IVaultAdmin.sol";
+import { IBasePool } from "@bush/v3-interfaces/contracts/vault/IBasePool.sol";
+import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { CastingHelpers } from "@balancer-labs/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
-import { ArrayHelpers } from "@balancer-labs/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
-import { FixedPoint } from "@balancer-labs/v3-solidity-utils/contracts/math/FixedPoint.sol";
-import { MinTokenBalanceLib } from "@balancer-labs/v3-vault/contracts/lib/MinTokenBalanceLib.sol";
-import { BaseVaultTest } from "@balancer-labs/v3-vault/test/foundry/utils/BaseVaultTest.sol";
-import { BasePoolMath } from "@balancer-labs/v3-vault/contracts/BasePoolMath.sol";
+import { CastingHelpers } from "@bush/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
+import { ArrayHelpers } from "@bush/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
+import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { MinTokenBalanceLib } from "@bush/v3-vault/contracts/lib/MinTokenBalanceLib.sol";
+import { BaseVaultTest } from "@bush/v3-vault/test/foundry/utils/BaseVaultTest.sol";
+import { BasePoolMath } from "@bush/v3-vault/contracts/BasePoolMath.sol";
 
 import { WeightedPoolContractsDeployer } from "./utils/WeightedPoolContractsDeployer.sol";
 import { WeightedPoolMock } from "../../contracts/test/WeightedPoolMock.sol";

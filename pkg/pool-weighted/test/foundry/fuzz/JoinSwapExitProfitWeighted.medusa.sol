@@ -4,12 +4,12 @@ pragma solidity ^0.8.24;
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
-import "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { BaseMedusaTest } from "@balancer-labs/v3-vault/test/foundry/utils/BaseMedusaTest.sol";
-import { FixedPoint } from "@balancer-labs/v3-solidity-utils/contracts/math/FixedPoint.sol";
-import { BalancerPoolToken } from "@balancer-labs/v3-vault/contracts/BalancerPoolToken.sol";
+import { BaseMedusaTest } from "@bush/v3-vault/test/foundry/utils/BaseMedusaTest.sol";
+import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { BushPoolToken } from "@bush/v3-vault/contracts/BushPoolToken.sol";
 
 import { WeightedPoolFactory } from "../../../contracts/WeightedPoolFactory.sol";
 import { WeightedPool } from "../../../contracts/WeightedPool.sol";
@@ -100,8 +100,8 @@ contract JoinSwapExitProfitWeightedMedusaTest is BaseMedusaTest {
         // Bound BPT out to something the attacker can realistically round-trip without hitting unrelated limits.
         uint256 bptOut;
         {
-            uint256 maxBptOut = BalancerPoolToken(address(pool)).totalSupply() / 20;
-            uint256 minBptOut = BalancerPoolToken(address(pool)).totalSupply() / 10000; // 0.01%
+            uint256 maxBptOut = BushPoolToken(address(pool)).totalSupply() / 20;
+            uint256 minBptOut = BushPoolToken(address(pool)).totalSupply() / 10000; // 0.01%
             bptOut = bound(bptOutRaw, minBptOut, maxBptOut);
         }
 

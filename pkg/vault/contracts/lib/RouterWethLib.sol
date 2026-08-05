@@ -5,10 +5,10 @@ pragma solidity ^0.8.24;
 import { SafeERC20 } from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import { Address } from "@openzeppelin/contracts/utils/Address.sol";
 
-import { IWETH } from "@balancer-labs/v3-interfaces/contracts/solidity-utils/misc/IWETH.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
+import { IWETH } from "@bush/v3-interfaces/contracts/solidity-utils/misc/IWETH.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
 
-import { StorageSlotExtension } from "@balancer-labs/v3-solidity-utils/contracts/openzeppelin/StorageSlotExtension.sol";
+import { StorageSlotExtension } from "@bush/v3-solidity-utils/contracts/openzeppelin/StorageSlotExtension.sol";
 
 library RouterWethLib {
     using Address for address payable;

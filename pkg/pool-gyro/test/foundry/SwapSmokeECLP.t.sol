@@ -3,10 +3,10 @@ pragma solidity ^0.8.24;
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { IRateProvider } from "@balancer-labs/v3-interfaces/contracts/solidity-utils/helpers/IRateProvider.sol";
-import { IPoolInfo } from "@balancer-labs/v3-interfaces/contracts/pool-utils/IPoolInfo.sol";
+import { IRateProvider } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IRateProvider.sol";
+import { IPoolInfo } from "@bush/v3-interfaces/contracts/pool-utils/IPoolInfo.sol";
 
-import { BaseVaultTest } from "@balancer-labs/v3-vault/test/foundry/utils/BaseVaultTest.sol";
+import { BaseVaultTest } from "@bush/v3-vault/test/foundry/utils/BaseVaultTest.sol";
 
 import { GyroEclpPoolDeployer } from "./utils/GyroEclpPoolDeployer.sol";
 

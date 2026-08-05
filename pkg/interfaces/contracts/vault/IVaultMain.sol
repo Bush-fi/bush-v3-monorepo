@@ -130,7 +130,7 @@ interface IVaultMain {
     ) external view returns (uint256 tokenCount, uint256 index);
 
     /*******************************************************************************
-                                 Balancer Pool Tokens
+                                 Bush Pool Tokens
     *******************************************************************************/
 
     /**

@@ -4,22 +4,22 @@ pragma solidity ^0.8.24;
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
-import { IVaultErrors } from "@balancer-labs/v3-interfaces/contracts/vault/IVaultErrors.sol";
-import { PoolRoleAccounts } from "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import { IVaultErrors } from "@bush/v3-interfaces/contracts/vault/IVaultErrors.sol";
+import { PoolRoleAccounts } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { StablePool } from "@balancer-labs/v3-pool-stable/contracts/StablePool.sol";
+import { StablePool } from "@bush/v3-pool-stable/contracts/StablePool.sol";
 
-import { StablePoolFactory } from "@balancer-labs/v3-pool-stable/contracts/StablePoolFactory.sol";
-import { CommonAuthentication } from "@balancer-labs/v3-vault/contracts/CommonAuthentication.sol";
-import { BaseVaultTest } from "@balancer-labs/v3-vault/test/foundry/utils/BaseVaultTest.sol";
+import { StablePoolFactory } from "@bush/v3-pool-stable/contracts/StablePoolFactory.sol";
+import { CommonAuthentication } from "@bush/v3-vault/contracts/CommonAuthentication.sol";
+import { BaseVaultTest } from "@bush/v3-vault/test/foundry/utils/BaseVaultTest.sol";
 
-import { StableMath } from "@balancer-labs/v3-solidity-utils/contracts/math/StableMath.sol";
-import { ArrayHelpers } from "@balancer-labs/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
-import { CastingHelpers } from "@balancer-labs/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
-import { FixedPoint } from "@balancer-labs/v3-solidity-utils/contracts/math/FixedPoint.sol";
-import { ScalingHelpers } from "@balancer-labs/v3-solidity-utils/contracts/helpers/ScalingHelpers.sol";
-import { PoolSwapParams, SwapKind } from "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { StableMath } from "@bush/v3-solidity-utils/contracts/math/StableMath.sol";
+import { ArrayHelpers } from "@bush/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
+import { CastingHelpers } from "@bush/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
+import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { ScalingHelpers } from "@bush/v3-solidity-utils/contracts/helpers/ScalingHelpers.sol";
+import { PoolSwapParams, SwapKind } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 
 import { StableSurgeHookDeployer } from "./utils/StableSurgeHookDeployer.sol";
 import { StableSurgeHook } from "../../contracts/StableSurgeHook.sol";

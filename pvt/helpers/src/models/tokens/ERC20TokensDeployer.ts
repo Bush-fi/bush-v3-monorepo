@@ -5,7 +5,7 @@ import { deploy } from '../../contract';
 import ERC20TokenList from './ERC20TokenList';
 import TypesConverter from '../types/TypesConverter';
 import { RawTokenDeployment, RawTokensDeployment, TokenDeployment, TokensDeploymentOptions } from './types';
-import { ERC20TestToken } from '@balancer-labs/v3-solidity-utils/typechain-types';
+import { ERC20TestToken } from '@bush/v3-solidity-utils/typechain-types';
 
 class ERC20TokensDeployer {
   async deploy(

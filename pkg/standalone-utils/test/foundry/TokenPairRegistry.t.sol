@@ -7,11 +7,11 @@ import "forge-std/Test.sol";
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import { IERC4626 } from "@openzeppelin/contracts/interfaces/IERC4626.sol";
 
-import { IAuthentication } from "@balancer-labs/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
-import { ITokenPairRegistry } from "@balancer-labs/v3-interfaces/contracts/standalone-utils/ITokenPairRegistry.sol";
-import { SwapPathStep } from "@balancer-labs/v3-interfaces/contracts/vault/BatchRouterTypes.sol";
+import { IAuthentication } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
+import { ITokenPairRegistry } from "@bush/v3-interfaces/contracts/standalone-utils/ITokenPairRegistry.sol";
+import { SwapPathStep } from "@bush/v3-interfaces/contracts/vault/BatchRouterTypes.sol";
 
-import { BaseERC4626BufferTest } from "@balancer-labs/v3-vault/test/foundry/utils/BaseERC4626BufferTest.sol";
+import { BaseERC4626BufferTest } from "@bush/v3-vault/test/foundry/utils/BaseERC4626BufferTest.sol";
 
 import { TokenPairRegistry } from "../../contracts/TokenPairRegistry.sol";
 

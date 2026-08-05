@@ -2,8 +2,8 @@
 
 pragma solidity ^0.8.24;
 
-import { IAuthentication } from "@balancer-labs/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
-import { IPoolHelperCommon } from "@balancer-labs/v3-interfaces/contracts/standalone-utils/IPoolHelperCommon.sol";
+import { IAuthentication } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
+import { IPoolHelperCommon } from "@bush/v3-interfaces/contracts/standalone-utils/IPoolHelperCommon.sol";
 
 import { ProtocolFeeHelper } from "../../contracts/ProtocolFeeHelper.sol";
 import { BasePoolHelperTest } from "./utils/BasePoolHelperTest.sol";

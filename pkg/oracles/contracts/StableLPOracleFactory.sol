@@ -4,10 +4,10 @@ pragma solidity ^0.8.24;
 
 import { AggregatorV3Interface } from "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
 
-import { ILPOracleBase } from "@balancer-labs/v3-interfaces/contracts/oracles/ILPOracleBase.sol";
-import { IStablePool } from "@balancer-labs/v3-interfaces/contracts/pool-stable/IStablePool.sol";
-import { IBasePool } from "@balancer-labs/v3-interfaces/contracts/vault/IBasePool.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
+import { ILPOracleBase } from "@bush/v3-interfaces/contracts/oracles/ILPOracleBase.sol";
+import { IStablePool } from "@bush/v3-interfaces/contracts/pool-stable/IStablePool.sol";
+import { IBasePool } from "@bush/v3-interfaces/contracts/vault/IBasePool.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
 
 import { LPOracleFactoryBase } from "./LPOracleFactoryBase.sol";
 import { StableLPOracle } from "./StableLPOracle.sol";

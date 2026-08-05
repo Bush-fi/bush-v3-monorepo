@@ -5,19 +5,19 @@ pragma solidity ^0.8.24;
 import { IERC20Metadata } from "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol";
 
 import {
-    IWrappedBalancerPoolTokenFactory
-} from "@balancer-labs/v3-interfaces/contracts/vault/IWrappedBalancerPoolTokenFactory.sol";
+    IWrappedBushPoolTokenFactory
+} from "@bush/v3-interfaces/contracts/vault/IWrappedBushPoolTokenFactory.sol";
 
-import { WrappedBalancerPoolTokenFactory } from "../../contracts/WrappedBalancerPoolTokenFactory.sol";
+import { WrappedBushPoolTokenFactory } from "../../contracts/WrappedBushPoolTokenFactory.sol";
 import { BaseVaultTest } from "./utils/BaseVaultTest.sol";
 
-contract WrappedBalancerPoolTokenFactoryTest is BaseVaultTest {
-    WrappedBalancerPoolTokenFactory factory;
+contract WrappedBushPoolTokenFactoryTest is BaseVaultTest {
+    WrappedBushPoolTokenFactory factory;
 
     function setUp() public virtual override {
         BaseVaultTest.setUp();
 
-        factory = new WrappedBalancerPoolTokenFactory(vault);
+        factory = new WrappedBushPoolTokenFactory(vault);
     }
 
     function testCreateWrappedToken() public {
@@ -28,7 +28,7 @@ contract WrappedBalancerPoolTokenFactoryTest is BaseVaultTest {
         address wrappedToken = factory.createWrappedToken(pool);
         vm.revertToState(snapshot);
 
-        emit IWrappedBalancerPoolTokenFactory.WrappedTokenCreated(pool, wrappedToken);
+        emit IWrappedBushPoolTokenFactory.WrappedTokenCreated(pool, wrappedToken);
         factory.createWrappedToken(pool);
 
         assertEq(factory.getWrappedToken(pool), wrappedToken, "Wrapped token should exist");
@@ -41,7 +41,7 @@ contract WrappedBalancerPoolTokenFactoryTest is BaseVaultTest {
         address wrappedToken = factory.createWrappedToken(pool);
 
         vm.expectRevert(
-            abi.encodeWithSelector(IWrappedBalancerPoolTokenFactory.WrappedBPTAlreadyExists.selector, wrappedToken)
+            abi.encodeWithSelector(IWrappedBushPoolTokenFactory.WrappedBPTAlreadyExists.selector, wrappedToken)
         );
         factory.createWrappedToken(pool);
     }
@@ -50,7 +50,7 @@ contract WrappedBalancerPoolTokenFactoryTest is BaseVaultTest {
         vault.manualSetPoolRegistered(pool, false);
 
         vm.expectRevert(
-            abi.encodeWithSelector(IWrappedBalancerPoolTokenFactory.BalancerPoolTokenNotRegistered.selector)
+            abi.encodeWithSelector(IWrappedBushPoolTokenFactory.BushPoolTokenNotRegistered.selector)
         );
         factory.createWrappedToken(pool);
     }

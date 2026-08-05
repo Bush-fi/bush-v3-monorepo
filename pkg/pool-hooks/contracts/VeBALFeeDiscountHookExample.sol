@@ -4,19 +4,19 @@ pragma solidity ^0.8.24;
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { IBasePoolFactory } from "@balancer-labs/v3-interfaces/contracts/vault/IBasePoolFactory.sol";
-import { ISenderGuard } from "@balancer-labs/v3-interfaces/contracts/vault/ISenderGuard.sol";
-import { IHooks } from "@balancer-labs/v3-interfaces/contracts/vault/IHooks.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
+import { IBasePoolFactory } from "@bush/v3-interfaces/contracts/vault/IBasePoolFactory.sol";
+import { ISenderGuard } from "@bush/v3-interfaces/contracts/vault/ISenderGuard.sol";
+import { IHooks } from "@bush/v3-interfaces/contracts/vault/IHooks.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
 import {
     LiquidityManagement,
     TokenConfig,
     PoolSwapParams,
     HookFlags
-} from "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+} from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { VaultGuard } from "@balancer-labs/v3-vault/contracts/VaultGuard.sol";
-import { BaseHooks } from "@balancer-labs/v3-vault/contracts/BaseHooks.sol";
+import { VaultGuard } from "@bush/v3-vault/contracts/VaultGuard.sol";
+import { BaseHooks } from "@bush/v3-vault/contracts/BaseHooks.sol";
 
 /**
  * @notice Hook that gives a swap fee discount to veBAL holders.

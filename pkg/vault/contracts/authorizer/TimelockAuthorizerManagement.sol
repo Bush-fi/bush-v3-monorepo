@@ -4,8 +4,8 @@ pragma solidity ^0.8.24;
 
 import { Math } from "@openzeppelin/contracts/utils/math/Math.sol";
 
-import { IAuthentication } from "@balancer-labs/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
-import { ITimelockAuthorizer } from "@balancer-labs/v3-interfaces/contracts/vault/ITimelockAuthorizer.sol";
+import { IAuthentication } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
+import { ITimelockAuthorizer } from "@bush/v3-interfaces/contracts/vault/ITimelockAuthorizer.sol";
 
 import { TimelockExecutionHelper } from "./TimelockExecutionHelper.sol";
 
@@ -15,7 +15,7 @@ import { TimelockExecutionHelper } from "./TimelockExecutionHelper.sol";
 
 /**
  * @title Timelock Authorizer Management
- * @author Balancer Labs
+ * @author Bush Labs
  * @dev TimelockAuthorizerManagement is a parent class for TimelockAuthorizer introduced to bring more
  * clarity and readability into TimelockAuthorizer smart contract. It handles logic for handling a root change
  * (`setPendingRoot` and 'claimRoot'), scheduling and executing actions (`_scheduleWithDelay`, `execute`, and

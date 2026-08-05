@@ -1,7 +1,7 @@
 {
-  "name": "@balancer-labs/v3-standalone-utils",
+  "name": "@bush/v3-standalone-utils",
   "version": "1.0.0",
-  "description": "Balancer V3 Standalone Utils",
+  "description": "Bush V3 Standalone Utils",
   "license": "GPL-3.0-only",
   "homepage": "https://github.com/balancer-labs/balancer-v3-monorepo/tree/master/pkg/standalone-utils#readme",
   "repository": {
@@ -36,11 +36,11 @@
     "slither:triage": "yarn compile && bash -c 'source ../../slither/bin/activate && slither --compile-force-framework hardhat --ignore-compile . --config-file ../../.slither.config.json --triage-mode'"
   },
   "dependencies": {
-    "@balancer-labs/v3-interfaces": "workspace:*"
+    "@bush/v3-interfaces": "workspace:*"
   },
   "devDependencies": {
-    "@balancer-labs/solidity-toolbox": "workspace:*",
-    "@balancer-labs/v3-solidity-utils": "workspace:*",
+    "@bush/solidity-toolbox": "workspace:*",
+    "@bush/v3-solidity-utils": "workspace:*",
     "@typescript-eslint/eslint-plugin": "^5.41.0",
     "@typescript-eslint/parser": "^5.41.0",
     "decimal.js": "^10.4.2",

@@ -7,13 +7,13 @@ import { IERC20Metadata } from "@openzeppelin/contracts/token/ERC20/extensions/I
 import { SafeCast } from "@openzeppelin/contracts/utils/math/SafeCast.sol";
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { ISequencerUptimeFeed } from "@balancer-labs/v3-interfaces/contracts/oracles/ISequencerUptimeFeed.sol";
-import { ILPOracleBase } from "@balancer-labs/v3-interfaces/contracts/oracles/ILPOracleBase.sol";
-import { IBasePool } from "@balancer-labs/v3-interfaces/contracts/vault/IBasePool.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
+import { ISequencerUptimeFeed } from "@bush/v3-interfaces/contracts/oracles/ISequencerUptimeFeed.sol";
+import { ILPOracleBase } from "@bush/v3-interfaces/contracts/oracles/ILPOracleBase.sol";
+import { IBasePool } from "@bush/v3-interfaces/contracts/vault/IBasePool.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
 
-import { InputHelpers } from "@balancer-labs/v3-solidity-utils/contracts/helpers/InputHelpers.sol";
-import { FixedPoint } from "@balancer-labs/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { InputHelpers } from "@bush/v3-solidity-utils/contracts/helpers/InputHelpers.sol";
+import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
 
 /**
  * @notice Base contract for pool oracles.
@@ -42,7 +42,7 @@ abstract contract LPOracleBase is ILPOracleBase, ISequencerUptimeFeed, Aggregato
     // Depending on the interaction between a specific oracle and the protocol using it, different strategies for
     // ensuring BPT prices are non-manipulable may apply. Generally, we must either ensure that the BPT balances is
     // real (i.e., not transient), or the amount must be limited somehow. To ensure the BPT balance is non-transient,
-    // protocols can use a wrapped version (e.g., `WrappedBalancerPoolToken`), or set this flag to essentially do what
+    // protocols can use a wrapped version (e.g., `WrappedBushPoolToken`), or set this flag to essentially do what
     // the wrapper does and directly ensure the Vault is "locked" (= not in the middle of a transaction).
     bool internal immutable _shouldRevertIfVaultUnlocked;
 

@@ -2,10 +2,10 @@
 
 pragma solidity ^0.8.24;
 
-import { IWeightedPool } from "@balancer-labs/v3-interfaces/contracts/pool-weighted/IWeightedPool.sol";
-import { IPoolInfo } from "@balancer-labs/v3-interfaces/contracts/pool-utils/IPoolInfo.sol";
+import { IWeightedPool } from "@bush/v3-interfaces/contracts/pool-weighted/IWeightedPool.sol";
+import { IPoolInfo } from "@bush/v3-interfaces/contracts/pool-utils/IPoolInfo.sol";
 
-import { FixedPoint } from "@balancer-labs/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
 
 /// @dev Compute spot price for LBPs and 2-token weighted pools, considering virtual balances for the former.
 library SpotPriceHelper {

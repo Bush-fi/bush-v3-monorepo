@@ -2,11 +2,11 @@
 
 pragma solidity ^0.8.24;
 
-import { IBalancerContractRegistry } from "../standalone-utils/IBalancerContractRegistry.sol";
+import { IBushContractRegistry } from "../standalone-utils/IBushContractRegistry.sol";
 
 interface IMevCaptureHook {
-    /// @notice The `BalancerContractRegistry` set in the constructor is invalid.
-    error InvalidBalancerContractRegistry();
+    /// @notice The `BushContractRegistry` set in the constructor is invalid.
+    error InvalidBushContractRegistry();
 
     /**
      * @notice The pool was not registered with the MEV Hook contract.
@@ -85,8 +85,8 @@ interface IMevCaptureHook {
      */
     event MevTaxExemptSenderRemoved(address sender);
 
-    /// @notice Returns `BalancerContractRegistry`.
-    function getBalancerContractRegistry() external view returns (IBalancerContractRegistry);
+    /// @notice Returns `BushContractRegistry`.
+    function getBushContractRegistry() external view returns (IBushContractRegistry);
 
     /**
      * @notice Check whether the MEV Tax is enabled in the hook.

@@ -1,8 +1,8 @@
-# <img src="../../logo.svg" alt="Balancer" height="128px">
+# <img src="../../logo.svg" alt="Bush" height="128px">
 
-# Balancer V3 Benchmarks
+# Bush V3 Benchmarks
 
-This package contains various benchmarks for the Balancer V3 platform.
+This package contains various benchmarks for the Bush V3 platform.
 
 ## Overview
 

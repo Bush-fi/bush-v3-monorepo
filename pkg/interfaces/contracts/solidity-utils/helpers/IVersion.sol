@@ -6,7 +6,7 @@ pragma solidity ^0.8.24;
 interface IVersion {
     /**
      * @notice Return arbitrary text representing the version of a contract.
-     * @dev For standard Balancer contracts, returns a JSON representation of the contract version containing name,
+     * @dev For standard Bush contracts, returns a JSON representation of the contract version containing name,
      * version number and task ID. See real examples in the deployment repo; local tests just use plain text strings.
      *
      * @return version The version string corresponding to the current deployed contract

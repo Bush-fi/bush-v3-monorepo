@@ -8,7 +8,7 @@ import '@typechain/hardhat';
 import 'hardhat-ignore-warnings';
 import 'hardhat-gas-reporter';
 
-import { hardhatBaseConfig } from '@balancer-labs/v3-common';
+import { hardhatBaseConfig } from '@bush/v3-common';
 import { task } from 'hardhat/config';
 
 task('setup-smoke-test-cow-burner-contracts', 'Setup contracts for smoke testing cow burner')

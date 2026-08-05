@@ -4,12 +4,12 @@ pragma solidity ^0.8.24;
 
 import { Math } from "@openzeppelin/contracts/utils/math/Math.sol";
 
-import { IBasicAuthorizer } from "@balancer-labs/v3-interfaces/contracts/governance-scripts/IBasicAuthorizer.sol";
-import { IAuthentication } from "@balancer-labs/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
-import { IVaultAdmin } from "@balancer-labs/v3-interfaces/contracts/vault/IVaultAdmin.sol";
+import { IBasicAuthorizer } from "@bush/v3-interfaces/contracts/governance-scripts/IBasicAuthorizer.sol";
+import { IAuthentication } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import { IVaultAdmin } from "@bush/v3-interfaces/contracts/vault/IVaultAdmin.sol";
 
-import { TimelockAuthorizer } from "@balancer-labs/v3-vault/contracts/authorizer/TimelockAuthorizer.sol";
+import { TimelockAuthorizer } from "@bush/v3-vault/contracts/authorizer/TimelockAuthorizer.sol";
 
 contract TimelockAuthorizerMigrator {
     bytes32 public constant GENERAL_PERMISSION_SPECIFIER = bytes32(type(uint256).max);

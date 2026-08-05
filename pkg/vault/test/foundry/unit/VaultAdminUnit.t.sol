@@ -4,13 +4,13 @@ pragma solidity ^0.8.24;
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { IVaultErrors } from "@balancer-labs/v3-interfaces/contracts/vault/IVaultErrors.sol";
-import { IVaultEvents } from "@balancer-labs/v3-interfaces/contracts/vault/IVaultEvents.sol";
-import { IVaultAdmin } from "@balancer-labs/v3-interfaces/contracts/vault/IVaultAdmin.sol";
-import { PoolConfig } from "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IVaultErrors } from "@bush/v3-interfaces/contracts/vault/IVaultErrors.sol";
+import { IVaultEvents } from "@bush/v3-interfaces/contracts/vault/IVaultEvents.sol";
+import { IVaultAdmin } from "@bush/v3-interfaces/contracts/vault/IVaultAdmin.sol";
+import { PoolConfig } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { PackedTokenBalance } from "@balancer-labs/v3-solidity-utils/contracts/helpers/PackedTokenBalance.sol";
-import { FixedPoint } from "@balancer-labs/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { PackedTokenBalance } from "@bush/v3-solidity-utils/contracts/helpers/PackedTokenBalance.sol";
+import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
 
 import { BaseVaultTest } from "../utils/BaseVaultTest.sol";
 

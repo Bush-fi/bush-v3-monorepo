@@ -4,9 +4,9 @@ pragma solidity ^0.8.24;
 
 import { Test } from "forge-std/Test.sol";
 
-import { IGyroECLPPool } from "@balancer-labs/v3-interfaces/contracts/pool-gyro/IGyroECLPPool.sol";
+import { IGyroECLPPool } from "@bush/v3-interfaces/contracts/pool-gyro/IGyroECLPPool.sol";
 
-import { ArrayHelpers } from "@balancer-labs/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
+import { ArrayHelpers } from "@bush/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
 
 import { GyroECLPMath } from "../../contracts/lib/GyroECLPMath.sol";
 

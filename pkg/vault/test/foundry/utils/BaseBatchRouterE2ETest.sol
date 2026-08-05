@@ -7,10 +7,10 @@ import "forge-std/Test.sol";
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/utils/structs/EnumerableMap.sol";
 
-import { SwapKind } from "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
-import "@balancer-labs/v3-interfaces/contracts/vault/BatchRouterTypes.sol";
+import { SwapKind } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import "@bush/v3-interfaces/contracts/vault/BatchRouterTypes.sol";
 
-import { ArrayHelpers } from "@balancer-labs/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
+import { ArrayHelpers } from "@bush/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
 
 import { BaseVaultTest } from "./BaseVaultTest.sol";
 

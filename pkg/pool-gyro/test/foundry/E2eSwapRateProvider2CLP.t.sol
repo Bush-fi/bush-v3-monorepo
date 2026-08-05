@@ -2,12 +2,12 @@
 
 pragma solidity ^0.8.24;
 
-import { IRateProvider } from "@balancer-labs/v3-interfaces/contracts/solidity-utils/helpers/IRateProvider.sol";
+import { IRateProvider } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IRateProvider.sol";
 
-import { VaultContractsDeployer } from "@balancer-labs/v3-vault/test/foundry/utils/VaultContractsDeployer.sol";
-import { E2eSwapRateProviderTest } from "@balancer-labs/v3-vault/test/foundry/E2eSwapRateProvider.t.sol";
-import { FixedPoint } from "@balancer-labs/v3-solidity-utils/contracts/math/FixedPoint.sol";
-import { SwapLimits } from "@balancer-labs/v3-vault/test/foundry/E2eSwap.t.sol";
+import { VaultContractsDeployer } from "@bush/v3-vault/test/foundry/utils/VaultContractsDeployer.sol";
+import { E2eSwapRateProviderTest } from "@bush/v3-vault/test/foundry/E2eSwapRateProvider.t.sol";
+import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { SwapLimits } from "@bush/v3-vault/test/foundry/E2eSwap.t.sol";
 
 import { Gyro2ClpPoolDeployer } from "./utils/Gyro2ClpPoolDeployer.sol";
 

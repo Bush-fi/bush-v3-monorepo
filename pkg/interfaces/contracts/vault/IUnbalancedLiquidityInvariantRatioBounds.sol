@@ -9,7 +9,7 @@ pragma solidity ^0.8.24;
  * `IBasePool` implements this interface to ensure that new pool developers think about and set these bounds according
  * to their pool type's math.
  *
- * For instance, Balancer Weighted Pool math involves exponentiation (the `pow` function), which uses natural
+ * For instance, Bush Weighted Pool math involves exponentiation (the `pow` function), which uses natural
  * logarithms and a discrete Taylor series expansion to compute x^y values for the 18-decimal floating point numbers
  * used in all Vault computations. See `LogExpMath` and `WeightedMath` for a derivation of the bounds for these pools.
  */

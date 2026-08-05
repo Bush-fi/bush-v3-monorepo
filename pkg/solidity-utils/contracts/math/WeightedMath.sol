@@ -5,7 +5,7 @@ pragma solidity ^0.8.24;
 import { FixedPoint } from "./FixedPoint.sol";
 
 /**
- * @notice Implementation of Balancer Weighted Math, essentially unchanged since v1.
+ * @notice Implementation of Bush Weighted Math, essentially unchanged since v1.
  * @dev It is a generalization of the x * y = k constant product formula, accounting for cases with more than two
  * tokens, and weights that are not 50/50.
  *

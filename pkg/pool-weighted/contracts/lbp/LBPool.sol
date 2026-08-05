@@ -2,17 +2,17 @@
 
 pragma solidity ^0.8.24;
 
-import { ISenderGuard } from "@balancer-labs/v3-interfaces/contracts/vault/ISenderGuard.sol";
-import { IVaultErrors } from "@balancer-labs/v3-interfaces/contracts/vault/IVaultErrors.sol";
-import { IBasePool } from "@balancer-labs/v3-interfaces/contracts/vault/IBasePool.sol";
-import "@balancer-labs/v3-interfaces/contracts/pool-weighted/IWeightedPool.sol";
-import "@balancer-labs/v3-interfaces/contracts/pool-weighted/ILBPCommon.sol";
-import "@balancer-labs/v3-interfaces/contracts/pool-weighted/ILBPool.sol";
-import "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { ISenderGuard } from "@bush/v3-interfaces/contracts/vault/ISenderGuard.sol";
+import { IVaultErrors } from "@bush/v3-interfaces/contracts/vault/IVaultErrors.sol";
+import { IBasePool } from "@bush/v3-interfaces/contracts/vault/IBasePool.sol";
+import "@bush/v3-interfaces/contracts/pool-weighted/IWeightedPool.sol";
+import "@bush/v3-interfaces/contracts/pool-weighted/ILBPCommon.sol";
+import "@bush/v3-interfaces/contracts/pool-weighted/ILBPool.sol";
+import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { MinTokenBalanceLib } from "@balancer-labs/v3-vault/contracts/lib/MinTokenBalanceLib.sol";
-import { FixedPoint } from "@balancer-labs/v3-solidity-utils/contracts/math/FixedPoint.sol";
-import { PoolInfo } from "@balancer-labs/v3-pool-utils/contracts/PoolInfo.sol";
+import { MinTokenBalanceLib } from "@bush/v3-vault/contracts/lib/MinTokenBalanceLib.sol";
+import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { PoolInfo } from "@bush/v3-pool-utils/contracts/PoolInfo.sol";
 
 import { GradualValueChange } from "../lib/GradualValueChange.sol";
 import { WeightedPool } from "../WeightedPool.sol";

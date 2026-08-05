@@ -3,19 +3,19 @@ import { ethers } from 'hardhat';
 import { Contract, BigNumberish } from 'ethers';
 import { SignerWithAddress } from '@nomicfoundation/hardhat-ethers/dist/src/signer-with-address';
 
-import * as VaultDeployer from '@balancer-labs/v3-helpers/src/models/vault/VaultDeployer';
-import { actionId } from '@balancer-labs/v3-helpers/src/models/misc/actions';
-import { advanceTime, DAY, WEEK } from '@balancer-labs/v3-helpers/src/time';
-import { deploy, deployedAt } from '@balancer-labs/v3-helpers/src/contract';
-import { ZERO_ADDRESS } from '@balancer-labs/v3-helpers/src/constants';
-import { sharedBeforeEach } from '@balancer-labs/v3-common/sharedBeforeEach';
+import * as VaultDeployer from '@bush/v3-helpers/src/models/vault/VaultDeployer';
+import { actionId } from '@bush/v3-helpers/src/models/misc/actions';
+import { advanceTime, DAY, WEEK } from '@bush/v3-helpers/src/time';
+import { deploy, deployedAt } from '@bush/v3-helpers/src/contract';
+import { ZERO_ADDRESS } from '@bush/v3-helpers/src/constants';
+import { sharedBeforeEach } from '@bush/v3-common/sharedBeforeEach';
 import {
   BasicAuthorizerMock,
   BasicAuthorizerMock__factory,
   AuthenticatedContractMock,
-} from '@balancer-labs/v3-vault/typechain-types';
-import TypesConverter from '@balancer-labs/v3-helpers/src/models/types/TypesConverter';
-import { IVault } from '@balancer-labs/v3-interfaces/typechain-types';
+} from '@bush/v3-vault/typechain-types';
+import TypesConverter from '@bush/v3-helpers/src/models/types/TypesConverter';
+import { IVault } from '@bush/v3-interfaces/typechain-types';
 import { TimelockAuthorizer } from '../typechain-types';
 
 describe('TimelockAuthorizerMigrator', () => {

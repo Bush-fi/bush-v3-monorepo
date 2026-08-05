@@ -2,13 +2,13 @@
 
 pragma solidity ^0.8.24;
 
-import { PoolRoleAccounts } from "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
+import { PoolRoleAccounts } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
 
-import { CastingHelpers } from "@balancer-labs/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
+import { CastingHelpers } from "@bush/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
 
-import { StablePoolFactory } from "@balancer-labs/v3-pool-stable/contracts/StablePoolFactory.sol";
-import { StablePool } from "@balancer-labs/v3-pool-stable/contracts/StablePool.sol";
+import { StablePoolFactory } from "@bush/v3-pool-stable/contracts/StablePoolFactory.sol";
+import { StablePool } from "@bush/v3-pool-stable/contracts/StablePool.sol";
 
 import { BaseExtremeAmountsTest } from "./utils/BaseExtremeAmountsTest.sol";
 

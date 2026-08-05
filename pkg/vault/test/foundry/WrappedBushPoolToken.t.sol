@@ -4,23 +4,23 @@ pragma solidity ^0.8.24;
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { IWrappedBalancerPoolToken } from "@balancer-labs/v3-interfaces/contracts/vault/IWrappedBalancerPoolToken.sol";
+import { IWrappedBushPoolToken } from "@bush/v3-interfaces/contracts/vault/IWrappedBushPoolToken.sol";
 
-import { WrappedBalancerPoolToken } from "../../contracts/WrappedBalancerPoolToken.sol";
+import { WrappedBushPoolToken } from "../../contracts/WrappedBushPoolToken.sol";
 import { BaseVaultTest } from "./utils/BaseVaultTest.sol";
 
-contract WrappedBalancerPoolTokenTest is BaseVaultTest {
-    WrappedBalancerPoolToken public wBPT;
+contract WrappedBushPoolTokenTest is BaseVaultTest {
+    WrappedBushPoolToken public wBPT;
 
     function setUp() public virtual override {
         BaseVaultTest.setUp();
 
-        wBPT = new WrappedBalancerPoolToken(vault, IERC20(pool), "Wrapped BPT", "wBPT");
+        wBPT = new WrappedBushPoolToken(vault, IERC20(pool), "Wrapped BPT", "wBPT");
     }
 
     function testConstructor() public view {
         assertEq(address(wBPT.vault()), address(vault), "Invalid vault address");
-        assertEq(address(wBPT.balancerPoolToken()), pool, "Invalid pool address");
+        assertEq(address(wBPT.bushPoolToken()), pool, "Invalid pool address");
     }
 
     function testMint() public {
@@ -42,7 +42,7 @@ contract WrappedBalancerPoolTokenTest is BaseVaultTest {
     function testMintIfVaultUnlocked() public {
         vault.forceUnlock();
 
-        vm.expectRevert(IWrappedBalancerPoolToken.VaultIsUnlocked.selector);
+        vm.expectRevert(IWrappedBushPoolToken.VaultIsUnlocked.selector);
         wBPT.mint(DEFAULT_AMOUNT);
     }
 
@@ -66,7 +66,7 @@ contract WrappedBalancerPoolTokenTest is BaseVaultTest {
     function testBurnIfVaultUnlocked() public {
         vault.forceUnlock();
 
-        vm.expectRevert(IWrappedBalancerPoolToken.VaultIsUnlocked.selector);
+        vm.expectRevert(IWrappedBushPoolToken.VaultIsUnlocked.selector);
         wBPT.burn(DEFAULT_AMOUNT);
     }
 
@@ -95,7 +95,7 @@ contract WrappedBalancerPoolTokenTest is BaseVaultTest {
     function testBurnFromIfVaultUnlocked() public {
         vault.forceUnlock();
 
-        vm.expectRevert(IWrappedBalancerPoolToken.VaultIsUnlocked.selector);
+        vm.expectRevert(IWrappedBushPoolToken.VaultIsUnlocked.selector);
         wBPT.burnFrom(lp, DEFAULT_AMOUNT);
     }
 }

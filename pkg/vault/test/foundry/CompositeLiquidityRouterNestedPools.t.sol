@@ -4,21 +4,21 @@ pragma solidity ^0.8.24;
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { ICompositeLiquidityRouter } from "@balancer-labs/v3-interfaces/contracts/vault/ICompositeLiquidityRouter.sol";
-import { ICompositeLiquidityRouter } from "@balancer-labs/v3-interfaces/contracts/vault/ICompositeLiquidityRouter.sol";
-import { IVaultErrors } from "@balancer-labs/v3-interfaces/contracts/vault/IVaultErrors.sol";
+import { ICompositeLiquidityRouter } from "@bush/v3-interfaces/contracts/vault/ICompositeLiquidityRouter.sol";
+import { ICompositeLiquidityRouter } from "@bush/v3-interfaces/contracts/vault/ICompositeLiquidityRouter.sol";
+import { IVaultErrors } from "@bush/v3-interfaces/contracts/vault/IVaultErrors.sol";
 import {
     ICompositeLiquidityRouterErrors
-} from "@balancer-labs/v3-interfaces/contracts/vault/ICompositeLiquidityRouterErrors.sol";
-import "@balancer-labs/v3-interfaces/contracts/vault/RouterTypes.sol";
+} from "@bush/v3-interfaces/contracts/vault/ICompositeLiquidityRouterErrors.sol";
+import "@bush/v3-interfaces/contracts/vault/RouterTypes.sol";
 
-import { CastingHelpers } from "@balancer-labs/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
-import { ERC20TestToken } from "@balancer-labs/v3-solidity-utils/contracts/test/ERC20TestToken.sol";
-import { InputHelpers } from "@balancer-labs/v3-solidity-utils/contracts/helpers/InputHelpers.sol";
-import { ArrayHelpers } from "@balancer-labs/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
-import { FixedPoint } from "@balancer-labs/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { CastingHelpers } from "@bush/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
+import { ERC20TestToken } from "@bush/v3-solidity-utils/contracts/test/ERC20TestToken.sol";
+import { InputHelpers } from "@bush/v3-solidity-utils/contracts/helpers/InputHelpers.sol";
+import { ArrayHelpers } from "@bush/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
+import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
 
-import { BalancerPoolToken } from "../../contracts/BalancerPoolToken.sol";
+import { BushPoolToken } from "../../contracts/BushPoolToken.sol";
 import { BaseERC4626BufferTest } from "./utils/BaseERC4626BufferTest.sol";
 
 contract CompositeLiquidityRouterNestedPoolsTest is BaseERC4626BufferTest {
@@ -1378,7 +1378,7 @@ contract CompositeLiquidityRouterNestedPoolsTest is BaseERC4626BufferTest {
             vault.manualEnableRecoveryMode(childPoolB);
         }
 
-        uint256 totalPoolBPT = BalancerPoolToken(parentPool).totalSupply();
+        uint256 totalPoolBPT = BushPoolToken(parentPool).totalSupply();
         uint256 exactBptIn = totalPoolBPT.mulDown(proportionToRemove);
 
         NestedPoolTestLocals memory vars = _createNestedPoolTestLocals();
@@ -1548,7 +1548,7 @@ contract CompositeLiquidityRouterNestedPoolsTest is BaseERC4626BufferTest {
         // Remove between 0.0001% and 50% of each pool liquidity.
         proportionToRemove = bound(proportionToRemove, 1e12, 50e16);
 
-        uint256 totalPoolBPT = BalancerPoolToken(parentPool).totalSupply();
+        uint256 totalPoolBPT = BushPoolToken(parentPool).totalSupply();
         // Since LP is the owner of all BPT supply, and part of the BPT were burned in the initialization step, using
         // totalSupply is more accurate to remove exactly the proportion that we intend from each pool.
         uint256 exactBptIn = totalPoolBPT.mulDown(proportionToRemove) + 1; // adjust for rounding
@@ -1728,7 +1728,7 @@ contract CompositeLiquidityRouterNestedPoolsTest is BaseERC4626BufferTest {
         // Remove between 0.0001% and 50% of each pool liquidity.
         proportionToRemove = bound(proportionToRemove, 1e12, 50e16);
 
-        uint256 totalPoolBPT = BalancerPoolToken(parentPoolWithWrapper).totalSupply();
+        uint256 totalPoolBPT = BushPoolToken(parentPoolWithWrapper).totalSupply();
         // Since LP is the owner of all BPT supply, and part of the BPT were burned in the initialization step, using
         // totalSupply is more accurate to remove exactly the proportion that we intend from each pool.
         uint256 exactBptIn = totalPoolBPT.mulDown(proportionToRemove);
@@ -1878,7 +1878,7 @@ contract CompositeLiquidityRouterNestedPoolsTest is BaseERC4626BufferTest {
         // Remove between 0.0001% and 50% of each pool liquidity.
         proportionToRemove = bound(proportionToRemove, 1e12, 50e16);
 
-        uint256 totalPoolBPT = BalancerPoolToken(parentPoolWithWrapper).totalSupply();
+        uint256 totalPoolBPT = BushPoolToken(parentPoolWithWrapper).totalSupply();
         // Since LP is the owner of all BPT supply, and part of the BPT were burned in the initialization step, using
         // totalSupply is more accurate to remove exactly the proportion that we intend from each pool.
         uint256 exactBptIn = totalPoolBPT.mulDown(proportionToRemove);
@@ -2028,7 +2028,7 @@ contract CompositeLiquidityRouterNestedPoolsTest is BaseERC4626BufferTest {
         // Remove between 0.0001% and 50% of each pool liquidity.
         proportionToRemove = bound(proportionToRemove, 1e12, 50e16);
 
-        uint256 totalPoolBPT = BalancerPoolToken(parentPoolWithWrapper).totalSupply();
+        uint256 totalPoolBPT = BushPoolToken(parentPoolWithWrapper).totalSupply();
         // Since LP is the owner of all BPT supply, and part of the BPT were burned in the initialization step, using
         // totalSupply is more accurate to remove exactly the proportion that we intend from each pool.
         uint256 exactBptIn = totalPoolBPT.mulDown(proportionToRemove);
@@ -2183,7 +2183,7 @@ contract CompositeLiquidityRouterNestedPoolsTest is BaseERC4626BufferTest {
         // Remove between 0.0001% and 50% of each pool liquidity.
         proportionToRemove = bound(proportionToRemove, 1e12, 50e16);
 
-        uint256 totalPoolBPT = BalancerPoolToken(parentPoolWithWrapper).totalSupply();
+        uint256 totalPoolBPT = BushPoolToken(parentPoolWithWrapper).totalSupply();
         // Since LP is the owner of all BPT supply, and part of the BPT were burned in the initialization step, using
         // totalSupply is more accurate to remove exactly the proportion that we intend from each pool.
         uint256 exactBptIn = totalPoolBPT.mulDown(proportionToRemove);
@@ -2261,7 +2261,7 @@ contract CompositeLiquidityRouterNestedPoolsTest is BaseERC4626BufferTest {
         // Remove 10% of pool liquidity.
         uint256 proportionToRemove = 10e16;
 
-        uint256 totalPoolBPT = BalancerPoolToken(parentPool).totalSupply();
+        uint256 totalPoolBPT = BushPoolToken(parentPool).totalSupply();
         // Since LP is the owner of all BPT supply, and part of the BPT were burned in the initialization step, using
         // totalSupply is more accurate to remove exactly the proportion that we intend from each pool.
         uint256 exactBptIn = totalPoolBPT.mulDown(proportionToRemove);
@@ -2319,7 +2319,7 @@ contract CompositeLiquidityRouterNestedPoolsTest is BaseERC4626BufferTest {
         // Remove 10% of pool liquidity.
         uint256 proportionToRemove = 10e16;
 
-        uint256 totalPoolBPT = BalancerPoolToken(parentPool).totalSupply();
+        uint256 totalPoolBPT = BushPoolToken(parentPool).totalSupply();
         // Since LP is the owner of all BPT supply, and part of the BPT were burned in the initialization step, using
         // totalSupply is more accurate to remove exactly the proportion that we intend from each pool.
         uint256 exactBptIn = totalPoolBPT.mulDown(proportionToRemove);
@@ -2356,7 +2356,7 @@ contract CompositeLiquidityRouterNestedPoolsTest is BaseERC4626BufferTest {
         // Remove 10% of pool liquidity.
         uint256 proportionToRemove = 10e16;
 
-        uint256 totalPoolBPT = BalancerPoolToken(parentPool).totalSupply();
+        uint256 totalPoolBPT = BushPoolToken(parentPool).totalSupply();
         // Since LP is the owner of all BPT supply, and part of the BPT were burned in the initialization step, using
         // totalSupply is more accurate to remove exactly the proportion that we intend from each pool.
         uint256 exactBptIn = totalPoolBPT.mulDown(proportionToRemove);
@@ -2400,7 +2400,7 @@ contract CompositeLiquidityRouterNestedPoolsTest is BaseERC4626BufferTest {
         // Remove 10% of pool liquidity.
         uint256 proportionToRemove = 10e16;
 
-        uint256 totalPoolBPT = BalancerPoolToken(parentPool).totalSupply();
+        uint256 totalPoolBPT = BushPoolToken(parentPool).totalSupply();
         // Since LP is the owner of all BPT supply, and part of the BPT were burned in the initialization step, using
         // totalSupply is more accurate to remove exactly the proportion that we intend from each pool.
         uint256 exactBptIn = totalPoolBPT.mulDown(proportionToRemove);
@@ -2605,7 +2605,7 @@ contract CompositeLiquidityRouterNestedPoolsTest is BaseERC4626BufferTest {
             }
         }
 
-        balances.totalSupply = BalancerPoolToken(pool).totalSupply();
+        balances.totalSupply = BushPoolToken(pool).totalSupply();
     }
 
     // Virtual function

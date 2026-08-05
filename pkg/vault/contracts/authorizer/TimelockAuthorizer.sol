@@ -4,11 +4,11 @@ pragma solidity ^0.8.24;
 
 import { Math } from "@openzeppelin/contracts/utils/math/Math.sol";
 
-import { IAuthentication } from "@balancer-labs/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
-import { ITimelockAuthorizer } from "@balancer-labs/v3-interfaces/contracts/vault/ITimelockAuthorizer.sol";
-import { IVaultAdmin } from "@balancer-labs/v3-interfaces/contracts/vault/IVaultAdmin.sol";
-import { IAuthorizer } from "@balancer-labs/v3-interfaces/contracts/vault/IAuthorizer.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
+import { IAuthentication } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
+import { ITimelockAuthorizer } from "@bush/v3-interfaces/contracts/vault/ITimelockAuthorizer.sol";
+import { IVaultAdmin } from "@bush/v3-interfaces/contracts/vault/IVaultAdmin.sol";
+import { IAuthorizer } from "@bush/v3-interfaces/contracts/vault/IAuthorizer.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
 
 import { TimelockAuthorizerManagement } from "./TimelockAuthorizerManagement.sol";
 

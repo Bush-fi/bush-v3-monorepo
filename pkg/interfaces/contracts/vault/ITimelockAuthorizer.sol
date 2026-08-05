@@ -4,7 +4,7 @@ pragma solidity ^0.8.24;
 
 /**
  * @title Timelock Authorizer
- * @author Balancer Labs
+ * @author Bush Labs
  * @dev Authorizer with timelocks (delays).
  *
  * Users are allowed to perform actions if they have the permission to do so.
@@ -356,7 +356,7 @@ interface ITimelockAuthorizer {
      * @dev Only the root can add revokers.
      *
      * Note that there are no delays associated with adding revokers. This is based on the assumption that any
-     * permissions for which revocation from key addresses would be dangerous (e.g. preventing the BalancerMinter from
+     * permissions for which revocation from key addresses would be dangerous (e.g. preventing the BushMinter from
      * minting BAL) have sufficiently long delays associated with revoking them that the root will be able to
      * reestablish control and cancel the revocation before the scheduled revocation can be executed.
      *

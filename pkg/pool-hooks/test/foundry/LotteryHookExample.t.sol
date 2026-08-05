@@ -6,20 +6,20 @@ import "forge-std/Test.sol";
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { IRouter } from "@balancer-labs/v3-interfaces/contracts/vault/IRouter.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
+import { IRouter } from "@bush/v3-interfaces/contracts/vault/IRouter.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
 import {
     LiquidityManagement,
     PoolRoleAccounts,
     SwapKind
-} from "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+} from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { CastingHelpers } from "@balancer-labs/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
-import { FixedPoint } from "@balancer-labs/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { CastingHelpers } from "@bush/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
+import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
 
-import { BaseVaultTest } from "@balancer-labs/v3-vault/test/foundry/utils/BaseVaultTest.sol";
-import { PoolFactoryMock } from "@balancer-labs/v3-vault/contracts/test/PoolFactoryMock.sol";
-import { PoolMock } from "@balancer-labs/v3-vault/contracts/test/PoolMock.sol";
+import { BaseVaultTest } from "@bush/v3-vault/test/foundry/utils/BaseVaultTest.sol";
+import { PoolFactoryMock } from "@bush/v3-vault/contracts/test/PoolFactoryMock.sol";
+import { PoolMock } from "@bush/v3-vault/contracts/test/PoolMock.sol";
 
 import { LotteryHookExample } from "../../contracts/LotteryHookExample.sol";
 

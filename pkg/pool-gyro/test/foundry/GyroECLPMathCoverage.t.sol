@@ -3,7 +3,7 @@ pragma solidity ^0.8.24;
 
 import "forge-std/Test.sol";
 
-import { IGyroECLPPool } from "@balancer-labs/v3-interfaces/contracts/pool-gyro/IGyroECLPPool.sol";
+import { IGyroECLPPool } from "@bush/v3-interfaces/contracts/pool-gyro/IGyroECLPPool.sol";
 
 import { GyroECLPMath } from "../../contracts/lib/GyroECLPMath.sol";
 

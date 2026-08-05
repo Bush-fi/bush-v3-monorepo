@@ -6,22 +6,22 @@ pragma solidity ^0.8.27;
 
 import { SafeCast } from "@openzeppelin/contracts/utils/math/SafeCast.sol";
 
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
-import { IBasePool } from "@balancer-labs/v3-interfaces/contracts/vault/IBasePool.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import { IBasePool } from "@bush/v3-interfaces/contracts/vault/IBasePool.sol";
 import {
     IGyroECLPPool,
     GyroECLPPoolDynamicData,
     GyroECLPPoolImmutableData
-} from "@balancer-labs/v3-interfaces/contracts/pool-gyro/IGyroECLPPool.sol";
-import { ISwapFeePercentageBounds } from "@balancer-labs/v3-interfaces/contracts/vault/ISwapFeePercentageBounds.sol";
+} from "@bush/v3-interfaces/contracts/pool-gyro/IGyroECLPPool.sol";
+import { ISwapFeePercentageBounds } from "@bush/v3-interfaces/contracts/vault/ISwapFeePercentageBounds.sol";
 import {
     IUnbalancedLiquidityInvariantRatioBounds
-} from "@balancer-labs/v3-interfaces/contracts/vault/IUnbalancedLiquidityInvariantRatioBounds.sol";
-import "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
-import { FixedPoint } from "@balancer-labs/v3-solidity-utils/contracts/math/FixedPoint.sol";
-import { Version } from "@balancer-labs/v3-solidity-utils/contracts/helpers/Version.sol";
-import { PoolInfo } from "@balancer-labs/v3-pool-utils/contracts/PoolInfo.sol";
-import { BalancerPoolToken } from "@balancer-labs/v3-vault/contracts/BalancerPoolToken.sol";
+} from "@bush/v3-interfaces/contracts/vault/IUnbalancedLiquidityInvariantRatioBounds.sol";
+import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { Version } from "@bush/v3-solidity-utils/contracts/helpers/Version.sol";
+import { PoolInfo } from "@bush/v3-pool-utils/contracts/PoolInfo.sol";
+import { BushPoolToken } from "@bush/v3-vault/contracts/BushPoolToken.sol";
 
 import { GyroECLPMath } from "./lib/GyroECLPMath.sol";
 
@@ -31,7 +31,7 @@ import { GyroECLPMath } from "./lib/GyroECLPMath.sol";
  * parameterized by the pricing range [α,β], the inclination angle `phi` and stretching parameter `lambda`. For more
  * information, please refer to https://docs.gyro.finance/gyroscope-protocol/concentrated-liquidity-pools/e-clps.
  */
-contract GyroECLPPool is IGyroECLPPool, BalancerPoolToken, PoolInfo, Version {
+contract GyroECLPPool is IGyroECLPPool, BushPoolToken, PoolInfo, Version {
     using FixedPoint for uint256;
     using SafeCast for *;
 
@@ -61,7 +61,7 @@ contract GyroECLPPool is IGyroECLPPool, BalancerPoolToken, PoolInfo, Version {
     constructor(
         GyroECLPPoolParams memory params,
         IVault vault
-    ) BalancerPoolToken(vault, params.name, params.symbol) PoolInfo(vault) Version(params.version) {
+    ) BushPoolToken(vault, params.name, params.symbol) PoolInfo(vault) Version(params.version) {
         GyroECLPMath.validateParams(params.eclpParams);
         emit ECLPParamsValidated(true);
 

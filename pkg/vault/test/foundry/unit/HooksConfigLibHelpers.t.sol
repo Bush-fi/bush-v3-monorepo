@@ -2,13 +2,13 @@
 
 pragma solidity ^0.8.24;
 
-import { IVaultErrors } from "@balancer-labs/v3-interfaces/contracts/vault/IVaultErrors.sol";
-import { IHooks } from "@balancer-labs/v3-interfaces/contracts/vault/IHooks.sol";
-import "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IVaultErrors } from "@bush/v3-interfaces/contracts/vault/IVaultErrors.sol";
+import { IHooks } from "@bush/v3-interfaces/contracts/vault/IHooks.sol";
+import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { HooksConfigLibMock } from "@balancer-labs/v3-vault/contracts/test/HooksConfigLibMock.sol";
-import { WordCodec } from "@balancer-labs/v3-solidity-utils/contracts/helpers/WordCodec.sol";
-import { HooksConfigLib } from "@balancer-labs/v3-vault/contracts/lib/HooksConfigLib.sol";
+import { HooksConfigLibMock } from "@bush/v3-vault/contracts/test/HooksConfigLibMock.sol";
+import { WordCodec } from "@bush/v3-solidity-utils/contracts/helpers/WordCodec.sol";
+import { HooksConfigLib } from "@bush/v3-vault/contracts/lib/HooksConfigLib.sol";
 
 import { VaultContractsDeployer } from "../utils/VaultContractsDeployer.sol";
 

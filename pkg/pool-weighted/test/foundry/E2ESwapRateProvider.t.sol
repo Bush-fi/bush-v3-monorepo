@@ -2,17 +2,17 @@
 
 pragma solidity ^0.8.24;
 
-import { IRateProvider } from "@balancer-labs/v3-interfaces/contracts/solidity-utils/helpers/IRateProvider.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
-import "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IRateProvider } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IRateProvider.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { VaultContractsDeployer } from "@balancer-labs/v3-vault/test/foundry/utils/VaultContractsDeployer.sol";
-import { E2eSwapRateProviderTest } from "@balancer-labs/v3-vault/test/foundry/E2eSwapRateProvider.t.sol";
-import { CastingHelpers } from "@balancer-labs/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
-import { ArrayHelpers } from "@balancer-labs/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
-import { E2eTestState, SwapLimits } from "@balancer-labs/v3-vault/test/foundry/E2eSwap.t.sol";
-import { FixedPoint } from "@balancer-labs/v3-solidity-utils/contracts/math/FixedPoint.sol";
-import { PoolHooksMock } from "@balancer-labs/v3-vault/contracts/test/PoolHooksMock.sol";
+import { VaultContractsDeployer } from "@bush/v3-vault/test/foundry/utils/VaultContractsDeployer.sol";
+import { E2eSwapRateProviderTest } from "@bush/v3-vault/test/foundry/E2eSwapRateProvider.t.sol";
+import { CastingHelpers } from "@bush/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
+import { ArrayHelpers } from "@bush/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
+import { E2eTestState, SwapLimits } from "@bush/v3-vault/test/foundry/E2eSwap.t.sol";
+import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { PoolHooksMock } from "@bush/v3-vault/contracts/test/PoolHooksMock.sol";
 
 import { WeightedPoolContractsDeployer } from "./utils/WeightedPoolContractsDeployer.sol";
 import { WeightedPoolFactory } from "../../contracts/WeightedPoolFactory.sol";
@@ -77,7 +77,7 @@ contract E2eSwapRateProviderWeightedTest is
         );
         vm.label(newPool, label);
 
-        // Cannot set the pool creator directly on a standard Balancer weighted pool factory.
+        // Cannot set the pool creator directly on a standard Bush weighted pool factory.
         vault.manualSetPoolCreator(newPool, lp);
 
         uint256[] memory minTokenBalances = new uint256[](tokens.length);

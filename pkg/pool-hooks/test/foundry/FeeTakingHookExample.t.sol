@@ -6,8 +6,8 @@ import "forge-std/Test.sol";
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { IHooks } from "@balancer-labs/v3-interfaces/contracts/vault/IHooks.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
+import { IHooks } from "@bush/v3-interfaces/contracts/vault/IHooks.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
 import {
     AddLiquidityKind,
     LiquidityManagement,
@@ -15,17 +15,17 @@ import {
     RemoveLiquidityKind,
     AfterSwapParams,
     SwapKind
-} from "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+} from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { CastingHelpers } from "@balancer-labs/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
-import { ArrayHelpers } from "@balancer-labs/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
-import { FixedPoint } from "@balancer-labs/v3-solidity-utils/contracts/math/FixedPoint.sol";
-import { BasePoolMath } from "@balancer-labs/v3-vault/contracts/BasePoolMath.sol";
+import { CastingHelpers } from "@bush/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
+import { ArrayHelpers } from "@bush/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
+import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { BasePoolMath } from "@bush/v3-vault/contracts/BasePoolMath.sol";
 
-import { BaseVaultTest } from "@balancer-labs/v3-vault/test/foundry/utils/BaseVaultTest.sol";
-import { PoolFactoryMock } from "@balancer-labs/v3-vault/contracts/test/PoolFactoryMock.sol";
-import { BalancerPoolToken } from "@balancer-labs/v3-vault/contracts/BalancerPoolToken.sol";
-import { PoolMock } from "@balancer-labs/v3-vault/contracts/test/PoolMock.sol";
+import { BaseVaultTest } from "@bush/v3-vault/test/foundry/utils/BaseVaultTest.sol";
+import { PoolFactoryMock } from "@bush/v3-vault/contracts/test/PoolFactoryMock.sol";
+import { BushPoolToken } from "@bush/v3-vault/contracts/BushPoolToken.sol";
+import { PoolMock } from "@bush/v3-vault/contracts/test/PoolMock.sol";
 
 import { FeeTakingHookExample } from "../../contracts/FeeTakingHookExample.sol";
 
@@ -252,7 +252,7 @@ contract FeeTakingHookExampleTest is BaseVaultTest {
 
         uint256[] memory actualAmountsIn = BasePoolMath.computeProportionalAmountsIn(
             [poolInitAmount, poolInitAmount].toMemoryArray(),
-            BalancerPoolToken(pool).totalSupply(),
+            BushPoolToken(pool).totalSupply(),
             expectedBptOut
         );
         uint256 actualAmountIn = actualAmountsIn[daiIdx]; // Proportional, so doesn't matter which token
@@ -320,13 +320,13 @@ contract FeeTakingHookExampleTest is BaseVaultTest {
         expectedBptIn = bound(
             expectedBptIn,
             POOL_MINIMUM_TOTAL_SUPPLY * PRODUCTION_MIN_TRADE_AMOUNT,
-            BalancerPoolToken(pool).balanceOf(bob)
+            BushPoolToken(pool).balanceOf(bob)
         );
 
         // Since bob added poolInitAmount in each token of the pool, the pool balances are doubled
         uint256[] memory actualAmountsOut = BasePoolMath.computeProportionalAmountsOut(
             [2 * poolInitAmount, 2 * poolInitAmount].toMemoryArray(),
-            BalancerPoolToken(pool).totalSupply(),
+            BushPoolToken(pool).totalSupply(),
             expectedBptIn
         );
         uint256 actualAmountOut = actualAmountsOut[usdcIdx];

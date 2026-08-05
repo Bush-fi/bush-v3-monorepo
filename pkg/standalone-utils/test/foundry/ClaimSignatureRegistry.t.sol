@@ -3,7 +3,7 @@ pragma solidity ^0.8.24;
 
 import "forge-std/Test.sol";
 
-import { BaseTest } from "@balancer-labs/v3-solidity-utils/test/foundry/utils/BaseTest.sol";
+import { BaseTest } from "@bush/v3-solidity-utils/test/foundry/utils/BaseTest.sol";
 
 import { ClaimSignatureRegistry } from "../../contracts/ClaimSignatureRegistry.sol";
 

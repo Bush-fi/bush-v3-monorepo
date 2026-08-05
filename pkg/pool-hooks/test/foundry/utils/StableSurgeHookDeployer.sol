@@ -4,9 +4,9 @@ pragma solidity ^0.8.24;
 
 import { Test } from "forge-std/Test.sol";
 
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
 
-import { BaseContractsDeployer } from "@balancer-labs/v3-solidity-utils/test/foundry/utils/BaseContractsDeployer.sol";
+import { BaseContractsDeployer } from "@bush/v3-solidity-utils/test/foundry/utils/BaseContractsDeployer.sol";
 
 import { StableSurgeHook } from "../../../contracts/StableSurgeHook.sol";
 import { StableSurgeHookMock } from "../../../contracts/test/StableSurgeHookMock.sol";
@@ -24,8 +24,8 @@ contract StableSurgeHookDeployer is BaseContractsDeployer {
 
     constructor() {
         // if this external artifact path exists, it means we are running outside of this repo
-        if (vm.exists("artifacts/@balancer-labs/v3-pool-hooks/")) {
-            artifactsRootDir = "artifacts/@balancer-labs/v3-pool-hooks/";
+        if (vm.exists("artifacts/@bush/v3-pool-hooks/")) {
+            artifactsRootDir = "artifacts/@bush/v3-pool-hooks/";
         }
     }
 

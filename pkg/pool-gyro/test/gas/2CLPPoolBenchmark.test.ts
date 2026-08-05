@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { BaseContract } from 'ethers';
-import { deploy, deployedAt } from '@balancer-labs/v3-helpers/src/contract';
-import { fp } from '@balancer-labs/v3-helpers/src/numbers';
-import { ZERO_BYTES32, ZERO_ADDRESS } from '@balancer-labs/v3-helpers/src/constants';
-import { MONTH } from '@balancer-labs/v3-helpers/src/time';
-import * as expectEvent from '@balancer-labs/v3-helpers/src/test/expectEvent';
-import { Gyro2CLPPoolFactory } from '@balancer-labs/v3-pool-gyro/typechain-types';
-import { PoolRoleAccountsStruct } from '@balancer-labs/v3-vault/typechain-types/contracts/Vault';
-import { buildTokenConfig } from '@balancer-labs/v3-helpers/src/models/tokens/tokenConfig';
-import { Benchmark, PoolTag, PoolInfo } from '@balancer-labs/v3-benchmarks/src/PoolBenchmark.behavior';
+import { deploy, deployedAt } from '@bush/v3-helpers/src/contract';
+import { fp } from '@bush/v3-helpers/src/numbers';
+import { ZERO_BYTES32, ZERO_ADDRESS } from '@bush/v3-helpers/src/constants';
+import { MONTH } from '@bush/v3-helpers/src/time';
+import * as expectEvent from '@bush/v3-helpers/src/test/expectEvent';
+import { Gyro2CLPPoolFactory } from '@bush/v3-pool-gyro/typechain-types';
+import { PoolRoleAccountsStruct } from '@bush/v3-vault/typechain-types/contracts/Vault';
+import { buildTokenConfig } from '@bush/v3-helpers/src/models/tokens/tokenConfig';
+import { Benchmark, PoolTag, PoolInfo } from '@bush/v3-benchmarks/src/PoolBenchmark.behavior';
 
 class Gyro2CLPPoolBenchmark extends Benchmark {
   constructor(dirname: string) {

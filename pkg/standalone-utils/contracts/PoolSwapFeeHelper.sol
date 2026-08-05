@@ -2,8 +2,8 @@
 
 pragma solidity ^0.8.24;
 
-import { IPoolSwapFeeHelper } from "@balancer-labs/v3-interfaces/contracts/standalone-utils/IPoolSwapFeeHelper.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
+import { IPoolSwapFeeHelper } from "@bush/v3-interfaces/contracts/standalone-utils/IPoolSwapFeeHelper.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
 
 import { PoolHelperCommon } from "./PoolHelperCommon.sol";
 

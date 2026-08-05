@@ -4,11 +4,11 @@ pragma solidity ^0.8.24;
 
 import { IPermit2 } from "permit2/src/interfaces/IPermit2.sol";
 
-import { ICompositeLiquidityRouter } from "@balancer-labs/v3-interfaces/contracts/vault/ICompositeLiquidityRouter.sol";
-import { IVaultErrors } from "@balancer-labs/v3-interfaces/contracts/vault/IVaultErrors.sol";
-import { IWETH } from "@balancer-labs/v3-interfaces/contracts/solidity-utils/misc/IWETH.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
-import "@balancer-labs/v3-interfaces/contracts/vault/RouterTypes.sol";
+import { ICompositeLiquidityRouter } from "@bush/v3-interfaces/contracts/vault/ICompositeLiquidityRouter.sol";
+import { IVaultErrors } from "@bush/v3-interfaces/contracts/vault/IVaultErrors.sol";
+import { IWETH } from "@bush/v3-interfaces/contracts/solidity-utils/misc/IWETH.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import "@bush/v3-interfaces/contracts/vault/RouterTypes.sol";
 
 import { CompositeLiquidityRouterHooks } from "./CompositeLiquidityRouterHooks.sol";
 

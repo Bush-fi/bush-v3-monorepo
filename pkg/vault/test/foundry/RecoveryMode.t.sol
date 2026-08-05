@@ -4,17 +4,17 @@ pragma solidity ^0.8.24;
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { IAuthentication } from "@balancer-labs/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
-import { RemoveLiquidityKind } from "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
-import { IVaultErrors } from "@balancer-labs/v3-interfaces/contracts/vault/IVaultErrors.sol";
-import { IVaultEvents } from "@balancer-labs/v3-interfaces/contracts/vault/IVaultEvents.sol";
-import { IPoolInfo } from "@balancer-labs/v3-interfaces/contracts/pool-utils/IPoolInfo.sol";
-import { IVaultAdmin } from "@balancer-labs/v3-interfaces/contracts/vault/IVaultAdmin.sol";
+import { IAuthentication } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
+import { RemoveLiquidityKind } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IVaultErrors } from "@bush/v3-interfaces/contracts/vault/IVaultErrors.sol";
+import { IVaultEvents } from "@bush/v3-interfaces/contracts/vault/IVaultEvents.sol";
+import { IPoolInfo } from "@bush/v3-interfaces/contracts/pool-utils/IPoolInfo.sol";
+import { IVaultAdmin } from "@bush/v3-interfaces/contracts/vault/IVaultAdmin.sol";
 
-import { ArrayHelpers } from "@balancer-labs/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
-import { FixedPoint } from "@balancer-labs/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { ArrayHelpers } from "@bush/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
+import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
 
-import { BalancerPoolToken } from "../../contracts/BalancerPoolToken.sol";
+import { BushPoolToken } from "../../contracts/BushPoolToken.sol";
 import { BaseVaultTest } from "./utils/BaseVaultTest.sol";
 
 contract RecoveryModeTest is BaseVaultTest {
@@ -279,7 +279,7 @@ contract RecoveryModeTest is BaseVaultTest {
         // We only want a partial match of the call, triggered when BPT are burned.
         vm.mockCallRevert(
             pool,
-            abi.encodeWithSelector(BalancerPoolToken.emitTransfer.selector, alice, address(0)),
+            abi.encodeWithSelector(BushPoolToken.emitTransfer.selector, alice, address(0)),
             bytes("")
         );
         testRecoveryModeBalances();
@@ -293,7 +293,7 @@ contract RecoveryModeTest is BaseVaultTest {
         // We only want a partial match of the call, triggered when BPT are burned.
         vm.mockCallRevert(
             pool,
-            abi.encodeWithSelector(BalancerPoolToken.emitApproval.selector, alice, router),
+            abi.encodeWithSelector(BushPoolToken.emitApproval.selector, alice, router),
             bytes("")
         );
         testRecoveryModeBalances();

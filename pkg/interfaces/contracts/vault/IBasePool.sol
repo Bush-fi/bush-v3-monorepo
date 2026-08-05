@@ -7,7 +7,7 @@ import { ISwapFeePercentageBounds } from "./ISwapFeePercentageBounds.sol";
 import { PoolSwapParams, Rounding, SwapKind } from "./VaultTypes.sol";
 
 /**
- * @notice Base interface for a Balancer Pool.
+ * @notice Base interface for a Bush Pool.
  * @dev All pool types should implement this interface. Note that it also requires implementation of:
  * - `ISwapFeePercentageBounds` to specify the minimum and maximum swap fee percentages.
  * - `IUnbalancedLiquidityInvariantRatioBounds` to specify how much the invariant can change during an unbalanced

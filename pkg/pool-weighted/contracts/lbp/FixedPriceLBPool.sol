@@ -2,20 +2,20 @@
 
 pragma solidity ^0.8.24;
 
-import { ISwapFeePercentageBounds } from "@balancer-labs/v3-interfaces/contracts/vault/ISwapFeePercentageBounds.sol";
+import { ISwapFeePercentageBounds } from "@bush/v3-interfaces/contracts/vault/ISwapFeePercentageBounds.sol";
 import {
     IUnbalancedLiquidityInvariantRatioBounds
-} from "@balancer-labs/v3-interfaces/contracts/vault/IUnbalancedLiquidityInvariantRatioBounds.sol";
-import { ISenderGuard } from "@balancer-labs/v3-interfaces/contracts/vault/ISenderGuard.sol";
-import { IBasePool } from "@balancer-labs/v3-interfaces/contracts/vault/IBasePool.sol";
-import "@balancer-labs/v3-interfaces/contracts/pool-weighted/IFixedPriceLBPool.sol";
-import "@balancer-labs/v3-interfaces/contracts/pool-weighted/ILBPCommon.sol";
-import "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+} from "@bush/v3-interfaces/contracts/vault/IUnbalancedLiquidityInvariantRatioBounds.sol";
+import { ISenderGuard } from "@bush/v3-interfaces/contracts/vault/ISenderGuard.sol";
+import { IBasePool } from "@bush/v3-interfaces/contracts/vault/IBasePool.sol";
+import "@bush/v3-interfaces/contracts/pool-weighted/IFixedPriceLBPool.sol";
+import "@bush/v3-interfaces/contracts/pool-weighted/ILBPCommon.sol";
+import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { FixedPoint } from "@balancer-labs/v3-solidity-utils/contracts/math/FixedPoint.sol";
-import { BalancerPoolToken } from "@balancer-labs/v3-vault/contracts/BalancerPoolToken.sol";
-import { Version } from "@balancer-labs/v3-solidity-utils/contracts/helpers/Version.sol";
-import { PoolInfo } from "@balancer-labs/v3-pool-utils/contracts/PoolInfo.sol";
+import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { BushPoolToken } from "@bush/v3-vault/contracts/BushPoolToken.sol";
+import { Version } from "@bush/v3-solidity-utils/contracts/helpers/Version.sol";
+import { PoolInfo } from "@bush/v3-pool-utils/contracts/PoolInfo.sol";
 
 import { LBPCommon } from "./LBPCommon.sol";
 
@@ -24,7 +24,7 @@ import { LBPCommon } from "./LBPCommon.sol";
  * @dev Unlike traditional LBPs with changing weights, this pool maintains a constant exchange rate throughout the sale
  * period. The pool uses a simple x + y invariant corresponding to the total value in terms of the reserve token (i.e,
  * token balance * rate + reserve). This avoids the complexity and gas cost of weight adjustments, while still
- * benefiting from Balancer's vault infrastructure.
+ * benefiting from Bush's vault infrastructure.
  *
  * Since all fixed price LBPs are "buy-only," it is "seedless," and must be initialized with project tokens only.
  *
@@ -34,7 +34,7 @@ import { LBPCommon } from "./LBPCommon.sol";
  * - Simple constant sum invariant: inv = projectBalance * projectTokenRate + reserveBalance
  * - No reserve tokens required on initialization
  */
-contract FixedPriceLBPool is IFixedPriceLBPool, LBPCommon, BalancerPoolToken, PoolInfo, Version {
+contract FixedPriceLBPool is IFixedPriceLBPool, LBPCommon, BushPoolToken, PoolInfo, Version {
     using FixedPoint for uint256;
 
     // Fees are 18-decimal, floating point values, which will be stored in the Vault using 24 bits.
@@ -57,7 +57,7 @@ contract FixedPriceLBPool is IFixedPriceLBPool, LBPCommon, BalancerPoolToken, Po
         uint256 projectTokenRate
     )
         LBPCommon(lbpCommonParams, factoryParams.trustedRouter)
-        BalancerPoolToken(factoryParams.vault, lbpCommonParams.name, lbpCommonParams.symbol)
+        BushPoolToken(factoryParams.vault, lbpCommonParams.name, lbpCommonParams.symbol)
         PoolInfo(factoryParams.vault)
         Version(factoryParams.poolVersion)
     {

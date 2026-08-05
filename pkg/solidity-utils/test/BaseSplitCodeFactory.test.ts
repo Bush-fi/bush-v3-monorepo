@@ -2,10 +2,10 @@ import { Contract, Signer, randomBytes } from 'ethers';
 import { expect } from 'chai';
 import { ethers } from 'hardhat';
 
-import * as expectEvent from '@balancer-labs/v3-helpers/src/test/expectEvent';
-import { deploy, deployedAt, getArtifact } from '@balancer-labs/v3-helpers/src/contract';
-import { sharedBeforeEach } from '@balancer-labs/v3-common/sharedBeforeEach';
-import { ONES_BYTES32, ZERO_BYTES32 } from '@balancer-labs/v3-helpers/src/constants';
+import * as expectEvent from '@bush/v3-helpers/src/test/expectEvent';
+import { deploy, deployedAt, getArtifact } from '@bush/v3-helpers/src/contract';
+import { sharedBeforeEach } from '@bush/v3-common/sharedBeforeEach';
+import { ONES_BYTES32, ZERO_BYTES32 } from '@bush/v3-helpers/src/constants';
 import { takeSnapshot } from '@nomicfoundation/hardhat-network-helpers';
 
 describe('BasePoolCodeFactory', function () {

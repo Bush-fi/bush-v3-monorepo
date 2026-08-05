@@ -2,8 +2,8 @@
 
 pragma solidity ^0.8.24;
 
-import { IHooks } from "@balancer-labs/v3-interfaces/contracts/vault/IHooks.sol";
-import "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IHooks } from "@bush/v3-interfaces/contracts/vault/IHooks.sol";
+import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 
 import { HooksConfigLib } from "../lib/HooksConfigLib.sol";
 

@@ -16,7 +16,7 @@ import { Math } from "@openzeppelin/contracts/utils/math/Math.sol";
  * error-prone library, but unfortunately Solidity only allows for structs to live in either storage, calldata or
  * memory. Because a memory struct uses not just memory but also a slot in the stack (to store its memory location),
  * using memory for word-sized values (i.e. of 256 bits or less) is strictly less gas performant, and doesn't even
- * prevent stack-too-deep issues. This is compounded by the fact that Balancer contracts typically are memory-
+ * prevent stack-too-deep issues. This is compounded by the fact that Bush contracts typically are memory-
  * intensive, and the cost of accessing memory increases quadratically with the number of allocated words. Manual
  * packing and unpacking is therefore the preferred approach.
  */

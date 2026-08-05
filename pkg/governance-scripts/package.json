@@ -1,5 +1,5 @@
 {
-  "name": "@balancer-labs/v3-governance-scripts",
+  "name": "@bush/v3-governance-scripts",
   "version": "0.1.0",
   "description": "V3 Governance Scripts",
   "license": "GPL-3.0-only",
@@ -28,7 +28,7 @@
     "slither:triage": "yarn compile && bash -c 'source ../../slither/bin/activate && slither --compile-force-framework hardhat --ignore-compile . --config-file ../../.slither.config.json --triage-mode'"
   },
   "devDependencies": {
-    "@balancer-labs/solidity-toolbox": "workspace:*",
+    "@bush/solidity-toolbox": "workspace:*",
     "@types/lodash": "^4.14.186",
     "@typescript-eslint/eslint-plugin": "^5.41.0",
     "@typescript-eslint/parser": "^5.41.0",

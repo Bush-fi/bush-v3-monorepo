@@ -4,21 +4,21 @@ pragma solidity ^0.8.24;
 
 import { SafeCast } from "@openzeppelin/contracts/utils/math/SafeCast.sol";
 
-import { IProtocolFeeController } from "@balancer-labs/v3-interfaces/contracts/vault/IProtocolFeeController.sol";
-import { IBasePoolFactory } from "@balancer-labs/v3-interfaces/contracts/vault/IBasePoolFactory.sol";
-import { FEE_SCALING_FACTOR } from "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IProtocolFeeController } from "@bush/v3-interfaces/contracts/vault/IProtocolFeeController.sol";
+import { IBasePoolFactory } from "@bush/v3-interfaces/contracts/vault/IBasePoolFactory.sol";
+import { FEE_SCALING_FACTOR } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 import {
     IProtocolFeePercentagesProvider
-} from "@balancer-labs/v3-interfaces/contracts/vault/IProtocolFeePercentagesProvider.sol";
+} from "@bush/v3-interfaces/contracts/vault/IProtocolFeePercentagesProvider.sol";
 import {
-    IBalancerContractRegistry,
+    IBushContractRegistry,
     ContractType
-} from "@balancer-labs/v3-interfaces/contracts/standalone-utils/IBalancerContractRegistry.sol";
-import { IVaultErrors } from "@balancer-labs/v3-interfaces/contracts/vault/IVaultErrors.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
+} from "@bush/v3-interfaces/contracts/standalone-utils/IBushContractRegistry.sol";
+import { IVaultErrors } from "@bush/v3-interfaces/contracts/vault/IVaultErrors.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
 
-import { SingletonAuthentication } from "@balancer-labs/v3-vault/contracts/SingletonAuthentication.sol";
-import { ProtocolFeeController } from "@balancer-labs/v3-vault/contracts/ProtocolFeeController.sol";
+import { SingletonAuthentication } from "@bush/v3-vault/contracts/SingletonAuthentication.sol";
+import { ProtocolFeeController } from "@bush/v3-vault/contracts/ProtocolFeeController.sol";
 
 contract ProtocolFeePercentagesProvider is IProtocolFeePercentagesProvider, SingletonAuthentication {
     using SafeCast for uint256;
@@ -37,7 +37,7 @@ contract ProtocolFeePercentagesProvider is IProtocolFeePercentagesProvider, Sing
         bool areFactoryFeesSet;
     }
 
-    IBalancerContractRegistry private immutable _trustedContractRegistry;
+    IBushContractRegistry private immutable _trustedContractRegistry;
     IProtocolFeeController private immutable _protocolFeeController;
 
     uint256 private immutable _maxProtocolSwapFeePercentage;
@@ -46,7 +46,7 @@ contract ProtocolFeePercentagesProvider is IProtocolFeePercentagesProvider, Sing
     // Factory address => FactoryProtocolFees
     mapping(IBasePoolFactory => FactoryProtocolFees) private _factoryDefaultFeePercentages;
 
-    constructor(IVault vault, IBalancerContractRegistry trustedContractRegistry) SingletonAuthentication(vault) {
+    constructor(IVault vault, IBushContractRegistry trustedContractRegistry) SingletonAuthentication(vault) {
         IProtocolFeeController protocolFeeController = vault.getProtocolFeeController();
 
         _protocolFeeController = protocolFeeController;
@@ -65,7 +65,7 @@ contract ProtocolFeePercentagesProvider is IProtocolFeePercentagesProvider, Sing
     }
 
     /// @inheritdoc IProtocolFeePercentagesProvider
-    function getBalancerContractRegistry() external view returns (IBalancerContractRegistry) {
+    function getBushContractRegistry() external view returns (IBushContractRegistry) {
         return _trustedContractRegistry;
     }
 
@@ -95,7 +95,7 @@ contract ProtocolFeePercentagesProvider is IProtocolFeePercentagesProvider, Sing
         }
 
         // Ensure the factory is valid.
-        if (_trustedContractRegistry.isActiveBalancerContract(ContractType.POOL_FACTORY, factory) == false) {
+        if (_trustedContractRegistry.isActiveBushContract(ContractType.POOL_FACTORY, factory) == false) {
             revert UnknownFactory(factory);
         }
 
@@ -116,8 +116,8 @@ contract ProtocolFeePercentagesProvider is IProtocolFeePercentagesProvider, Sing
     /// @inheritdoc IProtocolFeePercentagesProvider
     function setProtocolFeePercentagesForPools(address factory, address[] memory pools) external {
         // Note that unless the factory fees were previously set in `setFactorySpecificProtocolFeePercentages` above,
-        // this getter will revert. The fee setter function validates the factory with the `BalancerContractRegistry`,
-        // so we know it is a valid Balancer pool factory.
+        // this getter will revert. The fee setter function validates the factory with the `BushContractRegistry`,
+        // so we know it is a valid Bush pool factory.
         FactoryProtocolFees memory factoryFees = _getValidatedProtocolFees(factory);
 
         for (uint256 i = 0; i < pools.length; ++i) {

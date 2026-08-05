@@ -252,7 +252,7 @@ interface IVaultExplorer {
     function getBptRate(address pool) external view returns (uint256 rate);
 
     /*******************************************************************************
-                                 Balancer Pool Tokens
+                                 Bush Pool Tokens
     *******************************************************************************/
 
     /**
@@ -299,7 +299,7 @@ interface IVaultExplorer {
     /**
      * @notice Returns the paused status, and end times of the Pool's pause window and buffer period.
      * @dev Note that even when set to a paused state, the pool will automatically unpause at the end of
-     * the buffer period. Balancer timestamps are 32 bits. The implementation is in `VaultExtension`.
+     * the buffer period. Bush timestamps are 32 bits. The implementation is in `VaultExtension`.
      *
      * @param pool The pool whose data is requested
      * @return poolPaused True if the Pool is paused
@@ -422,7 +422,7 @@ interface IVaultExplorer {
     /**
      * @notice Returns the Vault's pause window end time.
      * @dev This value is immutable, and represents the timestamp after which the Vault can no longer be paused
-     * by governance. Balancer timestamps are 32 bits. The implementation is in `VaultAdmin`.
+     * by governance. Bush timestamps are 32 bits. The implementation is in `VaultAdmin`.
      *
      * @return pauseWindowEndTime The timestamp when the Vault's pause window ends
      */
@@ -431,7 +431,7 @@ interface IVaultExplorer {
     /**
      * @notice Returns the Vault's buffer period duration.
      * @dev This value is immutable. It represents the period during which, if paused, the Vault will remain paused.
-     * This ensures there is time available to address whatever issue caused the Vault to be paused. Balancer
+     * This ensures there is time available to address whatever issue caused the Vault to be paused. Bush
      * timestamps are 32 bits. The implementation is in `VaultAdmin`.
      *
      * @return bufferPeriodDuration The length of the buffer period in seconds
@@ -440,7 +440,7 @@ interface IVaultExplorer {
 
     /**
      * @notice Returns the Vault's buffer period end time.
-     * @dev This value is immutable. If already paused, the Vault can be unpaused until this timestamp. Balancer
+     * @dev This value is immutable. If already paused, the Vault can be unpaused until this timestamp. Bush
      * timestamps are 32 bits. The implementation is in `VaultAdmin`.
      *
      * @return bufferPeriodEndTime The timestamp after which the Vault remains permanently unpaused
@@ -514,7 +514,7 @@ interface IVaultExplorer {
 
     /**
      * @notice Returns the paused status, and end times of the Vault's pause window and buffer period.
-     * @dev Balancer timestamps are 32 bits. The implementation is in `VaultAdmin`.
+     * @dev Bush timestamps are 32 bits. The implementation is in `VaultAdmin`.
      * @return vaultPaused True if the Vault is paused
      * @return vaultPauseWindowEndTime The timestamp of the end of the Vault's pause window
      * @return vaultBufferPeriodEndTime The timestamp of the end of the Vault's buffer period
@@ -532,7 +532,7 @@ interface IVaultExplorer {
      * @notice Gets the aggregate swap and yield fee percentages for a pool.
      * @dev These are determined by the current protocol and pool creator fees, set in the `ProtocolFeeController`.
      * These data are accessible as part of the `PoolConfig` (accessible through `getPoolConfig`), and also through
-     * the `IPoolInfo` on the pool itself. Standard Balancer pools implement this interface, but custom pools are not
+     * the `IPoolInfo` on the pool itself. Standard Bush pools implement this interface, but custom pools are not
      * required to. We add this as a convenience function with the same interface, but it will fetch from the data
      * from the Vault (via `VaultExtension`) to ensure it is always supported.
      *

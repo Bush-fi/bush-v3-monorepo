@@ -13,10 +13,10 @@ import {
 } from '../tokens/types';
 import { SignerWithAddress } from '@nomicfoundation/hardhat-ethers/signers';
 import { VaultDeploymentInputParams, VaultDeploymentParams } from '../vault/types';
-import { IVault, IVault__factory, Vault, VaultMock } from '@balancer-labs/v3-vault/typechain-types';
-import { IERC20, IERC20__factory, IVaultMock, IVaultMock__factory } from '@balancer-labs/v3-interfaces/typechain-types';
-import { IAuthentication } from '@balancer-labs/v3-solidity-utils/typechain-types';
-import { IAuthentication__factory } from '@balancer-labs/v3-pool-weighted/typechain-types';
+import { IVault, IVault__factory, Vault, VaultMock } from '@bush/v3-vault/typechain-types';
+import { IERC20, IERC20__factory, IVaultMock, IVaultMock__factory } from '@bush/v3-interfaces/typechain-types';
+import { IAuthentication } from '@bush/v3-solidity-utils/typechain-types';
+import { IAuthentication__factory } from '@bush/v3-pool-weighted/typechain-types';
 
 export function computeDecimalsFromIndex(i: number): number {
   // Produces repeating series (0..18)

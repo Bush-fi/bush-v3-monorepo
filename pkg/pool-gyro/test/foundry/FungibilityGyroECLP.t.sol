@@ -2,9 +2,9 @@
 
 pragma solidity ^0.8.24;
 
-import { IRateProvider } from "@balancer-labs/v3-interfaces/contracts/solidity-utils/helpers/IRateProvider.sol";
+import { IRateProvider } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IRateProvider.sol";
 
-import { FungibilityTest } from "@balancer-labs/v3-vault/test/foundry/Fungibility.t.sol";
+import { FungibilityTest } from "@bush/v3-vault/test/foundry/Fungibility.t.sol";
 
 import { GyroEclpPoolDeployer } from "./utils/GyroEclpPoolDeployer.sol";
 

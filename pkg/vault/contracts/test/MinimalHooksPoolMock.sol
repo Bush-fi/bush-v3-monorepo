@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.24;
 
-import "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 
 import { BaseHooks } from "../BaseHooks.sol";
 

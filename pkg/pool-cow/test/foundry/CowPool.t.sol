@@ -6,11 +6,11 @@ import "forge-std/Test.sol";
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { IRateProvider } from "@balancer-labs/v3-interfaces/contracts/solidity-utils/helpers/IRateProvider.sol";
-import { IPoolInfo } from "@balancer-labs/v3-interfaces/contracts/pool-utils/IPoolInfo.sol";
-import { ICowPool } from "@balancer-labs/v3-interfaces/contracts/pool-cow/ICowPool.sol";
-import { IHooks } from "@balancer-labs/v3-interfaces/contracts/vault/IHooks.sol";
-import "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IRateProvider } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IRateProvider.sol";
+import { IPoolInfo } from "@bush/v3-interfaces/contracts/pool-utils/IPoolInfo.sol";
+import { ICowPool } from "@bush/v3-interfaces/contracts/pool-cow/ICowPool.sol";
+import { IHooks } from "@bush/v3-interfaces/contracts/vault/IHooks.sol";
+import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 
 import { CowPoolFactory } from "../../contracts/CowPoolFactory.sol";
 import { CowPool } from "../../contracts/CowPool.sol";

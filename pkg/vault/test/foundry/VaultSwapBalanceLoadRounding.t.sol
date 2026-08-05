@@ -4,20 +4,20 @@ pragma solidity ^0.8.24;
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { IRateProvider } from "@balancer-labs/v3-interfaces/contracts/solidity-utils/helpers/IRateProvider.sol";
-import { IVaultExtension } from "@balancer-labs/v3-interfaces/contracts/vault/IVaultExtension.sol";
-import { IPoolLiquidity } from "@balancer-labs/v3-interfaces/contracts/vault/IPoolLiquidity.sol";
-import { IBasePool } from "@balancer-labs/v3-interfaces/contracts/vault/IBasePool.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
-import "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IRateProvider } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IRateProvider.sol";
+import { IVaultExtension } from "@bush/v3-interfaces/contracts/vault/IVaultExtension.sol";
+import { IPoolLiquidity } from "@bush/v3-interfaces/contracts/vault/IPoolLiquidity.sol";
+import { IBasePool } from "@bush/v3-interfaces/contracts/vault/IBasePool.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { ScalingHelpers } from "@balancer-labs/v3-solidity-utils/contracts/helpers/ScalingHelpers.sol";
-import { FixedPoint } from "@balancer-labs/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { ScalingHelpers } from "@bush/v3-solidity-utils/contracts/helpers/ScalingHelpers.sol";
+import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
 
 import { RecordingPoolMock } from "../../contracts/test/RecordingPoolMock.sol";
 import { RateProviderMock } from "../../contracts/test/RateProviderMock.sol";
 import { PoolFactoryMock } from "../../contracts/test/PoolFactoryMock.sol";
-import { BalancerPoolToken } from "../../contracts/BalancerPoolToken.sol";
+import { BushPoolToken } from "../../contracts/BushPoolToken.sol";
 import { BaseVaultTest } from "./utils/BaseVaultTest.sol";
 
 /**

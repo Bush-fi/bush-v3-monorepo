@@ -5,24 +5,24 @@ pragma solidity ^0.8.24;
 import { IERC4626 } from "@openzeppelin/contracts/interfaces/IERC4626.sol";
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { IProtocolFeeController } from "@balancer-labs/v3-interfaces/contracts/vault/IProtocolFeeController.sol";
-import { IRateProvider } from "@balancer-labs/v3-interfaces/contracts/solidity-utils/helpers/IRateProvider.sol";
-import { IVaultExtension } from "@balancer-labs/v3-interfaces/contracts/vault/IVaultExtension.sol";
-import { IVaultMainMock } from "@balancer-labs/v3-interfaces/contracts/test/IVaultMainMock.sol";
-import { IAuthorizer } from "@balancer-labs/v3-interfaces/contracts/vault/IAuthorizer.sol";
-import { IVaultAdmin } from "@balancer-labs/v3-interfaces/contracts/vault/IVaultAdmin.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
-import { IHooks } from "@balancer-labs/v3-interfaces/contracts/vault/IHooks.sol";
-import "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IProtocolFeeController } from "@bush/v3-interfaces/contracts/vault/IProtocolFeeController.sol";
+import { IRateProvider } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IRateProvider.sol";
+import { IVaultExtension } from "@bush/v3-interfaces/contracts/vault/IVaultExtension.sol";
+import { IVaultMainMock } from "@bush/v3-interfaces/contracts/test/IVaultMainMock.sol";
+import { IAuthorizer } from "@bush/v3-interfaces/contracts/vault/IAuthorizer.sol";
+import { IVaultAdmin } from "@bush/v3-interfaces/contracts/vault/IVaultAdmin.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import { IHooks } from "@bush/v3-interfaces/contracts/vault/IHooks.sol";
+import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { StorageSlotExtension } from "@balancer-labs/v3-solidity-utils/contracts/openzeppelin/StorageSlotExtension.sol";
-import { PackedTokenBalance } from "@balancer-labs/v3-solidity-utils/contracts/helpers/PackedTokenBalance.sol";
-import { BufferHelpers } from "@balancer-labs/v3-solidity-utils/contracts/helpers/BufferHelpers.sol";
-import { WordCodec } from "@balancer-labs/v3-solidity-utils/contracts/helpers/WordCodec.sol";
+import { StorageSlotExtension } from "@bush/v3-solidity-utils/contracts/openzeppelin/StorageSlotExtension.sol";
+import { PackedTokenBalance } from "@bush/v3-solidity-utils/contracts/helpers/PackedTokenBalance.sol";
+import { BufferHelpers } from "@bush/v3-solidity-utils/contracts/helpers/BufferHelpers.sol";
+import { WordCodec } from "@bush/v3-solidity-utils/contracts/helpers/WordCodec.sol";
 import {
     TransientStorageHelpers,
     TokenDeltaMappingSlotType
-} from "@balancer-labs/v3-solidity-utils/contracts/helpers/TransientStorageHelpers.sol";
+} from "@bush/v3-solidity-utils/contracts/helpers/TransientStorageHelpers.sol";
 
 import { VaultStateLib, VaultStateBits } from "../lib/VaultStateLib.sol";
 import { PoolConfigLib, PoolConfigBits } from "../lib/PoolConfigLib.sol";

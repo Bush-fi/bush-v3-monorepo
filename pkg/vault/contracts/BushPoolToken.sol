@@ -10,19 +10,19 @@ import { ECDSA } from "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import { Nonces } from "@openzeppelin/contracts/utils/Nonces.sol";
 
-import { IRateProvider } from "@balancer-labs/v3-interfaces/contracts/solidity-utils/helpers/IRateProvider.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
+import { IRateProvider } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IRateProvider.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
 
 import { VaultGuard } from "./VaultGuard.sol";
 
 /**
- * @notice `BalancerPoolToken` is a fully ERC20-compatible token to be used as the base contract for Balancer Pools,
+ * @notice `BushPoolToken` is a fully ERC20-compatible token to be used as the base contract for Bush Pools,
  * with all the data and implementation delegated to the ERC20Multitoken contract.
 
  * @dev Implementation of the ERC-20 Permit extension allowing approvals to be made via signatures, as defined in
  * https://eips.ethereum.org/EIPS/eip-2612[ERC-2612].
  */
-contract BalancerPoolToken is IERC20, IERC20Metadata, IERC20Permit, IRateProvider, EIP712, Nonces, ERC165, VaultGuard {
+contract BushPoolToken is IERC20, IERC20Metadata, IERC20Permit, IRateProvider, EIP712, Nonces, ERC165, VaultGuard {
     bytes32 public constant PERMIT_TYPEHASH =
         keccak256("Permit(address owner,address spender,uint256 value,uint256 nonce,uint256 deadline)");
 
@@ -70,7 +70,7 @@ contract BalancerPoolToken is IERC20, IERC20Metadata, IERC20Permit, IRateProvide
     }
 
     /**
-     * @notice Get the address of the Balancer Vault.
+     * @notice Get the address of the Bush Vault.
      * @return vault An interface pointer to the Vault
      */
     function getVault() public view returns (IVault) {

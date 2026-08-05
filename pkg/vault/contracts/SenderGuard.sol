@@ -2,12 +2,12 @@
 
 pragma solidity ^0.8.24;
 
-import { ISenderGuard } from "@balancer-labs/v3-interfaces/contracts/vault/ISenderGuard.sol";
+import { ISenderGuard } from "@bush/v3-interfaces/contracts/vault/ISenderGuard.sol";
 
-import { StorageSlotExtension } from "@balancer-labs/v3-solidity-utils/contracts/openzeppelin/StorageSlotExtension.sol";
+import { StorageSlotExtension } from "@bush/v3-solidity-utils/contracts/openzeppelin/StorageSlotExtension.sol";
 import {
     TransientStorageHelpers
-} from "@balancer-labs/v3-solidity-utils/contracts/helpers/TransientStorageHelpers.sol";
+} from "@bush/v3-solidity-utils/contracts/helpers/TransientStorageHelpers.sol";
 
 /**
  * @notice Abstract base contract for functions shared among all Routers.

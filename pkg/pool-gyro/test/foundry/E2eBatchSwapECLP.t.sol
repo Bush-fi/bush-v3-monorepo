@@ -2,10 +2,10 @@
 
 pragma solidity ^0.8.24;
 
-import { IRateProvider } from "@balancer-labs/v3-interfaces/contracts/solidity-utils/helpers/IRateProvider.sol";
+import { IRateProvider } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IRateProvider.sol";
 
-import { ERC20TestToken } from "@balancer-labs/v3-solidity-utils/contracts/test/ERC20TestToken.sol";
-import { E2eBatchSwapTest } from "@balancer-labs/v3-vault/test/foundry/E2eBatchSwap.t.sol";
+import { ERC20TestToken } from "@bush/v3-solidity-utils/contracts/test/ERC20TestToken.sol";
+import { E2eBatchSwapTest } from "@bush/v3-vault/test/foundry/E2eBatchSwap.t.sol";
 
 import { GyroEclpPoolDeployer } from "./utils/GyroEclpPoolDeployer.sol";
 

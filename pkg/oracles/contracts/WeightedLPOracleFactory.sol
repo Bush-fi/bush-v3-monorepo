@@ -4,11 +4,11 @@ pragma solidity ^0.8.24;
 
 import { AggregatorV3Interface } from "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
 
-import { IWeightedLPOracle } from "@balancer-labs/v3-interfaces/contracts/oracles/IWeightedLPOracle.sol";
-import { IWeightedPool } from "@balancer-labs/v3-interfaces/contracts/pool-weighted/IWeightedPool.sol";
-import { ILPOracleBase } from "@balancer-labs/v3-interfaces/contracts/oracles/ILPOracleBase.sol";
-import { IBasePool } from "@balancer-labs/v3-interfaces/contracts/vault/IBasePool.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
+import { IWeightedLPOracle } from "@bush/v3-interfaces/contracts/oracles/IWeightedLPOracle.sol";
+import { IWeightedPool } from "@bush/v3-interfaces/contracts/pool-weighted/IWeightedPool.sol";
+import { ILPOracleBase } from "@bush/v3-interfaces/contracts/oracles/ILPOracleBase.sol";
+import { IBasePool } from "@bush/v3-interfaces/contracts/vault/IBasePool.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
 
 import { LPOracleFactoryBase } from "./LPOracleFactoryBase.sol";
 import { WeightedLPOracle } from "./WeightedLPOracle.sol";
@@ -16,7 +16,7 @@ import { WeightedLPOracle } from "./WeightedLPOracle.sol";
 /**
  * @notice Factory for deploying and managing Weighted Pool oracles.
  * @dev IMPORTANT: WeightedLPOracles store weights immutably, so this factory can only be used for pools with fixed
- * weights, such as those created with the standard Balancer `WeightedPoolFactory`. It cannot be used for LBPs or other
+ * weights, such as those created with the standard Bush `WeightedPoolFactory`. It cannot be used for LBPs or other
  * pools with variable weights.
  */
 contract WeightedLPOracleFactory is LPOracleFactoryBase {

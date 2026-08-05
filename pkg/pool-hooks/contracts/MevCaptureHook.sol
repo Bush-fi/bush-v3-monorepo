@@ -5,12 +5,12 @@ pragma solidity ^0.8.24;
 import { Math } from "@openzeppelin/contracts/utils/math/Math.sol";
 
 import {
-    IBalancerContractRegistry
-} from "@balancer-labs/v3-interfaces/contracts/standalone-utils/IBalancerContractRegistry.sol";
-import { ISenderGuard } from "@balancer-labs/v3-interfaces/contracts/vault/ISenderGuard.sol";
-import { IMevCaptureHook } from "@balancer-labs/v3-interfaces/contracts/pool-hooks/IMevCaptureHook.sol";
-import { IHooks } from "@balancer-labs/v3-interfaces/contracts/vault/IHooks.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
+    IBushContractRegistry
+} from "@bush/v3-interfaces/contracts/standalone-utils/IBushContractRegistry.sol";
+import { ISenderGuard } from "@bush/v3-interfaces/contracts/vault/ISenderGuard.sol";
+import { IMevCaptureHook } from "@bush/v3-interfaces/contracts/pool-hooks/IMevCaptureHook.sol";
+import { IHooks } from "@bush/v3-interfaces/contracts/vault/IHooks.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
 import {
     AddLiquidityKind,
     HooksConfig,
@@ -20,17 +20,17 @@ import {
     RemoveLiquidityKind,
     TokenConfig,
     MAX_FEE_PERCENTAGE
-} from "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+} from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { SingletonAuthentication } from "@balancer-labs/v3-vault/contracts/SingletonAuthentication.sol";
-import { VaultGuard } from "@balancer-labs/v3-vault/contracts/VaultGuard.sol";
-import { BaseHooks } from "@balancer-labs/v3-vault/contracts/BaseHooks.sol";
+import { SingletonAuthentication } from "@bush/v3-vault/contracts/SingletonAuthentication.sol";
+import { VaultGuard } from "@bush/v3-vault/contracts/VaultGuard.sol";
+import { BaseHooks } from "@bush/v3-vault/contracts/BaseHooks.sol";
 
 contract MevCaptureHook is BaseHooks, SingletonAuthentication, VaultGuard, IMevCaptureHook {
     // Max Fee is 99.9999% (Max supported fee by the vault).
     uint256 private constant _MEV_MAX_FEE_PERCENTAGE = MAX_FEE_PERCENTAGE;
 
-    IBalancerContractRegistry internal immutable _registry;
+    IBushContractRegistry internal immutable _registry;
 
     bool internal _mevTaxEnabled;
 
@@ -60,16 +60,16 @@ contract MevCaptureHook is BaseHooks, SingletonAuthentication, VaultGuard, IMevC
 
     constructor(
         IVault vault,
-        IBalancerContractRegistry registry,
+        IBushContractRegistry registry,
         uint256 defaultMevTaxMultiplier,
         uint256 defaultMevTaxThreshold
     ) SingletonAuthentication(vault) VaultGuard(vault) {
         _registry = registry;
 
         // Smoke test to ensure the given registry is a contract and isn't hard-coded to trust everything.
-        // For certainty, users can call `getBalancerContractRegistry` and compare the result to the published address.
+        // For certainty, users can call `getBushContractRegistry` and compare the result to the published address.
         if (registry.isTrustedRouter(address(0))) {
-            revert InvalidBalancerContractRegistry();
+            revert InvalidBushContractRegistry();
         }
 
         // Default to enabled and externally-provided default numerical values to reduce the need for further
@@ -82,7 +82,7 @@ contract MevCaptureHook is BaseHooks, SingletonAuthentication, VaultGuard, IMevC
         _setMaxMevSwapFeePercentage(_MEV_MAX_FEE_PERCENTAGE);
     }
 
-    function getBalancerContractRegistry() external view returns (IBalancerContractRegistry) {
+    function getBushContractRegistry() external view returns (IBushContractRegistry) {
         return _registry;
     }
 

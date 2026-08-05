@@ -7,12 +7,12 @@ import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import { Address } from "@openzeppelin/contracts/utils/Address.sol";
 import { IPermit2 } from "permit2/src/interfaces/IPermit2.sol";
 
-import { IWETH } from "@balancer-labs/v3-interfaces/contracts/solidity-utils/misc/IWETH.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
-import "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IWETH } from "@bush/v3-interfaces/contracts/solidity-utils/misc/IWETH.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { RouterWethLib } from "@balancer-labs/v3-vault/contracts/lib/RouterWethLib.sol";
-import { RouterCommon } from "@balancer-labs/v3-vault/contracts/RouterCommon.sol";
+import { RouterWethLib } from "@bush/v3-vault/contracts/lib/RouterWethLib.sol";
+import { RouterCommon } from "@bush/v3-vault/contracts/RouterCommon.sol";
 
 abstract contract MinimalRouter is RouterCommon {
     using Address for address payable;

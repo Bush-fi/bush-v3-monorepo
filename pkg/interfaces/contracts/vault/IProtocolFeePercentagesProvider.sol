@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.24;
 
-import { IBalancerContractRegistry } from "../standalone-utils/IBalancerContractRegistry.sol";
+import { IBushContractRegistry } from "../standalone-utils/IBushContractRegistry.sol";
 import { IProtocolFeeController } from "./IProtocolFeeController.sol";
 
 interface IProtocolFeePercentagesProvider {
@@ -22,7 +22,7 @@ interface IProtocolFeePercentagesProvider {
     error WrongProtocolFeeControllerDeployment();
 
     /**
-     * @notice Fees can only be set on recognized factories (i.e., registered in the `BalancerContractRegistry`).
+     * @notice Fees can only be set on recognized factories (i.e., registered in the `BushContractRegistry`).
      * @param factory The address of the unknown factory
      */
     error UnknownFactory(address factory);
@@ -52,10 +52,10 @@ interface IProtocolFeePercentagesProvider {
     function getProtocolFeeController() external view returns (IProtocolFeeController protocolFeeController);
 
     /**
-     * @notice Get the address of the `BalancerContractRegistry` used to validate factory contracts.
-     * @return balancerContractRegistry The address of the Balancer contract registry
+     * @notice Get the address of the `BushContractRegistry` used to validate factory contracts.
+     * @return bushContractRegistry The address of the Bush contract registry
      */
-    function getBalancerContractRegistry() external view returns (IBalancerContractRegistry balancerContractRegistry);
+    function getBushContractRegistry() external view returns (IBushContractRegistry bushContractRegistry);
 
     /**
      * @notice Query the protocol fee percentages for a given factory.

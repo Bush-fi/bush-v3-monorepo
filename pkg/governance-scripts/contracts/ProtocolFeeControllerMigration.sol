@@ -2,18 +2,18 @@
 
 pragma solidity ^0.8.24;
 
-import { IAuthentication } from "@balancer-labs/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
-import { IBasicAuthorizer } from "@balancer-labs/v3-interfaces/contracts/governance-scripts/IBasicAuthorizer.sol";
-import { IProtocolFeeController } from "@balancer-labs/v3-interfaces/contracts/vault/IProtocolFeeController.sol";
-import { PoolRoleAccounts, PoolConfig } from "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
-import { IVaultAdmin } from "@balancer-labs/v3-interfaces/contracts/vault/IVaultAdmin.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
+import { IAuthentication } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
+import { IBasicAuthorizer } from "@bush/v3-interfaces/contracts/governance-scripts/IBasicAuthorizer.sol";
+import { IProtocolFeeController } from "@bush/v3-interfaces/contracts/vault/IProtocolFeeController.sol";
+import { PoolRoleAccounts, PoolConfig } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IVaultAdmin } from "@bush/v3-interfaces/contracts/vault/IVaultAdmin.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
 
-import { SingletonAuthentication } from "@balancer-labs/v3-vault/contracts/SingletonAuthentication.sol";
-import { ProtocolFeeController } from "@balancer-labs/v3-vault/contracts/ProtocolFeeController.sol";
+import { SingletonAuthentication } from "@bush/v3-vault/contracts/SingletonAuthentication.sol";
+import { ProtocolFeeController } from "@bush/v3-vault/contracts/ProtocolFeeController.sol";
 import {
     ReentrancyGuardTransient
-} from "@balancer-labs/v3-solidity-utils/contracts/openzeppelin/ReentrancyGuardTransient.sol";
+} from "@bush/v3-solidity-utils/contracts/openzeppelin/ReentrancyGuardTransient.sol";
 
 /**
  * @notice Migrate to a ProtocolFeeController with extra events and infrastructure for future migrations.

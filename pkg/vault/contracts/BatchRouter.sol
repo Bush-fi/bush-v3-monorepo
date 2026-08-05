@@ -4,11 +4,11 @@ pragma solidity ^0.8.24;
 
 import { IPermit2 } from "permit2/src/interfaces/IPermit2.sol";
 
-import { IBatchRouterQueries } from "@balancer-labs/v3-interfaces/contracts/vault/IBatchRouterQueries.sol";
-import { IBatchRouter } from "@balancer-labs/v3-interfaces/contracts/vault/IBatchRouter.sol";
-import { IWETH } from "@balancer-labs/v3-interfaces/contracts/solidity-utils/misc/IWETH.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
-import "@balancer-labs/v3-interfaces/contracts/vault/BatchRouterTypes.sol";
+import { IBatchRouterQueries } from "@bush/v3-interfaces/contracts/vault/IBatchRouterQueries.sol";
+import { IBatchRouter } from "@bush/v3-interfaces/contracts/vault/IBatchRouter.sol";
+import { IWETH } from "@bush/v3-interfaces/contracts/solidity-utils/misc/IWETH.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import "@bush/v3-interfaces/contracts/vault/BatchRouterTypes.sol";
 
 import { BatchRouterHooks } from "./BatchRouterHooks.sol";
 

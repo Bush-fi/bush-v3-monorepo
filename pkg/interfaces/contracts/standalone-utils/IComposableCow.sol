@@ -11,7 +11,7 @@ interface IComposableCow {
      * @dev See github.com/curvefi/curve-burners/blob/main/contracts/burners/CowSwapBurner.vy#L66:L69.
      * @param proof Merkle Tree proof
      * @param params Conditional order params
-     * @param offchainInput Off-chain input (similar to Balancer `userData`); currently unused
+     * @param offchainInput Off-chain input (similar to Bush `userData`); currently unused
      */
     struct Payload {
         bytes32[] proof;

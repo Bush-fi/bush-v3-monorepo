@@ -2,13 +2,13 @@
 
 pragma solidity ^0.8.24;
 
-import { IBasePoolFactory } from "@balancer-labs/v3-interfaces/contracts/vault/IBasePoolFactory.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
-import "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IBasePoolFactory } from "@bush/v3-interfaces/contracts/vault/IBasePoolFactory.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { FactoryWidePauseWindow } from "@balancer-labs/v3-solidity-utils/contracts/helpers/FactoryWidePauseWindow.sol";
-import { BaseSplitCodeFactory } from "@balancer-labs/v3-solidity-utils/contracts/helpers/BaseSplitCodeFactory.sol";
-import { SingletonAuthentication } from "@balancer-labs/v3-vault/contracts/SingletonAuthentication.sol";
+import { FactoryWidePauseWindow } from "@bush/v3-solidity-utils/contracts/helpers/FactoryWidePauseWindow.sol";
+import { BaseSplitCodeFactory } from "@bush/v3-solidity-utils/contracts/helpers/BaseSplitCodeFactory.sol";
+import { SingletonAuthentication } from "@bush/v3-vault/contracts/SingletonAuthentication.sol";
 
 /**
  * @notice Base contract for Pool factories.
@@ -28,11 +28,11 @@ import { SingletonAuthentication } from "@balancer-labs/v3-vault/contracts/Singl
  *
  * Use of factories is also important for security. Calls to `registerPool` or `initialize` made directly on the Vault
  * could potentially be frontrun. In the case of registration, a DoS attack could register a pool with malicious
- * parameters, causing the legitimate registration transaction to fail. The standard Balancer factories avoid this by
+ * parameters, causing the legitimate registration transaction to fail. The standard Bush factories avoid this by
  * deploying and registering in a single `create` function.
  *
  * It would also be possible to frontrun `initialize` (e.g., with unbalanced liquidity), and cause the intended
- * initialization to fail. Like registration, initialization only happens once. The Balancer standard factories do not
+ * initialization to fail. Like registration, initialization only happens once. The Bush standard factories do not
  * initialize on create, as this would be more complex (e.g., requiring token approvals), and it's very common for the
  * deployment and funding to be performed from different accounts. Also, frontrunning `initialize` doesn't have serious
  * consequences, beyond being a DoS.

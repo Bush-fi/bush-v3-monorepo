@@ -2,8 +2,8 @@
 
 pragma solidity ^0.8.24;
 
-/// @notice Interface for wrapped Balancer pool tokens
-interface IWrappedBalancerPoolToken {
+/// @notice Interface for wrapped Bush pool tokens
+interface IWrappedBushPoolToken {
     /// @notice The vault is unlocked
     error VaultIsUnlocked();
 

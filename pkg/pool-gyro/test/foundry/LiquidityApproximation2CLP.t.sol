@@ -2,9 +2,9 @@
 
 pragma solidity ^0.8.24;
 
-import { IRateProvider } from "@balancer-labs/v3-interfaces/contracts/solidity-utils/helpers/IRateProvider.sol";
+import { IRateProvider } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IRateProvider.sol";
 
-import { LiquidityApproximationTest } from "@balancer-labs/v3-vault/test/foundry/LiquidityApproximation.t.sol";
+import { LiquidityApproximationTest } from "@bush/v3-vault/test/foundry/LiquidityApproximation.t.sol";
 
 import { Gyro2CLPPoolMock } from "../../contracts/test/Gyro2CLPPoolMock.sol";
 import { Gyro2ClpPoolDeployer } from "./utils/Gyro2ClpPoolDeployer.sol";

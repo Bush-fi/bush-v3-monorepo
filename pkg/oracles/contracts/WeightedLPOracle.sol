@@ -5,22 +5,22 @@ pragma solidity ^0.8.24;
 import { AggregatorV3Interface } from "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
 import { SafeCast } from "@openzeppelin/contracts/utils/math/SafeCast.sol";
 
-import { IWeightedLPOracle } from "@balancer-labs/v3-interfaces/contracts/oracles/IWeightedLPOracle.sol";
-import { IWeightedPool } from "@balancer-labs/v3-interfaces/contracts/pool-weighted/IWeightedPool.sol";
-import { ILPOracleBase } from "@balancer-labs/v3-interfaces/contracts/oracles/ILPOracleBase.sol";
-import { Rounding } from "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
-import { IBasePool } from "@balancer-labs/v3-interfaces/contracts/vault/IBasePool.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
+import { IWeightedLPOracle } from "@bush/v3-interfaces/contracts/oracles/IWeightedLPOracle.sol";
+import { IWeightedPool } from "@bush/v3-interfaces/contracts/pool-weighted/IWeightedPool.sol";
+import { ILPOracleBase } from "@bush/v3-interfaces/contracts/oracles/ILPOracleBase.sol";
+import { Rounding } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IBasePool } from "@bush/v3-interfaces/contracts/vault/IBasePool.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
 
-import { InputHelpers } from "@balancer-labs/v3-solidity-utils/contracts/helpers/InputHelpers.sol";
-import { FixedPoint } from "@balancer-labs/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { InputHelpers } from "@bush/v3-solidity-utils/contracts/helpers/InputHelpers.sol";
+import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
 
 import { LPOracleBase } from "./LPOracleBase.sol";
 
 /**
  * @notice Oracle for weighted pools.
  * @dev IMPORTANT: WeightedLPOracles store weights immutably, so this factory can only be used for pools with fixed
- * weights, such as those created with the standard Balancer `WeightedPoolFactory`. It cannot be used for LBPs or other
+ * weights, such as those created with the standard Bush `WeightedPoolFactory`. It cannot be used for LBPs or other
  * pools with variable weights.
  */
 contract WeightedLPOracle is IWeightedLPOracle, LPOracleBase {

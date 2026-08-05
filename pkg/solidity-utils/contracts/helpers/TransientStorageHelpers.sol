@@ -31,7 +31,7 @@ library TransientStorageHelpers {
     function calculateSlot(string memory domain, string memory varName) internal pure returns (bytes32) {
         return
             keccak256(
-                abi.encode(uint256(keccak256(abi.encodePacked("balancer-labs.v3.storage.", domain, ".", varName))) - 1)
+                abi.encode(uint256(keccak256(abi.encodePacked("bush-labs.v3.storage.", domain, ".", varName))) - 1)
             ) & ~bytes32(uint256(0xff));
     }
 

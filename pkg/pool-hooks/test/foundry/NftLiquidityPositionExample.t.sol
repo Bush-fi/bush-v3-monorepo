@@ -6,30 +6,30 @@ import "forge-std/Test.sol";
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { IVaultExtension } from "@balancer-labs/v3-interfaces/contracts/vault/IVaultExtension.sol";
-import { IVaultErrors } from "@balancer-labs/v3-interfaces/contracts/vault/IVaultErrors.sol";
-import { IVaultAdmin } from "@balancer-labs/v3-interfaces/contracts/vault/IVaultAdmin.sol";
-import { IVaultMock } from "@balancer-labs/v3-interfaces/contracts/test/IVaultMock.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
+import { IVaultExtension } from "@bush/v3-interfaces/contracts/vault/IVaultExtension.sol";
+import { IVaultErrors } from "@bush/v3-interfaces/contracts/vault/IVaultErrors.sol";
+import { IVaultAdmin } from "@bush/v3-interfaces/contracts/vault/IVaultAdmin.sol";
+import { IVaultMock } from "@bush/v3-interfaces/contracts/test/IVaultMock.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
 import {
     LiquidityManagement,
     PoolRoleAccounts,
     AddLiquidityKind,
     RemoveLiquidityKind
-} from "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+} from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { CastingHelpers } from "@balancer-labs/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
-import { BasicAuthorizerMock } from "@balancer-labs/v3-vault/contracts/test/BasicAuthorizerMock.sol";
-import { ArrayHelpers } from "@balancer-labs/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
-import { FixedPoint } from "@balancer-labs/v3-solidity-utils/contracts/math/FixedPoint.sol";
-import { BaseTest } from "@balancer-labs/v3-solidity-utils/test/foundry/utils/BaseTest.sol";
-import { BaseVaultTest } from "@balancer-labs/v3-vault/test/foundry/utils/BaseVaultTest.sol";
+import { CastingHelpers } from "@bush/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
+import { BasicAuthorizerMock } from "@bush/v3-vault/contracts/test/BasicAuthorizerMock.sol";
+import { ArrayHelpers } from "@bush/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
+import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { BaseTest } from "@bush/v3-solidity-utils/test/foundry/utils/BaseTest.sol";
+import { BaseVaultTest } from "@bush/v3-vault/test/foundry/utils/BaseVaultTest.sol";
 
-import { BatchRouterMock } from "@balancer-labs/v3-vault/contracts/test/BatchRouterMock.sol";
-import { PoolFactoryMock } from "@balancer-labs/v3-vault/contracts/test/PoolFactoryMock.sol";
-import { BalancerPoolToken } from "@balancer-labs/v3-vault/contracts/BalancerPoolToken.sol";
-import { RouterMock } from "@balancer-labs/v3-vault/contracts/test/RouterMock.sol";
-import { PoolMock } from "@balancer-labs/v3-vault/contracts/test/PoolMock.sol";
+import { BatchRouterMock } from "@bush/v3-vault/contracts/test/BatchRouterMock.sol";
+import { PoolFactoryMock } from "@bush/v3-vault/contracts/test/PoolFactoryMock.sol";
+import { BushPoolToken } from "@bush/v3-vault/contracts/BushPoolToken.sol";
+import { RouterMock } from "@bush/v3-vault/contracts/test/RouterMock.sol";
+import { PoolMock } from "@bush/v3-vault/contracts/test/PoolMock.sol";
 
 import { NftLiquidityPositionExample } from "../../contracts/NftLiquidityPositionExample.sol";
 
@@ -149,7 +149,7 @@ contract NftLiquidityPositionExampleTest is BaseVaultTest {
 
         // Router should receive BPT instead of bob, he gets the NFT
         assertEq(
-            BalancerPoolToken(pool).balanceOf(address(nftRouter)),
+            BushPoolToken(pool).balanceOf(address(nftRouter)),
             DEFAULT_BPT_AMOUNT,
             "NftRouter should hold BPT"
         );
@@ -227,7 +227,7 @@ contract NftLiquidityPositionExampleTest is BaseVaultTest {
         assertEq(nftRouter.startTime(nftTokenId), 0, "startTime mapping should be 0");
         assertEq(nftRouter.nftPool(nftTokenId), address(0), "pool mapping should be 0");
 
-        assertEq(BalancerPoolToken(pool).balanceOf(address(nftRouter)), 0, "NftRouter should hold no BPT");
+        assertEq(BushPoolToken(pool).balanceOf(address(nftRouter)), 0, "NftRouter should hold no BPT");
         assertEq(balancesAfter.bobBpt, 0, "bob should not hold any BPT");
     }
 
@@ -298,7 +298,7 @@ contract NftLiquidityPositionExampleTest is BaseVaultTest {
         assertEq(nftRouter.startTime(nftTokenId), 0, "startTime mapping should be 0");
         assertEq(nftRouter.nftPool(nftTokenId), address(0), "pool mapping should be 0");
 
-        assertEq(BalancerPoolToken(pool).balanceOf(address(nftRouter)), 0, "NftRouter should hold no BPT");
+        assertEq(BushPoolToken(pool).balanceOf(address(nftRouter)), 0, "NftRouter should hold no BPT");
         assertEq(balancesAfter.bobBpt, 0, "bob should not hold any BPT");
     }
 

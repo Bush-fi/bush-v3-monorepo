@@ -1,24 +1,24 @@
 import { ethers } from 'hardhat';
-import { deploy, deployedAt } from '@balancer-labs/v3-helpers/src/contract';
+import { deploy, deployedAt } from '@bush/v3-helpers/src/contract';
 import { SignerWithAddress } from '@nomicfoundation/hardhat-ethers/dist/src/signer-with-address';
-import { fp, fpMulDown } from '@balancer-labs/v3-helpers/src/numbers';
+import { fp, fpMulDown } from '@bush/v3-helpers/src/numbers';
 import { setNextBlockBaseFeePerGas } from '@nomicfoundation/hardhat-network-helpers';
 
-import { PoolMock } from '../typechain-types/@balancer-labs/v3-vault/contracts/test/PoolMock';
+import { PoolMock } from '../typechain-types/@bush/v3-vault/contracts/test/PoolMock';
 import { MevCaptureHook, Router, PoolFactoryMock, Vault, WETHTestToken, IVault } from '../typechain-types';
 import { IPermit2 } from '../typechain-types/permit2/src/interfaces/IPermit2';
-import { sharedBeforeEach } from '@balancer-labs/v3-common/sharedBeforeEach';
-import * as VaultDeployer from '@balancer-labs/v3-helpers/src/models/vault/VaultDeployer';
-import { buildTokenConfig } from '@balancer-labs/v3-helpers/src/models/tokens/tokenConfig';
-import { deployPermit2 } from '@balancer-labs/v3-vault/test/Permit2Deployer';
-import { MONTH } from '@balancer-labs/v3-helpers/src/time';
-import ERC20TokenList from '@balancer-labs/v3-helpers/src/models/tokens/ERC20TokenList';
-import { sortAddresses } from '@balancer-labs/v3-helpers/src/models/tokens/sortingHelper';
-import { MAX_UINT160, MAX_UINT256, MAX_UINT48 } from '@balancer-labs/v3-helpers/src/constants';
-import { ERC20 } from '@balancer-labs/v3-solidity-utils/typechain-types';
-import { BalancerContractRegistry } from '@balancer-labs/v3-standalone-utils/typechain-types';
-import { actionId } from '@balancer-labs/v3-helpers/src/models/misc/actions';
-import TypesConverter from '@balancer-labs/v3-helpers/src/models/types/TypesConverter';
+import { sharedBeforeEach } from '@bush/v3-common/sharedBeforeEach';
+import * as VaultDeployer from '@bush/v3-helpers/src/models/vault/VaultDeployer';
+import { buildTokenConfig } from '@bush/v3-helpers/src/models/tokens/tokenConfig';
+import { deployPermit2 } from '@bush/v3-vault/test/Permit2Deployer';
+import { MONTH } from '@bush/v3-helpers/src/time';
+import ERC20TokenList from '@bush/v3-helpers/src/models/tokens/ERC20TokenList';
+import { sortAddresses } from '@bush/v3-helpers/src/models/tokens/sortingHelper';
+import { MAX_UINT160, MAX_UINT256, MAX_UINT48 } from '@bush/v3-helpers/src/constants';
+import { ERC20 } from '@bush/v3-solidity-utils/typechain-types';
+import { BushContractRegistry } from '@bush/v3-standalone-utils/typechain-types';
+import { actionId } from '@bush/v3-helpers/src/models/misc/actions';
+import TypesConverter from '@bush/v3-helpers/src/models/types/TypesConverter';
 import { expect } from 'chai';
 
 enum RegistryContractType {
@@ -45,7 +45,7 @@ describe('MevCaptureHook', () => {
   let router: Router;
   let untrustedRouter: Router;
   let hook: MevCaptureHook;
-  let registry: BalancerContractRegistry;
+  let registry: BushContractRegistry;
 
   let admin: SignerWithAddress, lp: SignerWithAddress, sender: SignerWithAddress;
 
@@ -68,7 +68,7 @@ describe('MevCaptureHook', () => {
       args: [vaultAddress, WETH, permit2, 'UNTRUSTED_VERSION'],
     });
     factory = await deploy('v3-vault/PoolFactoryMock', { args: [vaultAddress, 12 * MONTH] });
-    registry = await deploy('v3-standalone-utils/BalancerContractRegistry', { args: [vaultAddress] });
+    registry = await deploy('v3-standalone-utils/BushContractRegistry', { args: [vaultAddress] });
 
     tokens = await ERC20TokenList.create(2, { sorted: true });
     token0 = (await tokens.get(0)) as unknown as ERC20;
@@ -97,7 +97,7 @@ describe('MevCaptureHook', () => {
     // Vault Actions
     actions.push(await actionId(iVault, 'setStaticSwapFeePercentage'));
     // Registry Actions
-    actions.push(await actionId(registry, 'registerBalancerContract'));
+    actions.push(await actionId(registry, 'registerBushContract'));
     // MEV Hook Actions
     actions.push(await actionId(hook, 'addMevTaxExemptSenders'));
     actions.push(await actionId(hook, 'disableMevTax'));
@@ -112,7 +112,7 @@ describe('MevCaptureHook', () => {
   });
 
   sharedBeforeEach('registry configuration', async () => {
-    await registry.connect(admin).registerBalancerContract(RegistryContractType.ROUTER, 'Router', router);
+    await registry.connect(admin).registerBushContract(RegistryContractType.ROUTER, 'Router', router);
   });
 
   sharedBeforeEach('fees configuration', async () => {

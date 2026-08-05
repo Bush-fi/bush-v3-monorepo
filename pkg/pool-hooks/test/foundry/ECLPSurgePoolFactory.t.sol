@@ -6,16 +6,16 @@ import "forge-std/Test.sol";
 
 import { Strings } from "@openzeppelin/contracts/utils/Strings.sol";
 
-import { IVersion } from "@balancer-labs/v3-interfaces/contracts/solidity-utils/helpers/IVersion.sol";
-import { IGyroECLPPool } from "@balancer-labs/v3-interfaces/contracts/pool-gyro/IGyroECLPPool.sol";
-import { IVaultErrors } from "@balancer-labs/v3-interfaces/contracts/vault/IVaultErrors.sol";
-import "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IVersion } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IVersion.sol";
+import { IGyroECLPPool } from "@bush/v3-interfaces/contracts/pool-gyro/IGyroECLPPool.sol";
+import { IVaultErrors } from "@bush/v3-interfaces/contracts/vault/IVaultErrors.sol";
+import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { CastingHelpers } from "@balancer-labs/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
-import { ArrayHelpers } from "@balancer-labs/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
-import { BaseVaultTest } from "@balancer-labs/v3-vault/test/foundry/utils/BaseVaultTest.sol";
-import { BalancerPoolToken } from "@balancer-labs/v3-vault/contracts/BalancerPoolToken.sol";
-import { StableMath } from "@balancer-labs/v3-solidity-utils/contracts/math/StableMath.sol";
+import { CastingHelpers } from "@bush/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
+import { ArrayHelpers } from "@bush/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
+import { BaseVaultTest } from "@bush/v3-vault/test/foundry/utils/BaseVaultTest.sol";
+import { BushPoolToken } from "@bush/v3-vault/contracts/BushPoolToken.sol";
+import { StableMath } from "@bush/v3-solidity-utils/contracts/math/StableMath.sol";
 
 import { ECLPSurgePoolFactoryDeployer } from "./utils/ECLPSurgePoolFactoryDeployer.sol";
 import { ECLPSurgePoolFactory } from "../../contracts/ECLPSurgePoolFactory.sol";
@@ -234,7 +234,7 @@ contract ECLPSurgePoolFactoryTest is BaseVaultTest, ECLPSurgeHookDeployer, ECLPS
         vars.vault.daiBefore = dai.balanceOf(address(vault));
         vars.vault.usdcBefore = usdc.balanceOf(address(vault));
         vars.poolBefore = vault.getRawBalances(pool);
-        vars.bptSupplyBefore = BalancerPoolToken(pool).totalSupply();
+        vars.bptSupplyBefore = BushPoolToken(pool).totalSupply();
     }
 
     function _fillAfterHookTestLocals(HookTestLocals memory vars, address pool) private view {
@@ -244,6 +244,6 @@ contract ECLPSurgePoolFactoryTest is BaseVaultTest, ECLPSurgeHookDeployer, ECLPS
         vars.vault.daiAfter = dai.balanceOf(address(vault));
         vars.vault.usdcAfter = usdc.balanceOf(address(vault));
         vars.poolAfter = vault.getRawBalances(pool);
-        vars.bptSupplyAfter = BalancerPoolToken(pool).totalSupply();
+        vars.bptSupplyAfter = BushPoolToken(pool).totalSupply();
     }
 }

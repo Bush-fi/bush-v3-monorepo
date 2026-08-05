@@ -5,16 +5,16 @@ pragma solidity ^0.8.24;
 import { AggregatorV3Interface } from "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
 import { SafeCast } from "@openzeppelin/contracts/utils/math/SafeCast.sol";
 
-import { IGyroECLPPool } from "@balancer-labs/v3-interfaces/contracts/pool-gyro/IGyroECLPPool.sol";
-import { ILPOracleBase } from "@balancer-labs/v3-interfaces/contracts/oracles/ILPOracleBase.sol";
-import { Rounding } from "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
-import { IBasePool } from "@balancer-labs/v3-interfaces/contracts/vault/IBasePool.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
+import { IGyroECLPPool } from "@bush/v3-interfaces/contracts/pool-gyro/IGyroECLPPool.sol";
+import { ILPOracleBase } from "@bush/v3-interfaces/contracts/oracles/ILPOracleBase.sol";
+import { Rounding } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IBasePool } from "@bush/v3-interfaces/contracts/vault/IBasePool.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
 
-import { SignedFixedPoint } from "@balancer-labs/v3-pool-gyro/contracts/lib/SignedFixedPoint.sol";
-import { FixedPoint } from "@balancer-labs/v3-solidity-utils/contracts/math/FixedPoint.sol";
-import { GyroECLPMath } from "@balancer-labs/v3-pool-gyro/contracts/lib/GyroECLPMath.sol";
-import { GyroECLPPool } from "@balancer-labs/v3-pool-gyro/contracts/GyroECLPPool.sol";
+import { SignedFixedPoint } from "@bush/v3-pool-gyro/contracts/lib/SignedFixedPoint.sol";
+import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { GyroECLPMath } from "@bush/v3-pool-gyro/contracts/lib/GyroECLPMath.sol";
+import { GyroECLPPool } from "@bush/v3-pool-gyro/contracts/GyroECLPPool.sol";
 
 import { LPOracleBase } from "./LPOracleBase.sol";
 
@@ -75,7 +75,7 @@ contract EclpLPOracle is LPOracleBase {
 
     /**
      * @notice Computes the total value locked for constant ellipse (ECLP) pools of two assets.
-     * @dev This computation is resistant to price manipulation within the Balancer pool. Bounds on underlying prices
+     * @dev This computation is resistant to price manipulation within the Bush pool. Bounds on underlying prices
      * are enforced to make this safe across a range of typical pool parameter combinations. These include typical
      * stable pair configs and the following parameter combinations: alpha in [0.05, 0.999], beta in [1.001, 1.1],
      * relative price range width (beta/alpha-1) >= 10bp, min-curvature price q = 1.0, lambda in [1, 1e8]. This yields

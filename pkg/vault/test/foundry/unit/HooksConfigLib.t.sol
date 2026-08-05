@@ -4,12 +4,12 @@ pragma solidity ^0.8.24;
 
 import "forge-std/Test.sol";
 
-import { IHooks } from "@balancer-labs/v3-interfaces/contracts/vault/IHooks.sol";
-import { PoolConfigBits, HooksConfig } from "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IHooks } from "@bush/v3-interfaces/contracts/vault/IHooks.sol";
+import { PoolConfigBits, HooksConfig } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { PoolConfigConst } from "@balancer-labs/v3-vault/contracts/lib/PoolConfigConst.sol";
-import { HooksConfigLib } from "@balancer-labs/v3-vault/contracts/lib/HooksConfigLib.sol";
-import { WordCodec } from "@balancer-labs/v3-solidity-utils/contracts/helpers/WordCodec.sol";
+import { PoolConfigConst } from "@bush/v3-vault/contracts/lib/PoolConfigConst.sol";
+import { HooksConfigLib } from "@bush/v3-vault/contracts/lib/HooksConfigLib.sol";
+import { WordCodec } from "@bush/v3-solidity-utils/contracts/helpers/WordCodec.sol";
 
 contract HooksConfigLibTest is Test {
     using WordCodec for bytes32;

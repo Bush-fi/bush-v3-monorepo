@@ -2,14 +2,14 @@
 
 pragma solidity ^0.8.24;
 
-import { ICowPool } from "@balancer-labs/v3-interfaces/contracts/pool-cow/ICowPool.sol";
-import { IHooks } from "@balancer-labs/v3-interfaces/contracts/vault/IHooks.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
-import "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { ICowPool } from "@bush/v3-interfaces/contracts/pool-cow/ICowPool.sol";
+import { IHooks } from "@bush/v3-interfaces/contracts/vault/IHooks.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { WeightedPool } from "@balancer-labs/v3-pool-weighted/contracts/WeightedPool.sol";
+import { WeightedPool } from "@bush/v3-pool-weighted/contracts/WeightedPool.sol";
 
-import { BaseHooks } from "@balancer-labs/v3-vault/contracts/BaseHooks.sol";
+import { BaseHooks } from "@bush/v3-vault/contracts/BaseHooks.sol";
 
 import { CowPoolFactory } from "./CowPoolFactory.sol";
 

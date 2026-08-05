@@ -2,12 +2,12 @@
 
 pragma solidity ^0.8.24;
 
-import { IGyroECLPPool } from "@balancer-labs/v3-interfaces/contracts/pool-gyro/IGyroECLPPool.sol";
-import { PoolSwapParams } from "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
+import { IGyroECLPPool } from "@bush/v3-interfaces/contracts/pool-gyro/IGyroECLPPool.sol";
+import { PoolSwapParams } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
 
-import { GyroECLPMath } from "@balancer-labs/v3-pool-gyro/contracts/lib/GyroECLPMath.sol";
-import { GyroECLPPool } from "@balancer-labs/v3-pool-gyro/contracts/GyroECLPPool.sol";
+import { GyroECLPMath } from "@bush/v3-pool-gyro/contracts/lib/GyroECLPMath.sol";
+import { GyroECLPPool } from "@bush/v3-pool-gyro/contracts/GyroECLPPool.sol";
 
 import { ECLPSurgeHook } from "./../ECLPSurgeHook.sol";
 

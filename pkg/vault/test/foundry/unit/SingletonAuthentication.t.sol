@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.24;
 
-import { IAuthentication } from "@balancer-labs/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
+import { IAuthentication } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
 
 import "../../../contracts/test/SingletonAuthenticationMock.sol";
 import { BaseVaultTest } from "../utils/BaseVaultTest.sol";

@@ -3,16 +3,16 @@
 pragma solidity ^0.8.24;
 
 import {
-    IBalancerContractRegistry
-} from "@balancer-labs/v3-interfaces/contracts/standalone-utils/IBalancerContractRegistry.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
+    IBushContractRegistry
+} from "@bush/v3-interfaces/contracts/standalone-utils/IBushContractRegistry.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
 
 import { MevCaptureHook } from "../MevCaptureHook.sol";
 
 contract MevCaptureHookMock is MevCaptureHook {
     constructor(
         IVault vault,
-        IBalancerContractRegistry registry,
+        IBushContractRegistry registry,
         uint256 defaultMevTaxMultiplier,
         uint256 defaultMevTaxThreshold
     ) MevCaptureHook(vault, registry, defaultMevTaxMultiplier, defaultMevTaxThreshold) {

@@ -1,8 +1,8 @@
 import { expect } from 'chai';
-import { sharedBeforeEach } from '@balancer-labs/v3-common/sharedBeforeEach';
-import { MAX_UINT256 } from '@balancer-labs/v3-helpers/src/constants';
-import { fp, fpDivDown, fpDivUp } from '@balancer-labs/v3-helpers/src/numbers';
-import { ERC20TestToken__factory } from '@balancer-labs/v3-solidity-utils/typechain-types';
+import { sharedBeforeEach } from '@bush/v3-common/sharedBeforeEach';
+import { MAX_UINT256 } from '@bush/v3-helpers/src/constants';
+import { fp, fpDivDown, fpDivUp } from '@bush/v3-helpers/src/numbers';
+import { ERC20TestToken__factory } from '@bush/v3-solidity-utils/typechain-types';
 
 import { BatchSwapBaseTest, WRAPPED_TOKEN_AMOUNT } from './BatchSwapBase';
 

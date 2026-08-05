@@ -2,9 +2,9 @@
 
 pragma solidity ^0.8.24;
 
-import { IProtocolFeeHelper } from "@balancer-labs/v3-interfaces/contracts/standalone-utils/IProtocolFeeHelper.sol";
-import { IProtocolFeeController } from "@balancer-labs/v3-interfaces/contracts/vault/IProtocolFeeController.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
+import { IProtocolFeeHelper } from "@bush/v3-interfaces/contracts/standalone-utils/IProtocolFeeHelper.sol";
+import { IProtocolFeeController } from "@bush/v3-interfaces/contracts/vault/IProtocolFeeController.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
 
 import { PoolHelperCommon } from "./PoolHelperCommon.sol";
 

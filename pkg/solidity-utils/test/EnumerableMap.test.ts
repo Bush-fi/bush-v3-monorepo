@@ -1,7 +1,7 @@
 import { Contract } from 'ethers';
 import { expect } from 'chai';
-import { deploy } from '@balancer-labs/v3-helpers/src/contract';
-import { sharedBeforeEach } from '@balancer-labs/v3-common/sharedBeforeEach';
+import { deploy } from '@bush/v3-helpers/src/contract';
+import { sharedBeforeEach } from '@bush/v3-common/sharedBeforeEach';
 import { zip } from 'lodash';
 
 describe('EnumerableMap', () => {

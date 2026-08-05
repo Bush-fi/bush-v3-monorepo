@@ -3,16 +3,16 @@
 pragma solidity ^0.8.24;
 
 import {
-    IBalancerContractRegistry,
+    IBushContractRegistry,
     ContractType
-} from "@balancer-labs/v3-interfaces/contracts/standalone-utils/IBalancerContractRegistry.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
+} from "@bush/v3-interfaces/contracts/standalone-utils/IBushContractRegistry.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
 
-import { SingletonAuthentication } from "@balancer-labs/v3-vault/contracts/SingletonAuthentication.sol";
+import { SingletonAuthentication } from "@bush/v3-vault/contracts/SingletonAuthentication.sol";
 
 /**
- * @notice On-chain registry of standard Balancer contracts.
- * @dev Maintain a registry of official Balancer Factories, Routers, Hooks, and valid ERC4626 tokens, for two main
+ * @notice On-chain registry of standard Bush contracts.
+ * @dev Maintain a registry of official Bush Factories, Routers, Hooks, and valid ERC4626 tokens, for two main
  * purposes. The first is to support the many instances where we need to know that a contract is "trusted" (i.e.,
  * is safe and behaves in the required manner). For instance, some hooks depend critically on the identity of the
  * msg.sender, which must be passed down through the Router. Since Routers are permissionless, a malicious one could
@@ -23,7 +23,7 @@ import { SingletonAuthentication } from "@balancer-labs/v3-vault/contracts/Singl
  * unexpected ways. It is not enough to simply check whether a buffer exists (e.g., by calling `getBufferAsset`),
  * since best practice is for the pool creator to initialize buffers for all such tokens regardless. They are
  * permissionless, and could otherwise be initialized by anyone in unexpected ways. This registry could be used to
- * keep track of "known good" buffers, such that `isActiveBalancerContract(ContractType.ERC4626, <address>)` returns
+ * keep track of "known good" buffers, such that `isActiveBushContract(ContractType.ERC4626, <address>)` returns
  * true for fully-compliant tokens with properly initialized buffers.
  *
  * Current solutions involve passing in the address of the trusted Router on deployment: but what if it needs to
@@ -31,14 +31,14 @@ import { SingletonAuthentication } from "@balancer-labs/v3-vault/contracts/Singl
  * and query this contract to determine whether the Router is a "trusted" one.
  *
  * The second use case is for off-chain queries, or other protocols that need to easily determine, say, the "latest"
- * Weighted Pool Factory. This contract provides `isActiveBalancerContract(type, address)` for the first case, and
- * `getBalancerContract(type, name)` for the second. It is also possible to query all known information about an
- * address, using `getBalancerContractInfo(address)`, which returns a struct with the detailed state.
+ * Weighted Pool Factory. This contract provides `isActiveBushContract(type, address)` for the first case, and
+ * `getBushContract(type, name)` for the second. It is also possible to query all known information about an
+ * address, using `getBushContractInfo(address)`, which returns a struct with the detailed state.
  *
  * Note that the `SingletonAuthentication` base contract provides `getVault`, so it is also possible to ask this
  * contract for the Vault address, so it doesn't need to be a type.
  */
-contract BalancerContractRegistry is IBalancerContractRegistry, SingletonAuthentication {
+contract BushContractRegistry is IBushContractRegistry, SingletonAuthentication {
     // ContractId is the hash of contract name. Names must be unique (cannot have the same name with different types).
     mapping(bytes32 contractId => address addr) private _contractRegistry;
 
@@ -75,46 +75,46 @@ contract BalancerContractRegistry is IBalancerContractRegistry, SingletonAuthent
      * Example usage:
      *
      * // Register both the named version and the "latest" Weighted Pool Factory.
-     * registerBalancerContract(
+     * registerBushContract(
      *      ContractType.POOL_FACTORY, '20241205-v3-weighted-pool', 0x201efd508c8DfE9DE1a13c2452863A78CB2a86Cc
      * );
-     * addOrUpdateBalancerContractAlias('WeightedPool', 0x201efd508c8DfE9DE1a13c2452863A78CB2a86Cc);
+     * addOrUpdateBushContractAlias('WeightedPool', 0x201efd508c8DfE9DE1a13c2452863A78CB2a86Cc);
      *
      * // Register the Routers (two of them anyway).
-     * registerBalancerContract(ContractType.ROUTER, '20241205-v3-router', 0x5C6fb490BDFD3246EB0bB062c168DeCAF4bD9FDd);
-     * registerBalancerContract(
+     * registerBushContract(ContractType.ROUTER, '20241205-v3-router', 0x5C6fb490BDFD3246EB0bB062c168DeCAF4bD9FDd);
+     * registerBushContract(
      *      ContractType.ROUTER, '20241205-v3-batch-router', 0x136f1EFcC3f8f88516B9E94110D56FDBfB1778d1
      * );
      *
      * // Now, hooks that require trusted routers can be deployed with the registry address, and query the router to
      * // see whether it's "trusted" (i.e., registered by governance):
      *
-     * isActiveBalancerContract(ContractType.ROUTER, 0x5C6fb490BDFD3246EB0bB062c168DeCAF4bD9FDd) would return true.
+     * isActiveBushContract(ContractType.ROUTER, 0x5C6fb490BDFD3246EB0bB062c168DeCAF4bD9FDd) would return true.
      *
      * Off-chain processes that wanted to know the current address of the Weighted Pool Factory could query by either
      * name:
      *
-     * (address, active) = getBalancerContract(ContractType.POOL_FACTORY, '20241205-v3-weighted-pool');
-     * (address, active) = getBalancerContract(ContractType.POOL_FACTORY, 'WeightedPool');
+     * (address, active) = getBushContract(ContractType.POOL_FACTORY, '20241205-v3-weighted-pool');
+     * (address, active) = getBushContract(ContractType.POOL_FACTORY, 'WeightedPool');
      *
      * These would return the same result.
      *
      * If we replaced `20241205-v3-weighted-pool` with `20250107-v3-weighted-pool-v2`, governance would call:
      *
-     * deprecateBalancerContract(0x201efd508c8DfE9DE1a13c2452863A78CB2a86Cc);
-     * registerBalancerContract(
+     * deprecateBushContract(0x201efd508c8DfE9DE1a13c2452863A78CB2a86Cc);
+     * registerBushContract(
      *      ContractType.POOL_FACTORY, '20250107-v3-weighted-pool-v2', 0x9FC3da866e7DF3a1c57adE1a97c9f00a70f010c8)
      * );
-     * addOrUpdateBalancerContractAlias('WeightedPool', 0x9FC3da866e7DF3a1c57adE1a97c9f00a70f010c8);
+     * addOrUpdateBushContractAlias('WeightedPool', 0x9FC3da866e7DF3a1c57adE1a97c9f00a70f010c8);
      *
      * At that point,
-     * getBalancerContract(ContractType.POOL_FACTORY, '20241205-v3-weighted-pool') returns active=false,
-     * isActiveBalancerContract(ContractType.POOL_FACTORY, 0x201efd508c8DfE9DE1a13c2452863A78CB2a86Cc) returns false,
-     * getBalancerContract(ContractType.POOL_FACTORY, 'WeightedPool') returns the v2 address (and active=true).
+     * getBushContract(ContractType.POOL_FACTORY, '20241205-v3-weighted-pool') returns active=false,
+     * isActiveBushContract(ContractType.POOL_FACTORY, 0x201efd508c8DfE9DE1a13c2452863A78CB2a86Cc) returns false,
+     * getBushContract(ContractType.POOL_FACTORY, 'WeightedPool') returns the v2 address (and active=true).
      */
 
-    /// @inheritdoc IBalancerContractRegistry
-    function registerBalancerContract(
+    /// @inheritdoc IBushContractRegistry
+    function registerBushContract(
         ContractType contractType,
         string memory contractName,
         address contractAddress
@@ -160,11 +160,11 @@ contract BalancerContractRegistry is IBalancerContractRegistry, SingletonAuthent
             isActive: true
         });
 
-        emit BalancerContractRegistered(contractType, contractName, contractAddress);
+        emit BushContractRegistered(contractType, contractName, contractAddress);
     }
 
-    /// @inheritdoc IBalancerContractRegistry
-    function deregisterBalancerContract(string memory contractName) external authenticate {
+    /// @inheritdoc IBushContractRegistry
+    function deregisterBushContract(string memory contractName) external authenticate {
         if (bytes(contractName).length == 0) {
             revert InvalidContractName();
         }
@@ -186,11 +186,11 @@ contract BalancerContractRegistry is IBalancerContractRegistry, SingletonAuthent
         delete _contractRegistry[contractId];
         delete _contractInfo[contractAddress];
 
-        emit BalancerContractDeregistered(info.contractType, contractName, contractAddress);
+        emit BushContractDeregistered(info.contractType, contractName, contractAddress);
     }
 
-    /// @inheritdoc IBalancerContractRegistry
-    function deprecateBalancerContract(address contractAddress) external authenticate {
+    /// @inheritdoc IBushContractRegistry
+    function deprecateBushContract(address contractAddress) external authenticate {
         if (contractAddress == address(0)) {
             revert ZeroContractAddress();
         }
@@ -213,11 +213,11 @@ contract BalancerContractRegistry is IBalancerContractRegistry, SingletonAuthent
         info.isActive = false;
         _contractInfo[contractAddress] = info;
 
-        emit BalancerContractDeprecated(contractAddress);
+        emit BushContractDeprecated(contractAddress);
     }
 
-    /// @inheritdoc IBalancerContractRegistry
-    function addOrUpdateBalancerContractAlias(
+    /// @inheritdoc IBushContractRegistry
+    function addOrUpdateBushContractAlias(
         string memory contractAlias,
         address contractAddress
     ) external authenticate {
@@ -254,12 +254,12 @@ contract BalancerContractRegistry is IBalancerContractRegistry, SingletonAuthent
         emit ContractAliasUpdated(contractAlias, contractAddress);
     }
 
-    /// @inheritdoc IBalancerContractRegistry
-    function isActiveBalancerContract(ContractType contractType, address contractAddress) external view returns (bool) {
-        return _isActiveBalancerContract(contractType, contractAddress);
+    /// @inheritdoc IBushContractRegistry
+    function isActiveBushContract(ContractType contractType, address contractAddress) external view returns (bool) {
+        return _isActiveBushContract(contractType, contractAddress);
     }
 
-    function _isActiveBalancerContract(
+    function _isActiveBushContract(
         ContractType contractType,
         address contractAddress
     ) internal view returns (bool) {
@@ -269,8 +269,8 @@ contract BalancerContractRegistry is IBalancerContractRegistry, SingletonAuthent
         return info.isActive && info.contractType == contractType;
     }
 
-    /// @inheritdoc IBalancerContractRegistry
-    function getBalancerContract(
+    /// @inheritdoc IBushContractRegistry
+    function getBushContract(
         ContractType contractType,
         string memory contractName
     ) external view returns (address contractAddress, bool isActive) {
@@ -292,14 +292,14 @@ contract BalancerContractRegistry is IBalancerContractRegistry, SingletonAuthent
         }
     }
 
-    /// @inheritdoc IBalancerContractRegistry
-    function getBalancerContractInfo(address contractAddress) external view returns (ContractInfo memory info) {
+    /// @inheritdoc IBushContractRegistry
+    function getBushContractInfo(address contractAddress) external view returns (ContractInfo memory info) {
         return _contractInfo[contractAddress];
     }
 
-    /// @inheritdoc IBalancerContractRegistry
+    /// @inheritdoc IBushContractRegistry
     function isTrustedRouter(address router) external view returns (bool) {
-        return _isActiveBalancerContract(ContractType.ROUTER, router);
+        return _isActiveBushContract(ContractType.ROUTER, router);
     }
 
     function _getContractId(string memory contractName) internal pure returns (bytes32) {

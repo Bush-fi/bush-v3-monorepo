@@ -36,7 +36,7 @@ struct LBPCommonParams {
 /**
  * @notice Parameters passed down from the factory and passed to the pool on deployment.
  * @dev This struct was factored out initially because of stack-too-deep, but also makes the interface cleaner.
- * @param vault The address of the Balancer Vault
+ * @param vault The address of the Bush Vault
  * @param trustedRouter The address of the trusted router (i.e., one that reliably stores the real sender)
  * @param poolVersion The pool version deployed by the factory
  */

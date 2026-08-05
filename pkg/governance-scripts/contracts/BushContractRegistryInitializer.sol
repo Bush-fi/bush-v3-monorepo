@@ -2,20 +2,20 @@
 
 pragma solidity ^0.8.24;
 
-import { IAuthentication } from "@balancer-labs/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
-import { IBasicAuthorizer } from "@balancer-labs/v3-interfaces/contracts/governance-scripts/IBasicAuthorizer.sol";
+import { IAuthentication } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
+import { IBasicAuthorizer } from "@bush/v3-interfaces/contracts/governance-scripts/IBasicAuthorizer.sol";
 import {
-    IBalancerContractRegistry,
+    IBushContractRegistry,
     ContractType
-} from "@balancer-labs/v3-interfaces/contracts/standalone-utils/IBalancerContractRegistry.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
+} from "@bush/v3-interfaces/contracts/standalone-utils/IBushContractRegistry.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
 
-import { SingletonAuthentication } from "@balancer-labs/v3-vault/contracts/SingletonAuthentication.sol";
-import { InputHelpers } from "@balancer-labs/v3-solidity-utils/contracts/helpers/InputHelpers.sol";
+import { SingletonAuthentication } from "@bush/v3-vault/contracts/SingletonAuthentication.sol";
+import { InputHelpers } from "@bush/v3-solidity-utils/contracts/helpers/InputHelpers.sol";
 
-// Associated with `20250411-balancer-registry-initializer-v2`.
-contract BalancerContractRegistryInitializer {
-    IBalancerContractRegistry public immutable balancerContractRegistry;
+// Associated with `20250411-bush-registry-initializer-v2`.
+contract BushContractRegistryInitializer {
+    IBushContractRegistry public immutable bushContractRegistry;
 
     // IAuthorizer with interface for verifying/revoking roles.
     IBasicAuthorizer internal immutable _authorizer;
@@ -43,7 +43,7 @@ contract BalancerContractRegistryInitializer {
 
     constructor(
         IVault vault,
-        IBalancerContractRegistry balancerContractRegistry_,
+        IBushContractRegistry bushContractRegistry_,
         string[] memory routerNames,
         address[] memory routerAddresses,
         string[] memory poolFactoryNames,
@@ -56,12 +56,12 @@ contract BalancerContractRegistryInitializer {
         InputHelpers.ensureInputLengthMatch(_aliasNames.length, _aliasAddresses.length);
 
         // Extract the Vault (also indirectly verifying the registry contract is valid).
-        IVault registryVault = SingletonAuthentication(address(balancerContractRegistry_)).getVault();
+        IVault registryVault = SingletonAuthentication(address(bushContractRegistry_)).getVault();
         if (registryVault != vault) {
             revert VaultMismatch();
         }
 
-        balancerContractRegistry = balancerContractRegistry_;
+        bushContractRegistry = bushContractRegistry_;
 
         _routerNames = routerNames;
         _routerAddresses = routerAddresses;
@@ -74,15 +74,15 @@ contract BalancerContractRegistryInitializer {
     }
 
     /**
-     * @notice The function that initializes the Balancer contract registry, based on the data supplied on deployment.
+     * @notice The function that initializes the Bush contract registry, based on the data supplied on deployment.
      * @dev This function can only be called once. This contract must be granted permission to call two functions on
-     * the `BalancerContractRegistry` being initialized: `registerBalancerContract` and
-     * `addOrUpdateBalancerContractAlias`. If this is not done, it will revert with `PermissionNotGranted`.
+     * the `BushContractRegistry` being initialized: `registerBushContract` and
+     * `addOrUpdateBushContractAlias`. If this is not done, it will revert with `PermissionNotGranted`.
      *
      * Note that this contract revokes these permissions when the initialization is complete, so this does not need
      * to be done externally.
      */
-    function initializeBalancerContractRegistry() external {
+    function initializeBushContractRegistry() external {
         // Explicitly ensure this can only be called once.
         if (_initialized) {
             revert AlreadyInitialized();
@@ -91,11 +91,11 @@ contract BalancerContractRegistryInitializer {
         _initialized = true;
 
         // Grant permissions to register contracts and add aliases.
-        bytes32 registerContractRole = IAuthentication(address(balancerContractRegistry)).getActionId(
-            IBalancerContractRegistry.registerBalancerContract.selector
+        bytes32 registerContractRole = IAuthentication(address(bushContractRegistry)).getActionId(
+            IBushContractRegistry.registerBushContract.selector
         );
-        bytes32 addAliasRole = IAuthentication(address(balancerContractRegistry)).getActionId(
-            IBalancerContractRegistry.addOrUpdateBalancerContractAlias.selector
+        bytes32 addAliasRole = IAuthentication(address(bushContractRegistry)).getActionId(
+            IBushContractRegistry.addOrUpdateBushContractAlias.selector
         );
 
         // Ensure the contract has been granted the required permissions, given the deployment parameters.
@@ -105,17 +105,17 @@ contract BalancerContractRegistryInitializer {
 
         if (
             ((numRouters > 0 || numPoolFactories > 0) &&
-                _authorizer.canPerform(registerContractRole, address(this), address(balancerContractRegistry)) ==
+                _authorizer.canPerform(registerContractRole, address(this), address(bushContractRegistry)) ==
                 false) ||
             (numAliases > 0 &&
-                _authorizer.canPerform(addAliasRole, address(this), address(balancerContractRegistry)) == false)
+                _authorizer.canPerform(addAliasRole, address(this), address(bushContractRegistry)) == false)
         ) {
             revert PermissionNotGranted();
         }
 
         // Add Routers.
         for (uint256 i = 0; i < numRouters; ++i) {
-            balancerContractRegistry.registerBalancerContract(
+            bushContractRegistry.registerBushContract(
                 ContractType.ROUTER,
                 _routerNames[i],
                 _routerAddresses[i]
@@ -124,7 +124,7 @@ contract BalancerContractRegistryInitializer {
 
         // Add Pool Factories.
         for (uint256 i = 0; i < numPoolFactories; ++i) {
-            balancerContractRegistry.registerBalancerContract(
+            bushContractRegistry.registerBushContract(
                 ContractType.POOL_FACTORY,
                 _poolFactoryNames[i],
                 _poolFactoryAddresses[i]
@@ -133,7 +133,7 @@ contract BalancerContractRegistryInitializer {
 
         // Add aliases.
         for (uint256 i = 0; i < numAliases; ++i) {
-            balancerContractRegistry.addOrUpdateBalancerContractAlias(_aliasNames[i], _aliasAddresses[i]);
+            bushContractRegistry.addOrUpdateBushContractAlias(_aliasNames[i], _aliasAddresses[i]);
         }
 
         // Renounce all roles.

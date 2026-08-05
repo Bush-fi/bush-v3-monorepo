@@ -11,9 +11,9 @@ enum ContractType {
     ERC4626
 }
 
-interface IBalancerContractRegistry {
+interface IBushContractRegistry {
     /**
-     * @notice Store the state of a registered Balancer contract.
+     * @notice Store the state of a registered Bush contract.
      * @dev Contracts can be deprecated, so we store an active flag indicating the status. With two flags, we can
      * differentiate between deprecated and non-existent. The same contract address can have multiple names, but
      * only one type. If a contract is legitimately multiple types (e.g., a hook that also acts as a router), set
@@ -36,7 +36,7 @@ interface IBalancerContractRegistry {
      * @param contractName The name of the contract being registered
      * @param contractAddress The address of the contract being registered
      */
-    event BalancerContractRegistered(
+    event BushContractRegistered(
         ContractType indexed contractType,
         string indexed contractName,
         address indexed contractAddress
@@ -48,7 +48,7 @@ interface IBalancerContractRegistry {
      * @param contractName The name of the contract being deregistered
      * @param contractAddress The address of the contract being deregistered
      */
-    event BalancerContractDeregistered(
+    event BushContractDeregistered(
         ContractType indexed contractType,
         string indexed contractName,
         address indexed contractAddress
@@ -59,7 +59,7 @@ interface IBalancerContractRegistry {
      * @dev This sets the `isActive` flag to false.
      * @param contractAddress The address of the contract being deprecated
      */
-    event BalancerContractDeprecated(address indexed contractAddress);
+    event BushContractDeprecated(address indexed contractAddress);
 
     /**
      * @notice Emitted when an alias is added or updated.
@@ -136,46 +136,46 @@ interface IBalancerContractRegistry {
     error InvalidContractAlias();
 
     /**
-     * @notice Register an official Balancer contract (e.g., a trusted router, standard pool factory, or hook).
+     * @notice Register an official Bush contract (e.g., a trusted router, standard pool factory, or hook).
      * @dev This is a permissioned function, and does only basic validation of the address (non-zero) and the name
      * (not blank). Governance must ensure this is called with valid information. Emits the
-     * `BalancerContractRegistered` event if successful. Reverts if either the name or address is invalid or
+     * `BushContractRegistered` event if successful. Reverts if either the name or address is invalid or
      * already in use.
      *
      * @param contractType The type of contract being registered
      * @param contractName A text description of the contract, usually the deployed version (e.g., "v3-pool-weighted")
      * @param contractAddress The address of the contract
      */
-    function registerBalancerContract(
+    function registerBushContract(
         ContractType contractType,
         string memory contractName,
         address contractAddress
     ) external;
 
     /**
-     * @notice Deregister an official Balancer contract (e.g., a trusted router, standard pool factory, or hook).
+     * @notice Deregister an official Bush contract (e.g., a trusted router, standard pool factory, or hook).
      * @dev This is a permissioned function, and makes it possible to correct errors without complex update logic.
      * If a contract was registered with an incorrect type, name, or address, this allows governance to simply delete
      * it, and register it again with the correct data. It must start with the name, as this is the registry key,
      * required for complete deletion.
      *
      * Note that there might still be an alias targeting the address being deleted, but accessing it will just return
-     * inactive, and this orphan alias can simply be overwritten with `addOrUpdateBalancerContractAlias` to point to
+     * inactive, and this orphan alias can simply be overwritten with `addOrUpdateBushContractAlias` to point to
      * the correct address.
      *
      * @param contractName The name of the contract being deprecated (cannot be an alias)
      */
-    function deregisterBalancerContract(string memory contractName) external;
+    function deregisterBushContract(string memory contractName) external;
 
     /**
-     * @notice Deprecate an official Balancer contract.
+     * @notice Deprecate an official Bush contract.
      * @dev This is a permissioned function that sets the `isActive` flag to false in the contract info. It uses the
      * address instead of the name for maximum clarity, and to avoid having to handle aliases. Addresses and names are
      * enforced unique, so either the name or address could be specified in principle.
      *
      * @param contractAddress The address of the contract being deprecated
      */
-    function deprecateBalancerContract(address contractAddress) external;
+    function deprecateBushContract(address contractAddress) external;
 
     /**
      * @notice Add an alias for a registered contract.
@@ -187,7 +187,7 @@ interface IBalancerContractRegistry {
      * @param contractAlias An alternate name that can be used to fetch a contract address
      * @param existingContract The target address of the contract alias
      */
-    function addOrUpdateBalancerContractAlias(string memory contractAlias, address existingContract) external;
+    function addOrUpdateBushContractAlias(string memory contractAlias, address existingContract) external;
 
     /**
      * @notice Determine whether an address is an official contract of the specified type.
@@ -195,7 +195,7 @@ interface IBalancerContractRegistry {
      * @param contractAddress The address of the contract
      * @return isActive True if the given address is a registered and active contract of the specified type
      */
-    function isActiveBalancerContract(
+    function isActiveBushContract(
         ContractType contractType,
         address contractAddress
     ) external view returns (bool isActive);
@@ -210,7 +210,7 @@ interface IBalancerContractRegistry {
      * @return contractAddress The address of the associated contract, if registered, or zero
      * @return isActive True if the contract was registered and not deprecated
      */
-    function getBalancerContract(
+    function getBushContract(
         ContractType contractType,
         string memory contractName
     ) external view returns (address contractAddress, bool isActive);
@@ -220,7 +220,7 @@ interface IBalancerContractRegistry {
      * @param contractAddress The address of the associated contract
      * @return info ContractInfo struct corresponding to the address
      */
-    function getBalancerContractInfo(address contractAddress) external view returns (ContractInfo memory info);
+    function getBushContractInfo(address contractAddress) external view returns (ContractInfo memory info);
 
     /// @notice Returns `true` if the given address is an active contract under the ROUTER type.
     function isTrustedRouter(address router) external view returns (bool);

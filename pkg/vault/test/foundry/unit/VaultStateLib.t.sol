@@ -4,8 +4,8 @@ pragma solidity ^0.8.24;
 
 import "forge-std/Test.sol";
 
-import { WordCodec } from "@balancer-labs/v3-solidity-utils/contracts/helpers/WordCodec.sol";
-import { BaseBitsConfigTest } from "@balancer-labs/v3-solidity-utils/test/foundry/utils/BaseBitsConfigTest.sol";
+import { WordCodec } from "@bush/v3-solidity-utils/contracts/helpers/WordCodec.sol";
+import { BaseBitsConfigTest } from "@bush/v3-solidity-utils/test/foundry/utils/BaseBitsConfigTest.sol";
 
 import { VaultStateLib, VaultStateBits, VaultStateBits } from "../../../contracts/lib/VaultStateLib.sol";
 

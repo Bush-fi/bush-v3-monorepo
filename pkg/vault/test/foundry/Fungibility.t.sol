@@ -4,9 +4,9 @@ pragma solidity ^0.8.24;
 
 import "forge-std/Test.sol";
 
-import { FixedPoint } from "@balancer-labs/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
 
-import { BalancerPoolToken } from "../../contracts/BalancerPoolToken.sol";
+import { BushPoolToken } from "../../contracts/BushPoolToken.sol";
 import { BaseVaultTest } from "./utils/BaseVaultTest.sol";
 
 contract FungibilityTest is BaseVaultTest {
@@ -31,7 +31,7 @@ contract FungibilityTest is BaseVaultTest {
             maxAmountsIn[i] = MAX_UINT128;
         }
 
-        uint256 totalSupplyBefore = BalancerPoolToken(pool).totalSupply();
+        uint256 totalSupplyBefore = BushPoolToken(pool).totalSupply();
         uint256 exactBptOutProportional = totalSupplyBefore.mulDown(proportion);
 
         uint256 snapshotId = vm.snapshotState();

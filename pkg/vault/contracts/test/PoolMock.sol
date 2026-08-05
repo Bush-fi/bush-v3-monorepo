@@ -2,25 +2,25 @@
 
 pragma solidity ^0.8.24;
 
-import { IPoolLiquidity } from "@balancer-labs/v3-interfaces/contracts/vault/IPoolLiquidity.sol";
-import { IBasePool } from "@balancer-labs/v3-interfaces/contracts/vault/IBasePool.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
-import "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IPoolLiquidity } from "@bush/v3-interfaces/contracts/vault/IPoolLiquidity.sol";
+import { IBasePool } from "@bush/v3-interfaces/contracts/vault/IBasePool.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { FixedPoint } from "@balancer-labs/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
 
-import { BalancerPoolToken } from "../BalancerPoolToken.sol";
+import { BushPoolToken } from "../BushPoolToken.sol";
 
-contract PoolMock is IBasePool, IPoolLiquidity, BalancerPoolToken {
+contract PoolMock is IBasePool, IPoolLiquidity, BushPoolToken {
     using FixedPoint for uint256;
 
     // Amounts in are multiplied by the multiplier, amounts out are divided by it.
     uint256 private _multiplier = FixedPoint.ONE;
 
-    // If non-zero, use this return value for `getRate` (otherwise, defer to BalancerPoolToken's base implementation).
+    // If non-zero, use this return value for `getRate` (otherwise, defer to BushPoolToken's base implementation).
     uint256 private _mockRate;
 
-    constructor(IVault vault, string memory name, string memory symbol) BalancerPoolToken(vault, name, symbol) {
+    constructor(IVault vault, string memory name, string memory symbol) BushPoolToken(vault, name, symbol) {
         // solhint-previous-line no-empty-blocks
     }
 

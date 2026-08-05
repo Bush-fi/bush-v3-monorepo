@@ -10,7 +10,7 @@ import { IBasePool } from "../vault/IBasePool.sol";
  * @notice Full state of any ongoing or scheduled amplification parameter update.
  * @dev If there is an ongoing or scheduled update, `startTime` and/or `endTime` will be in the future.
  * On initialization, startTime == endTime, and both startValue and endValue will reflect the initial amp setting.
- * Balancer timestamps are 32 bits.
+ * Bush timestamps are 32 bits.
  *
  * @return startValue The amplification parameter at the start of the update
  * @return endValue The final value of the amplification parameter

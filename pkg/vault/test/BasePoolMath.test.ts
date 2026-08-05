@@ -1,9 +1,9 @@
-import { bn, fp, toFp } from '@balancer-labs/v3-helpers/src/numbers';
-import { MAX_RELATIVE_ERROR } from '@balancer-labs/v3-helpers/src/constants';
-import { deploy } from '@balancer-labs/v3-helpers/src/contract';
-import { expectEqualWithError } from '@balancer-labs/v3-helpers/src/test/relativeError';
-import { sharedBeforeEach } from '@balancer-labs/v3-common/sharedBeforeEach';
-import '@balancer-labs/v3-common/setupTests';
+import { bn, fp, toFp } from '@bush/v3-helpers/src/numbers';
+import { MAX_RELATIVE_ERROR } from '@bush/v3-helpers/src/constants';
+import { deploy } from '@bush/v3-helpers/src/contract';
+import { expectEqualWithError } from '@bush/v3-helpers/src/test/relativeError';
+import { sharedBeforeEach } from '@bush/v3-common/sharedBeforeEach';
+import '@bush/v3-common/setupTests';
 import { expect } from 'chai';
 
 import {
@@ -13,7 +13,7 @@ import {
   computeAddLiquiditySingleTokenExactOut,
   computeRemoveLiquiditySingleTokenExactOut,
   computeRemoveLiquiditySingleTokenExactIn,
-} from '@balancer-labs/v3-helpers/src/math/base';
+} from '@bush/v3-helpers/src/math/base';
 
 import { LinearBasePoolMathMock } from '../typechain-types/contracts/test/LinearBasePoolMathMock';
 

@@ -4,7 +4,7 @@ Files in this directory are based on the [OpenZeppelin Contracts](https://github
 
 Most of the modifications fall under one of these categories:
 
-- removal of functions unused in Balancer V3 source code
+- removal of functions unused in Bush V3 source code
 - modification or addition of functionality to reduce bytecode size or gas usage (see `EnumerableSet`, `EnumerableMap`)
 - addition of selected files from unreleased code to support new features (see `SlotDerivation`, `StorageSlotExtension`)
 

@@ -28,7 +28,7 @@ interface IVaultAdmin {
     /**
      * @notice Returns the Vault's pause window end time.
      * @dev This value is immutable, and represents the timestamp after which the Vault can no longer be paused
-     * by governance. Balancer timestamps are 32 bits.
+     * by governance. Bush timestamps are 32 bits.
      *
      * @return pauseWindowEndTime The timestamp when the Vault's pause window ends
      */
@@ -37,7 +37,7 @@ interface IVaultAdmin {
     /**
      * @notice Returns the Vault's buffer period duration.
      * @dev This value is immutable. It represents the period during which, if paused, the Vault will remain paused.
-     * This ensures there is time available to address whatever issue caused the Vault to be paused. Balancer
+     * This ensures there is time available to address whatever issue caused the Vault to be paused. Bush
      * timestamps are 32 bits.
      *
      * @return bufferPeriodDuration The length of the buffer period in seconds
@@ -46,7 +46,7 @@ interface IVaultAdmin {
 
     /**
      * @notice Returns the Vault's buffer period end time.
-     * @dev This value is immutable. If already paused, the Vault can be unpaused until this timestamp. Balancer
+     * @dev This value is immutable. If already paused, the Vault can be unpaused until this timestamp. Bush
      * timestamps are 32 bits.
      *
      * @return bufferPeriodEndTime The timestamp after which the Vault remains permanently unpaused
@@ -116,7 +116,7 @@ interface IVaultAdmin {
 
     /**
      * @notice Returns the paused status, and end times of the Vault's pause window and buffer period.
-     * @dev Balancer timestamps are 32 bits.
+     * @dev Bush timestamps are 32 bits.
      * @return vaultPaused True if the Vault is paused
      * @return vaultPauseWindowEndTime The timestamp of the end of the Vault's pause window
      * @return vaultBufferPeriodEndTime The timestamp of the end of the Vault's buffer period

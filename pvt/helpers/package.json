@@ -1,5 +1,5 @@
 {
-  "name": "@balancer-labs/v3-helpers",
+  "name": "@bush/v3-helpers",
   "description": "Internal helpers",
   "private": true,
   "version": "1.0.0",

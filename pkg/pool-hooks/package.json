@@ -1,7 +1,7 @@
 {
-  "name": "@balancer-labs/v3-pool-hooks",
+  "name": "@bush/v3-pool-hooks",
   "version": "0.1.0",
-  "description": "Balancer V3 Pool Hooks",
+  "description": "Bush V3 Pool Hooks",
   "license": "GPL-3.0-only",
   "homepage": "https://github.com/balancer-labs/balancer-v3-monorepo/tree/master/pkg/pool-hooks#readme",
   "repository": {
@@ -37,12 +37,12 @@
     "slither:triage": "yarn compile && bash -c 'source ../../slither/bin/activate && slither --compile-force-framework hardhat --ignore-compile . --config-file ../../.slither.config.json --triage-mode'"
   },
   "dependencies": {
-    "@balancer-labs/v3-interfaces": "workspace:*"
+    "@bush/v3-interfaces": "workspace:*"
   },
   "devDependencies": {
-    "@balancer-labs/solidity-toolbox": "workspace:*",
-    "@balancer-labs/v3-solidity-utils": "workspace:*",
-    "@balancer-labs/v3-standalone-utils": "workspace:*",
+    "@bush/solidity-toolbox": "workspace:*",
+    "@bush/v3-solidity-utils": "workspace:*",
+    "@bush/v3-standalone-utils": "workspace:*",
     "@typescript-eslint/eslint-plugin": "^5.41.0",
     "@typescript-eslint/parser": "^5.41.0",
     "eslint": "^8.26.0",

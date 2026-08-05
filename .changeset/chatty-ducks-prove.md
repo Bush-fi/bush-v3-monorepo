@@ -1,5 +1,5 @@
 ---
-'@balancer-labs/v3-standalone-utils': patch
+'@bush/v3-standalone-utils': patch
 ---
 
 Minor fix: Explicit casts for `PriceImpactHelper` and `CowSwapFeeBurner`.

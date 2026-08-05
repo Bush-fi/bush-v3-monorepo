@@ -2,8 +2,8 @@
 
 pragma solidity ^0.8.24;
 
-import { PoolSwapParams, Rounding } from "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
-import { IBasePool } from "@balancer-labs/v3-interfaces/contracts/vault/IBasePool.sol";
+import { PoolSwapParams, Rounding } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IBasePool } from "@bush/v3-interfaces/contracts/vault/IBasePool.sol";
 
 import { BasePoolMath } from "../BasePoolMath.sol";
 

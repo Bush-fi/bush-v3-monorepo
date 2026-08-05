@@ -16,10 +16,10 @@ export type ContractDeploymentParams = {
 
 // Deploys a contract, with optional `from` address and arguments.
 // Local contracts are deployed by simply passing the contract name, contracts from other packages must be prefixed by
-// the package name, without the @balancer-labs scope. Note that the full path is never required.
+// the package name, without the @bush scope. Note that the full path is never required.
 //
 // For example, to deploy Vault.sol from the package that holds its artifacts, use `deploy('Vault')`. To deploy it from
-// a different package, use `deploy('v3-vault/Vault')`, assuming the Vault's package is @balancer-labs/v3-vault.
+// a different package, use `deploy('v3-vault/Vault')`, assuming the Vault's package is @bush/v3-vault.
 export async function deploy<T>(
   contract: string,
   { from, args, libraries }: ContractDeploymentParams = {}
@@ -47,7 +47,7 @@ export function getArtifact(contract: string): Artifact {
   if (!contract.includes('/')) {
     artifactsPath = path.resolve('./artifacts');
   } else {
-    const packageName = `@balancer-labs/${contract.split('/')[0]}`;
+    const packageName = `@bush/${contract.split('/')[0]}`;
     const packagePath = path.dirname(require.resolve(`${packageName}/package.json`));
     artifactsPath = `${packagePath}/artifacts`;
   }

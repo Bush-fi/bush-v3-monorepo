@@ -2,12 +2,12 @@
 
 pragma solidity ^0.8.24;
 
-import { StorageSlotExtension } from "@balancer-labs/v3-solidity-utils/contracts/openzeppelin/StorageSlotExtension.sol";
+import { StorageSlotExtension } from "@bush/v3-solidity-utils/contracts/openzeppelin/StorageSlotExtension.sol";
 
 import {
     TransientStorageHelpers,
     TokenDeltaMappingSlotType
-} from "@balancer-labs/v3-solidity-utils/contracts/helpers/TransientStorageHelpers.sol";
+} from "@bush/v3-solidity-utils/contracts/helpers/TransientStorageHelpers.sol";
 
 import { BaseVaultTest } from "./utils/BaseVaultTest.sol";
 

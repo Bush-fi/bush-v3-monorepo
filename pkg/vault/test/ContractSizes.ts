@@ -1,5 +1,5 @@
-import { getArtifact } from '@balancer-labs/v3-helpers/src/contract';
-import { saveSizeSnap } from '@balancer-labs/v3-helpers/src/contract-size';
+import { getArtifact } from '@bush/v3-helpers/src/contract';
+import { saveSizeSnap } from '@bush/v3-helpers/src/contract-size';
 
 describe('ContractSizes', function () {
   it('calculates and stores contract sizes', async () => {

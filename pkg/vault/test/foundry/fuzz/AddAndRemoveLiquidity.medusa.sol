@@ -4,9 +4,9 @@ pragma solidity ^0.8.24;
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { FixedPoint } from "@balancer-labs/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
 
-import { BalancerPoolToken } from "../../../contracts/BalancerPoolToken.sol";
+import { BushPoolToken } from "../../../contracts/BushPoolToken.sol";
 
 import "../utils/BaseMedusaTest.sol";
 
@@ -324,8 +324,8 @@ contract AddAndRemoveLiquidityMedusaTest is BaseMedusaTest {
 
         // Use a tighter cap than boundBptBurn for single-token exits, which can drive the
         // pool into extreme imbalance if too much BPT is burned at once.
-        uint256 totalSupply = BalancerPoolToken(address(pool)).totalSupply();
-        uint256 lpBalance = BalancerPoolToken(address(pool)).balanceOf(lp);
+        uint256 totalSupply = BushPoolToken(address(pool)).totalSupply();
+        uint256 lpBalance = BushPoolToken(address(pool)).balanceOf(lp);
         uint256 maxBurn = totalSupply / 100; // 1% of supply max for single-token exit
         if (maxBurn > lpBalance) maxBurn = lpBalance;
         if (maxBurn < _MINIMUM_TRADE_AMOUNT) return 0;
@@ -411,7 +411,7 @@ contract AddAndRemoveLiquidityMedusaTest is BaseMedusaTest {
     }
 
     function boundBptMint(uint256 bptAmount) internal view virtual returns (uint256 boundedAmt) {
-        uint256 totalSupply = BalancerPoolToken(address(pool)).totalSupply();
+        uint256 totalSupply = BushPoolToken(address(pool)).totalSupply();
         (IERC20[] memory tokens, , uint256[] memory balancesRaw, ) = vault.getPoolTokenInfo(address(pool));
 
         uint256 maxAffordable = _MAX_BALANCE - totalSupply;
@@ -429,8 +429,8 @@ contract AddAndRemoveLiquidityMedusaTest is BaseMedusaTest {
     }
 
     function boundBptBurn(uint256 bptAmt) internal view virtual returns (uint256 boundedAmt) {
-        uint256 totalSupply = BalancerPoolToken(address(pool)).totalSupply();
-        uint256 lpBalance = BalancerPoolToken(address(pool)).balanceOf(lp);
+        uint256 totalSupply = BushPoolToken(address(pool)).totalSupply();
+        uint256 lpBalance = BushPoolToken(address(pool)).balanceOf(lp);
         uint256 maxBurn = totalSupply - _POOL_MINIMUM_TOTAL_SUPPLY;
 
         if (maxBurn > lpBalance) maxBurn = lpBalance;

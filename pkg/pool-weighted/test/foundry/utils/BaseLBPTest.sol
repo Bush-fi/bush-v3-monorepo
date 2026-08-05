@@ -4,12 +4,12 @@ pragma solidity ^0.8.24;
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { ContractType } from "@balancer-labs/v3-interfaces/contracts/standalone-utils/IBalancerContractRegistry.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
+import { ContractType } from "@bush/v3-interfaces/contracts/standalone-utils/IBushContractRegistry.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
 
-import { BalancerContractRegistry } from "@balancer-labs/v3-standalone-utils/contracts/BalancerContractRegistry.sol";
-import { ArrayHelpers } from "@balancer-labs/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
-import { BaseVaultTest } from "@balancer-labs/v3-vault/test/foundry/utils/BaseVaultTest.sol";
+import { BushContractRegistry } from "@bush/v3-standalone-utils/contracts/BushContractRegistry.sol";
+import { ArrayHelpers } from "@bush/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
+import { BaseVaultTest } from "@bush/v3-vault/test/foundry/utils/BaseVaultTest.sol";
 
 import { WeightedPoolContractsDeployer } from "./WeightedPoolContractsDeployer.sol";
 import { WeightedPoolFactory } from "../../../contracts/WeightedPoolFactory.sol";
@@ -49,7 +49,7 @@ abstract contract BaseLBPTest is BaseVaultTest, WeightedPoolContractsDeployer {
 
     uint256[] internal poolInitAmountsNon18;
 
-    BalancerContractRegistry internal balancerContractRegistry;
+    BushContractRegistry internal bushContractRegistry;
     WeightedPoolFactory internal weightedPoolFactory;
 
     function setUp() public virtual override {
@@ -78,18 +78,18 @@ abstract contract BaseLBPTest is BaseVaultTest, WeightedPoolContractsDeployer {
             "Weighted Pool v1"
         );
 
-        balancerContractRegistry = new BalancerContractRegistry(IVault(address(vault)));
+        bushContractRegistry = new BushContractRegistry(IVault(address(vault)));
         authorizer.grantRole(
-            balancerContractRegistry.getActionId(BalancerContractRegistry.registerBalancerContract.selector),
+            bushContractRegistry.getActionId(BushContractRegistry.registerBushContract.selector),
             admin
         );
         authorizer.grantRole(
-            balancerContractRegistry.getActionId(BalancerContractRegistry.deprecateBalancerContract.selector),
+            bushContractRegistry.getActionId(BushContractRegistry.deprecateBushContract.selector),
             admin
         );
 
         vm.prank(admin);
-        balancerContractRegistry.registerBalancerContract(
+        bushContractRegistry.registerBushContract(
             ContractType.POOL_FACTORY,
             "WeightedPool",
             address(weightedPoolFactory)

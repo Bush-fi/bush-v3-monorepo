@@ -5,21 +5,21 @@ pragma solidity ^0.8.24;
 import { SafeERC20 } from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { IProtocolFeeSweeper } from "@balancer-labs/v3-interfaces/contracts/standalone-utils/IProtocolFeeSweeper.sol";
-import { IAuthentication } from "@balancer-labs/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
-import { IProtocolFeeBurner } from "@balancer-labs/v3-interfaces/contracts/standalone-utils/IProtocolFeeBurner.sol";
-import { IProtocolFeeController } from "@balancer-labs/v3-interfaces/contracts/vault/IProtocolFeeController.sol";
-import { IBalancerFeeBurner } from "@balancer-labs/v3-interfaces/contracts/standalone-utils/IBalancerFeeBurner.sol";
-import { SwapPathStep } from "@balancer-labs/v3-interfaces/contracts/vault/BatchRouterTypes.sol";
-import { IVaultErrors } from "@balancer-labs/v3-interfaces/contracts/vault/IVaultErrors.sol";
+import { IProtocolFeeSweeper } from "@bush/v3-interfaces/contracts/standalone-utils/IProtocolFeeSweeper.sol";
+import { IAuthentication } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
+import { IProtocolFeeBurner } from "@bush/v3-interfaces/contracts/standalone-utils/IProtocolFeeBurner.sol";
+import { IProtocolFeeController } from "@bush/v3-interfaces/contracts/vault/IProtocolFeeController.sol";
+import { IBushFeeBurner } from "@bush/v3-interfaces/contracts/standalone-utils/IBushFeeBurner.sol";
+import { SwapPathStep } from "@bush/v3-interfaces/contracts/vault/BatchRouterTypes.sol";
+import { IVaultErrors } from "@bush/v3-interfaces/contracts/vault/IVaultErrors.sol";
 
-import { ArrayHelpers } from "@balancer-labs/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
-import { BaseVaultTest } from "@balancer-labs/v3-vault/test/foundry/utils/BaseVaultTest.sol";
+import { ArrayHelpers } from "@bush/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
+import { BaseVaultTest } from "@bush/v3-vault/test/foundry/utils/BaseVaultTest.sol";
 
 import { ProtocolFeeSweeper } from "../../contracts/ProtocolFeeSweeper.sol";
-import { BalancerFeeBurner } from "../../contracts/BalancerFeeBurner.sol";
+import { BushFeeBurner } from "../../contracts/BushFeeBurner.sol";
 
-contract BalancerFeeBurnerTest is BaseVaultTest {
+contract BushFeeBurnerTest is BaseVaultTest {
     using SafeERC20 for IERC20;
     using ArrayHelpers for *;
 
@@ -33,7 +33,7 @@ contract BalancerFeeBurnerTest is BaseVaultTest {
     IAuthentication internal feeBurnerAuth;
     IAuthentication internal feeSweeperAuth;
 
-    IBalancerFeeBurner internal feeBurner;
+    IBushFeeBurner internal feeBurner;
     IProtocolFeeSweeper internal feeSweeper;
 
     address daiWethPool;
@@ -53,7 +53,7 @@ contract BalancerFeeBurnerTest is BaseVaultTest {
         feeSweeper = new ProtocolFeeSweeper(vault, alice);
 
         orderDeadline = block.timestamp + ORDER_LIFETIME;
-        feeBurner = new BalancerFeeBurner(vault, feeSweeper, admin);
+        feeBurner = new BushFeeBurner(vault, feeSweeper, admin);
 
         feeBurnerAuth = IAuthentication(address(feeBurner));
         feeSweeperAuth = IAuthentication(address(feeSweeper));
@@ -446,15 +446,15 @@ contract BalancerFeeBurnerTest is BaseVaultTest {
         feeBurner.setBurnPath(dai, steps);
 
         vm.startPrank(address(feeSweeper));
-        vm.expectRevert(IBalancerFeeBurner.TargetTokenOutMismatch.selector);
+        vm.expectRevert(IBushFeeBurner.TargetTokenOutMismatch.selector);
         feeBurner.burn(address(0), dai, TEST_BURN_AMOUNT, weth, MIN_TARGET_TOKEN_AMOUNT, alice, orderDeadline);
         vm.stopPrank();
     }
 
     function testBurnHookRevertIfCallerNotVault() external {
         vm.expectRevert(abi.encodeWithSelector(IVaultErrors.SenderIsNotVault.selector, address(this)));
-        BalancerFeeBurner(address(feeBurner)).burnHook(
-            IBalancerFeeBurner.BurnHookParams({
+        BushFeeBurner(address(feeBurner)).burnHook(
+            IBushFeeBurner.BurnHookParams({
                 pool: address(0),
                 sender: address(0),
                 feeToken: dai,
@@ -468,7 +468,7 @@ contract BalancerFeeBurnerTest is BaseVaultTest {
     }
 
     function testGetBurnPathRevertIfPathNotExists() external {
-        vm.expectRevert(IBalancerFeeBurner.BurnPathDoesNotExist.selector);
+        vm.expectRevert(IBushFeeBurner.BurnPathDoesNotExist.selector);
         feeBurner.getBurnPath(dai);
     }
 
@@ -514,7 +514,7 @@ contract BalancerFeeBurnerTest is BaseVaultTest {
         steps[0] = SwapPathStep({ pool: address(0x1234), tokenOut: dai, isBuffer: true });
 
         vm.prank(alice);
-        vm.expectRevert(abi.encodeWithSelector(IBalancerFeeBurner.BufferNotInitialized.selector, address(0x1234)));
+        vm.expectRevert(abi.encodeWithSelector(IBushFeeBurner.BufferNotInitialized.selector, address(0x1234)));
         feeBurner.setBurnPath(dai, steps);
     }
 
@@ -523,7 +523,7 @@ contract BalancerFeeBurnerTest is BaseVaultTest {
         steps[0] = SwapPathStep({ pool: daiUsdcPool, tokenOut: usdc, isBuffer: false });
 
         vm.prank(alice);
-        vm.expectRevert(abi.encodeWithSelector(IBalancerFeeBurner.TokenDoesNotExistInPool.selector, weth, 0));
+        vm.expectRevert(abi.encodeWithSelector(IBushFeeBurner.TokenDoesNotExistInPool.selector, weth, 0));
         feeBurner.setBurnPath(weth, steps);
     }
 
@@ -532,7 +532,7 @@ contract BalancerFeeBurnerTest is BaseVaultTest {
         steps[0] = SwapPathStep({ pool: daiUsdcPool, tokenOut: weth, isBuffer: false });
 
         vm.prank(alice);
-        vm.expectRevert(abi.encodeWithSelector(IBalancerFeeBurner.TokenDoesNotExistInPool.selector, weth, 0));
+        vm.expectRevert(abi.encodeWithSelector(IBushFeeBurner.TokenDoesNotExistInPool.selector, weth, 0));
         feeBurner.setBurnPath(dai, steps);
     }
 
@@ -541,7 +541,7 @@ contract BalancerFeeBurnerTest is BaseVaultTest {
         steps[0] = SwapPathStep({ pool: address(waDAI), tokenOut: waDAI, isBuffer: true });
 
         vm.prank(alice);
-        vm.expectRevert(abi.encodeWithSelector(IBalancerFeeBurner.InvalidBufferTokenOut.selector, waDAI, 0));
+        vm.expectRevert(abi.encodeWithSelector(IBushFeeBurner.InvalidBufferTokenOut.selector, waDAI, 0));
         feeBurner.setBurnPath(waDAI, steps);
     }
 
@@ -550,7 +550,7 @@ contract BalancerFeeBurnerTest is BaseVaultTest {
         steps[0] = SwapPathStep({ pool: address(waDAI), tokenOut: dai, isBuffer: true });
 
         vm.prank(alice);
-        vm.expectRevert(abi.encodeWithSelector(IBalancerFeeBurner.InvalidBufferTokenOut.selector, dai, 0));
+        vm.expectRevert(abi.encodeWithSelector(IBushFeeBurner.InvalidBufferTokenOut.selector, dai, 0));
         feeBurner.setBurnPath(dai, steps);
     }
 

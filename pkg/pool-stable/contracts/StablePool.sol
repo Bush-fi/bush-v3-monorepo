@@ -4,29 +4,29 @@ pragma solidity ^0.8.24;
 
 import { SafeCast } from "@openzeppelin/contracts/utils/math/SafeCast.sol";
 
-import { ISwapFeePercentageBounds } from "@balancer-labs/v3-interfaces/contracts/vault/ISwapFeePercentageBounds.sol";
+import { ISwapFeePercentageBounds } from "@bush/v3-interfaces/contracts/vault/ISwapFeePercentageBounds.sol";
 import {
     IUnbalancedLiquidityInvariantRatioBounds
-} from "@balancer-labs/v3-interfaces/contracts/vault/IUnbalancedLiquidityInvariantRatioBounds.sol";
-import { IBasePool } from "@balancer-labs/v3-interfaces/contracts/vault/IBasePool.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
+} from "@bush/v3-interfaces/contracts/vault/IUnbalancedLiquidityInvariantRatioBounds.sol";
+import { IBasePool } from "@bush/v3-interfaces/contracts/vault/IBasePool.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
 import {
     IStablePool,
     StablePoolDynamicData,
     StablePoolImmutableData,
     AmplificationState
-} from "@balancer-labs/v3-interfaces/contracts/pool-stable/IStablePool.sol";
-import "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+} from "@bush/v3-interfaces/contracts/pool-stable/IStablePool.sol";
+import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { BasePoolAuthentication } from "@balancer-labs/v3-pool-utils/contracts/BasePoolAuthentication.sol";
-import { BalancerPoolToken } from "@balancer-labs/v3-vault/contracts/BalancerPoolToken.sol";
-import { FixedPoint } from "@balancer-labs/v3-solidity-utils/contracts/math/FixedPoint.sol";
-import { StableMath } from "@balancer-labs/v3-solidity-utils/contracts/math/StableMath.sol";
-import { Version } from "@balancer-labs/v3-solidity-utils/contracts/helpers/Version.sol";
-import { PoolInfo } from "@balancer-labs/v3-pool-utils/contracts/PoolInfo.sol";
+import { BasePoolAuthentication } from "@bush/v3-pool-utils/contracts/BasePoolAuthentication.sol";
+import { BushPoolToken } from "@bush/v3-vault/contracts/BushPoolToken.sol";
+import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { StableMath } from "@bush/v3-solidity-utils/contracts/math/StableMath.sol";
+import { Version } from "@bush/v3-solidity-utils/contracts/helpers/Version.sol";
+import { PoolInfo } from "@bush/v3-pool-utils/contracts/PoolInfo.sol";
 
 /**
- * @notice Standard Balancer Stable Pool.
+ * @notice Standard Bush Stable Pool.
  * @dev Stable Pools are designed for assets that are either expected to consistently swap at near parity,
  * or at a known exchange rate. Stable Pools use `StableMath` (based on StableSwap, popularized by Curve),
  * which allows for swaps of significant size before encountering substantial price impact, vastly
@@ -41,7 +41,7 @@ import { PoolInfo } from "@balancer-labs/v3-pool-utils/contracts/PoolInfo.sol";
  *
  * The swap fee percentage is bounded by minimum and maximum values (same as were used in v2).
  */
-contract StablePool is IStablePool, BalancerPoolToken, BasePoolAuthentication, PoolInfo, Version {
+contract StablePool is IStablePool, BushPoolToken, BasePoolAuthentication, PoolInfo, Version {
     using FixedPoint for uint256;
     using SafeCast for *;
 
@@ -120,7 +120,7 @@ contract StablePool is IStablePool, BalancerPoolToken, BasePoolAuthentication, P
         NewPoolParams memory params,
         IVault vault
     )
-        BalancerPoolToken(vault, params.name, params.symbol)
+        BushPoolToken(vault, params.name, params.symbol)
         BasePoolAuthentication(vault, msg.sender)
         PoolInfo(vault)
         Version(params.version)

@@ -4,11 +4,11 @@ pragma solidity ^0.8.24;
 
 import { Address } from "@openzeppelin/contracts/utils/Address.sol";
 
-import { IAuthorizer } from "@balancer-labs/v3-interfaces/contracts/vault/IAuthorizer.sol";
+import { IAuthorizer } from "@bush/v3-interfaces/contracts/vault/IAuthorizer.sol";
 
 import {
     ReentrancyGuardTransient
-} from "@balancer-labs/v3-solidity-utils/contracts/openzeppelin/ReentrancyGuardTransient.sol";
+} from "@bush/v3-solidity-utils/contracts/openzeppelin/ReentrancyGuardTransient.sol";
 
 import { TimelockAuthorizer } from "./TimelockAuthorizer.sol";
 

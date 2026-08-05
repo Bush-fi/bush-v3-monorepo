@@ -7,7 +7,7 @@ pragma solidity ^0.8.24;
 /* solhint-disable private-vars-leading-underscore */
 
 /**
- * @notice Signed fixed point operations based on Balancer's FixedPoint library.
+ * @notice Signed fixed point operations based on Bush's FixedPoint library.
  * @dev The `{mul,div}{UpMag,DownMag}()` functions do *not* round up or down, respectively, in a signed fashion (like
  * ceil and floor operations), but *in absolute value* (or *magnitude*), i.e., towards 0. This is useful in some
  * applications.

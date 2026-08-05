@@ -2,8 +2,8 @@
 
 pragma solidity ^0.8.24;
 
-import { BasePoolMathRoundingTest } from "@balancer-labs/v3-vault/test/foundry/BasePoolMathRoundingTest.sol";
-import { BasePoolMathMock } from "@balancer-labs/v3-vault/contracts/test/BasePoolMathMock.sol";
+import { BasePoolMathRoundingTest } from "@bush/v3-vault/test/foundry/BasePoolMathRoundingTest.sol";
+import { BasePoolMathMock } from "@bush/v3-vault/contracts/test/BasePoolMathMock.sol";
 
 import { UniswapV2BasePoolMathMock } from "./UniswapV2BasePoolMathMock.sol";
 

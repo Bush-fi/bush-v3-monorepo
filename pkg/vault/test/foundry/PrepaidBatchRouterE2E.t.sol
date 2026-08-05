@@ -8,8 +8,8 @@ import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {
     SwapPathExactAmountIn,
     SwapPathExactAmountOut
-} from "@balancer-labs/v3-interfaces/contracts/vault/BatchRouterTypes.sol";
-import { SwapKind } from "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+} from "@bush/v3-interfaces/contracts/vault/BatchRouterTypes.sol";
+import { SwapKind } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 import { BatchRouterE2ETest } from "./BatchRouterE2E.t.sol";
 
 contract PrepaidBatchRouterE2ETest is BatchRouterE2ETest {

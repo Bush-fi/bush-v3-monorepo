@@ -76,17 +76,17 @@ const COMPILER_0_8_26 = compilers.find((compiler) => compiler.version === '0.8.2
 /* eslint-enable @typescript-eslint/no-non-null-assertion */
 
 const contractSettings: ContractSettings = {
-  '@balancer-labs/v3-vault/contracts': {
+  '@bush/v3-vault/contracts': {
     version: COMPILER_0_8_26.version,
     runs: COMPILER_0_8_26.settings.optimizer.runs,
     viaIR,
   },
-  '@balancer-labs/v3-vault/contracts/Vault.sol': {
+  '@bush/v3-vault/contracts/Vault.sol': {
     version: COMPILER_0_8_26.version,
     runs: 500,
     viaIR,
   },
-  '@balancer-labs/v3-vault/contracts/VaultExtension.sol': {
+  '@bush/v3-vault/contracts/VaultExtension.sol': {
     version: COMPILER_0_8_26.version,
     runs: 500,
     viaIR,

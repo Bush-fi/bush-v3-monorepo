@@ -4,15 +4,15 @@ pragma solidity ^0.8.24;
 
 import { IPermit2 } from "permit2/src/interfaces/IPermit2.sol";
 
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
-import { IWETH } from "@balancer-labs/v3-interfaces/contracts/solidity-utils/misc/IWETH.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import { IWETH } from "@bush/v3-interfaces/contracts/solidity-utils/misc/IWETH.sol";
 
 import {
     AddressToUintMappingSlot
-} from "@balancer-labs/v3-solidity-utils/contracts/helpers/TransientStorageHelpers.sol";
+} from "@bush/v3-solidity-utils/contracts/helpers/TransientStorageHelpers.sol";
 import {
     TransientEnumerableSet
-} from "@balancer-labs/v3-solidity-utils/contracts/openzeppelin/TransientEnumerableSet.sol";
+} from "@bush/v3-solidity-utils/contracts/openzeppelin/TransientEnumerableSet.sol";
 
 import { BatchRouter } from "../BatchRouter.sol";
 

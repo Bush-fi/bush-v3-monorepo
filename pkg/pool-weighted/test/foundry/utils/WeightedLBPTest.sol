@@ -2,9 +2,9 @@
 
 pragma solidity ^0.8.24;
 
-import { LBPParams } from "@balancer-labs/v3-interfaces/contracts/pool-weighted/ILBPool.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
-import "@balancer-labs/v3-interfaces/contracts/pool-weighted/ILBPCommon.sol";
+import { LBPParams } from "@bush/v3-interfaces/contracts/pool-weighted/ILBPool.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import "@bush/v3-interfaces/contracts/pool-weighted/ILBPCommon.sol";
 
 import { LBPoolFactory } from "../../../contracts/lbp/LBPoolFactory.sol";
 import { LBPoolContractsDeployer } from "./LBPoolContractsDeployer.sol";

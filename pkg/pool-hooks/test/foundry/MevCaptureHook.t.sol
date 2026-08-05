@@ -4,23 +4,23 @@ pragma solidity ^0.8.24;
 
 import "forge-std/Test.sol";
 
-import { IAuthentication } from "@balancer-labs/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
+import { IAuthentication } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
 import {
     PoolSwapParams,
     MAX_FEE_PERCENTAGE,
     PoolRoleAccounts
-} from "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
-import { IVaultExtension } from "@balancer-labs/v3-interfaces/contracts/vault/IVaultExtension.sol";
-import { IMevCaptureHook } from "@balancer-labs/v3-interfaces/contracts/pool-hooks/IMevCaptureHook.sol";
-import { IHooks } from "@balancer-labs/v3-interfaces/contracts/vault/IHooks.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
+} from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IVaultExtension } from "@bush/v3-interfaces/contracts/vault/IVaultExtension.sol";
+import { IMevCaptureHook } from "@bush/v3-interfaces/contracts/pool-hooks/IMevCaptureHook.sol";
+import { IHooks } from "@bush/v3-interfaces/contracts/vault/IHooks.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
 
-import { BalancerContractRegistry } from "@balancer-labs/v3-standalone-utils/contracts/BalancerContractRegistry.sol";
-import { CastingHelpers } from "@balancer-labs/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
-import { ArrayHelpers } from "@balancer-labs/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
-import { PoolFactoryMock } from "@balancer-labs/v3-vault/contracts/test/PoolFactoryMock.sol";
-import { BaseVaultTest } from "@balancer-labs/v3-vault/test/foundry/utils/BaseVaultTest.sol";
-import { FixedPoint } from "@balancer-labs/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { BushContractRegistry } from "@bush/v3-standalone-utils/contracts/BushContractRegistry.sol";
+import { CastingHelpers } from "@bush/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
+import { ArrayHelpers } from "@bush/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
+import { PoolFactoryMock } from "@bush/v3-vault/contracts/test/PoolFactoryMock.sol";
+import { BaseVaultTest } from "@bush/v3-vault/test/foundry/utils/BaseVaultTest.sol";
+import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
 
 import { MevCaptureHookMock } from "../../contracts/test/MevCaptureHookMock.sol";
 
@@ -36,7 +36,7 @@ contract MevCaptureHookTest is BaseVaultTest {
 
     MevCaptureHookMock private _mevCaptureHook;
 
-    BalancerContractRegistry private registry;
+    BushContractRegistry private registry;
 
     function setUp() public override {
         super.setUp();
@@ -83,7 +83,7 @@ contract MevCaptureHookTest is BaseVaultTest {
     }
 
     function createHook() internal override returns (address) {
-        registry = new BalancerContractRegistry(vault);
+        registry = new BushContractRegistry(vault);
         _mevCaptureHook = new MevCaptureHookMock(
             IVault(address(vault)),
             registry,
@@ -94,8 +94,8 @@ contract MevCaptureHookTest is BaseVaultTest {
         return address(_mevCaptureHook);
     }
 
-    function testGetBalancerContractRegistry() public view {
-        assertEq(address(_mevCaptureHook.getBalancerContractRegistry()), address(registry), "Wrong registry");
+    function testGetBushContractRegistry() public view {
+        assertEq(address(_mevCaptureHook.getBushContractRegistry()), address(registry), "Wrong registry");
     }
 
     /********************************************************
@@ -103,13 +103,13 @@ contract MevCaptureHookTest is BaseVaultTest {
     ********************************************************/
 
     function testInvalidRegistry() public {
-        BalancerContractRegistry mockRegistry = BalancerContractRegistry(address(1));
+        BushContractRegistry mockRegistry = BushContractRegistry(address(1));
         vm.mockCall(
             address(mockRegistry),
-            abi.encodeWithSelector(BalancerContractRegistry.isTrustedRouter.selector, address(0)),
+            abi.encodeWithSelector(BushContractRegistry.isTrustedRouter.selector, address(0)),
             abi.encode(true)
         );
-        vm.expectRevert(abi.encodeWithSelector(IMevCaptureHook.InvalidBalancerContractRegistry.selector));
+        vm.expectRevert(abi.encodeWithSelector(IMevCaptureHook.InvalidBushContractRegistry.selector));
         new MevCaptureHookMock(
             IVault(address(vault)),
             mockRegistry,
@@ -119,10 +119,10 @@ contract MevCaptureHookTest is BaseVaultTest {
     }
 
     function testRevertingRegistry() public {
-        BalancerContractRegistry mockRegistry = BalancerContractRegistry(address(1));
+        BushContractRegistry mockRegistry = BushContractRegistry(address(1));
         vm.mockCallRevert(
             address(mockRegistry),
-            abi.encodeWithSelector(BalancerContractRegistry.isTrustedRouter.selector, address(0)),
+            abi.encodeWithSelector(BushContractRegistry.isTrustedRouter.selector, address(0)),
             abi.encodePacked(MockRegistryRevert.selector)
         );
 

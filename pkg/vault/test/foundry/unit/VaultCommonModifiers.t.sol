@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.24;
 
-import { IVaultErrors } from "@balancer-labs/v3-interfaces/contracts/vault/IVaultErrors.sol";
+import { IVaultErrors } from "@bush/v3-interfaces/contracts/vault/IVaultErrors.sol";
 
 import { BaseVaultTest } from "../utils/BaseVaultTest.sol";
 

@@ -2,17 +2,17 @@
 
 pragma solidity ^0.8.24;
 
-import { IVaultErrors } from "@balancer-labs/v3-interfaces/contracts/vault/IVaultErrors.sol";
-import { IHooks } from "@balancer-labs/v3-interfaces/contracts/vault/IHooks.sol";
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
-import "@balancer-labs/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IVaultErrors } from "@bush/v3-interfaces/contracts/vault/IVaultErrors.sol";
+import { IHooks } from "@bush/v3-interfaces/contracts/vault/IHooks.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { CastingHelpers } from "@balancer-labs/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
-import { ArrayHelpers } from "@balancer-labs/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
-import { FixedPoint } from "@balancer-labs/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { CastingHelpers } from "@bush/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
+import { ArrayHelpers } from "@bush/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
+import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
 
 import { PoolFactoryMock } from "../../contracts/test/PoolFactoryMock.sol";
-import { BalancerPoolToken } from "../../contracts/BalancerPoolToken.sol";
+import { BushPoolToken } from "../../contracts/BushPoolToken.sol";
 import { PoolHooksMock } from "../../contracts/test/PoolHooksMock.sol";
 import { BasePoolMath } from "../../contracts/BasePoolMath.sol";
 import { PoolMock } from "../../contracts/test/PoolMock.sol";
@@ -104,7 +104,7 @@ contract HookAdjustedLiquidityTest is BaseVaultTest {
 
         uint256[] memory actualAmountsIn = BasePoolMath.computeProportionalAmountsIn(
             [poolInitAmount, poolInitAmount].toMemoryArray(),
-            BalancerPoolToken(pool).totalSupply(),
+            BushPoolToken(pool).totalSupply(),
             expectedBptOut
         );
         uint256 actualAmountIn = actualAmountsIn[0];
@@ -153,7 +153,7 @@ contract HookAdjustedLiquidityTest is BaseVaultTest {
 
         uint256[] memory actualAmountsIn = BasePoolMath.computeProportionalAmountsIn(
             [poolInitAmount, poolInitAmount].toMemoryArray(),
-            BalancerPoolToken(pool).totalSupply(),
+            BushPoolToken(pool).totalSupply(),
             expectedBptOut
         );
         uint256 actualAmountIn = actualAmountsIn[0];
@@ -199,7 +199,7 @@ contract HookAdjustedLiquidityTest is BaseVaultTest {
 
         uint256[] memory actualAmountsIn = BasePoolMath.computeProportionalAmountsIn(
             [poolInitAmount, poolInitAmount].toMemoryArray(),
-            BalancerPoolToken(pool).totalSupply(),
+            BushPoolToken(pool).totalSupply(),
             expectedBptOut
         );
         uint256 actualAmountIn = actualAmountsIn[0];
@@ -229,7 +229,7 @@ contract HookAdjustedLiquidityTest is BaseVaultTest {
 
         uint256[] memory actualAmountsIn = BasePoolMath.computeProportionalAmountsIn(
             [poolInitAmount, poolInitAmount].toMemoryArray(),
-            BalancerPoolToken(pool).totalSupply(),
+            BushPoolToken(pool).totalSupply(),
             expectedBptOut
         );
 
@@ -258,13 +258,13 @@ contract HookAdjustedLiquidityTest is BaseVaultTest {
         expectedBptIn = bound(
             expectedBptIn,
             POOL_MINIMUM_TOTAL_SUPPLY * PRODUCTION_MIN_TRADE_AMOUNT,
-            BalancerPoolToken(pool).balanceOf(bob)
+            BushPoolToken(pool).balanceOf(bob)
         );
 
         // Since Bob added poolInitAmount in each token of the pool, the pool balances are doubled.
         uint256[] memory actualAmountsOut = BasePoolMath.computeProportionalAmountsOut(
             [2 * poolInitAmount, 2 * poolInitAmount].toMemoryArray(),
-            BalancerPoolToken(pool).totalSupply(),
+            BushPoolToken(pool).totalSupply(),
             expectedBptIn
         );
         uint256 actualAmountOut = actualAmountsOut[0];
@@ -318,13 +318,13 @@ contract HookAdjustedLiquidityTest is BaseVaultTest {
         expectedBptIn = bound(
             expectedBptIn,
             POOL_MINIMUM_TOTAL_SUPPLY * PRODUCTION_MIN_TRADE_AMOUNT,
-            BalancerPoolToken(pool).balanceOf(bob)
+            BushPoolToken(pool).balanceOf(bob)
         );
 
         // Since Bob added poolInitAmount in each token of the pool, the pool balances are doubled.
         uint256[] memory actualAmountsOut = BasePoolMath.computeProportionalAmountsOut(
             [2 * poolInitAmount, 2 * poolInitAmount].toMemoryArray(),
-            BalancerPoolToken(pool).totalSupply(),
+            BushPoolToken(pool).totalSupply(),
             expectedBptIn
         );
         uint256 actualAmountOut = actualAmountsOut[0];
@@ -377,12 +377,12 @@ contract HookAdjustedLiquidityTest is BaseVaultTest {
         PoolHooksMock(poolHooksContract).setRemoveLiquidityHookFeePercentage(hookFeePercentage);
 
         // 10% of Bob's liquidity.
-        uint256 expectedBptIn = BalancerPoolToken(pool).balanceOf(bob) / 10;
+        uint256 expectedBptIn = BushPoolToken(pool).balanceOf(bob) / 10;
 
         // Since Bob added poolInitAmount in each token of the pool, the pool balances are doubled.
         uint256[] memory actualAmountsOut = BasePoolMath.computeProportionalAmountsOut(
             [2 * poolInitAmount, 2 * poolInitAmount].toMemoryArray(),
-            BalancerPoolToken(pool).totalSupply(),
+            BushPoolToken(pool).totalSupply(),
             expectedBptIn
         );
         uint256 actualAmountOut = actualAmountsOut[0];
@@ -419,12 +419,12 @@ contract HookAdjustedLiquidityTest is BaseVaultTest {
         PoolHooksMock(poolHooksContract).setRemoveLiquidityHookFeePercentage(hookFeePercentage);
 
         // 10% of Bob's liquidity.
-        uint256 expectedBptIn = BalancerPoolToken(pool).balanceOf(bob) / 10;
+        uint256 expectedBptIn = BushPoolToken(pool).balanceOf(bob) / 10;
 
         // Since Bob added poolInitAmount in each token of the pool, the pool balances are doubled.
         uint256[] memory actualAmountsOut = BasePoolMath.computeProportionalAmountsOut(
             [2 * poolInitAmount, 2 * poolInitAmount].toMemoryArray(),
-            BalancerPoolToken(pool).totalSupply(),
+            BushPoolToken(pool).totalSupply(),
             expectedBptIn
         );
 

@@ -1,17 +1,17 @@
 import { ethers } from 'hardhat';
 import { expect } from 'chai';
-import { PoolMock } from '@balancer-labs/v3-vault/typechain-types/contracts/test/PoolMock';
+import { PoolMock } from '@bush/v3-vault/typechain-types/contracts/test/PoolMock';
 import { SignerWithAddress } from '@nomicfoundation/hardhat-ethers/dist/src/signer-with-address';
-import { sharedBeforeEach } from '@balancer-labs/v3-common/sharedBeforeEach';
-import { MAX_UINT256, ZERO_ADDRESS } from '@balancer-labs/v3-helpers/src/constants';
-import { fp } from '@balancer-labs/v3-helpers/src/numbers';
-import { impersonate } from '@balancer-labs/v3-helpers/src/signers';
+import { sharedBeforeEach } from '@bush/v3-common/sharedBeforeEach';
+import { MAX_UINT256, ZERO_ADDRESS } from '@bush/v3-helpers/src/constants';
+import { fp } from '@bush/v3-helpers/src/numbers';
+import { impersonate } from '@bush/v3-helpers/src/signers';
 import { setupEnvironment } from './poolSetup';
-import '@balancer-labs/v3-common/setupTests';
-import { MONTH } from '@balancer-labs/v3-helpers/src/time';
-import { IVaultMock } from '@balancer-labs/v3-interfaces/typechain-types';
+import '@bush/v3-common/setupTests';
+import { MONTH } from '@bush/v3-helpers/src/time';
+import { IVaultMock } from '@bush/v3-interfaces/typechain-types';
 
-describe('BalancerPoolToken', function () {
+describe('BushPoolToken', function () {
   const PAUSE_WINDOW_DURATION = MONTH * 9;
 
   let vault: IVaultMock;

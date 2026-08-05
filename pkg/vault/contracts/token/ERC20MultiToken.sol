@@ -4,11 +4,11 @@ pragma solidity ^0.8.24;
 
 import { IERC20Errors } from "@openzeppelin/contracts/interfaces/draft-IERC6093.sol";
 
-import { IERC20MultiTokenErrors } from "@balancer-labs/v3-interfaces/contracts/vault/IERC20MultiTokenErrors.sol";
+import { IERC20MultiTokenErrors } from "@bush/v3-interfaces/contracts/vault/IERC20MultiTokenErrors.sol";
 
-import { EVMCallModeHelpers } from "@balancer-labs/v3-solidity-utils/contracts/helpers/EVMCallModeHelpers.sol";
+import { EVMCallModeHelpers } from "@bush/v3-solidity-utils/contracts/helpers/EVMCallModeHelpers.sol";
 
-import { BalancerPoolToken } from "../BalancerPoolToken.sol";
+import { BushPoolToken } from "../BushPoolToken.sol";
 
 /**
  * @notice Store Token data and handle accounting for pool tokens in the Vault.
@@ -98,7 +98,7 @@ abstract contract ERC20MultiToken is IERC20Errors, IERC20MultiTokenErrors {
         emit Transfer(pool, address(0), to, amount);
 
         // We also emit the "transfer" event on the pool token to ensure full compliance with the ERC20 standard.
-        BalancerPoolToken(pool).emitTransfer(address(0), to, amount);
+        BushPoolToken(pool).emitTransfer(address(0), to, amount);
     }
 
     function _ensurePoolMinimumTotalSupply(uint256 newTotalSupply) internal pure {
@@ -116,7 +116,7 @@ abstract contract ERC20MultiToken is IERC20Errors, IERC20MultiTokenErrors {
         emit Transfer(pool, address(0), address(0), _POOL_MINIMUM_TOTAL_SUPPLY);
 
         // We also emit the "transfer" event on the pool token to ensure full compliance with the ERC20 standard.
-        BalancerPoolToken(pool).emitTransfer(address(0), address(0), _POOL_MINIMUM_TOTAL_SUPPLY);
+        BushPoolToken(pool).emitTransfer(address(0), address(0), _POOL_MINIMUM_TOTAL_SUPPLY);
     }
 
     function _burn(address pool, address from, uint256 amount) internal {
@@ -141,7 +141,7 @@ abstract contract ERC20MultiToken is IERC20Errors, IERC20MultiTokenErrors {
         // We also emit the "transfer" event on the pool token to ensure full compliance with the ERC20 standard.
         // If this function fails we keep going, as this is used in recovery mode.
         // Well-behaved pools will just emit an event here, so they should never fail.
-        try BalancerPoolToken(pool).emitTransfer(from, address(0), amount) {} catch {
+        try BushPoolToken(pool).emitTransfer(from, address(0), amount) {} catch {
             // solhint-disable-previous-line no-empty-blocks
         }
 
@@ -173,7 +173,7 @@ abstract contract ERC20MultiToken is IERC20Errors, IERC20MultiTokenErrors {
         emit Transfer(pool, from, to, amount);
 
         // We also emit the "transfer" event on the pool token to ensure full compliance with the ERC20 standard.
-        BalancerPoolToken(pool).emitTransfer(from, to, amount);
+        BushPoolToken(pool).emitTransfer(from, to, amount);
     }
 
     function _approve(address pool, address owner, address spender, uint256 amount) internal {
@@ -190,7 +190,7 @@ abstract contract ERC20MultiToken is IERC20Errors, IERC20MultiTokenErrors {
         // We also emit the "approve" event on the pool token to ensure full compliance with the ERC20 standard.
         // If this function fails we keep going, as this is used in recovery mode.
         // Well-behaved pools will just emit an event here, so they should never fail.
-        try BalancerPoolToken(pool).emitApproval(owner, spender, amount) {} catch {
+        try BushPoolToken(pool).emitApproval(owner, spender, amount) {} catch {
             // solhint-disable-previous-line no-empty-blocks
         }
 

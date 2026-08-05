@@ -4,13 +4,13 @@ pragma solidity ^0.8.24;
 
 import { IPermit2 } from "permit2/src/interfaces/IPermit2.sol";
 
-import { IVault } from "@balancer-labs/v3-interfaces/contracts/vault/IVault.sol";
-import { IAuthorizer } from "@balancer-labs/v3-interfaces/contracts/vault/IAuthorizer.sol";
-import { IVaultMock } from "@balancer-labs/v3-interfaces/contracts/test/IVaultMock.sol";
-import { IWETH } from "@balancer-labs/v3-interfaces/contracts/solidity-utils/misc/IWETH.sol";
-import { HooksConfigLibMock } from "@balancer-labs/v3-vault/contracts/test/HooksConfigLibMock.sol";
-import { BaseContractsDeployer } from "@balancer-labs/v3-solidity-utils/test/foundry/utils/BaseContractsDeployer.sol";
-import { CREATE3 } from "@balancer-labs/v3-solidity-utils/contracts/solmate/CREATE3.sol";
+import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import { IAuthorizer } from "@bush/v3-interfaces/contracts/vault/IAuthorizer.sol";
+import { IVaultMock } from "@bush/v3-interfaces/contracts/test/IVaultMock.sol";
+import { IWETH } from "@bush/v3-interfaces/contracts/solidity-utils/misc/IWETH.sol";
+import { HooksConfigLibMock } from "@bush/v3-vault/contracts/test/HooksConfigLibMock.sol";
+import { BaseContractsDeployer } from "@bush/v3-solidity-utils/test/foundry/utils/BaseContractsDeployer.sol";
+import { CREATE3 } from "@bush/v3-solidity-utils/contracts/solmate/CREATE3.sol";
 
 import { CompositeLiquidityRouterMock } from "../../../contracts/test/CompositeLiquidityRouterMock.sol";
 import { VaultFactory } from "../../../contracts/VaultFactory.sol";
@@ -43,8 +43,8 @@ contract VaultContractsDeployer is BaseContractsDeployer {
 
     constructor() {
         // if this external artifact path exists, it means we are running outside of this repo
-        if (vm.exists("artifacts/@balancer-labs/v3-vault/")) {
-            artifactsRootDir = "artifacts/@balancer-labs/v3-vault/";
+        if (vm.exists("artifacts/@bush/v3-vault/")) {
+            artifactsRootDir = "artifacts/@bush/v3-vault/";
         }
     }
 
