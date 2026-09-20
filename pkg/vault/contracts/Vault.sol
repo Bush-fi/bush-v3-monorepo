@@ -9,26 +9,26 @@ import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import { Address } from "@openzeppelin/contracts/utils/Address.sol";
 import { Proxy } from "@openzeppelin/contracts/proxy/Proxy.sol";
 
-import { IProtocolFeeController } from "@bush/v3-interfaces/contracts/vault/IProtocolFeeController.sol";
-import { IVaultExtension } from "@bush/v3-interfaces/contracts/vault/IVaultExtension.sol";
-import { IPoolLiquidity } from "@bush/v3-interfaces/contracts/vault/IPoolLiquidity.sol";
-import { IAuthorizer } from "@bush/v3-interfaces/contracts/vault/IAuthorizer.sol";
-import { IVaultAdmin } from "@bush/v3-interfaces/contracts/vault/IVaultAdmin.sol";
-import { IVaultMain } from "@bush/v3-interfaces/contracts/vault/IVaultMain.sol";
-import { IBasePool } from "@bush/v3-interfaces/contracts/vault/IBasePool.sol";
-import { IHooks } from "@bush/v3-interfaces/contracts/vault/IHooks.sol";
-import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IProtocolFeeController } from "@bush.fi/v3-interfaces/contracts/vault/IProtocolFeeController.sol";
+import { IVaultExtension } from "@bush.fi/v3-interfaces/contracts/vault/IVaultExtension.sol";
+import { IPoolLiquidity } from "@bush.fi/v3-interfaces/contracts/vault/IPoolLiquidity.sol";
+import { IAuthorizer } from "@bush.fi/v3-interfaces/contracts/vault/IAuthorizer.sol";
+import { IVaultAdmin } from "@bush.fi/v3-interfaces/contracts/vault/IVaultAdmin.sol";
+import { IVaultMain } from "@bush.fi/v3-interfaces/contracts/vault/IVaultMain.sol";
+import { IBasePool } from "@bush.fi/v3-interfaces/contracts/vault/IBasePool.sol";
+import { IHooks } from "@bush.fi/v3-interfaces/contracts/vault/IHooks.sol";
+import "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { StorageSlotExtension } from "@bush/v3-solidity-utils/contracts/openzeppelin/StorageSlotExtension.sol";
-import { PackedTokenBalance } from "@bush/v3-solidity-utils/contracts/helpers/PackedTokenBalance.sol";
-import { ScalingHelpers } from "@bush/v3-solidity-utils/contracts/helpers/ScalingHelpers.sol";
-import { CastingHelpers } from "@bush/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
-import { BufferHelpers } from "@bush/v3-solidity-utils/contracts/helpers/BufferHelpers.sol";
-import { InputHelpers } from "@bush/v3-solidity-utils/contracts/helpers/InputHelpers.sol";
-import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { StorageSlotExtension } from "@bush.fi/v3-solidity-utils/contracts/openzeppelin/StorageSlotExtension.sol";
+import { PackedTokenBalance } from "@bush.fi/v3-solidity-utils/contracts/helpers/PackedTokenBalance.sol";
+import { ScalingHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/ScalingHelpers.sol";
+import { CastingHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
+import { BufferHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/BufferHelpers.sol";
+import { InputHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/InputHelpers.sol";
+import { FixedPoint } from "@bush.fi/v3-solidity-utils/contracts/math/FixedPoint.sol";
 import {
     TransientStorageHelpers
-} from "@bush/v3-solidity-utils/contracts/helpers/TransientStorageHelpers.sol";
+} from "@bush.fi/v3-solidity-utils/contracts/helpers/TransientStorageHelpers.sol";
 
 import { VaultStateLib, VaultStateBits } from "./lib/VaultStateLib.sol";
 import { HooksConfigLib } from "./lib/HooksConfigLib.sol";

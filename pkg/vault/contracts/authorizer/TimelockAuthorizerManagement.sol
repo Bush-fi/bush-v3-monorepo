@@ -4,8 +4,8 @@ pragma solidity ^0.8.24;
 
 import { Math } from "@openzeppelin/contracts/utils/math/Math.sol";
 
-import { IAuthentication } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
-import { ITimelockAuthorizer } from "@bush/v3-interfaces/contracts/vault/ITimelockAuthorizer.sol";
+import { IAuthentication } from "@bush.fi/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
+import { ITimelockAuthorizer } from "@bush.fi/v3-interfaces/contracts/vault/ITimelockAuthorizer.sol";
 
 import { TimelockExecutionHelper } from "./TimelockExecutionHelper.sol";
 

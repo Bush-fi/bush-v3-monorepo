@@ -2,12 +2,12 @@
 
 pragma solidity ^0.8.24;
 
-import { IHooks } from "@bush/v3-interfaces/contracts/vault/IHooks.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
-import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IHooks } from "@bush.fi/v3-interfaces/contracts/vault/IHooks.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
+import "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { ScalingHelpers } from "@bush/v3-solidity-utils/contracts/helpers/ScalingHelpers.sol";
-import { StablePool } from "@bush/v3-pool-stable/contracts/StablePool.sol";
+import { ScalingHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/ScalingHelpers.sol";
+import { StablePool } from "@bush.fi/v3-pool-stable/contracts/StablePool.sol";
 
 import { StableSurgeMedianMath } from "./utils/StableSurgeMedianMath.sol";
 import { SurgeHookCommon } from "./SurgeHookCommon.sol";

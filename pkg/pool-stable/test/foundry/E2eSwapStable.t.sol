@@ -2,16 +2,16 @@
 
 pragma solidity ^0.8.24;
 
-import { IAuthentication } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
-import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IAuthentication } from "@bush.fi/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
+import "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { CastingHelpers } from "@bush/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
-import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
-import { StableMath } from "@bush/v3-solidity-utils/contracts/math/StableMath.sol";
+import { CastingHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
+import { FixedPoint } from "@bush.fi/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { StableMath } from "@bush.fi/v3-solidity-utils/contracts/math/StableMath.sol";
 
-import { PoolHooksMock } from "@bush/v3-vault/contracts/test/PoolHooksMock.sol";
-import { E2eSwapTest, E2eTestState, SwapLimits } from "@bush/v3-vault/test/foundry/E2eSwap.t.sol";
+import { PoolHooksMock } from "@bush.fi/v3-vault/contracts/test/PoolHooksMock.sol";
+import { E2eSwapTest, E2eTestState, SwapLimits } from "@bush.fi/v3-vault/test/foundry/E2eSwap.t.sol";
 
 import { StablePoolFactory } from "../../contracts/StablePoolFactory.sol";
 import { StablePool } from "../../contracts/StablePool.sol";

@@ -1,9 +1,9 @@
 import { ethers } from 'hardhat';
 import { expect } from 'chai';
 import { VoidSigner } from 'ethers';
-import { deploy, deployedAt } from '@bush/v3-helpers/src/contract';
-import { sharedBeforeEach } from '@bush/v3-common/sharedBeforeEach';
-import * as VaultDeployer from '@bush/v3-helpers/src/models/vault/VaultDeployer';
+import { deploy, deployedAt } from '@bush.fi/v3-helpers/src/contract';
+import { sharedBeforeEach } from '@bush.fi/v3-common/sharedBeforeEach';
+import * as VaultDeployer from '@bush.fi/v3-helpers/src/models/vault/VaultDeployer';
 import {
   BatchRouter,
   ERC4626RateProvider,
@@ -11,25 +11,25 @@ import {
   PoolFactoryMock,
   Router,
   BufferRouter,
-} from '@bush/v3-vault/typechain-types';
-import TypesConverter from '@bush/v3-helpers/src/models/types/TypesConverter';
-import { currentTimestamp, MONTH } from '@bush/v3-helpers/src/time';
-import { ERC20TestToken, ERC4626TestToken, WETHTestToken } from '@bush/v3-solidity-utils/typechain-types';
-import { MAX_UINT256, MAX_UINT160, MAX_UINT48 } from '@bush/v3-helpers/src/constants';
+} from '@bush.fi/v3-vault/typechain-types';
+import TypesConverter from '@bush.fi/v3-helpers/src/models/types/TypesConverter';
+import { currentTimestamp, MONTH } from '@bush.fi/v3-helpers/src/time';
+import { ERC20TestToken, ERC4626TestToken, WETHTestToken } from '@bush.fi/v3-solidity-utils/typechain-types';
+import { MAX_UINT256, MAX_UINT160, MAX_UINT48 } from '@bush.fi/v3-helpers/src/constants';
 import {
   HooksConfigStructOutput,
   PoolConfigStructOutput,
   VaultMock,
 } from '../typechain-types/contracts/test/VaultMock';
 import { SignerWithAddress } from '@nomicfoundation/hardhat-ethers/dist/src/signer-with-address';
-import { FP_ZERO, bn, fp, pct } from '@bush/v3-helpers/src/numbers';
-import { IVaultMock } from '@bush/v3-interfaces/typechain-types';
-import { TokenType } from '@bush/v3-helpers/src/models/types/types';
+import { FP_ZERO, bn, fp, pct } from '@bush.fi/v3-helpers/src/numbers';
+import { IVaultMock } from '@bush.fi/v3-interfaces/typechain-types';
+import { TokenType } from '@bush.fi/v3-helpers/src/models/types/types';
 import { IPermit2 } from '../typechain-types/permit2/src/interfaces/IPermit2';
 import { deployPermit2 } from './Permit2Deployer';
-import '@bush/v3-common/setupTests';
+import '@bush.fi/v3-common/setupTests';
 import { buildTokenConfig } from './poolSetup';
-import { sortAddresses } from '@bush/v3-helpers/src/models/tokens/sortingHelper';
+import { sortAddresses } from '@bush.fi/v3-helpers/src/models/tokens/sortingHelper';
 
 describe('ERC4626VaultPrimitive', function () {
   const BATCH_ROUTER_VERSION = 'BatchRouter v9';

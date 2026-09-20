@@ -2,10 +2,10 @@
 
 pragma solidity ^0.8.24;
 
-import { PoolConfig } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { PoolConfig } from "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { ArrayHelpers } from "@bush/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
-import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { ArrayHelpers } from "@bush.fi/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
+import { FixedPoint } from "@bush.fi/v3-solidity-utils/contracts/math/FixedPoint.sol";
 
 import { BaseVaultTest } from "./utils/BaseVaultTest.sol";
 

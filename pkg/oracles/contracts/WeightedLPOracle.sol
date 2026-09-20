@@ -5,15 +5,15 @@ pragma solidity ^0.8.24;
 import { AggregatorV3Interface } from "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
 import { SafeCast } from "@openzeppelin/contracts/utils/math/SafeCast.sol";
 
-import { IWeightedLPOracle } from "@bush/v3-interfaces/contracts/oracles/IWeightedLPOracle.sol";
-import { IWeightedPool } from "@bush/v3-interfaces/contracts/pool-weighted/IWeightedPool.sol";
-import { ILPOracleBase } from "@bush/v3-interfaces/contracts/oracles/ILPOracleBase.sol";
-import { Rounding } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
-import { IBasePool } from "@bush/v3-interfaces/contracts/vault/IBasePool.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import { IWeightedLPOracle } from "@bush.fi/v3-interfaces/contracts/oracles/IWeightedLPOracle.sol";
+import { IWeightedPool } from "@bush.fi/v3-interfaces/contracts/pool-weighted/IWeightedPool.sol";
+import { ILPOracleBase } from "@bush.fi/v3-interfaces/contracts/oracles/ILPOracleBase.sol";
+import { Rounding } from "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IBasePool } from "@bush.fi/v3-interfaces/contracts/vault/IBasePool.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 
-import { InputHelpers } from "@bush/v3-solidity-utils/contracts/helpers/InputHelpers.sol";
-import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { InputHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/InputHelpers.sol";
+import { FixedPoint } from "@bush.fi/v3-solidity-utils/contracts/math/FixedPoint.sol";
 
 import { LPOracleBase } from "./LPOracleBase.sol";
 

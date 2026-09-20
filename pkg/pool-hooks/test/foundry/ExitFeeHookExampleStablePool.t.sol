@@ -6,20 +6,20 @@ import "forge-std/Test.sol";
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
-import { PoolRoleAccounts } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
+import { PoolRoleAccounts } from "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { CastingHelpers } from "@bush/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
-import { ArrayHelpers } from "@bush/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
-import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { CastingHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
+import { ArrayHelpers } from "@bush.fi/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
+import { FixedPoint } from "@bush.fi/v3-solidity-utils/contracts/math/FixedPoint.sol";
 
 import {
     StablePoolContractsDeployer
-} from "@bush/v3-pool-stable/test/foundry/utils/StablePoolContractsDeployer.sol";
-import { StablePoolFactory } from "@bush/v3-pool-stable/contracts/StablePoolFactory.sol";
-import { StablePool } from "@bush/v3-pool-stable/contracts/StablePool.sol";
+} from "@bush.fi/v3-pool-stable/test/foundry/utils/StablePoolContractsDeployer.sol";
+import { StablePoolFactory } from "@bush.fi/v3-pool-stable/contracts/StablePoolFactory.sol";
+import { StablePool } from "@bush.fi/v3-pool-stable/contracts/StablePool.sol";
 
-import { BaseVaultTest } from "@bush/v3-vault/test/foundry/utils/BaseVaultTest.sol";
+import { BaseVaultTest } from "@bush.fi/v3-vault/test/foundry/utils/BaseVaultTest.sol";
 
 import { ExitFeeHookExample } from "../../contracts/ExitFeeHookExample.sol";
 import { ExitFeeHookExampleTest } from "./ExitFeeHookExample.t.sol";

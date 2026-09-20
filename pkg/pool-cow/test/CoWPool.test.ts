@@ -1,11 +1,11 @@
 import { ethers } from 'hardhat';
 import { expect } from 'chai';
-import { deploy, deployedAt } from '@bush/v3-helpers/src/contract';
-import { sharedBeforeEach } from '@bush/v3-common/sharedBeforeEach';
-import { Router } from '@bush/v3-vault/typechain-types/contracts/Router';
-import { ERC20TestToken } from '@bush/v3-solidity-utils/typechain-types/contracts/test/ERC20TestToken';
+import { deploy, deployedAt } from '@bush.fi/v3-helpers/src/contract';
+import { sharedBeforeEach } from '@bush.fi/v3-common/sharedBeforeEach';
+import { Router } from '@bush.fi/v3-vault/typechain-types/contracts/Router';
+import { ERC20TestToken } from '@bush.fi/v3-solidity-utils/typechain-types/contracts/test/ERC20TestToken';
 import { SignerWithAddress } from '@nomicfoundation/hardhat-ethers/dist/src/signer-with-address';
-import { FP_ZERO, fp } from '@bush/v3-helpers/src/numbers';
+import { FP_ZERO, fp } from '@bush.fi/v3-helpers/src/numbers';
 import {
   MAX_UINT256,
   MAX_UINT160,
@@ -13,20 +13,20 @@ import {
   ZERO_BYTES32,
   ZERO_ADDRESS,
   ONES_BYTES32,
-} from '@bush/v3-helpers/src/constants';
-import * as VaultDeployer from '@bush/v3-helpers/src/models/vault/VaultDeployer';
-import { IVaultMock } from '@bush/v3-interfaces/typechain-types';
-import TypesConverter from '@bush/v3-helpers/src/models/types/TypesConverter';
-import { buildTokenConfig } from '@bush/v3-helpers/src/models/tokens/tokenConfig';
+} from '@bush.fi/v3-helpers/src/constants';
+import * as VaultDeployer from '@bush.fi/v3-helpers/src/models/vault/VaultDeployer';
+import { IVaultMock } from '@bush.fi/v3-interfaces/typechain-types';
+import TypesConverter from '@bush.fi/v3-helpers/src/models/types/TypesConverter';
+import { buildTokenConfig } from '@bush.fi/v3-helpers/src/models/tokens/tokenConfig';
 import { CowPool, CowRouter, CowPoolFactory } from '../typechain-types';
-import { actionId } from '@bush/v3-helpers/src/models/misc/actions';
-import { MONTH } from '@bush/v3-helpers/src/time';
-import * as expectEvent from '@bush/v3-helpers/src/test/expectEvent';
-import { sortAddresses } from '@bush/v3-helpers/src/models/tokens/sortingHelper';
-import { deployPermit2 } from '@bush/v3-vault/test/Permit2Deployer';
-import { IPermit2 } from '@bush/v3-vault/typechain-types/permit2/src/interfaces/IPermit2';
-import { PoolConfigStructOutput } from '@bush/v3-solidity-utils/typechain-types/@bush/v3-interfaces/contracts/vault/IVault';
-import { TokenConfigStruct } from '../typechain-types/@bush/v3-interfaces/contracts/vault/IVault';
+import { actionId } from '@bush.fi/v3-helpers/src/models/misc/actions';
+import { MONTH } from '@bush.fi/v3-helpers/src/time';
+import * as expectEvent from '@bush.fi/v3-helpers/src/test/expectEvent';
+import { sortAddresses } from '@bush.fi/v3-helpers/src/models/tokens/sortingHelper';
+import { deployPermit2 } from '@bush.fi/v3-vault/test/Permit2Deployer';
+import { IPermit2 } from '@bush.fi/v3-vault/typechain-types/permit2/src/interfaces/IPermit2';
+import { PoolConfigStructOutput } from '@bush.fi/v3-solidity-utils/typechain-types/@bush.fi/v3-interfaces/contracts/vault/IVault';
+import { TokenConfigStruct } from '../typechain-types/@bush.fi/v3-interfaces/contracts/vault/IVault';
 
 describe('CoWPool', function () {
   const FACTORY_VERSION = 'CoW Pool Factory v1';

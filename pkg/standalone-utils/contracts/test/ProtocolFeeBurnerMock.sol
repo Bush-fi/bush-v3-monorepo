@@ -5,10 +5,10 @@ pragma solidity ^0.8.24;
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import { SafeERC20 } from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 
-import { IProtocolFeeBurner } from "@bush/v3-interfaces/contracts/standalone-utils/IProtocolFeeBurner.sol";
+import { IProtocolFeeBurner } from "@bush.fi/v3-interfaces/contracts/standalone-utils/IProtocolFeeBurner.sol";
 
-import { ERC20TestToken } from "@bush/v3-solidity-utils/contracts/test/ERC20TestToken.sol";
-import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { ERC20TestToken } from "@bush.fi/v3-solidity-utils/contracts/test/ERC20TestToken.sol";
+import { FixedPoint } from "@bush.fi/v3-solidity-utils/contracts/math/FixedPoint.sol";
 
 contract ProtocolFeeBurnerMock is IProtocolFeeBurner {
     using FixedPoint for uint256;

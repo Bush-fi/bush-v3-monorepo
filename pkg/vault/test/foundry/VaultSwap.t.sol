@@ -2,15 +2,15 @@
 
 pragma solidity ^0.8.24;
 
-import { IProtocolFeeController } from "@bush/v3-interfaces/contracts/vault/IProtocolFeeController.sol";
-import { IAuthentication } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
-import { IVaultErrors } from "@bush/v3-interfaces/contracts/vault/IVaultErrors.sol";
-import { IVaultEvents } from "@bush/v3-interfaces/contracts/vault/IVaultEvents.sol";
+import { IProtocolFeeController } from "@bush.fi/v3-interfaces/contracts/vault/IProtocolFeeController.sol";
+import { IAuthentication } from "@bush.fi/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
+import { IVaultErrors } from "@bush.fi/v3-interfaces/contracts/vault/IVaultErrors.sol";
+import { IVaultEvents } from "@bush.fi/v3-interfaces/contracts/vault/IVaultEvents.sol";
 
-import { SwapKind, VaultSwapParams, HooksConfig } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
-import { ISenderGuard } from "@bush/v3-interfaces/contracts/vault/ISenderGuard.sol";
+import { SwapKind, VaultSwapParams, HooksConfig } from "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { ISenderGuard } from "@bush.fi/v3-interfaces/contracts/vault/ISenderGuard.sol";
 
-import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { FixedPoint } from "@bush.fi/v3-solidity-utils/contracts/math/FixedPoint.sol";
 
 import { PoolHooksMock } from "../../contracts/test/PoolHooksMock.sol";
 import { PoolMock } from "../../contracts/test/PoolMock.sol";

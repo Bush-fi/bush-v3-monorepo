@@ -5,14 +5,14 @@ pragma solidity ^0.8.24;
 import { IERC4626 } from "@openzeppelin/contracts/interfaces/IERC4626.sol";
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { IVaultEvents } from "@bush/v3-interfaces/contracts/vault/IVaultEvents.sol";
-import { IVaultAdmin } from "@bush/v3-interfaces/contracts/vault/IVaultAdmin.sol";
-import { SwapKind } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
-import "@bush/v3-interfaces/contracts/vault/BatchRouterTypes.sol";
+import { IVaultEvents } from "@bush.fi/v3-interfaces/contracts/vault/IVaultEvents.sol";
+import { IVaultAdmin } from "@bush.fi/v3-interfaces/contracts/vault/IVaultAdmin.sol";
+import { SwapKind } from "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
+import "@bush.fi/v3-interfaces/contracts/vault/BatchRouterTypes.sol";
 
-import { PackedTokenBalance } from "@bush/v3-solidity-utils/contracts/helpers/PackedTokenBalance.sol";
-import { ScalingHelpers } from "@bush/v3-solidity-utils/contracts/helpers/ScalingHelpers.sol";
-import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { PackedTokenBalance } from "@bush.fi/v3-solidity-utils/contracts/helpers/PackedTokenBalance.sol";
+import { ScalingHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/ScalingHelpers.sol";
+import { FixedPoint } from "@bush.fi/v3-solidity-utils/contracts/math/FixedPoint.sol";
 
 import { BaseERC4626BufferTest } from "./utils/BaseERC4626BufferTest.sol";
 

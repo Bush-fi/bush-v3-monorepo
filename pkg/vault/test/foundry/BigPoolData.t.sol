@@ -5,12 +5,12 @@ pragma solidity ^0.8.24;
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import { Strings } from "@openzeppelin/contracts/utils/Strings.sol";
 
-import { IRateProvider } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IRateProvider.sol";
-import { TokenInfo, PoolData, Rounding } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import { IRateProvider } from "@bush.fi/v3-interfaces/contracts/solidity-utils/helpers/IRateProvider.sol";
+import { TokenInfo, PoolData, Rounding } from "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 
-import { ERC20TestToken } from "@bush/v3-solidity-utils/contracts/test/ERC20TestToken.sol";
-import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { ERC20TestToken } from "@bush.fi/v3-solidity-utils/contracts/test/ERC20TestToken.sol";
+import { FixedPoint } from "@bush.fi/v3-solidity-utils/contracts/math/FixedPoint.sol";
 
 import { RateProviderMock } from "../../contracts/test/RateProviderMock.sol";
 import { PoolFactoryMock, BaseVaultTest } from "./utils/BaseVaultTest.sol";

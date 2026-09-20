@@ -4,15 +4,15 @@ pragma solidity ^0.8.24;
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { TokenConfig, PoolRoleAccounts } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
-import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { TokenConfig, PoolRoleAccounts } from "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
+import "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
-import { ScalingHelpers } from "@bush/v3-solidity-utils/contracts/helpers/ScalingHelpers.sol";
+import { FixedPoint } from "@bush.fi/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { ScalingHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/ScalingHelpers.sol";
 
-import { E2eErc4626SwapsTest } from "@bush/v3-vault/test/foundry/E2eErc4626Swaps.t.sol";
-import { PoolHooksMock } from "@bush/v3-vault/contracts/test/PoolHooksMock.sol";
+import { E2eErc4626SwapsTest } from "@bush.fi/v3-vault/test/foundry/E2eErc4626Swaps.t.sol";
+import { PoolHooksMock } from "@bush.fi/v3-vault/contracts/test/PoolHooksMock.sol";
 
 import { StablePoolContractsDeployer } from "./utils/StablePoolContractsDeployer.sol";
 import { StablePoolFactory } from "../../contracts/StablePoolFactory.sol";

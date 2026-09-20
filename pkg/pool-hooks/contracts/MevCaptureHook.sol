@@ -6,11 +6,11 @@ import { Math } from "@openzeppelin/contracts/utils/math/Math.sol";
 
 import {
     IBushContractRegistry
-} from "@bush/v3-interfaces/contracts/standalone-utils/IBushContractRegistry.sol";
-import { ISenderGuard } from "@bush/v3-interfaces/contracts/vault/ISenderGuard.sol";
-import { IMevCaptureHook } from "@bush/v3-interfaces/contracts/pool-hooks/IMevCaptureHook.sol";
-import { IHooks } from "@bush/v3-interfaces/contracts/vault/IHooks.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+} from "@bush.fi/v3-interfaces/contracts/standalone-utils/IBushContractRegistry.sol";
+import { ISenderGuard } from "@bush.fi/v3-interfaces/contracts/vault/ISenderGuard.sol";
+import { IMevCaptureHook } from "@bush.fi/v3-interfaces/contracts/pool-hooks/IMevCaptureHook.sol";
+import { IHooks } from "@bush.fi/v3-interfaces/contracts/vault/IHooks.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 import {
     AddLiquidityKind,
     HooksConfig,
@@ -20,11 +20,11 @@ import {
     RemoveLiquidityKind,
     TokenConfig,
     MAX_FEE_PERCENTAGE
-} from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+} from "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { SingletonAuthentication } from "@bush/v3-vault/contracts/SingletonAuthentication.sol";
-import { VaultGuard } from "@bush/v3-vault/contracts/VaultGuard.sol";
-import { BaseHooks } from "@bush/v3-vault/contracts/BaseHooks.sol";
+import { SingletonAuthentication } from "@bush.fi/v3-vault/contracts/SingletonAuthentication.sol";
+import { VaultGuard } from "@bush.fi/v3-vault/contracts/VaultGuard.sol";
+import { BaseHooks } from "@bush.fi/v3-vault/contracts/BaseHooks.sol";
 
 contract MevCaptureHook is BaseHooks, SingletonAuthentication, VaultGuard, IMevCaptureHook {
     // Max Fee is 99.9999% (Max supported fee by the vault).

@@ -4,26 +4,26 @@ pragma solidity ^0.8.24;
 
 import { SafeCast } from "@openzeppelin/contracts/utils/math/SafeCast.sol";
 
-import { ISwapFeePercentageBounds } from "@bush/v3-interfaces/contracts/vault/ISwapFeePercentageBounds.sol";
+import { ISwapFeePercentageBounds } from "@bush.fi/v3-interfaces/contracts/vault/ISwapFeePercentageBounds.sol";
 import {
     IUnbalancedLiquidityInvariantRatioBounds
-} from "@bush/v3-interfaces/contracts/vault/IUnbalancedLiquidityInvariantRatioBounds.sol";
-import { IBasePool } from "@bush/v3-interfaces/contracts/vault/IBasePool.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+} from "@bush.fi/v3-interfaces/contracts/vault/IUnbalancedLiquidityInvariantRatioBounds.sol";
+import { IBasePool } from "@bush.fi/v3-interfaces/contracts/vault/IBasePool.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 import {
     IStablePool,
     StablePoolDynamicData,
     StablePoolImmutableData,
     AmplificationState
-} from "@bush/v3-interfaces/contracts/pool-stable/IStablePool.sol";
-import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+} from "@bush.fi/v3-interfaces/contracts/pool-stable/IStablePool.sol";
+import "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { BasePoolAuthentication } from "@bush/v3-pool-utils/contracts/BasePoolAuthentication.sol";
-import { BushPoolToken } from "@bush/v3-vault/contracts/BushPoolToken.sol";
-import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
-import { StableMath } from "@bush/v3-solidity-utils/contracts/math/StableMath.sol";
-import { Version } from "@bush/v3-solidity-utils/contracts/helpers/Version.sol";
-import { PoolInfo } from "@bush/v3-pool-utils/contracts/PoolInfo.sol";
+import { BasePoolAuthentication } from "@bush.fi/v3-pool-utils/contracts/BasePoolAuthentication.sol";
+import { BushPoolToken } from "@bush.fi/v3-vault/contracts/BushPoolToken.sol";
+import { FixedPoint } from "@bush.fi/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { StableMath } from "@bush.fi/v3-solidity-utils/contracts/math/StableMath.sol";
+import { Version } from "@bush.fi/v3-solidity-utils/contracts/helpers/Version.sol";
+import { PoolInfo } from "@bush.fi/v3-pool-utils/contracts/PoolInfo.sol";
 
 /**
  * @notice Standard Bush Stable Pool.

@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { BaseContract } from 'ethers';
-import { deploy } from '@bush/v3-helpers/src/contract';
-import { MONTH } from '@bush/v3-helpers/src/time';
-import { buildTokenConfig } from '@bush/v3-helpers/src/models/tokens/tokenConfig';
+import { deploy } from '@bush.fi/v3-helpers/src/contract';
+import { MONTH } from '@bush.fi/v3-helpers/src/time';
+import { buildTokenConfig } from '@bush.fi/v3-helpers/src/models/tokens/tokenConfig';
 
-import { Benchmark, PoolTag, PoolInfo } from '@bush/v3-benchmarks/src/PoolBenchmark.behavior';
-import { PoolFactoryMock, MinimalHooksPoolMock } from '@bush/v3-vault/typechain-types';
-import { ZERO_ADDRESS } from '@bush/v3-helpers/src/constants';
+import { Benchmark, PoolTag, PoolInfo } from '@bush.fi/v3-benchmarks/src/PoolBenchmark.behavior';
+import { PoolFactoryMock, MinimalHooksPoolMock } from '@bush.fi/v3-vault/typechain-types';
+import { ZERO_ADDRESS } from '@bush.fi/v3-helpers/src/constants';
 import { LiquidityManagementStruct, PoolRoleAccountsStruct } from '../../typechain-types/contracts/Vault';
 
 class PoolMockWithHooksBenchmark extends Benchmark {

@@ -6,19 +6,19 @@ import "forge-std/Test.sol";
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { PoolRoleAccounts, TokenConfig } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import { PoolRoleAccounts, TokenConfig } from "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 
-import { WeightedPoolFactory } from "@bush/v3-pool-weighted/contracts/WeightedPoolFactory.sol";
-import { CastingHelpers } from "@bush/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
-import { MinTokenBalanceLib } from "@bush/v3-vault/contracts/lib/MinTokenBalanceLib.sol";
-import { ArrayHelpers } from "@bush/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
+import { WeightedPoolFactory } from "@bush.fi/v3-pool-weighted/contracts/WeightedPoolFactory.sol";
+import { CastingHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
+import { MinTokenBalanceLib } from "@bush.fi/v3-vault/contracts/lib/MinTokenBalanceLib.sol";
+import { ArrayHelpers } from "@bush.fi/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
 import {
     WeightedPoolContractsDeployer
-} from "@bush/v3-pool-weighted/test/foundry/utils/WeightedPoolContractsDeployer.sol";
-import { BaseVaultTest } from "@bush/v3-vault/test/foundry/utils/BaseVaultTest.sol";
-import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
-import { WeightedPool } from "@bush/v3-pool-weighted/contracts/WeightedPool.sol";
+} from "@bush.fi/v3-pool-weighted/test/foundry/utils/WeightedPoolContractsDeployer.sol";
+import { BaseVaultTest } from "@bush.fi/v3-vault/test/foundry/utils/BaseVaultTest.sol";
+import { FixedPoint } from "@bush.fi/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { WeightedPool } from "@bush.fi/v3-pool-weighted/contracts/WeightedPool.sol";
 
 import { ExitFeeHookExample } from "../../contracts/ExitFeeHookExample.sol";
 import { ExitFeeHookExampleTest } from "./ExitFeeHookExample.t.sol";

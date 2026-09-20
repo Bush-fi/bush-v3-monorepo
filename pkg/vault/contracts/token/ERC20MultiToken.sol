@@ -4,9 +4,9 @@ pragma solidity ^0.8.24;
 
 import { IERC20Errors } from "@openzeppelin/contracts/interfaces/draft-IERC6093.sol";
 
-import { IERC20MultiTokenErrors } from "@bush/v3-interfaces/contracts/vault/IERC20MultiTokenErrors.sol";
+import { IERC20MultiTokenErrors } from "@bush.fi/v3-interfaces/contracts/vault/IERC20MultiTokenErrors.sol";
 
-import { EVMCallModeHelpers } from "@bush/v3-solidity-utils/contracts/helpers/EVMCallModeHelpers.sol";
+import { EVMCallModeHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/EVMCallModeHelpers.sol";
 
 import { BushPoolToken } from "../BushPoolToken.sol";
 

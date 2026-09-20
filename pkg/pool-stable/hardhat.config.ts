@@ -6,7 +6,7 @@ import 'hardhat-ignore-warnings';
 import 'hardhat-contract-sizer';
 import 'hardhat-gas-reporter';
 
-import { hardhatBaseConfig } from '@bush/v3-common';
+import { hardhatBaseConfig } from '@bush.fi/v3-common';
 
 export default {
   networks: {

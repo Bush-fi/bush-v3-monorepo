@@ -1,15 +1,15 @@
 import { ethers } from 'hardhat';
 import { expect } from 'chai';
-import { PoolMock } from '@bush/v3-vault/typechain-types/contracts/test/PoolMock';
+import { PoolMock } from '@bush.fi/v3-vault/typechain-types/contracts/test/PoolMock';
 import { SignerWithAddress } from '@nomicfoundation/hardhat-ethers/dist/src/signer-with-address';
-import { sharedBeforeEach } from '@bush/v3-common/sharedBeforeEach';
-import { MAX_UINT256, ZERO_ADDRESS } from '@bush/v3-helpers/src/constants';
-import { fp } from '@bush/v3-helpers/src/numbers';
-import { impersonate } from '@bush/v3-helpers/src/signers';
+import { sharedBeforeEach } from '@bush.fi/v3-common/sharedBeforeEach';
+import { MAX_UINT256, ZERO_ADDRESS } from '@bush.fi/v3-helpers/src/constants';
+import { fp } from '@bush.fi/v3-helpers/src/numbers';
+import { impersonate } from '@bush.fi/v3-helpers/src/signers';
 import { setupEnvironment } from './poolSetup';
-import '@bush/v3-common/setupTests';
-import { MONTH } from '@bush/v3-helpers/src/time';
-import { IVaultMock } from '@bush/v3-interfaces/typechain-types';
+import '@bush.fi/v3-common/setupTests';
+import { MONTH } from '@bush.fi/v3-helpers/src/time';
+import { IVaultMock } from '@bush.fi/v3-interfaces/typechain-types';
 
 describe('BushPoolToken', function () {
   const PAUSE_WINDOW_DURATION = MONTH * 9;

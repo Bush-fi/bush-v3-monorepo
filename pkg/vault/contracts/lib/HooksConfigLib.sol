@@ -2,11 +2,11 @@
 
 pragma solidity ^0.8.24;
 
-import { IVaultErrors } from "@bush/v3-interfaces/contracts/vault/IVaultErrors.sol";
-import { IHooks } from "@bush/v3-interfaces/contracts/vault/IHooks.sol";
-import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IVaultErrors } from "@bush.fi/v3-interfaces/contracts/vault/IVaultErrors.sol";
+import { IHooks } from "@bush.fi/v3-interfaces/contracts/vault/IHooks.sol";
+import "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { WordCodec } from "@bush/v3-solidity-utils/contracts/helpers/WordCodec.sol";
+import { WordCodec } from "@bush.fi/v3-solidity-utils/contracts/helpers/WordCodec.sol";
 
 import { PoolConfigConst } from "./PoolConfigConst.sol";
 

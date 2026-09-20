@@ -2,16 +2,16 @@
 
 pragma solidity ^0.8.24;
 
-import { IAuthentication } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
-import { IVersion } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IVersion.sol";
+import { IAuthentication } from "@bush.fi/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
+import { IVersion } from "@bush.fi/v3-interfaces/contracts/solidity-utils/helpers/IVersion.sol";
 import {
     IHyperEVMRateProviderFactory
-} from "@bush/v3-interfaces/contracts/standalone-utils/IHyperEVMRateProviderFactory.sol";
+} from "@bush.fi/v3-interfaces/contracts/standalone-utils/IHyperEVMRateProviderFactory.sol";
 import {
     IHyperEVMRateProvider
-} from "@bush/v3-interfaces/contracts/standalone-utils/IHyperEVMRateProvider.sol";
+} from "@bush.fi/v3-interfaces/contracts/standalone-utils/IHyperEVMRateProvider.sol";
 
-import { BaseVaultTest } from "@bush/v3-vault/test/foundry/utils/BaseVaultTest.sol";
+import { BaseVaultTest } from "@bush.fi/v3-vault/test/foundry/utils/BaseVaultTest.sol";
 
 import { HyperEVMRateProviderFactory } from "../../contracts/HyperEVMRateProviderFactory.sol";
 import { HyperTokenInfoPrecompile } from "../../contracts/utils/HyperTokenInfoPrecompile.sol";

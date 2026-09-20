@@ -7,19 +7,19 @@ import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
 
 import {
     IUnbalancedLiquidityInvariantRatioBounds
-} from "@bush/v3-interfaces/contracts/vault/IUnbalancedLiquidityInvariantRatioBounds.sol";
-import { ISenderGuard } from "@bush/v3-interfaces/contracts/vault/ISenderGuard.sol";
-import { IVaultErrors } from "@bush/v3-interfaces/contracts/vault/IVaultErrors.sol";
-import "@bush/v3-interfaces/contracts/pool-weighted/IFixedPriceLBPool.sol";
-import { IHooks } from "@bush/v3-interfaces/contracts/vault/IHooks.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
-import "@bush/v3-interfaces/contracts/pool-weighted/ILBPCommon.sol";
-import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+} from "@bush.fi/v3-interfaces/contracts/vault/IUnbalancedLiquidityInvariantRatioBounds.sol";
+import { ISenderGuard } from "@bush.fi/v3-interfaces/contracts/vault/ISenderGuard.sol";
+import { IVaultErrors } from "@bush.fi/v3-interfaces/contracts/vault/IVaultErrors.sol";
+import "@bush.fi/v3-interfaces/contracts/pool-weighted/IFixedPriceLBPool.sol";
+import { IHooks } from "@bush.fi/v3-interfaces/contracts/vault/IHooks.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
+import "@bush.fi/v3-interfaces/contracts/pool-weighted/ILBPCommon.sol";
+import "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { CastingHelpers } from "@bush/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
-import { InputHelpers } from "@bush/v3-solidity-utils/contracts/helpers/InputHelpers.sol";
-import { ArrayHelpers } from "@bush/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
-import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { CastingHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
+import { InputHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/InputHelpers.sol";
+import { ArrayHelpers } from "@bush.fi/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
+import { FixedPoint } from "@bush.fi/v3-solidity-utils/contracts/math/FixedPoint.sol";
 
 import { FixedPriceLBPoolContractsDeployer } from "./utils/FixedPriceLBPoolContractsDeployer.sol";
 import { FixedPriceLBPoolFactory } from "../../contracts/lbp/FixedPriceLBPoolFactory.sol";

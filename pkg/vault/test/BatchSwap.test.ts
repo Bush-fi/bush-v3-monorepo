@@ -1,9 +1,9 @@
 import { expect } from 'chai';
-import { sharedBeforeEach } from '@bush/v3-common/sharedBeforeEach';
-import { pct } from '@bush/v3-helpers/src/numbers';
+import { sharedBeforeEach } from '@bush.fi/v3-common/sharedBeforeEach';
+import { pct } from '@bush.fi/v3-helpers/src/numbers';
 
 import { BatchSwapBaseTest } from './BatchSwapBase';
-import { ZERO_ADDRESS } from '@bush/v3-helpers/src/constants';
+import { ZERO_ADDRESS } from '@bush.fi/v3-helpers/src/constants';
 
 describe('BatchSwap', function () {
   const baseTest = new BatchSwapBaseTest(false);

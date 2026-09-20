@@ -2,11 +2,11 @@
 
 pragma solidity ^0.8.24;
 
-import { StorageSlotExtension } from "@bush/v3-solidity-utils/contracts/openzeppelin/StorageSlotExtension.sol";
+import { StorageSlotExtension } from "@bush.fi/v3-solidity-utils/contracts/openzeppelin/StorageSlotExtension.sol";
 
 import {
     TokenDeltaMappingSlotType
-} from "@bush/v3-solidity-utils/contracts/helpers/TransientStorageHelpers.sol";
+} from "@bush.fi/v3-solidity-utils/contracts/helpers/TransientStorageHelpers.sol";
 
 interface IVaultStorageMock {
     function manualGetIsUnlocked() external pure returns (StorageSlotExtension.BooleanSlotType slot);

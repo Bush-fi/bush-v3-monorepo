@@ -2,19 +2,19 @@
 
 pragma solidity ^0.8.24;
 
-import { IBasePoolFactory } from "@bush/v3-interfaces/contracts/vault/IBasePoolFactory.sol";
-import { IHooks } from "@bush/v3-interfaces/contracts/vault/IHooks.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import { IBasePoolFactory } from "@bush.fi/v3-interfaces/contracts/vault/IBasePoolFactory.sol";
+import { IHooks } from "@bush.fi/v3-interfaces/contracts/vault/IHooks.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 import {
     LiquidityManagement,
     TokenConfig,
     PoolSwapParams,
     HookFlags
-} from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+} from "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
-import { VaultGuard } from "@bush/v3-vault/contracts/VaultGuard.sol";
-import { BaseHooks } from "@bush/v3-vault/contracts/BaseHooks.sol";
+import { FixedPoint } from "@bush.fi/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { VaultGuard } from "@bush.fi/v3-vault/contracts/VaultGuard.sol";
+import { BaseHooks } from "@bush.fi/v3-vault/contracts/BaseHooks.sol";
 
 /**
  * @notice Increase the swap fee percentage on trades that move pools away from equilibrium.

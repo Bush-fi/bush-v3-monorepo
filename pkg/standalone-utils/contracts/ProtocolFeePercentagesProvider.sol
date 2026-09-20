@@ -4,21 +4,21 @@ pragma solidity ^0.8.24;
 
 import { SafeCast } from "@openzeppelin/contracts/utils/math/SafeCast.sol";
 
-import { IProtocolFeeController } from "@bush/v3-interfaces/contracts/vault/IProtocolFeeController.sol";
-import { IBasePoolFactory } from "@bush/v3-interfaces/contracts/vault/IBasePoolFactory.sol";
-import { FEE_SCALING_FACTOR } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IProtocolFeeController } from "@bush.fi/v3-interfaces/contracts/vault/IProtocolFeeController.sol";
+import { IBasePoolFactory } from "@bush.fi/v3-interfaces/contracts/vault/IBasePoolFactory.sol";
+import { FEE_SCALING_FACTOR } from "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 import {
     IProtocolFeePercentagesProvider
-} from "@bush/v3-interfaces/contracts/vault/IProtocolFeePercentagesProvider.sol";
+} from "@bush.fi/v3-interfaces/contracts/vault/IProtocolFeePercentagesProvider.sol";
 import {
     IBushContractRegistry,
     ContractType
-} from "@bush/v3-interfaces/contracts/standalone-utils/IBushContractRegistry.sol";
-import { IVaultErrors } from "@bush/v3-interfaces/contracts/vault/IVaultErrors.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+} from "@bush.fi/v3-interfaces/contracts/standalone-utils/IBushContractRegistry.sol";
+import { IVaultErrors } from "@bush.fi/v3-interfaces/contracts/vault/IVaultErrors.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 
-import { SingletonAuthentication } from "@bush/v3-vault/contracts/SingletonAuthentication.sol";
-import { ProtocolFeeController } from "@bush/v3-vault/contracts/ProtocolFeeController.sol";
+import { SingletonAuthentication } from "@bush.fi/v3-vault/contracts/SingletonAuthentication.sol";
+import { ProtocolFeeController } from "@bush.fi/v3-vault/contracts/ProtocolFeeController.sol";
 
 contract ProtocolFeePercentagesProvider is IProtocolFeePercentagesProvider, SingletonAuthentication {
     using SafeCast for uint256;

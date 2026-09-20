@@ -1,6 +1,6 @@
 import { Contract } from 'ethers';
 import { SignerWithAddress } from '@nomicfoundation/hardhat-ethers/dist/src/signer-with-address';
-import { PoolHooksStruct, LiquidityManagementStruct } from '@bush/v3-vault/typechain-types/contracts/Vault';
+import { PoolHooksStruct, LiquidityManagementStruct } from '@bush.fi/v3-vault/typechain-types/contracts/Vault';
 
 export type NAry<T> = T | Array<T>;
 

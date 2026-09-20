@@ -9,7 +9,7 @@ import {
   TokenMint,
   TokensDeploymentOptions,
 } from './types';
-import { ERC20TestToken } from '@bush/v3-solidity-utils/typechain-types';
+import { ERC20TestToken } from '@bush.fi/v3-solidity-utils/typechain-types';
 import { AddressLike } from 'ethers';
 import { sortTokens } from './sortingHelper';
 

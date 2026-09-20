@@ -7,8 +7,8 @@ import { SafeERC20 } from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.s
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import { ERC20 } from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
-import { IWrappedBushPoolToken } from "@bush/v3-interfaces/contracts/vault/IWrappedBushPoolToken.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import { IWrappedBushPoolToken } from "@bush.fi/v3-interfaces/contracts/vault/IWrappedBushPoolToken.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 
 /**
  * @notice ERC20 wrapper for Bush Pool Token (BPT).

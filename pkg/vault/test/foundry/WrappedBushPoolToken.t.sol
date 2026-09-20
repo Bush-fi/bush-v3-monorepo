@@ -4,7 +4,7 @@ pragma solidity ^0.8.24;
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { IWrappedBushPoolToken } from "@bush/v3-interfaces/contracts/vault/IWrappedBushPoolToken.sol";
+import { IWrappedBushPoolToken } from "@bush.fi/v3-interfaces/contracts/vault/IWrappedBushPoolToken.sol";
 
 import { WrappedBushPoolToken } from "../../contracts/WrappedBushPoolToken.sol";
 import { BaseVaultTest } from "./utils/BaseVaultTest.sol";

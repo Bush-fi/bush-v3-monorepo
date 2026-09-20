@@ -7,14 +7,14 @@ import { Ownable2Step } from "@openzeppelin/contracts/access/Ownable2Step.sol";
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
 
-import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
-import { IVaultErrors } from "@bush/v3-interfaces/contracts/vault/IVaultErrors.sol";
-import { ISenderGuard } from "@bush/v3-interfaces/contracts/vault/ISenderGuard.sol";
-import "@bush/v3-interfaces/contracts/pool-weighted/ILBPCommon.sol";
+import { FixedPoint } from "@bush.fi/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { IVaultErrors } from "@bush.fi/v3-interfaces/contracts/vault/IVaultErrors.sol";
+import { ISenderGuard } from "@bush.fi/v3-interfaces/contracts/vault/ISenderGuard.sol";
+import "@bush.fi/v3-interfaces/contracts/pool-weighted/ILBPCommon.sol";
 
-import { InputHelpers } from "@bush/v3-solidity-utils/contracts/helpers/InputHelpers.sol";
-import { BaseHooks } from "@bush/v3-vault/contracts/BaseHooks.sol";
-import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { InputHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/InputHelpers.sol";
+import { BaseHooks } from "@bush.fi/v3-vault/contracts/BaseHooks.sol";
+import "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
 import { LBPValidation } from "./LBPValidation.sol";
 

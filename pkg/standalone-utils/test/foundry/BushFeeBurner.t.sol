@@ -5,16 +5,16 @@ pragma solidity ^0.8.24;
 import { SafeERC20 } from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { IProtocolFeeSweeper } from "@bush/v3-interfaces/contracts/standalone-utils/IProtocolFeeSweeper.sol";
-import { IAuthentication } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
-import { IProtocolFeeBurner } from "@bush/v3-interfaces/contracts/standalone-utils/IProtocolFeeBurner.sol";
-import { IProtocolFeeController } from "@bush/v3-interfaces/contracts/vault/IProtocolFeeController.sol";
-import { IBushFeeBurner } from "@bush/v3-interfaces/contracts/standalone-utils/IBushFeeBurner.sol";
-import { SwapPathStep } from "@bush/v3-interfaces/contracts/vault/BatchRouterTypes.sol";
-import { IVaultErrors } from "@bush/v3-interfaces/contracts/vault/IVaultErrors.sol";
+import { IProtocolFeeSweeper } from "@bush.fi/v3-interfaces/contracts/standalone-utils/IProtocolFeeSweeper.sol";
+import { IAuthentication } from "@bush.fi/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
+import { IProtocolFeeBurner } from "@bush.fi/v3-interfaces/contracts/standalone-utils/IProtocolFeeBurner.sol";
+import { IProtocolFeeController } from "@bush.fi/v3-interfaces/contracts/vault/IProtocolFeeController.sol";
+import { IBushFeeBurner } from "@bush.fi/v3-interfaces/contracts/standalone-utils/IBushFeeBurner.sol";
+import { SwapPathStep } from "@bush.fi/v3-interfaces/contracts/vault/BatchRouterTypes.sol";
+import { IVaultErrors } from "@bush.fi/v3-interfaces/contracts/vault/IVaultErrors.sol";
 
-import { ArrayHelpers } from "@bush/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
-import { BaseVaultTest } from "@bush/v3-vault/test/foundry/utils/BaseVaultTest.sol";
+import { ArrayHelpers } from "@bush.fi/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
+import { BaseVaultTest } from "@bush.fi/v3-vault/test/foundry/utils/BaseVaultTest.sol";
 
 import { ProtocolFeeSweeper } from "../../contracts/ProtocolFeeSweeper.sol";
 import { BushFeeBurner } from "../../contracts/BushFeeBurner.sol";

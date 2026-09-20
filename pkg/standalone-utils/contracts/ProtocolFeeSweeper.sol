@@ -6,15 +6,15 @@ import { SafeERC20 } from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.s
 import { IERC4626 } from "@openzeppelin/contracts/interfaces/IERC4626.sol";
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { IProtocolFeeSweeper } from "@bush/v3-interfaces/contracts/standalone-utils/IProtocolFeeSweeper.sol";
-import { IProtocolFeeBurner } from "@bush/v3-interfaces/contracts/standalone-utils/IProtocolFeeBurner.sol";
-import { IProtocolFeeController } from "@bush/v3-interfaces/contracts/vault/IProtocolFeeController.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import { IProtocolFeeSweeper } from "@bush.fi/v3-interfaces/contracts/standalone-utils/IProtocolFeeSweeper.sol";
+import { IProtocolFeeBurner } from "@bush.fi/v3-interfaces/contracts/standalone-utils/IProtocolFeeBurner.sol";
+import { IProtocolFeeController } from "@bush.fi/v3-interfaces/contracts/vault/IProtocolFeeController.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 
-import { SingletonAuthentication } from "@bush/v3-vault/contracts/SingletonAuthentication.sol";
+import { SingletonAuthentication } from "@bush.fi/v3-vault/contracts/SingletonAuthentication.sol";
 import {
     ReentrancyGuardTransient
-} from "@bush/v3-solidity-utils/contracts/openzeppelin/ReentrancyGuardTransient.sol";
+} from "@bush.fi/v3-solidity-utils/contracts/openzeppelin/ReentrancyGuardTransient.sol";
 
 /**
  * @notice Withdraw protocol fees, convert them to a target token, and forward to a recipient.

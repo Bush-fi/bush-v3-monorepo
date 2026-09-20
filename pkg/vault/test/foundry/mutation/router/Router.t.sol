@@ -5,20 +5,20 @@ pragma solidity ^0.8.24;
 import { IERC4626 } from "@openzeppelin/contracts/interfaces/IERC4626.sol";
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { IVaultErrors } from "@bush/v3-interfaces/contracts/vault/IVaultErrors.sol";
+import { IVaultErrors } from "@bush.fi/v3-interfaces/contracts/vault/IVaultErrors.sol";
 import {
     AddLiquidityKind,
     RemoveLiquidityKind,
     SwapKind,
     HooksConfig
-} from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
-import "@bush/v3-interfaces/contracts/vault/RouterTypes.sol";
+} from "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
+import "@bush.fi/v3-interfaces/contracts/vault/RouterTypes.sol";
 
-import { ArrayHelpers } from "@bush/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
-import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { ArrayHelpers } from "@bush.fi/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
+import { FixedPoint } from "@bush.fi/v3-solidity-utils/contracts/math/FixedPoint.sol";
 import {
     ReentrancyGuardTransient
-} from "@bush/v3-solidity-utils/contracts/openzeppelin/ReentrancyGuardTransient.sol";
+} from "@bush.fi/v3-solidity-utils/contracts/openzeppelin/ReentrancyGuardTransient.sol";
 
 import { PoolHooksMock } from "../../../../contracts/test/PoolHooksMock.sol";
 import { BaseVaultTest } from "../../utils/BaseVaultTest.sol";

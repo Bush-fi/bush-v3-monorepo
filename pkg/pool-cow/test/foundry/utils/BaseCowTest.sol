@@ -6,18 +6,18 @@ import "forge-std/Test.sol";
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { ICowRouter } from "@bush/v3-interfaces/contracts/pool-cow/ICowRouter.sol";
-import { ICowPoolFactory } from "@bush/v3-interfaces/contracts/pool-cow/ICowPoolFactory.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
-import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { ICowRouter } from "@bush.fi/v3-interfaces/contracts/pool-cow/ICowRouter.sol";
+import { ICowPoolFactory } from "@bush.fi/v3-interfaces/contracts/pool-cow/ICowPoolFactory.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
+import "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { CastingHelpers } from "@bush/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
-import { InputHelpers } from "@bush/v3-solidity-utils/contracts/helpers/InputHelpers.sol";
-import { MinTokenBalanceLib } from "@bush/v3-vault/contracts/lib/MinTokenBalanceLib.sol";
-import { ArrayHelpers } from "@bush/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
-import { PoolFactoryMock } from "@bush/v3-vault/contracts/test/PoolFactoryMock.sol";
-import { BaseVaultTest } from "@bush/v3-vault/test/foundry/utils/BaseVaultTest.sol";
-import { WeightedPool } from "@bush/v3-pool-weighted/contracts/WeightedPool.sol";
+import { CastingHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
+import { InputHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/InputHelpers.sol";
+import { MinTokenBalanceLib } from "@bush.fi/v3-vault/contracts/lib/MinTokenBalanceLib.sol";
+import { ArrayHelpers } from "@bush.fi/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
+import { PoolFactoryMock } from "@bush.fi/v3-vault/contracts/test/PoolFactoryMock.sol";
+import { BaseVaultTest } from "@bush.fi/v3-vault/test/foundry/utils/BaseVaultTest.sol";
+import { WeightedPool } from "@bush.fi/v3-pool-weighted/contracts/WeightedPool.sol";
 
 import { CowPoolContractsDeployer } from "./CowPoolContractsDeployer.sol";
 import { CowRouter } from "../../../contracts/CowRouter.sol";

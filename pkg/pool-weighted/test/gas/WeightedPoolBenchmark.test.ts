@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { BaseContract } from 'ethers';
-import { deploy, deployedAt } from '@bush/v3-helpers/src/contract';
-import { fp } from '@bush/v3-helpers/src/numbers';
-import { ZERO_BYTES32, ZERO_ADDRESS } from '@bush/v3-helpers/src/constants';
-import { MONTH } from '@bush/v3-helpers/src/time';
-import * as expectEvent from '@bush/v3-helpers/src/test/expectEvent';
-import { WeightedPoolFactory } from '@bush/v3-pool-weighted/typechain-types';
-import { PoolRoleAccountsStruct } from '@bush/v3-vault/typechain-types/contracts/Vault';
-import { buildTokenConfig } from '@bush/v3-helpers/src/models/tokens/tokenConfig';
-import { Benchmark, PoolTag, PoolInfo } from '@bush/v3-benchmarks/src/PoolBenchmark.behavior';
+import { deploy, deployedAt } from '@bush.fi/v3-helpers/src/contract';
+import { fp } from '@bush.fi/v3-helpers/src/numbers';
+import { ZERO_BYTES32, ZERO_ADDRESS } from '@bush.fi/v3-helpers/src/constants';
+import { MONTH } from '@bush.fi/v3-helpers/src/time';
+import * as expectEvent from '@bush.fi/v3-helpers/src/test/expectEvent';
+import { WeightedPoolFactory } from '@bush.fi/v3-pool-weighted/typechain-types';
+import { PoolRoleAccountsStruct } from '@bush.fi/v3-vault/typechain-types/contracts/Vault';
+import { buildTokenConfig } from '@bush.fi/v3-helpers/src/models/tokens/tokenConfig';
+import { Benchmark, PoolTag, PoolInfo } from '@bush.fi/v3-benchmarks/src/PoolBenchmark.behavior';
 
 class WeightedPoolBenchmark extends Benchmark {
   WEIGHTS = [fp(0.5), fp(0.5)];

@@ -4,19 +4,19 @@ pragma solidity ^0.8.24;
 
 import { AggregatorV3Interface } from "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
 
-import { ILPOracleFactoryBase } from "@bush/v3-interfaces/contracts/oracles/ILPOracleFactoryBase.sol";
-import { PoolRoleAccounts, TokenConfig } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
-import { ILPOracleBase } from "@bush/v3-interfaces/contracts/oracles/ILPOracleBase.sol";
-import { IStablePool } from "@bush/v3-interfaces/contracts/pool-stable/IStablePool.sol";
-import { IBasePool } from "@bush/v3-interfaces/contracts/vault/IBasePool.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import { ILPOracleFactoryBase } from "@bush.fi/v3-interfaces/contracts/oracles/ILPOracleFactoryBase.sol";
+import { PoolRoleAccounts, TokenConfig } from "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { ILPOracleBase } from "@bush.fi/v3-interfaces/contracts/oracles/ILPOracleBase.sol";
+import { IStablePool } from "@bush.fi/v3-interfaces/contracts/pool-stable/IStablePool.sol";
+import { IBasePool } from "@bush.fi/v3-interfaces/contracts/vault/IBasePool.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 
-import { ArrayHelpers } from "@bush/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
-import { CastingHelpers } from "@bush/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
-import { StablePoolFactory } from "@bush/v3-pool-stable/contracts/StablePoolFactory.sol";
+import { ArrayHelpers } from "@bush.fi/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
+import { CastingHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
+import { StablePoolFactory } from "@bush.fi/v3-pool-stable/contracts/StablePoolFactory.sol";
 import {
     StablePoolContractsDeployer
-} from "@bush/v3-pool-stable/test/foundry/utils/StablePoolContractsDeployer.sol";
+} from "@bush.fi/v3-pool-stable/test/foundry/utils/StablePoolContractsDeployer.sol";
 
 import { StableLPOracleFactory } from "../../contracts/StableLPOracleFactory.sol";
 import { LPOracleFactoryBaseTest } from "./LPOracleFactoryBase.t.sol";

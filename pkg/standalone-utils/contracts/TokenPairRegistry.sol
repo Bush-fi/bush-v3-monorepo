@@ -5,12 +5,12 @@ pragma solidity ^0.8.24;
 import { IERC4626 } from "@openzeppelin/contracts/interfaces/IERC4626.sol";
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { ITokenPairRegistry } from "@bush/v3-interfaces/contracts/standalone-utils/ITokenPairRegistry.sol";
-import { SwapPathStep } from "@bush/v3-interfaces/contracts/vault/BatchRouterTypes.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import { ITokenPairRegistry } from "@bush.fi/v3-interfaces/contracts/standalone-utils/ITokenPairRegistry.sol";
+import { SwapPathStep } from "@bush.fi/v3-interfaces/contracts/vault/BatchRouterTypes.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 
-import { EnumerableSet } from "@bush/v3-solidity-utils/contracts/openzeppelin/EnumerableSet.sol";
-import { InputHelpers } from "@bush/v3-solidity-utils/contracts/helpers/InputHelpers.sol";
+import { EnumerableSet } from "@bush.fi/v3-solidity-utils/contracts/openzeppelin/EnumerableSet.sol";
+import { InputHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/InputHelpers.sol";
 
 import { OwnableAuthentication } from "./OwnableAuthentication.sol";
 

@@ -2,9 +2,9 @@
 
 pragma solidity ^0.8.24;
 
-import { BasePoolMathRoundingTest } from "@bush/v3-vault/test/foundry/BasePoolMathRoundingTest.sol";
-import { ArrayHelpers } from "@bush/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
-import { BasePoolMathMock } from "@bush/v3-vault/contracts/test/BasePoolMathMock.sol";
+import { BasePoolMathRoundingTest } from "@bush.fi/v3-vault/test/foundry/BasePoolMathRoundingTest.sol";
+import { ArrayHelpers } from "@bush.fi/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
+import { BasePoolMathMock } from "@bush.fi/v3-vault/contracts/test/BasePoolMathMock.sol";
 
 import { WeightedBasePoolMathMock } from "../../contracts/test/WeightedBasePoolMathMock.sol";
 import { WeightedPoolContractsDeployer } from "./utils/WeightedPoolContractsDeployer.sol";

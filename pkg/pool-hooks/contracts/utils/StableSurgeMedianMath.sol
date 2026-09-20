@@ -2,8 +2,8 @@
 
 pragma solidity ^0.8.24;
 
-import { Arrays } from "@bush/v3-solidity-utils/contracts/openzeppelin/Arrays.sol";
-import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { Arrays } from "@bush.fi/v3-solidity-utils/contracts/openzeppelin/Arrays.sol";
+import { FixedPoint } from "@bush.fi/v3-solidity-utils/contracts/math/FixedPoint.sol";
 
 library StableSurgeMedianMath {
     using FixedPoint for uint256;

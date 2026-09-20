@@ -2,14 +2,14 @@
 
 pragma solidity ^0.8.24;
 
-import { IBasePool } from "@bush/v3-interfaces/contracts/vault/IBasePool.sol";
-import "@bush/v3-interfaces/contracts/pool-weighted/ILBPCommon.sol";
-import "@bush/v3-interfaces/contracts/pool-weighted/ILBPool.sol";
-import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IBasePool } from "@bush.fi/v3-interfaces/contracts/vault/IBasePool.sol";
+import "@bush.fi/v3-interfaces/contracts/pool-weighted/ILBPCommon.sol";
+import "@bush.fi/v3-interfaces/contracts/pool-weighted/ILBPool.sol";
+import "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { CastingHelpers } from "@bush/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
-import { ArrayHelpers } from "@bush/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
-import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { CastingHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
+import { ArrayHelpers } from "@bush.fi/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
+import { FixedPoint } from "@bush.fi/v3-solidity-utils/contracts/math/FixedPoint.sol";
 
 import { LBPCommon } from "../../contracts/lbp/LBPCommon.sol";
 import { WeightedLBPTest } from "./utils/WeightedLBPTest.sol";

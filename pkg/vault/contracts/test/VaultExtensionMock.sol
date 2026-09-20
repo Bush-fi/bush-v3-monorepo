@@ -8,10 +8,10 @@ import {
     TokenConfig,
     PoolRoleAccounts,
     LiquidityManagement
-} from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
-import { IVaultExtensionMock } from "@bush/v3-interfaces/contracts/test/IVaultExtensionMock.sol";
-import { IVaultAdmin } from "@bush/v3-interfaces/contracts/vault/IVaultAdmin.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+} from "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IVaultExtensionMock } from "@bush.fi/v3-interfaces/contracts/test/IVaultExtensionMock.sol";
+import { IVaultAdmin } from "@bush.fi/v3-interfaces/contracts/vault/IVaultAdmin.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 
 import { PoolConfigLib, PoolConfigBits } from "../lib/PoolConfigLib.sol";
 import { VaultExtension } from "../VaultExtension.sol";

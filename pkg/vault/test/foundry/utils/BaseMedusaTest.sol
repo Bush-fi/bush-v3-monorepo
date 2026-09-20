@@ -7,19 +7,19 @@ import "forge-std/Test.sol";
 import { IPermit2 } from "permit2/src/interfaces/IPermit2.sol";
 import { DeployPermit2 } from "permit2/test/utils/DeployPermit2.sol";
 
-import { IProtocolFeeController } from "@bush/v3-interfaces/contracts/vault/IProtocolFeeController.sol";
-import { IVaultExtension } from "@bush/v3-interfaces/contracts/vault/IVaultExtension.sol";
-import { IVaultAdmin } from "@bush/v3-interfaces/contracts/vault/IVaultAdmin.sol";
-import { IVaultMock } from "@bush/v3-interfaces/contracts/test/IVaultMock.sol";
-import { IBasePool } from "@bush/v3-interfaces/contracts/vault/IBasePool.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
-import { IWETH } from "@bush/v3-interfaces/contracts/solidity-utils/misc/IWETH.sol";
-import { IStdMedusaCheats } from "@bush/v3-interfaces/contracts/test/IStdMedusaCheats.sol";
-import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IProtocolFeeController } from "@bush.fi/v3-interfaces/contracts/vault/IProtocolFeeController.sol";
+import { IVaultExtension } from "@bush.fi/v3-interfaces/contracts/vault/IVaultExtension.sol";
+import { IVaultAdmin } from "@bush.fi/v3-interfaces/contracts/vault/IVaultAdmin.sol";
+import { IVaultMock } from "@bush.fi/v3-interfaces/contracts/test/IVaultMock.sol";
+import { IBasePool } from "@bush.fi/v3-interfaces/contracts/vault/IBasePool.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
+import { IWETH } from "@bush.fi/v3-interfaces/contracts/solidity-utils/misc/IWETH.sol";
+import { IStdMedusaCheats } from "@bush.fi/v3-interfaces/contracts/test/IStdMedusaCheats.sol";
+import "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { InputHelpers } from "@bush/v3-solidity-utils/contracts/helpers/InputHelpers.sol";
-import { CREATE3 } from "@bush/v3-solidity-utils/contracts/solmate/CREATE3.sol";
-import { ERC20TestToken } from "@bush/v3-solidity-utils/contracts/test/ERC20TestToken.sol";
+import { InputHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/InputHelpers.sol";
+import { CREATE3 } from "@bush.fi/v3-solidity-utils/contracts/solmate/CREATE3.sol";
+import { ERC20TestToken } from "@bush.fi/v3-solidity-utils/contracts/test/ERC20TestToken.sol";
 
 import { VaultExtensionMock } from "../../../contracts/test/VaultExtensionMock.sol";
 import { VaultAdminMock } from "../../../contracts/test/VaultAdminMock.sol";

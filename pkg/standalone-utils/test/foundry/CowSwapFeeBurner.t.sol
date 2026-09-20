@@ -7,22 +7,22 @@ import { IERC165 } from "@openzeppelin/contracts/utils/introspection/IERC165.sol
 import { IERC1271 } from "@openzeppelin/contracts/interfaces/IERC1271.sol";
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { IProtocolFeeSweeper } from "@bush/v3-interfaces/contracts/standalone-utils/IProtocolFeeSweeper.sol";
-import { IAuthentication } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
-import { IVersion } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IVersion.sol";
-import { IProtocolFeeBurner } from "@bush/v3-interfaces/contracts/standalone-utils/IProtocolFeeBurner.sol";
-import { ICowSwapFeeBurner } from "@bush/v3-interfaces/contracts/standalone-utils/ICowSwapFeeBurner.sol";
-import { IProtocolFeeController } from "@bush/v3-interfaces/contracts/vault/IProtocolFeeController.sol";
-import { IComposableCow } from "@bush/v3-interfaces/contracts/standalone-utils/IComposableCow.sol";
+import { IProtocolFeeSweeper } from "@bush.fi/v3-interfaces/contracts/standalone-utils/IProtocolFeeSweeper.sol";
+import { IAuthentication } from "@bush.fi/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
+import { IVersion } from "@bush.fi/v3-interfaces/contracts/solidity-utils/helpers/IVersion.sol";
+import { IProtocolFeeBurner } from "@bush.fi/v3-interfaces/contracts/standalone-utils/IProtocolFeeBurner.sol";
+import { ICowSwapFeeBurner } from "@bush.fi/v3-interfaces/contracts/standalone-utils/ICowSwapFeeBurner.sol";
+import { IProtocolFeeController } from "@bush.fi/v3-interfaces/contracts/vault/IProtocolFeeController.sol";
+import { IComposableCow } from "@bush.fi/v3-interfaces/contracts/standalone-utils/IComposableCow.sol";
 import {
     ICowConditionalOrderGenerator
-} from "@bush/v3-interfaces/contracts/standalone-utils/ICowConditionalOrderGenerator.sol";
+} from "@bush.fi/v3-interfaces/contracts/standalone-utils/ICowConditionalOrderGenerator.sol";
 import {
     ICowConditionalOrder,
     GPv2Order
-} from "@bush/v3-interfaces/contracts/standalone-utils/ICowConditionalOrder.sol";
+} from "@bush.fi/v3-interfaces/contracts/standalone-utils/ICowConditionalOrder.sol";
 
-import { BaseVaultTest } from "@bush/v3-vault/test/foundry/utils/BaseVaultTest.sol";
+import { BaseVaultTest } from "@bush.fi/v3-vault/test/foundry/utils/BaseVaultTest.sol";
 
 import { ProtocolFeeSweeper } from "../../contracts/ProtocolFeeSweeper.sol";
 import { CowSwapFeeBurner } from "../../contracts/CowSwapFeeBurner.sol";

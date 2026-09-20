@@ -5,7 +5,7 @@ pragma solidity ^0.8.24;
 import { IERC20Metadata } from "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol";
 import { Math } from "@openzeppelin/contracts/utils/math/Math.sol";
 
-import { TokenConfig } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { TokenConfig } from "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
 library MinTokenBalanceLib {
     // Matches the POOL_MINIMUM_TOTAL_SUPPLY Vault constant in `ERC20MultiToken`.

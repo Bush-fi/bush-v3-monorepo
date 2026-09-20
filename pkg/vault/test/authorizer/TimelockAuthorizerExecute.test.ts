@@ -3,24 +3,24 @@ import { ethers } from 'hardhat';
 import { Contract } from 'ethers';
 import { SignerWithAddress } from '@nomicfoundation/hardhat-ethers/dist/src/signer-with-address';
 
-import * as expectEvent from '@bush/v3-helpers/src/test/expectEvent';
-import * as VaultDeployer from '@bush/v3-helpers/src/models/vault/VaultDeployer';
-import { deploy } from '@bush/v3-helpers/src/contract';
-import { actionId } from '@bush/v3-helpers/src/models/misc/actions';
-import { advanceTime, currentTimestamp, DAY } from '@bush/v3-helpers/src/time';
-import { sharedBeforeEach } from '@bush/v3-common/sharedBeforeEach';
-import { MAX_UINT256, ZERO_ADDRESS } from '@bush/v3-helpers/src/constants';
+import * as expectEvent from '@bush.fi/v3-helpers/src/test/expectEvent';
+import * as VaultDeployer from '@bush.fi/v3-helpers/src/models/vault/VaultDeployer';
+import { deploy } from '@bush.fi/v3-helpers/src/contract';
+import { actionId } from '@bush.fi/v3-helpers/src/models/misc/actions';
+import { advanceTime, currentTimestamp, DAY } from '@bush.fi/v3-helpers/src/time';
+import { sharedBeforeEach } from '@bush.fi/v3-common/sharedBeforeEach';
+import { MAX_UINT256, ZERO_ADDRESS } from '@bush.fi/v3-helpers/src/constants';
 import {
   BasicAuthorizerMock__factory,
   AuthenticatedContractMock,
   TimelockAuthorizer,
   Vault,
 } from '../../typechain-types';
-import TimelockAuthorizerHelper from '@bush/v3-helpers/src/models/authorizer/TimelockAuthorizerHelper';
-import TypesConverter from '@bush/v3-helpers/src/models/types/TypesConverter';
-import { IVault } from '@bush/v3-interfaces/typechain-types';
-import { bn } from '@bush/v3-helpers/src/numbers';
-import { Account } from '@bush/v3-helpers/src/models/types/types';
+import TimelockAuthorizerHelper from '@bush.fi/v3-helpers/src/models/authorizer/TimelockAuthorizerHelper';
+import TypesConverter from '@bush.fi/v3-helpers/src/models/types/TypesConverter';
+import { IVault } from '@bush.fi/v3-interfaces/typechain-types';
+import { bn } from '@bush.fi/v3-helpers/src/numbers';
+import { Account } from '@bush.fi/v3-helpers/src/models/types/types';
 
 describe('TimelockAuthorizer execute', () => {
   let authorizer: TimelockAuthorizerHelper, vault: Vault, iVault: IVault;

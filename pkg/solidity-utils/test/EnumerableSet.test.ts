@@ -1,8 +1,8 @@
 import { Contract } from 'ethers';
 import { expect } from 'chai';
 
-import { deploy } from '@bush/v3-helpers/src/contract';
-import { sharedBeforeEach } from '@bush/v3-common/sharedBeforeEach';
+import { deploy } from '@bush.fi/v3-helpers/src/contract';
+import { sharedBeforeEach } from '@bush.fi/v3-common/sharedBeforeEach';
 
 describe('EnumerableSet', () => {
   function shouldBehaveLikeSet(setType: string, members: Array<string>): void {

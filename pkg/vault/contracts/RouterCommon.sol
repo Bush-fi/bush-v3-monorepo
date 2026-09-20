@@ -8,21 +8,21 @@ import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import { Address } from "@openzeppelin/contracts/utils/Address.sol";
 import { IPermit2 } from "permit2/src/interfaces/IPermit2.sol";
 
-import { IRouterCommon } from "@bush/v3-interfaces/contracts/vault/IRouterCommon.sol";
-import { IWETH } from "@bush/v3-interfaces/contracts/solidity-utils/misc/IWETH.sol";
+import { IRouterCommon } from "@bush.fi/v3-interfaces/contracts/vault/IRouterCommon.sol";
+import { IWETH } from "@bush.fi/v3-interfaces/contracts/solidity-utils/misc/IWETH.sol";
 import { IAllowanceTransfer } from "permit2/src/interfaces/IAllowanceTransfer.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 
-import { StorageSlotExtension } from "@bush/v3-solidity-utils/contracts/openzeppelin/StorageSlotExtension.sol";
-import { InputHelpers } from "@bush/v3-solidity-utils/contracts/helpers/InputHelpers.sol";
-import { RevertCodec } from "@bush/v3-solidity-utils/contracts/helpers/RevertCodec.sol";
+import { StorageSlotExtension } from "@bush.fi/v3-solidity-utils/contracts/openzeppelin/StorageSlotExtension.sol";
+import { InputHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/InputHelpers.sol";
+import { RevertCodec } from "@bush.fi/v3-solidity-utils/contracts/helpers/RevertCodec.sol";
 import {
     ReentrancyGuardTransient
-} from "@bush/v3-solidity-utils/contracts/openzeppelin/ReentrancyGuardTransient.sol";
-import { Version } from "@bush/v3-solidity-utils/contracts/helpers/Version.sol";
+} from "@bush.fi/v3-solidity-utils/contracts/openzeppelin/ReentrancyGuardTransient.sol";
+import { Version } from "@bush.fi/v3-solidity-utils/contracts/helpers/Version.sol";
 import {
     TransientStorageHelpers
-} from "@bush/v3-solidity-utils/contracts/helpers/TransientStorageHelpers.sol";
+} from "@bush.fi/v3-solidity-utils/contracts/helpers/TransientStorageHelpers.sol";
 
 import { RouterWethLib } from "./lib/RouterWethLib.sol";
 import { SenderGuard } from "./SenderGuard.sol";

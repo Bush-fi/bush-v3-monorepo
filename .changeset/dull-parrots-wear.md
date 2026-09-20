@@ -1,5 +1,5 @@
 ---
-'@bush/v3-pool-hooks': patch
+'@bush.fi/v3-pool-hooks': patch
 ---
 
 Fix StableSurgeMedianMath.findMedian in-place sort mutation. calculateImbalance now deletes the input array after use, converting potential silent misuse into a revert.

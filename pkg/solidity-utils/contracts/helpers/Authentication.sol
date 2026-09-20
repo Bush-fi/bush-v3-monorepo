@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.24;
 
-import { IAuthentication } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
+import { IAuthentication } from "@bush.fi/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
 
 /**
  * @notice Building block for performing access control on external functions.

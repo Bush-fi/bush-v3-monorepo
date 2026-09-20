@@ -8,22 +8,22 @@ import { AggregatorV3Interface } from "@chainlink/contracts/src/v0.8/shared/inte
 import { IERC20Metadata } from "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol";
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { ISequencerUptimeFeed } from "@bush/v3-interfaces/contracts/oracles/ISequencerUptimeFeed.sol";
-import { PoolRoleAccounts, Rounding } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
-import { ILPOracleBase } from "@bush/v3-interfaces/contracts/oracles/ILPOracleBase.sol";
-import { IStablePool } from "@bush/v3-interfaces/contracts/pool-stable/IStablePool.sol";
-import { IBasePool } from "@bush/v3-interfaces/contracts/vault/IBasePool.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import { ISequencerUptimeFeed } from "@bush.fi/v3-interfaces/contracts/oracles/ISequencerUptimeFeed.sol";
+import { PoolRoleAccounts, Rounding } from "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { ILPOracleBase } from "@bush.fi/v3-interfaces/contracts/oracles/ILPOracleBase.sol";
+import { IStablePool } from "@bush.fi/v3-interfaces/contracts/pool-stable/IStablePool.sol";
+import { IBasePool } from "@bush.fi/v3-interfaces/contracts/vault/IBasePool.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 
-import { CastingHelpers } from "@bush/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
-import { InputHelpers } from "@bush/v3-solidity-utils/contracts/helpers/InputHelpers.sol";
-import { StablePoolFactory } from "@bush/v3-pool-stable/contracts/StablePoolFactory.sol";
-import { ArrayHelpers } from "@bush/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
-import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
-import { StableMath } from "@bush/v3-solidity-utils/contracts/math/StableMath.sol";
+import { CastingHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
+import { InputHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/InputHelpers.sol";
+import { StablePoolFactory } from "@bush.fi/v3-pool-stable/contracts/StablePoolFactory.sol";
+import { ArrayHelpers } from "@bush.fi/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
+import { FixedPoint } from "@bush.fi/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { StableMath } from "@bush.fi/v3-solidity-utils/contracts/math/StableMath.sol";
 import {
     StablePoolContractsDeployer
-} from "@bush/v3-pool-stable/test/foundry/utils/StablePoolContractsDeployer.sol";
+} from "@bush.fi/v3-pool-stable/test/foundry/utils/StablePoolContractsDeployer.sol";
 
 import { StableLPOracleMock } from "../../contracts/test/StableLPOracleMock.sol";
 import { StableLPOracle } from "../../contracts/StableLPOracle.sol";

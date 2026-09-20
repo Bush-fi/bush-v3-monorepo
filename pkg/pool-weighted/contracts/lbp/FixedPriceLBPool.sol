@@ -2,20 +2,20 @@
 
 pragma solidity ^0.8.24;
 
-import { ISwapFeePercentageBounds } from "@bush/v3-interfaces/contracts/vault/ISwapFeePercentageBounds.sol";
+import { ISwapFeePercentageBounds } from "@bush.fi/v3-interfaces/contracts/vault/ISwapFeePercentageBounds.sol";
 import {
     IUnbalancedLiquidityInvariantRatioBounds
-} from "@bush/v3-interfaces/contracts/vault/IUnbalancedLiquidityInvariantRatioBounds.sol";
-import { ISenderGuard } from "@bush/v3-interfaces/contracts/vault/ISenderGuard.sol";
-import { IBasePool } from "@bush/v3-interfaces/contracts/vault/IBasePool.sol";
-import "@bush/v3-interfaces/contracts/pool-weighted/IFixedPriceLBPool.sol";
-import "@bush/v3-interfaces/contracts/pool-weighted/ILBPCommon.sol";
-import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+} from "@bush.fi/v3-interfaces/contracts/vault/IUnbalancedLiquidityInvariantRatioBounds.sol";
+import { ISenderGuard } from "@bush.fi/v3-interfaces/contracts/vault/ISenderGuard.sol";
+import { IBasePool } from "@bush.fi/v3-interfaces/contracts/vault/IBasePool.sol";
+import "@bush.fi/v3-interfaces/contracts/pool-weighted/IFixedPriceLBPool.sol";
+import "@bush.fi/v3-interfaces/contracts/pool-weighted/ILBPCommon.sol";
+import "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
-import { BushPoolToken } from "@bush/v3-vault/contracts/BushPoolToken.sol";
-import { Version } from "@bush/v3-solidity-utils/contracts/helpers/Version.sol";
-import { PoolInfo } from "@bush/v3-pool-utils/contracts/PoolInfo.sol";
+import { FixedPoint } from "@bush.fi/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { BushPoolToken } from "@bush.fi/v3-vault/contracts/BushPoolToken.sol";
+import { Version } from "@bush.fi/v3-solidity-utils/contracts/helpers/Version.sol";
+import { PoolInfo } from "@bush.fi/v3-pool-utils/contracts/PoolInfo.sol";
 
 import { LBPCommon } from "./LBPCommon.sol";
 

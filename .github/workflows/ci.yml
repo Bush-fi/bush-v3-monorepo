@@ -43,7 +43,7 @@ jobs:
       - name: Set up environment
         uses: ./.github/actions/setup
       - name: Test
-        run: yarn workspace @bush/v3-vault test:forge
+        run: yarn workspace @bush.fi/v3-vault test:forge
 
   test-hardhat-vault:
     runs-on: ubuntu-latest
@@ -57,7 +57,7 @@ jobs:
           name: built-contracts
           path: pkg/
       - name: Test
-        run: yarn workspace @bush/v3-vault test:hardhat
+        run: yarn workspace @bush.fi/v3-vault test:hardhat
 
   test-hardhat-solidity-utils:
     runs-on: ubuntu-latest
@@ -71,7 +71,7 @@ jobs:
           name: built-contracts
           path: pkg/
       - name: Test
-        run: yarn workspace @bush/v3-solidity-utils test:hardhat
+        run: yarn workspace @bush.fi/v3-solidity-utils test:hardhat
 
   test-forge-standalone-utils:
     runs-on: ubuntu-latest
@@ -85,7 +85,7 @@ jobs:
           name: built-contracts
           path: pkg/
       - name: Test
-        run: yarn workspace @bush/v3-standalone-utils test:forge
+        run: yarn workspace @bush.fi/v3-standalone-utils test:forge
 
   test-forge-solidity-utils:
     runs-on: ubuntu-latest
@@ -99,7 +99,7 @@ jobs:
           name: built-contracts
           path: pkg/
       - name: Test
-        run: yarn workspace @bush/v3-solidity-utils test:forge
+        run: yarn workspace @bush.fi/v3-solidity-utils test:forge
 
   test-hardhat-pool-weighted:
     runs-on: ubuntu-latest
@@ -113,7 +113,7 @@ jobs:
           name: built-contracts
           path: pkg/
       - name: Test
-        run: yarn workspace @bush/v3-pool-weighted test:hardhat
+        run: yarn workspace @bush.fi/v3-pool-weighted test:hardhat
 
   test-forge-pool-weighted:
     runs-on: ubuntu-latest
@@ -127,7 +127,7 @@ jobs:
           name: built-contracts
           path: pkg/
       - name: Test
-        run: yarn workspace @bush/v3-pool-weighted test:forge
+        run: yarn workspace @bush.fi/v3-pool-weighted test:forge
 
   test-hardhat-pool-stable:
     runs-on: ubuntu-latest
@@ -141,7 +141,7 @@ jobs:
           name: built-contracts
           path: pkg/
       - name: Test
-        run: yarn workspace @bush/v3-pool-stable test:hardhat
+        run: yarn workspace @bush.fi/v3-pool-stable test:hardhat
 
   test-forge-pool-stable:
     runs-on: ubuntu-latest
@@ -155,7 +155,7 @@ jobs:
           name: built-contracts
           path: pkg/
       - name: Test
-        run: yarn workspace @bush/v3-pool-stable test:forge
+        run: yarn workspace @bush.fi/v3-pool-stable test:forge
 
   test-hardhat-pool-utils:
     runs-on: ubuntu-latest
@@ -169,7 +169,7 @@ jobs:
           name: built-contracts
           path: pkg/
       - name: Test
-        run: yarn workspace @bush/v3-pool-utils test:hardhat
+        run: yarn workspace @bush.fi/v3-pool-utils test:hardhat
 
   test-forge-pool-utils:
     runs-on: ubuntu-latest
@@ -183,7 +183,7 @@ jobs:
           name: built-contracts
           path: pkg/
       - name: Test
-        run: yarn workspace @bush/v3-pool-utils test:forge
+        run: yarn workspace @bush.fi/v3-pool-utils test:forge
 
   test-forge-pool-hooks:
     runs-on: ubuntu-latest
@@ -197,7 +197,7 @@ jobs:
           name: built-contracts
           path: pkg/
       - name: Test
-        run: yarn workspace @bush/v3-pool-hooks test:forge
+        run: yarn workspace @bush.fi/v3-pool-hooks test:forge
 
   test-hardhat-pool-cow:
     runs-on: ubuntu-latest
@@ -211,7 +211,7 @@ jobs:
           name: built-contracts
           path: pkg/
       - name: Test
-        run: yarn workspace @bush/v3-pool-cow test:hardhat
+        run: yarn workspace @bush.fi/v3-pool-cow test:hardhat
 
   test-forge-pool-cow:
     runs-on: ubuntu-latest
@@ -225,7 +225,7 @@ jobs:
           name: built-contracts
           path: pkg/
       - name: Test
-        run: yarn workspace @bush/v3-pool-cow test:forge
+        run: yarn workspace @bush.fi/v3-pool-cow test:forge
 
   test-forge-oracles:
     runs-on: ubuntu-latest
@@ -239,7 +239,7 @@ jobs:
           name: built-contracts
           path: pkg/
       - name: Test
-        run: yarn workspace @bush/v3-oracles test:forge
+        run: yarn workspace @bush.fi/v3-oracles test:forge
 
   coverage:
     runs-on: ubuntu-latest

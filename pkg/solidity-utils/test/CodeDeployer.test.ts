@@ -2,9 +2,9 @@ import { expect } from 'chai';
 import { Contract, Signer } from 'ethers';
 import { ethers } from 'hardhat';
 
-import { deploy } from '@bush/v3-helpers/src/contract';
-import * as expectEvent from '@bush/v3-helpers/src/test/expectEvent';
-import { sharedBeforeEach } from '@bush/v3-common/sharedBeforeEach';
+import { deploy } from '@bush.fi/v3-helpers/src/contract';
+import * as expectEvent from '@bush.fi/v3-helpers/src/test/expectEvent';
+import { sharedBeforeEach } from '@bush.fi/v3-common/sharedBeforeEach';
 import { CodeDeployer__factory } from '../typechain-types';
 
 describe('CodeDeployer', function () {

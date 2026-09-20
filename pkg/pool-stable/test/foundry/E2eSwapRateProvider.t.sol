@@ -2,17 +2,17 @@
 
 pragma solidity ^0.8.24;
 
-import { IRateProvider } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IRateProvider.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
-import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IRateProvider } from "@bush.fi/v3-interfaces/contracts/solidity-utils/helpers/IRateProvider.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
+import "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { CastingHelpers } from "@bush/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
-import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { CastingHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
+import { FixedPoint } from "@bush.fi/v3-solidity-utils/contracts/math/FixedPoint.sol";
 
-import { VaultContractsDeployer } from "@bush/v3-vault/test/foundry/utils/VaultContractsDeployer.sol";
-import { E2eSwapRateProviderTest } from "@bush/v3-vault/test/foundry/E2eSwapRateProvider.t.sol";
-import { PoolHooksMock } from "@bush/v3-vault/contracts/test/PoolHooksMock.sol";
-import { SwapLimits } from "@bush/v3-vault/test/foundry/E2eSwap.t.sol";
+import { VaultContractsDeployer } from "@bush.fi/v3-vault/test/foundry/utils/VaultContractsDeployer.sol";
+import { E2eSwapRateProviderTest } from "@bush.fi/v3-vault/test/foundry/E2eSwapRateProvider.t.sol";
+import { PoolHooksMock } from "@bush.fi/v3-vault/contracts/test/PoolHooksMock.sol";
+import { SwapLimits } from "@bush.fi/v3-vault/test/foundry/E2eSwap.t.sol";
 
 import { StablePoolFactory } from "../../contracts/StablePoolFactory.sol";
 import { StablePool } from "../../contracts/StablePool.sol";

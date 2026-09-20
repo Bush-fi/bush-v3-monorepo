@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.24;
 
-import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
 import { BaseHooksMock } from "../../contracts/test/BaseHooksMock.sol";
 import { BaseVaultTest } from "./utils/BaseVaultTest.sol";

@@ -4,8 +4,8 @@ pragma solidity ^0.8.24;
 
 import {
     IBushContractRegistry
-} from "@bush/v3-interfaces/contracts/standalone-utils/IBushContractRegistry.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+} from "@bush.fi/v3-interfaces/contracts/standalone-utils/IBushContractRegistry.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 
 import { MevCaptureHook } from "../MevCaptureHook.sol";
 

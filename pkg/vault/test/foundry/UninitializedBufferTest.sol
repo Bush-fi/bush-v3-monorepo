@@ -2,9 +2,9 @@
 
 pragma solidity ^0.8.24;
 
-import { IVaultAdmin } from "@bush/v3-interfaces/contracts/vault/IVaultAdmin.sol";
-import { IVaultErrors } from "@bush/v3-interfaces/contracts/vault/IVaultErrors.sol";
-import "@bush/v3-interfaces/contracts/vault/BatchRouterTypes.sol";
+import { IVaultAdmin } from "@bush.fi/v3-interfaces/contracts/vault/IVaultAdmin.sol";
+import { IVaultErrors } from "@bush.fi/v3-interfaces/contracts/vault/IVaultErrors.sol";
+import "@bush.fi/v3-interfaces/contracts/vault/BatchRouterTypes.sol";
 
 import { BaseVaultTest } from "./utils/BaseVaultTest.sol";
 

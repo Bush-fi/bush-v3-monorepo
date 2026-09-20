@@ -6,13 +6,13 @@ import "forge-std/Test.sol";
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { PoolConfig, PoolRoleAccounts, TokenConfig } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
-import { IAuthentication } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
-import { IPoolVersion } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IPoolVersion.sol";
-import { ICowPoolFactory } from "@bush/v3-interfaces/contracts/pool-cow/ICowPoolFactory.sol";
+import { PoolConfig, PoolRoleAccounts, TokenConfig } from "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IAuthentication } from "@bush.fi/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
+import { IPoolVersion } from "@bush.fi/v3-interfaces/contracts/solidity-utils/helpers/IPoolVersion.sol";
+import { ICowPoolFactory } from "@bush.fi/v3-interfaces/contracts/pool-cow/ICowPoolFactory.sol";
 
-import { CastingHelpers } from "@bush/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
-import { ArrayHelpers } from "@bush/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
+import { CastingHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
+import { ArrayHelpers } from "@bush.fi/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
 
 import { CowPoolFactory } from "../../contracts/CowPoolFactory.sol";
 import { CowRouter } from "../../contracts/CowRouter.sol";

@@ -2,11 +2,11 @@ import { Contract } from 'ethers';
 import { expect } from 'chai';
 import Decimal from 'decimal.js';
 
-import { deploy } from '@bush/v3-helpers/src/contract';
-import { decimal, fp } from '@bush/v3-helpers/src/numbers';
-import { MAX_UINT256, ARITHMETIC_FLOW_PANIC, DIVISION_BY_ZERO_PANIC } from '@bush/v3-helpers/src/constants';
-import { expectEqualWithError } from '@bush/v3-helpers/src/test/relativeError';
-import { sharedBeforeEach } from '@bush/v3-common/sharedBeforeEach';
+import { deploy } from '@bush.fi/v3-helpers/src/contract';
+import { decimal, fp } from '@bush.fi/v3-helpers/src/numbers';
+import { MAX_UINT256, ARITHMETIC_FLOW_PANIC, DIVISION_BY_ZERO_PANIC } from '@bush.fi/v3-helpers/src/constants';
+import { expectEqualWithError } from '@bush.fi/v3-helpers/src/test/relativeError';
+import { sharedBeforeEach } from '@bush.fi/v3-common/sharedBeforeEach';
 
 describe('FixedPoint', () => {
   let lib: Contract;

@@ -2,13 +2,13 @@
 
 pragma solidity ^0.8.24;
 
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
-import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
+import "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { CastingHelpers } from "@bush/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
+import { CastingHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
 
-import { PoolHooksMock } from "@bush/v3-vault/contracts/test/PoolHooksMock.sol";
-import { FungibilityTest } from "@bush/v3-vault/test/foundry/Fungibility.t.sol";
+import { PoolHooksMock } from "@bush.fi/v3-vault/contracts/test/PoolHooksMock.sol";
+import { FungibilityTest } from "@bush.fi/v3-vault/test/foundry/Fungibility.t.sol";
 
 import { StablePoolFactory } from "../../contracts/StablePoolFactory.sol";
 import { StablePool } from "../../contracts/StablePool.sol";

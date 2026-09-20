@@ -7,18 +7,18 @@ import { SafeCast } from "@openzeppelin/contracts/utils/math/SafeCast.sol";
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import { IPermit2 } from "permit2/src/interfaces/IPermit2.sol";
 
-import { IWETH } from "@bush/v3-interfaces/contracts/solidity-utils/misc/IWETH.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
-import "@bush/v3-interfaces/contracts/vault/BatchRouterTypes.sol";
-import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IWETH } from "@bush.fi/v3-interfaces/contracts/solidity-utils/misc/IWETH.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
+import "@bush.fi/v3-interfaces/contracts/vault/BatchRouterTypes.sol";
+import "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { EVMCallModeHelpers } from "@bush/v3-solidity-utils/contracts/helpers/EVMCallModeHelpers.sol";
+import { EVMCallModeHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/EVMCallModeHelpers.sol";
 import {
     TransientEnumerableSet
-} from "@bush/v3-solidity-utils/contracts/openzeppelin/TransientEnumerableSet.sol";
+} from "@bush.fi/v3-solidity-utils/contracts/openzeppelin/TransientEnumerableSet.sol";
 import {
     TransientStorageHelpers
-} from "@bush/v3-solidity-utils/contracts/helpers/TransientStorageHelpers.sol";
+} from "@bush.fi/v3-solidity-utils/contracts/helpers/TransientStorageHelpers.sol";
 
 import { BatchRouterCommon } from "./BatchRouterCommon.sol";
 

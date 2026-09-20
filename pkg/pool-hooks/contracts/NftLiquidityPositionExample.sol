@@ -6,9 +6,9 @@ import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import { ERC721 } from "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import { IPermit2 } from "permit2/src/interfaces/IPermit2.sol";
 
-import { ISenderGuard } from "@bush/v3-interfaces/contracts/vault/ISenderGuard.sol";
-import { IWETH } from "@bush/v3-interfaces/contracts/solidity-utils/misc/IWETH.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import { ISenderGuard } from "@bush.fi/v3-interfaces/contracts/vault/ISenderGuard.sol";
+import { IWETH } from "@bush.fi/v3-interfaces/contracts/solidity-utils/misc/IWETH.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 import {
     TokenConfig,
     LiquidityManagement,
@@ -16,10 +16,10 @@ import {
     AddLiquidityKind,
     RemoveLiquidityKind,
     AddLiquidityParams
-} from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+} from "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
-import { BaseHooks } from "@bush/v3-vault/contracts/BaseHooks.sol";
+import { FixedPoint } from "@bush.fi/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { BaseHooks } from "@bush.fi/v3-vault/contracts/BaseHooks.sol";
 
 import { MinimalRouter } from "./MinimalRouter.sol";
 

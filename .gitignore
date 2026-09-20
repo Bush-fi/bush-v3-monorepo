@@ -53,4 +53,3 @@ slither/
 # Fuzz tests
 crytic-export/
 medusa-corpus/
-pkg/vault

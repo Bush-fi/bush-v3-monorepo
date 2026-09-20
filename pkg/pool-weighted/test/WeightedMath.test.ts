@@ -1,16 +1,16 @@
 import { expect } from 'chai';
-import { bn } from '@bush/v3-helpers/src/numbers';
-import { MAX_OUT_RATIO, MAX_IN_RATIO, MAX_RELATIVE_ERROR } from '@bush/v3-helpers/src/constants';
-import { deploy } from '@bush/v3-helpers/src/contract';
-import { expectEqualWithError } from '@bush/v3-helpers/src/test/relativeError';
-import { sharedBeforeEach } from '@bush/v3-common/sharedBeforeEach';
-import '@bush/v3-common/setupTests';
+import { bn } from '@bush.fi/v3-helpers/src/numbers';
+import { MAX_OUT_RATIO, MAX_IN_RATIO, MAX_RELATIVE_ERROR } from '@bush.fi/v3-helpers/src/constants';
+import { deploy } from '@bush.fi/v3-helpers/src/contract';
+import { expectEqualWithError } from '@bush.fi/v3-helpers/src/test/relativeError';
+import { sharedBeforeEach } from '@bush.fi/v3-common/sharedBeforeEach';
+import '@bush.fi/v3-common/setupTests';
 
 import {
   computeInvariant,
   computeInGivenExactOut,
   computeOutGivenExactIn,
-} from '@bush/v3-helpers/src/math/weighted';
+} from '@bush.fi/v3-helpers/src/math/weighted';
 
 import { WeightedMathMock } from '../typechain-types/contracts/test/WeightedMathMock';
 

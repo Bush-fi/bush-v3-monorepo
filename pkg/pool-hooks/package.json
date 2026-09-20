@@ -1,5 +1,5 @@
 {
-  "name": "@bush/v3-pool-hooks",
+  "name": "@bush.fi/v3-pool-hooks",
   "version": "0.1.0",
   "description": "Bush V3 Pool Hooks",
   "license": "GPL-3.0-only",
@@ -28,17 +28,17 @@
     "slither:triage": "yarn compile && bash -c 'source ../../slither/bin/activate && slither --compile-force-framework hardhat --ignore-compile . --config-file ../../.slither.config.json --triage-mode'"
   },
   "dependencies": {
-    "@bush/v3-interfaces": "workspace:*",
-    "@bush/v3-pool-stable": "workspace:*",
-    "@bush/v3-pool-utils": "workspace:*",
-    "@bush/v3-solidity-utils": "workspace:*",
-    "@bush/v3-vault": "workspace:*",
+    "@bush.fi/v3-interfaces": "workspace:*",
+    "@bush.fi/v3-pool-stable": "workspace:*",
+    "@bush.fi/v3-pool-utils": "workspace:*",
+    "@bush.fi/v3-solidity-utils": "workspace:*",
+    "@bush.fi/v3-vault": "workspace:*",
     "@openzeppelin/contracts": "~5.4.0",
     "permit2": "https://github.com/Uniswap/permit2.git#cc56ad0f3439c502c246fc5cfcc3db92bb8b7219"
   },
   "devDependencies": {
-    "@bush/solidity-toolbox": "workspace:*",
-    "@bush/v3-standalone-utils": "workspace:*",
+    "@bush.fi/solidity-toolbox": "workspace:*",
+    "@bush.fi/v3-standalone-utils": "workspace:*",
     "@typescript-eslint/eslint-plugin": "^5.41.0",
     "@typescript-eslint/parser": "^5.41.0",
     "eslint": "^8.26.0",

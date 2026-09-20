@@ -2,15 +2,15 @@
 
 pragma solidity ^0.8.24;
 
-import { IPoolVersion } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IPoolVersion.sol";
-import { ICowPoolFactory } from "@bush/v3-interfaces/contracts/pool-cow/ICowPoolFactory.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
-import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IPoolVersion } from "@bush.fi/v3-interfaces/contracts/solidity-utils/helpers/IPoolVersion.sol";
+import { ICowPoolFactory } from "@bush.fi/v3-interfaces/contracts/pool-cow/ICowPoolFactory.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
+import "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { MinTokenBalanceLib } from "@bush/v3-vault/contracts/lib/MinTokenBalanceLib.sol";
-import { BasePoolFactory } from "@bush/v3-pool-utils/contracts/BasePoolFactory.sol";
-import { WeightedPool } from "@bush/v3-pool-weighted/contracts/WeightedPool.sol";
-import { Version } from "@bush/v3-solidity-utils/contracts/helpers/Version.sol";
+import { MinTokenBalanceLib } from "@bush.fi/v3-vault/contracts/lib/MinTokenBalanceLib.sol";
+import { BasePoolFactory } from "@bush.fi/v3-pool-utils/contracts/BasePoolFactory.sol";
+import { WeightedPool } from "@bush.fi/v3-pool-weighted/contracts/WeightedPool.sol";
+import { Version } from "@bush.fi/v3-solidity-utils/contracts/helpers/Version.sol";
 
 import { CowPool } from "./CowPool.sol";
 

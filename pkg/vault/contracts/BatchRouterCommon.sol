@@ -5,16 +5,16 @@ pragma solidity ^0.8.24;
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import { IPermit2 } from "permit2/src/interfaces/IPermit2.sol";
 
-import { IWETH } from "@bush/v3-interfaces/contracts/solidity-utils/misc/IWETH.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import { IWETH } from "@bush.fi/v3-interfaces/contracts/solidity-utils/misc/IWETH.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 
 import {
     TransientEnumerableSet
-} from "@bush/v3-solidity-utils/contracts/openzeppelin/TransientEnumerableSet.sol";
+} from "@bush.fi/v3-solidity-utils/contracts/openzeppelin/TransientEnumerableSet.sol";
 import {
     TransientStorageHelpers,
     AddressToUintMappingSlot
-} from "@bush/v3-solidity-utils/contracts/helpers/TransientStorageHelpers.sol";
+} from "@bush.fi/v3-solidity-utils/contracts/helpers/TransientStorageHelpers.sol";
 
 import { RouterCommon } from "./RouterCommon.sol";
 

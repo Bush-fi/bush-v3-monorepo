@@ -4,14 +4,14 @@ pragma solidity ^0.8.24;
 
 import {
     IHyperEVMRateProviderFactory
-} from "@bush/v3-interfaces/contracts/standalone-utils/IHyperEVMRateProviderFactory.sol";
+} from "@bush.fi/v3-interfaces/contracts/standalone-utils/IHyperEVMRateProviderFactory.sol";
 import {
     IHyperEVMRateProvider
-} from "@bush/v3-interfaces/contracts/standalone-utils/IHyperEVMRateProvider.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+} from "@bush.fi/v3-interfaces/contracts/standalone-utils/IHyperEVMRateProvider.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 
-import { SingletonAuthentication } from "@bush/v3-vault/contracts/SingletonAuthentication.sol";
-import { Version } from "@bush/v3-solidity-utils/contracts/helpers/Version.sol";
+import { SingletonAuthentication } from "@bush.fi/v3-vault/contracts/SingletonAuthentication.sol";
+import { Version } from "@bush.fi/v3-solidity-utils/contracts/helpers/Version.sol";
 
 import { HyperEVMRateProvider } from "./HyperEVMRateProvider.sol";
 

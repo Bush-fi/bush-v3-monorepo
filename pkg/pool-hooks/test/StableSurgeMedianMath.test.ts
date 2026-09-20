@@ -1,7 +1,7 @@
 import { expect } from 'chai';
-import { deploy } from '@bush/v3-helpers/src/contract';
+import { deploy } from '@bush.fi/v3-helpers/src/contract';
 import { StableSurgeMedianMathMock } from '../typechain-types/contracts/test/StableSurgeMedianMathMock';
-import { findMedian } from '@bush/v3-helpers/src/math/surgeMedianMath';
+import { findMedian } from '@bush.fi/v3-helpers/src/math/surgeMedianMath';
 
 describe('StableSurgeMedianMath', function () {
   const MIN_TOKENS = 2;

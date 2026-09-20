@@ -3,15 +3,15 @@ import { ethers } from 'hardhat';
 import { BigNumberish } from 'ethers';
 import { SignerWithAddress } from '@nomicfoundation/hardhat-ethers/dist/src/signer-with-address';
 
-import * as expectEvent from '@bush/v3-helpers/src/test/expectEvent';
-import * as VaultDeployer from '@bush/v3-helpers/src/models/vault/VaultDeployer';
-import TimelockAuthorizerHelper from '@bush/v3-helpers/src/models/authorizer/TimelockAuthorizerHelper';
-import { ZERO_ADDRESS } from '@bush/v3-helpers/src/constants';
-import { advanceTime, currentTimestamp, DAY } from '@bush/v3-helpers/src/time';
-import { sharedBeforeEach } from '@bush/v3-common/sharedBeforeEach';
+import * as expectEvent from '@bush.fi/v3-helpers/src/test/expectEvent';
+import * as VaultDeployer from '@bush.fi/v3-helpers/src/models/vault/VaultDeployer';
+import TimelockAuthorizerHelper from '@bush.fi/v3-helpers/src/models/authorizer/TimelockAuthorizerHelper';
+import { ZERO_ADDRESS } from '@bush.fi/v3-helpers/src/constants';
+import { advanceTime, currentTimestamp, DAY } from '@bush.fi/v3-helpers/src/time';
+import { sharedBeforeEach } from '@bush.fi/v3-common/sharedBeforeEach';
 import { TimelockAuthorizer } from '../../typechain-types';
-import { deploy } from '@bush/v3-helpers/src/contract';
-import { bn } from '@bush/v3-helpers/src/numbers';
+import { deploy } from '@bush.fi/v3-helpers/src/contract';
+import { bn } from '@bush.fi/v3-helpers/src/numbers';
 
 describe('TimelockAuthorizer root', () => {
   let authorizer: TimelockAuthorizerHelper;

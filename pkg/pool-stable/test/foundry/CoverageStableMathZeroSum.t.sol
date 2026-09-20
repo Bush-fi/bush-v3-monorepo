@@ -4,7 +4,7 @@ pragma solidity ^0.8.24;
 
 import "forge-std/Test.sol";
 
-import { StableMath } from "@bush/v3-solidity-utils/contracts/math/StableMath.sol";
+import { StableMath } from "@bush.fi/v3-solidity-utils/contracts/math/StableMath.sol";
 
 contract CoverageStableMathZeroSumTest is Test {
     function testComputeInvariantReturnsZeroWhenSumIsZero() public pure {

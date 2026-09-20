@@ -2,8 +2,8 @@
 
 pragma solidity ^0.8.24;
 
-import { IWETH } from "@bush/v3-interfaces/contracts/solidity-utils/misc/IWETH.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import { IWETH } from "@bush.fi/v3-interfaces/contracts/solidity-utils/misc/IWETH.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 
 import { RouterWethLib } from "../../contracts/lib/RouterWethLib.sol";
 import { BaseVaultTest } from "./utils/BaseVaultTest.sol";

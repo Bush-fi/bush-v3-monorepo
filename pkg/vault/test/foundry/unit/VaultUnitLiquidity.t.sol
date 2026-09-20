@@ -4,20 +4,20 @@ pragma solidity ^0.8.24;
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { IBasePool } from "@bush/v3-interfaces/contracts/vault/IBasePool.sol";
+import { IBasePool } from "@bush.fi/v3-interfaces/contracts/vault/IBasePool.sol";
 import {
     IUnbalancedLiquidityInvariantRatioBounds
-} from "@bush/v3-interfaces/contracts/vault/IUnbalancedLiquidityInvariantRatioBounds.sol";
-import { IPoolLiquidity } from "@bush/v3-interfaces/contracts/vault/IPoolLiquidity.sol";
-import { IVaultErrors } from "@bush/v3-interfaces/contracts/vault/IVaultErrors.sol";
-import { IVaultEvents } from "@bush/v3-interfaces/contracts/vault/IVaultEvents.sol";
-import { IVaultMock } from "@bush/v3-interfaces/contracts/test/IVaultMock.sol";
-import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+} from "@bush.fi/v3-interfaces/contracts/vault/IUnbalancedLiquidityInvariantRatioBounds.sol";
+import { IPoolLiquidity } from "@bush.fi/v3-interfaces/contracts/vault/IPoolLiquidity.sol";
+import { IVaultErrors } from "@bush.fi/v3-interfaces/contracts/vault/IVaultErrors.sol";
+import { IVaultEvents } from "@bush.fi/v3-interfaces/contracts/vault/IVaultEvents.sol";
+import { IVaultMock } from "@bush.fi/v3-interfaces/contracts/test/IVaultMock.sol";
+import "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { CastingHelpers } from "@bush/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
-import { ScalingHelpers } from "@bush/v3-solidity-utils/contracts/helpers/ScalingHelpers.sol";
-import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
-import { BaseTest } from "@bush/v3-solidity-utils/test/foundry/utils/BaseTest.sol";
+import { CastingHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
+import { ScalingHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/ScalingHelpers.sol";
+import { FixedPoint } from "@bush.fi/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { BaseTest } from "@bush.fi/v3-solidity-utils/test/foundry/utils/BaseTest.sol";
 
 import { VaultContractsDeployer } from "../../../test/foundry/utils/VaultContractsDeployer.sol";
 import { PoolFactoryMock } from "../../../contracts/test/PoolFactoryMock.sol";

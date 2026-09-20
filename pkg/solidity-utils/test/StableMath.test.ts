@@ -1,7 +1,7 @@
 import { Contract, BigNumberish } from 'ethers';
-import { deploy } from '@bush/v3-helpers/src/contract';
-import { bn, fp } from '@bush/v3-helpers/src/numbers';
-import { expectEqualWithError } from '@bush/v3-helpers/src/test/relativeError';
+import { deploy } from '@bush.fi/v3-helpers/src/contract';
+import { bn, fp } from '@bush.fi/v3-helpers/src/numbers';
+import { expectEqualWithError } from '@bush.fi/v3-helpers/src/test/relativeError';
 import { random } from 'lodash';
 import {
   calculateInvariant,
@@ -10,7 +10,7 @@ import {
   calcInGivenExactOut,
   calcOutGivenExactIn,
   Rounding,
-} from '@bush/v3-helpers/src/math/stable';
+} from '@bush.fi/v3-helpers/src/math/stable';
 
 const MAX_RELATIVE_ERROR = 0.0001; // Max relative error
 

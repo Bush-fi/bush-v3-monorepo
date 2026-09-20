@@ -4,22 +4,22 @@ pragma solidity ^0.8.24;
 
 import "forge-std/Test.sol";
 
-import { IAuthentication } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
-import { IProtocolFeeController } from "@bush/v3-interfaces/contracts/vault/IProtocolFeeController.sol";
-import { IVaultErrors } from "@bush/v3-interfaces/contracts/vault/IVaultErrors.sol";
-import { IPoolInfo } from "@bush/v3-interfaces/contracts/pool-utils/IPoolInfo.sol";
+import { IAuthentication } from "@bush.fi/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
+import { IProtocolFeeController } from "@bush.fi/v3-interfaces/contracts/vault/IProtocolFeeController.sol";
+import { IVaultErrors } from "@bush.fi/v3-interfaces/contracts/vault/IVaultErrors.sol";
+import { IPoolInfo } from "@bush.fi/v3-interfaces/contracts/pool-utils/IPoolInfo.sol";
 import {
     IProtocolFeePercentagesProvider
-} from "@bush/v3-interfaces/contracts/vault/IProtocolFeePercentagesProvider.sol";
+} from "@bush.fi/v3-interfaces/contracts/vault/IProtocolFeePercentagesProvider.sol";
 import {
     IBushContractRegistry,
     ContractType
-} from "@bush/v3-interfaces/contracts/standalone-utils/IBushContractRegistry.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+} from "@bush.fi/v3-interfaces/contracts/standalone-utils/IBushContractRegistry.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 
-import { ProtocolFeeController } from "@bush/v3-vault/contracts/ProtocolFeeController.sol";
-import { PoolFactoryMock } from "@bush/v3-vault/contracts/test/PoolFactoryMock.sol";
-import { BaseVaultTest } from "@bush/v3-vault/test/foundry/utils/BaseVaultTest.sol";
+import { ProtocolFeeController } from "@bush.fi/v3-vault/contracts/ProtocolFeeController.sol";
+import { PoolFactoryMock } from "@bush.fi/v3-vault/contracts/test/PoolFactoryMock.sol";
+import { BaseVaultTest } from "@bush.fi/v3-vault/test/foundry/utils/BaseVaultTest.sol";
 
 import { ProtocolFeePercentagesProvider } from "../../contracts/ProtocolFeePercentagesProvider.sol";
 import { BushContractRegistry } from "../../contracts/BushContractRegistry.sol";

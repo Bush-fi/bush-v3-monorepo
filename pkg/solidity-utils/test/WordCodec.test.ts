@@ -1,10 +1,10 @@
 import { expect } from 'chai';
 import { Contract, zeroPadValue, toBeHex } from 'ethers';
 
-import { bn, negate } from '@bush/v3-helpers/src/numbers';
+import { bn, negate } from '@bush.fi/v3-helpers/src/numbers';
 import { random } from 'lodash';
-import { deploy } from '@bush/v3-helpers/src/contract';
-import { ONE, ZERO, ONES_BYTES32, ZERO_BYTES32 } from '@bush/v3-helpers/src/constants';
+import { deploy } from '@bush.fi/v3-helpers/src/contract';
+import { ONE, ZERO, ONES_BYTES32, ZERO_BYTES32 } from '@bush.fi/v3-helpers/src/constants';
 
 describe('WordCodec', () => {
   let lib: Contract;

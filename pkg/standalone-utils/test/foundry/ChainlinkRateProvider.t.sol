@@ -5,7 +5,7 @@ import "forge-std/Test.sol";
 
 import { AggregatorV3Interface } from "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
 
-import { IChainlinkRateProvider } from "@bush/v3-interfaces/contracts/standalone-utils/IChainlinkRateProvider.sol";
+import { IChainlinkRateProvider } from "@bush.fi/v3-interfaces/contracts/standalone-utils/IChainlinkRateProvider.sol";
 
 import { ChainlinkRateProvider } from "../../contracts/ChainlinkRateProvider.sol";
 import { ChainlinkFeedMock } from "../../contracts/test/ChainlinkFeedMock.sol";

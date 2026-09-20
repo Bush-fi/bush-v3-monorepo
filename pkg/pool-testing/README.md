@@ -8,38 +8,38 @@ install, instead of having to work out which of the core packages holds which pi
 
 Installing it brings in:
 
-- **`@bush/v3-vault`** – `BaseVaultTest.sol` / `BasePoolTest.sol` (the base test contracts every pool/hook test
+- **`@bush.fi/v3-vault`** – `BaseVaultTest.sol` / `BasePoolTest.sol` (the base test contracts every pool/hook test
   extends), `VaultContractsDeployer.sol`, `Permit2Helpers.sol`, and the Vault mocks (`VaultMock`, `RouterMock`,
   `PoolHooksMock`, `PoolFactoryMock`, etc.) needed to stand up a working Vault in a test.
-- **`@bush/v3-pool-utils`** – `BasePoolFactory.sol` / `BasePoolAuthentication.sol` / `PoolInfo.sol`, the base
+- **`@bush.fi/v3-pool-utils`** – `BasePoolFactory.sol` / `BasePoolAuthentication.sol` / `PoolInfo.sol`, the base
   contracts a new pool factory extends.
-- **`@bush/v3-pool-hooks`** – `SurgeHookCommon.sol` and the worked hook examples (`StableSurgeHook`,
+- **`@bush.fi/v3-pool-hooks`** – `SurgeHookCommon.sol` and the worked hook examples (`StableSurgeHook`,
   `MevCaptureHook`, etc.) as reference implementations, plus their test deployers.
-- **`@bush/v3-interfaces`** – `IHooks`, `IBasePool`, and friends, plus mock interfaces used by the Vault mocks.
-- **`@bush/v3-solidity-utils`** – shared math libraries and `ArrayHelpers.sol`.
+- **`@bush.fi/v3-interfaces`** – `IHooks`, `IBasePool`, and friends, plus mock interfaces used by the Vault mocks.
+- **`@bush.fi/v3-solidity-utils`** – shared math libraries and `ArrayHelpers.sol`.
 
 ## Install
 
 ```bash
-yarn add -D @bush/v3-pool-testing
-# or: npm install --save-dev @bush/v3-pool-testing
+yarn add -D @bush.fi/v3-pool-testing
+# or: npm install --save-dev @bush.fi/v3-pool-testing
 ```
 
 ## Foundry setup
 
 Add remappings so these packages resolve the way they do inside this monorepo (each contract imports its
-sibling packages by their npm scope, e.g. `@bush/v3-interfaces/contracts/...`):
+sibling packages by their npm scope, e.g. `@bush.fi/v3-interfaces/contracts/...`):
 
 ```toml
 # foundry.toml
 [profile.default]
 libs = ["node_modules"]
 remappings = [
-    "@bush/v3-vault/=node_modules/@bush/v3-vault/",
-    "@bush/v3-pool-utils/=node_modules/@bush/v3-pool-utils/",
-    "@bush/v3-pool-hooks/=node_modules/@bush/v3-pool-hooks/",
-    "@bush/v3-interfaces/=node_modules/@bush/v3-interfaces/",
-    "@bush/v3-solidity-utils/=node_modules/@bush/v3-solidity-utils/",
+    "@bush.fi/v3-vault/=node_modules/@bush.fi/v3-vault/",
+    "@bush.fi/v3-pool-utils/=node_modules/@bush.fi/v3-pool-utils/",
+    "@bush.fi/v3-pool-hooks/=node_modules/@bush.fi/v3-pool-hooks/",
+    "@bush.fi/v3-interfaces/=node_modules/@bush.fi/v3-interfaces/",
+    "@bush.fi/v3-solidity-utils/=node_modules/@bush.fi/v3-solidity-utils/",
     "@openzeppelin/=node_modules/@openzeppelin/",
     "permit2/=node_modules/permit2/",
     "forge-std/=node_modules/forge-std/src/",
@@ -52,14 +52,14 @@ remappings = [
 ## Writing a test for a new pool
 
 ```solidity
-import { BaseVaultTest } from "@bush/v3-vault/test/foundry/utils/BaseVaultTest.sol";
+import { BaseVaultTest } from "@bush.fi/v3-vault/test/foundry/utils/BaseVaultTest.sol";
 import { MyPoolFactory } from "../contracts/MyPoolFactory.sol";
 
 contract MyPoolTest is BaseVaultTest {
     function setUp() public override {
         super.setUp();
         // deploy MyPoolFactory + a pool against the mock vault, as the existing
-        // *ContractsDeployer.sol files in @bush/v3-pool-weighted / @bush/v3-pool-stable
+        // *ContractsDeployer.sol files in @bush.fi/v3-pool-weighted / @bush.fi/v3-pool-stable
         // demonstrate for the pools already in this repo.
     }
 }

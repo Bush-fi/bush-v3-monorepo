@@ -6,14 +6,14 @@ import { IERC4626 } from "@openzeppelin/contracts/interfaces/IERC4626.sol";
 import { SafeERC20 } from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { IComposableCow } from "@bush/v3-interfaces/contracts/standalone-utils/IComposableCow.sol";
-import { IProtocolFeeSweeper } from "@bush/v3-interfaces/contracts/standalone-utils/IProtocolFeeSweeper.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import { IComposableCow } from "@bush.fi/v3-interfaces/contracts/standalone-utils/IComposableCow.sol";
+import { IProtocolFeeSweeper } from "@bush.fi/v3-interfaces/contracts/standalone-utils/IProtocolFeeSweeper.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 
 import {
     ReentrancyGuardTransient
-} from "@bush/v3-solidity-utils/contracts/openzeppelin/ReentrancyGuardTransient.sol";
-import { PackedTokenBalance } from "@bush/v3-solidity-utils/contracts/helpers/PackedTokenBalance.sol";
+} from "@bush.fi/v3-solidity-utils/contracts/openzeppelin/ReentrancyGuardTransient.sol";
+import { PackedTokenBalance } from "@bush.fi/v3-solidity-utils/contracts/helpers/PackedTokenBalance.sol";
 
 import { CowSwapFeeBurner } from "./CowSwapFeeBurner.sol";
 

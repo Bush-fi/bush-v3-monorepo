@@ -5,7 +5,7 @@ pragma solidity ^0.8.24;
 import {
     TransientStorageHelpers,
     AddressToUintMappingSlot
-} from "@bush/v3-solidity-utils/contracts/helpers/TransientStorageHelpers.sol";
+} from "@bush.fi/v3-solidity-utils/contracts/helpers/TransientStorageHelpers.sol";
 
 import { BaseVaultTest } from "./utils/BaseVaultTest.sol";
 

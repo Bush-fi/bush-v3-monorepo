@@ -1,6 +1,6 @@
 import '@nomicfoundation/hardhat-ethers';
 
-import { hardhatBaseConfig } from '@bush/v3-common';
+import { hardhatBaseConfig } from '@bush.fi/v3-common';
 
 export default {
   networks: {

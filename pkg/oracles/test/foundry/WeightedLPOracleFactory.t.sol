@@ -6,20 +6,20 @@ import { AggregatorV3Interface } from "@chainlink/contracts/src/v0.8/shared/inte
 import { IERC20Metadata } from "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol";
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { ILPOracleFactoryBase } from "@bush/v3-interfaces/contracts/oracles/ILPOracleFactoryBase.sol";
-import { PoolRoleAccounts, TokenConfig } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
-import { IWeightedLPOracle } from "@bush/v3-interfaces/contracts/oracles/IWeightedLPOracle.sol";
-import { IWeightedPool } from "@bush/v3-interfaces/contracts/pool-weighted/IWeightedPool.sol";
-import { ILPOracleBase } from "@bush/v3-interfaces/contracts/oracles/ILPOracleBase.sol";
-import { IBasePool } from "@bush/v3-interfaces/contracts/vault/IBasePool.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import { ILPOracleFactoryBase } from "@bush.fi/v3-interfaces/contracts/oracles/ILPOracleFactoryBase.sol";
+import { PoolRoleAccounts, TokenConfig } from "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IWeightedLPOracle } from "@bush.fi/v3-interfaces/contracts/oracles/IWeightedLPOracle.sol";
+import { IWeightedPool } from "@bush.fi/v3-interfaces/contracts/pool-weighted/IWeightedPool.sol";
+import { ILPOracleBase } from "@bush.fi/v3-interfaces/contracts/oracles/ILPOracleBase.sol";
+import { IBasePool } from "@bush.fi/v3-interfaces/contracts/vault/IBasePool.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 
-import { WeightedPoolFactory } from "@bush/v3-pool-weighted/contracts/WeightedPoolFactory.sol";
-import { CastingHelpers } from "@bush/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
-import { ArrayHelpers } from "@bush/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
+import { WeightedPoolFactory } from "@bush.fi/v3-pool-weighted/contracts/WeightedPoolFactory.sol";
+import { CastingHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
+import { ArrayHelpers } from "@bush.fi/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
 import {
     WeightedPoolContractsDeployer
-} from "@bush/v3-pool-weighted/test/foundry/utils/WeightedPoolContractsDeployer.sol";
+} from "@bush.fi/v3-pool-weighted/test/foundry/utils/WeightedPoolContractsDeployer.sol";
 
 import { WeightedLPOracleFactory } from "../../contracts/WeightedLPOracleFactory.sol";
 import { LPOracleFactoryBaseTest } from "./LPOracleFactoryBase.t.sol";

@@ -3,8 +3,8 @@ pragma solidity ^0.8.24;
 
 import {
     IHyperEVMRateProvider
-} from "@bush/v3-interfaces/contracts/standalone-utils/IHyperEVMRateProvider.sol";
-import { IRateProvider } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IRateProvider.sol";
+} from "@bush.fi/v3-interfaces/contracts/standalone-utils/IHyperEVMRateProvider.sol";
+import { IRateProvider } from "@bush.fi/v3-interfaces/contracts/solidity-utils/helpers/IRateProvider.sol";
 
 import { HyperSpotPricePrecompile } from "./utils/HyperSpotPricePrecompile.sol";
 import { HyperTokenInfoPrecompile } from "./utils/HyperTokenInfoPrecompile.sol";

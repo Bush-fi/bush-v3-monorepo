@@ -4,19 +4,19 @@ pragma solidity ^0.8.24;
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { ICompositeLiquidityRouter } from "@bush/v3-interfaces/contracts/vault/ICompositeLiquidityRouter.sol";
-import { ICompositeLiquidityRouter } from "@bush/v3-interfaces/contracts/vault/ICompositeLiquidityRouter.sol";
-import { IVaultErrors } from "@bush/v3-interfaces/contracts/vault/IVaultErrors.sol";
+import { ICompositeLiquidityRouter } from "@bush.fi/v3-interfaces/contracts/vault/ICompositeLiquidityRouter.sol";
+import { ICompositeLiquidityRouter } from "@bush.fi/v3-interfaces/contracts/vault/ICompositeLiquidityRouter.sol";
+import { IVaultErrors } from "@bush.fi/v3-interfaces/contracts/vault/IVaultErrors.sol";
 import {
     ICompositeLiquidityRouterErrors
-} from "@bush/v3-interfaces/contracts/vault/ICompositeLiquidityRouterErrors.sol";
-import "@bush/v3-interfaces/contracts/vault/RouterTypes.sol";
+} from "@bush.fi/v3-interfaces/contracts/vault/ICompositeLiquidityRouterErrors.sol";
+import "@bush.fi/v3-interfaces/contracts/vault/RouterTypes.sol";
 
-import { CastingHelpers } from "@bush/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
-import { ERC20TestToken } from "@bush/v3-solidity-utils/contracts/test/ERC20TestToken.sol";
-import { InputHelpers } from "@bush/v3-solidity-utils/contracts/helpers/InputHelpers.sol";
-import { ArrayHelpers } from "@bush/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
-import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { CastingHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
+import { ERC20TestToken } from "@bush.fi/v3-solidity-utils/contracts/test/ERC20TestToken.sol";
+import { InputHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/InputHelpers.sol";
+import { ArrayHelpers } from "@bush.fi/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
+import { FixedPoint } from "@bush.fi/v3-solidity-utils/contracts/math/FixedPoint.sol";
 
 import { BushPoolToken } from "../../contracts/BushPoolToken.sol";
 import { BaseERC4626BufferTest } from "./utils/BaseERC4626BufferTest.sol";

@@ -5,15 +5,15 @@ pragma solidity ^0.8.24;
 import { AggregatorV3Interface } from "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { ISequencerUptimeFeed } from "@bush/v3-interfaces/contracts/oracles/ISequencerUptimeFeed.sol";
-import { ILPOracleFactoryBase } from "@bush/v3-interfaces/contracts/oracles/ILPOracleFactoryBase.sol";
-import { ILPOracleBase } from "@bush/v3-interfaces/contracts/oracles/ILPOracleBase.sol";
-import { IBasePool } from "@bush/v3-interfaces/contracts/vault/IBasePool.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import { ISequencerUptimeFeed } from "@bush.fi/v3-interfaces/contracts/oracles/ISequencerUptimeFeed.sol";
+import { ILPOracleFactoryBase } from "@bush.fi/v3-interfaces/contracts/oracles/ILPOracleFactoryBase.sol";
+import { ILPOracleBase } from "@bush.fi/v3-interfaces/contracts/oracles/ILPOracleBase.sol";
+import { IBasePool } from "@bush.fi/v3-interfaces/contracts/vault/IBasePool.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 
-import { SingletonAuthentication } from "@bush/v3-vault/contracts/SingletonAuthentication.sol";
-import { InputHelpers } from "@bush/v3-solidity-utils/contracts/helpers/InputHelpers.sol";
-import { Version } from "@bush/v3-solidity-utils/contracts/helpers/Version.sol";
+import { SingletonAuthentication } from "@bush.fi/v3-vault/contracts/SingletonAuthentication.sol";
+import { InputHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/InputHelpers.sol";
+import { Version } from "@bush.fi/v3-solidity-utils/contracts/helpers/Version.sol";
 
 /**
  * @notice Base contract for deploying and managing pool oracles.

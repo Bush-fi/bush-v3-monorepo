@@ -6,8 +6,8 @@ import "forge-std/Test.sol";
 
 import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
 
-import { IProtocolFeeController } from "@bush/v3-interfaces/contracts/vault/IProtocolFeeController.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import { IProtocolFeeController } from "@bush.fi/v3-interfaces/contracts/vault/IProtocolFeeController.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 
 import { BasicAuthorizerMock } from "../../contracts/test/BasicAuthorizerMock.sol";
 import { ProtocolFeeController } from "../../contracts/ProtocolFeeController.sol";

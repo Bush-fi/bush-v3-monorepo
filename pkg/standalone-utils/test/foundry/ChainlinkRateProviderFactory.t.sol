@@ -4,14 +4,14 @@ pragma solidity ^0.8.24;
 
 import { AggregatorV3Interface } from "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
 
-import { IAuthentication } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
-import { IVersion } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IVersion.sol";
+import { IAuthentication } from "@bush.fi/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
+import { IVersion } from "@bush.fi/v3-interfaces/contracts/solidity-utils/helpers/IVersion.sol";
 import {
     IChainlinkRateProviderFactory
-} from "@bush/v3-interfaces/contracts/standalone-utils/IChainlinkRateProviderFactory.sol";
-import { IChainlinkRateProvider } from "@bush/v3-interfaces/contracts/standalone-utils/IChainlinkRateProvider.sol";
+} from "@bush.fi/v3-interfaces/contracts/standalone-utils/IChainlinkRateProviderFactory.sol";
+import { IChainlinkRateProvider } from "@bush.fi/v3-interfaces/contracts/standalone-utils/IChainlinkRateProvider.sol";
 
-import { BaseVaultTest } from "@bush/v3-vault/test/foundry/utils/BaseVaultTest.sol";
+import { BaseVaultTest } from "@bush.fi/v3-vault/test/foundry/utils/BaseVaultTest.sol";
 
 import { ChainlinkRateProviderFactory } from "../../contracts/ChainlinkRateProviderFactory.sol";
 import { ChainlinkFeedMock } from "../../contracts/test/ChainlinkFeedMock.sol";

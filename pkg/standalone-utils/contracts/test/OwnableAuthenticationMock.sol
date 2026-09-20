@@ -5,10 +5,10 @@ pragma solidity ^0.8.24;
 import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
 import { Ownable2Step } from "@openzeppelin/contracts/access/Ownable2Step.sol";
 
-import { IAuthorizer } from "@bush/v3-interfaces/contracts/vault/IAuthorizer.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import { IAuthorizer } from "@bush.fi/v3-interfaces/contracts/vault/IAuthorizer.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 
-import { Authentication } from "@bush/v3-solidity-utils/contracts/helpers/Authentication.sol";
+import { Authentication } from "@bush.fi/v3-solidity-utils/contracts/helpers/Authentication.sol";
 
 import { OwnableAuthentication } from "../OwnableAuthentication.sol";
 

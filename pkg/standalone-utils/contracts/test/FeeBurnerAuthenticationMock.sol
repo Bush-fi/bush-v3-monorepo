@@ -2,8 +2,8 @@
 
 pragma solidity ^0.8.24;
 
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
-import { IProtocolFeeSweeper } from "@bush/v3-interfaces/contracts/standalone-utils/IProtocolFeeSweeper.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
+import { IProtocolFeeSweeper } from "@bush.fi/v3-interfaces/contracts/standalone-utils/IProtocolFeeSweeper.sol";
 
 import { FeeBurnerAuthentication } from "../FeeBurnerAuthentication.sol";
 

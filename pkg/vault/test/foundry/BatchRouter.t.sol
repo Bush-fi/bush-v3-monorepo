@@ -4,8 +4,8 @@ pragma solidity ^0.8.24;
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { ISenderGuard } from "@bush/v3-interfaces/contracts/vault/ISenderGuard.sol";
-import "@bush/v3-interfaces/contracts/vault/BatchRouterTypes.sol";
+import { ISenderGuard } from "@bush.fi/v3-interfaces/contracts/vault/ISenderGuard.sol";
+import "@bush.fi/v3-interfaces/contracts/vault/BatchRouterTypes.sol";
 
 import { MOCK_BATCH_ROUTER_VERSION } from "../../contracts/test/BatchRouterMock.sol";
 import { BaseVaultTest } from "./utils/BaseVaultTest.sol";

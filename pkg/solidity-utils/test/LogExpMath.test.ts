@@ -1,10 +1,10 @@
 import { expect } from 'chai';
 import { Contract } from 'ethers';
 
-import { fp, FP_ONE } from '@bush/v3-helpers/src/numbers';
-import { expectEqualWithError } from '@bush/v3-helpers/src/test/relativeError';
-import { sharedBeforeEach } from '@bush/v3-common/sharedBeforeEach';
-import { deploy } from '@bush/v3-helpers/src/contract';
+import { fp, FP_ONE } from '@bush.fi/v3-helpers/src/numbers';
+import { expectEqualWithError } from '@bush.fi/v3-helpers/src/test/relativeError';
+import { sharedBeforeEach } from '@bush.fi/v3-common/sharedBeforeEach';
+import { deploy } from '@bush.fi/v3-helpers/src/contract';
 
 describe('ExpLog', () => {
   let lib: Contract;

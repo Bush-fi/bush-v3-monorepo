@@ -2,11 +2,11 @@
 
 pragma solidity ^0.8.24;
 
-import { IPoolSwapFeeHelper } from "@bush/v3-interfaces/contracts/standalone-utils/IPoolSwapFeeHelper.sol";
-import { IPoolHelperCommon } from "@bush/v3-interfaces/contracts/standalone-utils/IPoolHelperCommon.sol";
-import { PoolRoleAccounts } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IPoolSwapFeeHelper } from "@bush.fi/v3-interfaces/contracts/standalone-utils/IPoolSwapFeeHelper.sol";
+import { IPoolHelperCommon } from "@bush.fi/v3-interfaces/contracts/standalone-utils/IPoolHelperCommon.sol";
+import { PoolRoleAccounts } from "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { PoolFactoryMock } from "@bush/v3-vault/contracts/test/PoolFactoryMock.sol";
+import { PoolFactoryMock } from "@bush.fi/v3-vault/contracts/test/PoolFactoryMock.sol";
 
 import { PoolSwapFeeHelper } from "../../contracts/PoolSwapFeeHelper.sol";
 import { BasePoolHelperTest } from "./utils/BasePoolHelperTest.sol";

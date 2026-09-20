@@ -2,10 +2,10 @@
 
 pragma solidity ^0.8.24;
 
-import { ILBPool } from "@bush/v3-interfaces/contracts/pool-weighted/ILBPool.sol";
-import { IBasePool } from "@bush/v3-interfaces/contracts/vault/IBasePool.sol";
-import "@bush/v3-interfaces/contracts/pool-weighted/ILBPCommon.sol";
-import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { ILBPool } from "@bush.fi/v3-interfaces/contracts/pool-weighted/ILBPool.sol";
+import { IBasePool } from "@bush.fi/v3-interfaces/contracts/vault/IBasePool.sol";
+import "@bush.fi/v3-interfaces/contracts/pool-weighted/ILBPCommon.sol";
+import "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
 import { LBPCommon } from "../../contracts/lbp/LBPCommon.sol";
 import { WeightedLBPTest } from "./utils/WeightedLBPTest.sol";

@@ -4,7 +4,7 @@ pragma solidity ^0.8.24;
 
 import { Address } from "@openzeppelin/contracts/utils/Address.sol";
 
-import { RevertCodec } from "@bush/v3-solidity-utils/contracts/helpers/RevertCodec.sol";
+import { RevertCodec } from "@bush.fi/v3-solidity-utils/contracts/helpers/RevertCodec.sol";
 
 contract CallAndRevert {
     error QuoteResultSpoofed();

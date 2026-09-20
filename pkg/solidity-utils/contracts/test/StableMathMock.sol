@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.24;
 
-import { Rounding } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { Rounding } from "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
 import { StableMath } from "../math/StableMath.sol";
 import { FixedPoint } from "../math/FixedPoint.sol";

@@ -4,11 +4,11 @@ pragma solidity ^0.8.24;
 
 import { Create2 } from "@openzeppelin/contracts/utils/Create2.sol";
 
-import { IBasePoolFactory } from "@bush/v3-interfaces/contracts/vault/IBasePoolFactory.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
-import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IBasePoolFactory } from "@bush.fi/v3-interfaces/contracts/vault/IBasePoolFactory.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
+import "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { FactoryWidePauseWindow } from "@bush/v3-solidity-utils/contracts/helpers/FactoryWidePauseWindow.sol";
+import { FactoryWidePauseWindow } from "@bush.fi/v3-solidity-utils/contracts/helpers/FactoryWidePauseWindow.sol";
 
 import { SingletonAuthentication } from "../SingletonAuthentication.sol";
 import { PoolMock } from "./PoolMock.sol";

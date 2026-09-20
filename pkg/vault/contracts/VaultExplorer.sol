@@ -5,9 +5,9 @@ pragma solidity ^0.8.24;
 import { IERC4626 } from "@openzeppelin/contracts/interfaces/IERC4626.sol";
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { IVaultExtension } from "@bush/v3-interfaces/contracts/vault/IVaultExtension.sol";
-import { IVaultExplorer } from "@bush/v3-interfaces/contracts/vault/IVaultExplorer.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import { IVaultExtension } from "@bush.fi/v3-interfaces/contracts/vault/IVaultExtension.sol";
+import { IVaultExplorer } from "@bush.fi/v3-interfaces/contracts/vault/IVaultExplorer.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 import {
     TokenInfo,
     PoolRoleAccounts,
@@ -15,7 +15,7 @@ import {
     HooksConfig,
     PoolData,
     PoolSwapParams
-} from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+} from "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
 contract VaultExplorer is IVaultExplorer {
     IVault internal immutable _vault;

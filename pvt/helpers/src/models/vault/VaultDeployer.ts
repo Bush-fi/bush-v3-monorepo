@@ -12,8 +12,8 @@ import {
   VaultAdminMock,
   VaultExtension,
   VaultExtensionMock,
-} from '@bush/v3-vault/typechain-types';
-import { VaultMock, BasicAuthorizerMock } from '@bush/v3-vault/typechain-types';
+} from '@bush.fi/v3-vault/typechain-types';
+import { VaultMock, BasicAuthorizerMock } from '@bush.fi/v3-vault/typechain-types';
 import { SignerWithAddress } from '@nomicfoundation/hardhat-ethers/signers';
 
 const _MINIMUM_TRADE_AMOUNT = 1e6;

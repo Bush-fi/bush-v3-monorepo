@@ -1,24 +1,24 @@
 import { ethers } from 'hardhat';
-import { deploy, deployedAt } from '@bush/v3-helpers/src/contract';
+import { deploy, deployedAt } from '@bush.fi/v3-helpers/src/contract';
 import { SignerWithAddress } from '@nomicfoundation/hardhat-ethers/dist/src/signer-with-address';
-import { fp, fpMulDown } from '@bush/v3-helpers/src/numbers';
+import { fp, fpMulDown } from '@bush.fi/v3-helpers/src/numbers';
 import { setNextBlockBaseFeePerGas } from '@nomicfoundation/hardhat-network-helpers';
 
-import { PoolMock } from '../typechain-types/@bush/v3-vault/contracts/test/PoolMock';
+import { PoolMock } from '../typechain-types/@bush.fi/v3-vault/contracts/test/PoolMock';
 import { MevCaptureHook, Router, PoolFactoryMock, Vault, WETHTestToken, IVault } from '../typechain-types';
 import { IPermit2 } from '../typechain-types/permit2/src/interfaces/IPermit2';
-import { sharedBeforeEach } from '@bush/v3-common/sharedBeforeEach';
-import * as VaultDeployer from '@bush/v3-helpers/src/models/vault/VaultDeployer';
-import { buildTokenConfig } from '@bush/v3-helpers/src/models/tokens/tokenConfig';
-import { deployPermit2 } from '@bush/v3-vault/test/Permit2Deployer';
-import { MONTH } from '@bush/v3-helpers/src/time';
-import ERC20TokenList from '@bush/v3-helpers/src/models/tokens/ERC20TokenList';
-import { sortAddresses } from '@bush/v3-helpers/src/models/tokens/sortingHelper';
-import { MAX_UINT160, MAX_UINT256, MAX_UINT48 } from '@bush/v3-helpers/src/constants';
-import { ERC20 } from '@bush/v3-solidity-utils/typechain-types';
-import { BushContractRegistry } from '@bush/v3-standalone-utils/typechain-types';
-import { actionId } from '@bush/v3-helpers/src/models/misc/actions';
-import TypesConverter from '@bush/v3-helpers/src/models/types/TypesConverter';
+import { sharedBeforeEach } from '@bush.fi/v3-common/sharedBeforeEach';
+import * as VaultDeployer from '@bush.fi/v3-helpers/src/models/vault/VaultDeployer';
+import { buildTokenConfig } from '@bush.fi/v3-helpers/src/models/tokens/tokenConfig';
+import { deployPermit2 } from '@bush.fi/v3-vault/test/Permit2Deployer';
+import { MONTH } from '@bush.fi/v3-helpers/src/time';
+import ERC20TokenList from '@bush.fi/v3-helpers/src/models/tokens/ERC20TokenList';
+import { sortAddresses } from '@bush.fi/v3-helpers/src/models/tokens/sortingHelper';
+import { MAX_UINT160, MAX_UINT256, MAX_UINT48 } from '@bush.fi/v3-helpers/src/constants';
+import { ERC20 } from '@bush.fi/v3-solidity-utils/typechain-types';
+import { BushContractRegistry } from '@bush.fi/v3-standalone-utils/typechain-types';
+import { actionId } from '@bush.fi/v3-helpers/src/models/misc/actions';
+import TypesConverter from '@bush.fi/v3-helpers/src/models/types/TypesConverter';
 import { expect } from 'chai';
 
 enum RegistryContractType {

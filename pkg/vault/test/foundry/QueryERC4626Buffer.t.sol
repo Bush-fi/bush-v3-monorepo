@@ -2,10 +2,10 @@
 
 pragma solidity ^0.8.24;
 
-import "@bush/v3-interfaces/contracts/vault/BatchRouterTypes.sol";
+import "@bush.fi/v3-interfaces/contracts/vault/BatchRouterTypes.sol";
 
-import { ScalingHelpers } from "@bush/v3-solidity-utils/contracts/helpers/ScalingHelpers.sol";
-import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { ScalingHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/ScalingHelpers.sol";
+import { FixedPoint } from "@bush.fi/v3-solidity-utils/contracts/math/FixedPoint.sol";
 
 import { BaseERC4626BufferTest } from "./utils/BaseERC4626BufferTest.sol";
 

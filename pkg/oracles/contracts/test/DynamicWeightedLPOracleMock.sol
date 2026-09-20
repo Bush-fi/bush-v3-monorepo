@@ -4,8 +4,8 @@ pragma solidity ^0.8.24;
 
 import { AggregatorV3Interface } from "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
 
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
-import { IWeightedPool } from "@bush/v3-interfaces/contracts/pool-weighted/IWeightedPool.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
+import { IWeightedPool } from "@bush.fi/v3-interfaces/contracts/pool-weighted/IWeightedPool.sol";
 
 import { DynamicWeightedLPOracle } from "../DynamicWeightedLPOracle.sol";
 

@@ -2,17 +2,17 @@
 
 pragma solidity ^0.8.24;
 
-import { BaseVaultTest } from "@bush/v3-vault/test/foundry/utils/BaseVaultTest.sol";
+import { BaseVaultTest } from "@bush.fi/v3-vault/test/foundry/utils/BaseVaultTest.sol";
 
-import { IAuthentication } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
-import { ISurgeHookCommon } from "@bush/v3-interfaces/contracts/pool-hooks/ISurgeHookCommon.sol";
-import { IVaultExplorer } from "@bush/v3-interfaces/contracts/vault/IVaultExplorer.sol";
-import { IAuthorizer } from "@bush/v3-interfaces/contracts/vault/IAuthorizer.sol";
-import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IAuthentication } from "@bush.fi/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
+import { ISurgeHookCommon } from "@bush.fi/v3-interfaces/contracts/pool-hooks/ISurgeHookCommon.sol";
+import { IVaultExplorer } from "@bush.fi/v3-interfaces/contracts/vault/IVaultExplorer.sol";
+import { IAuthorizer } from "@bush.fi/v3-interfaces/contracts/vault/IAuthorizer.sol";
+import "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { ScalingHelpers } from "@bush/v3-solidity-utils/contracts/helpers/ScalingHelpers.sol";
-import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
-import { StablePool } from "@bush/v3-pool-stable/contracts/StablePool.sol";
+import { ScalingHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/ScalingHelpers.sol";
+import { FixedPoint } from "@bush.fi/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { StablePool } from "@bush.fi/v3-pool-stable/contracts/StablePool.sol";
 
 import { StableSurgeMedianMathMock } from "../../contracts/test/StableSurgeMedianMathMock.sol";
 import { StableSurgeHookDeployer } from "./utils/StableSurgeHookDeployer.sol";

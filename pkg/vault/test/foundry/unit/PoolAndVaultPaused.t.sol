@@ -2,8 +2,8 @@
 
 pragma solidity ^0.8.24;
 
-import { IVaultErrors } from "@bush/v3-interfaces/contracts/vault/IVaultErrors.sol";
-import { VaultState } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IVaultErrors } from "@bush.fi/v3-interfaces/contracts/vault/IVaultErrors.sol";
+import { VaultState } from "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
 import { BaseVaultTest } from "../utils/BaseVaultTest.sol";
 

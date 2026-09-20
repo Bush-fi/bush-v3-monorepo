@@ -75,9 +75,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bush/solidity-toolbox@workspace:*, @bush/solidity-toolbox@workspace:pvt/solidity-toolbox":
+"@bush.fi/solidity-toolbox@workspace:*, @bush.fi/solidity-toolbox@workspace:pvt/solidity-toolbox":
   version: 0.0.0-use.local
-  resolution: "@bush/solidity-toolbox@workspace:pvt/solidity-toolbox"
+  resolution: "@bush.fi/solidity-toolbox@workspace:pvt/solidity-toolbox"
   dependencies:
     "@chainlink/contracts": "npm:^1.2.0"
     "@ethersproject/abi": "npm:^5.7.0"
@@ -116,15 +116,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@bush/v3-benchmarks@workspace:pvt/benchmarks":
+"@bush.fi/v3-benchmarks@workspace:pvt/benchmarks":
   version: 0.0.0-use.local
-  resolution: "@bush/v3-benchmarks@workspace:pvt/benchmarks"
+  resolution: "@bush.fi/v3-benchmarks@workspace:pvt/benchmarks"
   dependencies:
-    "@bush/solidity-toolbox": "workspace:*"
-    "@bush/v3-interfaces": "workspace:*"
-    "@bush/v3-pool-weighted": "workspace:*"
-    "@bush/v3-solidity-utils": "workspace:*"
-    "@bush/v3-vault": "workspace:*"
+    "@bush.fi/solidity-toolbox": "workspace:*"
+    "@bush.fi/v3-interfaces": "workspace:*"
+    "@bush.fi/v3-pool-weighted": "workspace:*"
+    "@bush.fi/v3-solidity-utils": "workspace:*"
+    "@bush.fi/v3-vault": "workspace:*"
     "@nomicfoundation/hardhat-ethers": "npm:^3.0.0"
     "@types/lodash": "npm:^4.14.186"
     "@types/node": "npm:^14.14.31"
@@ -147,9 +147,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@bush/v3-common@workspace:pvt/common":
+"@bush.fi/v3-common@workspace:pvt/common":
   version: 0.0.0-use.local
-  resolution: "@bush/v3-common@workspace:pvt/common"
+  resolution: "@bush.fi/v3-common@workspace:pvt/common"
   dependencies:
     "@nomicfoundation/hardhat-network-helpers": "npm:^1.0.6"
     "@typescript-eslint/eslint-plugin": "npm:^5.41.0"
@@ -161,9 +161,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@bush/v3-helpers@workspace:pvt/helpers":
+"@bush.fi/v3-helpers@workspace:pvt/helpers":
   version: 0.0.0-use.local
-  resolution: "@bush/v3-helpers@workspace:pvt/helpers"
+  resolution: "@bush.fi/v3-helpers@workspace:pvt/helpers"
   dependencies:
     "@nomicfoundation/hardhat-ethers": "npm:^3.0.0"
     "@nomicfoundation/hardhat-network-helpers": "npm:^1.0.6"
@@ -185,12 +185,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@bush/v3-interfaces@workspace:*, @bush/v3-interfaces@workspace:pkg/interfaces":
+"@bush.fi/v3-interfaces@workspace:*, @bush.fi/v3-interfaces@workspace:pkg/interfaces":
   version: 0.0.0-use.local
-  resolution: "@bush/v3-interfaces@workspace:pkg/interfaces"
+  resolution: "@bush.fi/v3-interfaces@workspace:pkg/interfaces"
   dependencies:
-    "@bush/solidity-toolbox": "workspace:*"
-    "@bush/v3-solidity-utils": "workspace:*"
+    "@bush.fi/solidity-toolbox": "workspace:*"
+    "@bush.fi/v3-solidity-utils": "workspace:*"
     "@chainlink/contracts": "npm:^1.4.0"
     "@openzeppelin/contracts": "npm:~5.4.0"
     "@types/lodash": "npm:^4.14.186"
@@ -213,22 +213,22 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@bush/v3-monorepo@workspace:.":
+"@bush.fi/v3-monorepo@workspace:.":
   version: 0.0.0-use.local
-  resolution: "@bush/v3-monorepo@workspace:."
+  resolution: "@bush.fi/v3-monorepo@workspace:."
   dependencies:
     "@changesets/cli": "npm:^2.29.8"
   languageName: unknown
   linkType: soft
 
-"@bush/v3-oracles@workspace:pkg/oracles":
+"@bush.fi/v3-oracles@workspace:pkg/oracles":
   version: 0.0.0-use.local
-  resolution: "@bush/v3-oracles@workspace:pkg/oracles"
+  resolution: "@bush.fi/v3-oracles@workspace:pkg/oracles"
   dependencies:
-    "@bush/solidity-toolbox": "workspace:*"
-    "@bush/v3-interfaces": "workspace:*"
-    "@bush/v3-solidity-utils": "workspace:*"
-    "@bush/v3-vault": "workspace:*"
+    "@bush.fi/solidity-toolbox": "workspace:*"
+    "@bush.fi/v3-interfaces": "workspace:*"
+    "@bush.fi/v3-solidity-utils": "workspace:*"
+    "@bush.fi/v3-vault": "workspace:*"
     "@chainlink/contracts": "npm:^1.4.0"
     "@openzeppelin/contracts": "npm:~5.4.0"
     "@typescript-eslint/eslint-plugin": "npm:^5.41.0"
@@ -242,16 +242,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@bush/v3-pool-cow@workspace:pkg/pool-cow":
+"@bush.fi/v3-pool-cow@workspace:pkg/pool-cow":
   version: 0.0.0-use.local
-  resolution: "@bush/v3-pool-cow@workspace:pkg/pool-cow"
+  resolution: "@bush.fi/v3-pool-cow@workspace:pkg/pool-cow"
   dependencies:
-    "@bush/solidity-toolbox": "workspace:*"
-    "@bush/v3-interfaces": "workspace:*"
-    "@bush/v3-pool-utils": "workspace:*"
-    "@bush/v3-pool-weighted": "workspace:*"
-    "@bush/v3-solidity-utils": "workspace:*"
-    "@bush/v3-vault": "workspace:*"
+    "@bush.fi/solidity-toolbox": "workspace:*"
+    "@bush.fi/v3-interfaces": "workspace:*"
+    "@bush.fi/v3-pool-utils": "workspace:*"
+    "@bush.fi/v3-pool-weighted": "workspace:*"
+    "@bush.fi/v3-solidity-utils": "workspace:*"
+    "@bush.fi/v3-vault": "workspace:*"
     "@openzeppelin/contracts": "npm:~5.4.0"
     "@typescript-eslint/eslint-plugin": "npm:^5.41.0"
     "@typescript-eslint/parser": "npm:^5.41.0"
@@ -272,17 +272,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@bush/v3-pool-hooks@workspace:*, @bush/v3-pool-hooks@workspace:pkg/pool-hooks":
+"@bush.fi/v3-pool-hooks@workspace:*, @bush.fi/v3-pool-hooks@workspace:pkg/pool-hooks":
   version: 0.0.0-use.local
-  resolution: "@bush/v3-pool-hooks@workspace:pkg/pool-hooks"
+  resolution: "@bush.fi/v3-pool-hooks@workspace:pkg/pool-hooks"
   dependencies:
-    "@bush/solidity-toolbox": "workspace:*"
-    "@bush/v3-interfaces": "workspace:*"
-    "@bush/v3-pool-stable": "workspace:*"
-    "@bush/v3-pool-utils": "workspace:*"
-    "@bush/v3-solidity-utils": "workspace:*"
-    "@bush/v3-standalone-utils": "workspace:*"
-    "@bush/v3-vault": "workspace:*"
+    "@bush.fi/solidity-toolbox": "workspace:*"
+    "@bush.fi/v3-interfaces": "workspace:*"
+    "@bush.fi/v3-pool-stable": "workspace:*"
+    "@bush.fi/v3-pool-utils": "workspace:*"
+    "@bush.fi/v3-solidity-utils": "workspace:*"
+    "@bush.fi/v3-standalone-utils": "workspace:*"
+    "@bush.fi/v3-vault": "workspace:*"
     "@openzeppelin/contracts": "npm:~5.4.0"
     "@typescript-eslint/eslint-plugin": "npm:^5.41.0"
     "@typescript-eslint/parser": "npm:^5.41.0"
@@ -296,15 +296,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@bush/v3-pool-stable@workspace:*, @bush/v3-pool-stable@workspace:pkg/pool-stable":
+"@bush.fi/v3-pool-stable@workspace:*, @bush.fi/v3-pool-stable@workspace:pkg/pool-stable":
   version: 0.0.0-use.local
-  resolution: "@bush/v3-pool-stable@workspace:pkg/pool-stable"
+  resolution: "@bush.fi/v3-pool-stable@workspace:pkg/pool-stable"
   dependencies:
-    "@bush/solidity-toolbox": "workspace:*"
-    "@bush/v3-interfaces": "workspace:*"
-    "@bush/v3-pool-utils": "workspace:*"
-    "@bush/v3-solidity-utils": "workspace:*"
-    "@bush/v3-vault": "workspace:*"
+    "@bush.fi/solidity-toolbox": "workspace:*"
+    "@bush.fi/v3-interfaces": "workspace:*"
+    "@bush.fi/v3-pool-utils": "workspace:*"
+    "@bush.fi/v3-solidity-utils": "workspace:*"
+    "@bush.fi/v3-vault": "workspace:*"
     "@openzeppelin/contracts": "npm:~5.4.0"
     "@typescript-eslint/eslint-plugin": "npm:^5.41.0"
     "@typescript-eslint/parser": "npm:^5.41.0"
@@ -325,26 +325,26 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@bush/v3-pool-testing@workspace:pkg/pool-testing":
+"@bush.fi/v3-pool-testing@workspace:pkg/pool-testing":
   version: 0.0.0-use.local
-  resolution: "@bush/v3-pool-testing@workspace:pkg/pool-testing"
+  resolution: "@bush.fi/v3-pool-testing@workspace:pkg/pool-testing"
   dependencies:
-    "@bush/v3-interfaces": "workspace:*"
-    "@bush/v3-pool-hooks": "workspace:*"
-    "@bush/v3-pool-utils": "workspace:*"
-    "@bush/v3-solidity-utils": "workspace:*"
-    "@bush/v3-vault": "workspace:*"
+    "@bush.fi/v3-interfaces": "workspace:*"
+    "@bush.fi/v3-pool-hooks": "workspace:*"
+    "@bush.fi/v3-pool-utils": "workspace:*"
+    "@bush.fi/v3-solidity-utils": "workspace:*"
+    "@bush.fi/v3-vault": "workspace:*"
   languageName: unknown
   linkType: soft
 
-"@bush/v3-pool-utils@workspace:*, @bush/v3-pool-utils@workspace:pkg/pool-utils":
+"@bush.fi/v3-pool-utils@workspace:*, @bush.fi/v3-pool-utils@workspace:pkg/pool-utils":
   version: 0.0.0-use.local
-  resolution: "@bush/v3-pool-utils@workspace:pkg/pool-utils"
+  resolution: "@bush.fi/v3-pool-utils@workspace:pkg/pool-utils"
   dependencies:
-    "@bush/solidity-toolbox": "workspace:*"
-    "@bush/v3-interfaces": "workspace:*"
-    "@bush/v3-solidity-utils": "workspace:*"
-    "@bush/v3-vault": "workspace:*"
+    "@bush.fi/solidity-toolbox": "workspace:*"
+    "@bush.fi/v3-interfaces": "workspace:*"
+    "@bush.fi/v3-solidity-utils": "workspace:*"
+    "@bush.fi/v3-vault": "workspace:*"
     "@openzeppelin/contracts": "npm:~5.4.0"
     "@typescript-eslint/eslint-plugin": "npm:^5.41.0"
     "@typescript-eslint/parser": "npm:^5.41.0"
@@ -365,15 +365,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@bush/v3-pool-weighted@workspace:*, @bush/v3-pool-weighted@workspace:pkg/pool-weighted":
+"@bush.fi/v3-pool-weighted@workspace:*, @bush.fi/v3-pool-weighted@workspace:pkg/pool-weighted":
   version: 0.0.0-use.local
-  resolution: "@bush/v3-pool-weighted@workspace:pkg/pool-weighted"
+  resolution: "@bush.fi/v3-pool-weighted@workspace:pkg/pool-weighted"
   dependencies:
-    "@bush/solidity-toolbox": "workspace:*"
-    "@bush/v3-interfaces": "workspace:*"
-    "@bush/v3-pool-utils": "workspace:*"
-    "@bush/v3-solidity-utils": "workspace:*"
-    "@bush/v3-vault": "workspace:*"
+    "@bush.fi/solidity-toolbox": "workspace:*"
+    "@bush.fi/v3-interfaces": "workspace:*"
+    "@bush.fi/v3-pool-utils": "workspace:*"
+    "@bush.fi/v3-solidity-utils": "workspace:*"
+    "@bush.fi/v3-vault": "workspace:*"
     "@openzeppelin/contracts": "npm:~5.4.0"
     "@typescript-eslint/eslint-plugin": "npm:^5.41.0"
     "@typescript-eslint/parser": "npm:^5.41.0"
@@ -394,12 +394,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@bush/v3-solidity-utils@workspace:*, @bush/v3-solidity-utils@workspace:pkg/solidity-utils":
+"@bush.fi/v3-solidity-utils@workspace:*, @bush.fi/v3-solidity-utils@workspace:pkg/solidity-utils":
   version: 0.0.0-use.local
-  resolution: "@bush/v3-solidity-utils@workspace:pkg/solidity-utils"
+  resolution: "@bush.fi/v3-solidity-utils@workspace:pkg/solidity-utils"
   dependencies:
-    "@bush/solidity-toolbox": "workspace:*"
-    "@bush/v3-interfaces": "workspace:*"
+    "@bush.fi/solidity-toolbox": "workspace:*"
+    "@bush.fi/v3-interfaces": "workspace:*"
     "@openzeppelin/contracts": "npm:~5.4.0"
     "@typescript-eslint/eslint-plugin": "npm:^5.41.0"
     "@typescript-eslint/parser": "npm:^5.41.0"
@@ -420,15 +420,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@bush/v3-standalone-utils@workspace:*, @bush/v3-standalone-utils@workspace:pkg/standalone-utils":
+"@bush.fi/v3-standalone-utils@workspace:*, @bush.fi/v3-standalone-utils@workspace:pkg/standalone-utils":
   version: 0.0.0-use.local
-  resolution: "@bush/v3-standalone-utils@workspace:pkg/standalone-utils"
+  resolution: "@bush.fi/v3-standalone-utils@workspace:pkg/standalone-utils"
   dependencies:
-    "@bush/solidity-toolbox": "workspace:*"
-    "@bush/v3-interfaces": "workspace:*"
-    "@bush/v3-pool-weighted": "workspace:*"
-    "@bush/v3-solidity-utils": "workspace:*"
-    "@bush/v3-vault": "workspace:*"
+    "@bush.fi/solidity-toolbox": "workspace:*"
+    "@bush.fi/v3-interfaces": "workspace:*"
+    "@bush.fi/v3-pool-weighted": "workspace:*"
+    "@bush.fi/v3-solidity-utils": "workspace:*"
+    "@bush.fi/v3-vault": "workspace:*"
     "@chainlink/contracts": "npm:^1.4.0"
     "@openzeppelin/contracts": "npm:~5.4.0"
     "@typescript-eslint/eslint-plugin": "npm:^5.41.0"
@@ -451,13 +451,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@bush/v3-vault@workspace:*, @bush/v3-vault@workspace:pkg/vault":
+"@bush.fi/v3-vault@workspace:*, @bush.fi/v3-vault@workspace:pkg/vault":
   version: 0.0.0-use.local
-  resolution: "@bush/v3-vault@workspace:pkg/vault"
+  resolution: "@bush.fi/v3-vault@workspace:pkg/vault"
   dependencies:
-    "@bush/solidity-toolbox": "workspace:*"
-    "@bush/v3-interfaces": "workspace:*"
-    "@bush/v3-solidity-utils": "workspace:*"
+    "@bush.fi/solidity-toolbox": "workspace:*"
+    "@bush.fi/v3-interfaces": "workspace:*"
+    "@bush.fi/v3-solidity-utils": "workspace:*"
     "@openzeppelin/contracts": "npm:~5.4.0"
     "@typescript-eslint/eslint-plugin": "npm:^5.41.0"
     "@typescript-eslint/parser": "npm:^5.41.0"

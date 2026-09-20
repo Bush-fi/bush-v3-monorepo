@@ -2,8 +2,8 @@
 
 pragma solidity ^0.8.24;
 
-import { IAuthorizer } from "@bush/v3-interfaces/contracts/vault/IAuthorizer.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import { IAuthorizer } from "@bush.fi/v3-interfaces/contracts/vault/IAuthorizer.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 
 import { CommonAuthentication } from "./CommonAuthentication.sol";
 

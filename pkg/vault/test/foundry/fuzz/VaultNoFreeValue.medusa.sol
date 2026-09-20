@@ -8,9 +8,9 @@ import {
     LiquidityManagement,
     PoolRoleAccounts,
     Rounding
-} from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+} from "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { FixedPoint } from "@bush.fi/v3-solidity-utils/contracts/math/FixedPoint.sol";
 
 import { BaseMedusaTest } from "../utils/BaseMedusaTest.sol";
 

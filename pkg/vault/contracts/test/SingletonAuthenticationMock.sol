@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.24;
 
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 
 import { SingletonAuthentication } from "../SingletonAuthentication.sol";
 

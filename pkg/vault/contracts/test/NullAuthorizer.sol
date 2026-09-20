@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.24;
 
-import { IAuthorizer } from "@bush/v3-interfaces/contracts/vault/IAuthorizer.sol";
+import { IAuthorizer } from "@bush.fi/v3-interfaces/contracts/vault/IAuthorizer.sol";
 
 /// @notice Dummy Authorizer that always allows access.
 contract NullAuthorizer is IAuthorizer {

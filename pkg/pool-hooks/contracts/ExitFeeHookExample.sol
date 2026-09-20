@@ -5,8 +5,8 @@ pragma solidity ^0.8.24;
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
 
-import { IHooks } from "@bush/v3-interfaces/contracts/vault/IHooks.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import { IHooks } from "@bush.fi/v3-interfaces/contracts/vault/IHooks.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 import {
     AddLiquidityKind,
     AddLiquidityParams,
@@ -14,11 +14,11 @@ import {
     RemoveLiquidityKind,
     TokenConfig,
     HookFlags
-} from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+} from "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
-import { VaultGuard } from "@bush/v3-vault/contracts/VaultGuard.sol";
-import { BaseHooks } from "@bush/v3-vault/contracts/BaseHooks.sol";
+import { FixedPoint } from "@bush.fi/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { VaultGuard } from "@bush.fi/v3-vault/contracts/VaultGuard.sol";
+import { BaseHooks } from "@bush.fi/v3-vault/contracts/BaseHooks.sol";
 
 /**
  * @notice Impose an "exit fee" on a pool. The value of the fee is returned to the LPs.

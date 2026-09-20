@@ -8,23 +8,23 @@ import { IERC1271 } from "@openzeppelin/contracts/interfaces/IERC1271.sol";
 import { SafeCast } from "@openzeppelin/contracts/utils/math/SafeCast.sol";
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { IProtocolFeeSweeper } from "@bush/v3-interfaces/contracts/standalone-utils/IProtocolFeeSweeper.sol";
-import { IProtocolFeeBurner } from "@bush/v3-interfaces/contracts/standalone-utils/IProtocolFeeBurner.sol";
-import { ICowSwapFeeBurner } from "@bush/v3-interfaces/contracts/standalone-utils/ICowSwapFeeBurner.sol";
-import { IComposableCow } from "@bush/v3-interfaces/contracts/standalone-utils/IComposableCow.sol";
+import { IProtocolFeeSweeper } from "@bush.fi/v3-interfaces/contracts/standalone-utils/IProtocolFeeSweeper.sol";
+import { IProtocolFeeBurner } from "@bush.fi/v3-interfaces/contracts/standalone-utils/IProtocolFeeBurner.sol";
+import { ICowSwapFeeBurner } from "@bush.fi/v3-interfaces/contracts/standalone-utils/ICowSwapFeeBurner.sol";
+import { IComposableCow } from "@bush.fi/v3-interfaces/contracts/standalone-utils/IComposableCow.sol";
 import {
     ICowConditionalOrderGenerator
-} from "@bush/v3-interfaces/contracts/standalone-utils/ICowConditionalOrderGenerator.sol";
+} from "@bush.fi/v3-interfaces/contracts/standalone-utils/ICowConditionalOrderGenerator.sol";
 import {
     ICowConditionalOrder,
     GPv2Order
-} from "@bush/v3-interfaces/contracts/standalone-utils/ICowConditionalOrder.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+} from "@bush.fi/v3-interfaces/contracts/standalone-utils/ICowConditionalOrder.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 
 import {
     ReentrancyGuardTransient
-} from "@bush/v3-solidity-utils/contracts/openzeppelin/ReentrancyGuardTransient.sol";
-import { Version } from "@bush/v3-solidity-utils/contracts/helpers/Version.sol";
+} from "@bush.fi/v3-solidity-utils/contracts/openzeppelin/ReentrancyGuardTransient.sol";
+import { Version } from "@bush.fi/v3-solidity-utils/contracts/helpers/Version.sol";
 
 import { FeeBurnerAuthentication } from "./FeeBurnerAuthentication.sol";
 

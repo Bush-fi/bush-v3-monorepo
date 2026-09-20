@@ -2,9 +2,9 @@
 
 pragma solidity ^0.8.24;
 
-import { Rounding } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { Rounding } from "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { WeightedMath } from "@bush/v3-solidity-utils/contracts/math/WeightedMath.sol";
+import { WeightedMath } from "@bush.fi/v3-solidity-utils/contracts/math/WeightedMath.sol";
 
 contract WeightedMathMock {
     function computeInvariant(

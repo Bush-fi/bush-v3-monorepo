@@ -4,17 +4,17 @@ pragma solidity ^0.8.24;
 
 import "forge-std/Test.sol";
 
-import { IVaultErrors } from "@bush/v3-interfaces/contracts/vault/IVaultErrors.sol";
+import { IVaultErrors } from "@bush.fi/v3-interfaces/contracts/vault/IVaultErrors.sol";
 import {
     PoolConfigBits,
     FEE_BITLENGTH,
     MAX_FEE_PERCENTAGE,
     FEE_SCALING_FACTOR
-} from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+} from "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { PoolConfigConst } from "@bush/v3-vault/contracts/lib/PoolConfigConst.sol";
-import { PoolConfigLib } from "@bush/v3-vault/contracts/lib/PoolConfigLib.sol";
-import { WordCodec } from "@bush/v3-solidity-utils/contracts/helpers/WordCodec.sol";
+import { PoolConfigConst } from "@bush.fi/v3-vault/contracts/lib/PoolConfigConst.sol";
+import { PoolConfigLib } from "@bush.fi/v3-vault/contracts/lib/PoolConfigLib.sol";
+import { WordCodec } from "@bush.fi/v3-solidity-utils/contracts/helpers/WordCodec.sol";
 
 contract PoolConfigLibTest is Test {
     using WordCodec for bytes32;

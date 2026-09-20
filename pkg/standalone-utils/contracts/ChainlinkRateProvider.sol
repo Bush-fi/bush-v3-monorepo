@@ -3,8 +3,8 @@ pragma solidity ^0.8.24;
 
 import { AggregatorV3Interface } from "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
 
-import { IChainlinkRateProvider } from "@bush/v3-interfaces/contracts/standalone-utils/IChainlinkRateProvider.sol";
-import { IRateProvider } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IRateProvider.sol";
+import { IChainlinkRateProvider } from "@bush.fi/v3-interfaces/contracts/standalone-utils/IChainlinkRateProvider.sol";
+import { IRateProvider } from "@bush.fi/v3-interfaces/contracts/solidity-utils/helpers/IRateProvider.sol";
 
 /**
  * @notice A rate provider backed by a Chainlink price feed.

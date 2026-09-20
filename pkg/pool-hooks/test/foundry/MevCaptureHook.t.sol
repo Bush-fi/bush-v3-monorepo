@@ -4,23 +4,23 @@ pragma solidity ^0.8.24;
 
 import "forge-std/Test.sol";
 
-import { IAuthentication } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
+import { IAuthentication } from "@bush.fi/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
 import {
     PoolSwapParams,
     MAX_FEE_PERCENTAGE,
     PoolRoleAccounts
-} from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
-import { IVaultExtension } from "@bush/v3-interfaces/contracts/vault/IVaultExtension.sol";
-import { IMevCaptureHook } from "@bush/v3-interfaces/contracts/pool-hooks/IMevCaptureHook.sol";
-import { IHooks } from "@bush/v3-interfaces/contracts/vault/IHooks.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+} from "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IVaultExtension } from "@bush.fi/v3-interfaces/contracts/vault/IVaultExtension.sol";
+import { IMevCaptureHook } from "@bush.fi/v3-interfaces/contracts/pool-hooks/IMevCaptureHook.sol";
+import { IHooks } from "@bush.fi/v3-interfaces/contracts/vault/IHooks.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 
-import { BushContractRegistry } from "@bush/v3-standalone-utils/contracts/BushContractRegistry.sol";
-import { CastingHelpers } from "@bush/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
-import { ArrayHelpers } from "@bush/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
-import { PoolFactoryMock } from "@bush/v3-vault/contracts/test/PoolFactoryMock.sol";
-import { BaseVaultTest } from "@bush/v3-vault/test/foundry/utils/BaseVaultTest.sol";
-import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { BushContractRegistry } from "@bush.fi/v3-standalone-utils/contracts/BushContractRegistry.sol";
+import { CastingHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
+import { ArrayHelpers } from "@bush.fi/v3-solidity-utils/contracts/test/ArrayHelpers.sol";
+import { PoolFactoryMock } from "@bush.fi/v3-vault/contracts/test/PoolFactoryMock.sol";
+import { BaseVaultTest } from "@bush.fi/v3-vault/test/foundry/utils/BaseVaultTest.sol";
+import { FixedPoint } from "@bush.fi/v3-solidity-utils/contracts/math/FixedPoint.sol";
 
 import { MevCaptureHookMock } from "../../contracts/test/MevCaptureHookMock.sol";
 

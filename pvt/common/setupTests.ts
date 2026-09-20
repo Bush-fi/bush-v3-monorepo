@@ -2,10 +2,10 @@ import { BigNumberish } from 'ethers';
 import { AsyncFunc } from 'mocha';
 import chai, { expect } from 'chai';
 
-import { NAry } from '@bush/v3-helpers/src/models/types/types';
-import { ZERO_ADDRESS } from '@bush/v3-helpers/src/constants';
-import { bn, fp, isBn } from '@bush/v3-helpers/src/numbers';
-import { expectEqualWithError, expectLessThanOrEqualWithError } from '@bush/v3-helpers/src/test/relativeError';
+import { NAry } from '@bush.fi/v3-helpers/src/models/types/types';
+import { ZERO_ADDRESS } from '@bush.fi/v3-helpers/src/constants';
+import { bn, fp, isBn } from '@bush.fi/v3-helpers/src/numbers';
+import { expectEqualWithError, expectLessThanOrEqualWithError } from '@bush.fi/v3-helpers/src/test/relativeError';
 
 import { sharedBeforeEach } from './sharedBeforeEach';
 

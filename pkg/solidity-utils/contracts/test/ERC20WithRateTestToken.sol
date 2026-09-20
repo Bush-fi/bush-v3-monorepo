@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.24;
 
-import { IRateProvider } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IRateProvider.sol";
+import { IRateProvider } from "@bush.fi/v3-interfaces/contracts/solidity-utils/helpers/IRateProvider.sol";
 
 import { ERC20TestToken } from "./ERC20TestToken.sol";
 

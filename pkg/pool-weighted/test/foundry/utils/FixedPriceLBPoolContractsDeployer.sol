@@ -2,9 +2,9 @@
 
 pragma solidity ^0.8.24;
 
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 
-import { BaseContractsDeployer } from "@bush/v3-solidity-utils/test/foundry/utils/BaseContractsDeployer.sol";
+import { BaseContractsDeployer } from "@bush.fi/v3-solidity-utils/test/foundry/utils/BaseContractsDeployer.sol";
 
 import { FixedPriceLBPoolFactory } from "../../../contracts/lbp/FixedPriceLBPoolFactory.sol";
 
@@ -17,8 +17,8 @@ contract FixedPriceLBPoolContractsDeployer is BaseContractsDeployer {
 
     constructor() {
         // if this external artifact path exists, it means we are running outside of this repo
-        if (vm.exists("artifacts/@bush/v3-pool-weighted/")) {
-            artifactsRootDir = "artifacts/@bush/v3-pool-weighted/";
+        if (vm.exists("artifacts/@bush.fi/v3-pool-weighted/")) {
+            artifactsRootDir = "artifacts/@bush.fi/v3-pool-weighted/";
         }
     }
 

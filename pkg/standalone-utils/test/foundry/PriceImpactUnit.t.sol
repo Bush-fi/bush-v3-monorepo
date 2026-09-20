@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.24;
 
-import { BaseVaultTest } from "@bush/v3-vault/test/foundry/utils/BaseVaultTest.sol";
+import { BaseVaultTest } from "@bush.fi/v3-vault/test/foundry/utils/BaseVaultTest.sol";
 import { PriceImpactHelperMock } from "../../contracts/test/PriceImpactHelperMock.sol";
 
 contract PriceImpactUnitTest is BaseVaultTest {

@@ -6,7 +6,7 @@ import { IERC20Metadata } from "@openzeppelin/contracts/token/ERC20/extensions/I
 
 import {
     IWrappedBushPoolTokenFactory
-} from "@bush/v3-interfaces/contracts/vault/IWrappedBushPoolTokenFactory.sol";
+} from "@bush.fi/v3-interfaces/contracts/vault/IWrappedBushPoolTokenFactory.sol";
 
 import { WrappedBushPoolTokenFactory } from "../../contracts/WrappedBushPoolTokenFactory.sol";
 import { BaseVaultTest } from "./utils/BaseVaultTest.sol";

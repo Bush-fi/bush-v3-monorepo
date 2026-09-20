@@ -5,16 +5,16 @@ pragma solidity ^0.8.24;
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import { IERC4626 } from "@openzeppelin/contracts/interfaces/IERC4626.sol";
 
-import { ERC4626TestToken } from "@bush/v3-solidity-utils/contracts/test/ERC4626TestToken.sol";
-import { ScalingHelpers } from "@bush/v3-solidity-utils/contracts/helpers/ScalingHelpers.sol";
-import "@bush/v3-interfaces/contracts/vault/BatchRouterTypes.sol";
+import { ERC4626TestToken } from "@bush.fi/v3-solidity-utils/contracts/test/ERC4626TestToken.sol";
+import { ScalingHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/ScalingHelpers.sol";
+import "@bush.fi/v3-interfaces/contracts/vault/BatchRouterTypes.sol";
 import {
     BufferWrapOrUnwrapParams,
     SwapKind,
     WrappingDirection
-} from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+} from "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { IVaultErrors } from "@bush/v3-interfaces/contracts/vault/IVaultErrors.sol";
+import { IVaultErrors } from "@bush.fi/v3-interfaces/contracts/vault/IVaultErrors.sol";
 
 import { BaseVaultTest } from "../utils/BaseVaultTest.sol";
 

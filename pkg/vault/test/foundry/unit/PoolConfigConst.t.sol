@@ -2,10 +2,10 @@
 
 pragma solidity ^0.8.24;
 
-import { FEE_BITLENGTH } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
-import { PoolConfigConst } from "@bush/v3-vault/contracts/lib/PoolConfigConst.sol";
+import { FEE_BITLENGTH } from "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { PoolConfigConst } from "@bush.fi/v3-vault/contracts/lib/PoolConfigConst.sol";
 
-import { BaseBitsConfigTest } from "@bush/v3-solidity-utils/test/foundry/utils/BaseBitsConfigTest.sol";
+import { BaseBitsConfigTest } from "@bush.fi/v3-solidity-utils/test/foundry/utils/BaseBitsConfigTest.sol";
 
 contract PoolConfigConstTest is BaseBitsConfigTest {
     Bits[] bits;

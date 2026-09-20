@@ -2,9 +2,9 @@
 
 pragma solidity ^0.8.24;
 
-import { ScalingHelpers } from "@bush/v3-solidity-utils/contracts/helpers/ScalingHelpers.sol";
-import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
-import { BaseTest } from "@bush/v3-solidity-utils/test/foundry/utils/BaseTest.sol";
+import { ScalingHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/ScalingHelpers.sol";
+import { FixedPoint } from "@bush.fi/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { BaseTest } from "@bush.fi/v3-solidity-utils/test/foundry/utils/BaseTest.sol";
 
 contract ScalingTest is BaseTest {
     using FixedPoint for uint256;

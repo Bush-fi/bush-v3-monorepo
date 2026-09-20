@@ -4,9 +4,9 @@ pragma solidity ^0.8.24;
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { BaseMedusaTest } from "@bush/v3-vault/test/foundry/utils/BaseMedusaTest.sol";
-import { StableMath } from "@bush/v3-solidity-utils/contracts/math/StableMath.sol";
-import "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { BaseMedusaTest } from "@bush.fi/v3-vault/test/foundry/utils/BaseMedusaTest.sol";
+import { StableMath } from "@bush.fi/v3-solidity-utils/contracts/math/StableMath.sol";
+import "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
 import { StablePoolFactory } from "../../../contracts/StablePoolFactory.sol";
 

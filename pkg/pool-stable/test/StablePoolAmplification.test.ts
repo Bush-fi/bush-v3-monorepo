@@ -1,19 +1,19 @@
 import { ethers } from 'hardhat';
 import { expect } from 'chai';
 import { SignerWithAddress } from '@nomicfoundation/hardhat-ethers/dist/src/signer-with-address';
-import { sharedBeforeEach } from '@bush/v3-common/sharedBeforeEach';
-import { bn, fp } from '@bush/v3-helpers/src/numbers';
-import * as VaultDeployer from '@bush/v3-helpers/src/models/vault/VaultDeployer';
-import { IVaultMock } from '@bush/v3-interfaces/typechain-types';
-import ERC20TokenList from '@bush/v3-helpers/src/models/tokens/ERC20TokenList';
-import TypesConverter from '@bush/v3-helpers/src/models/types/TypesConverter';
-import { deploy, deployedAt } from '@bush/v3-helpers/src/contract';
+import { sharedBeforeEach } from '@bush.fi/v3-common/sharedBeforeEach';
+import { bn, fp } from '@bush.fi/v3-helpers/src/numbers';
+import * as VaultDeployer from '@bush.fi/v3-helpers/src/models/vault/VaultDeployer';
+import { IVaultMock } from '@bush.fi/v3-interfaces/typechain-types';
+import ERC20TokenList from '@bush.fi/v3-helpers/src/models/tokens/ERC20TokenList';
+import TypesConverter from '@bush.fi/v3-helpers/src/models/types/TypesConverter';
+import { deploy, deployedAt } from '@bush.fi/v3-helpers/src/contract';
 import { StablePool } from '../typechain-types';
-import { DAY, advanceTime, currentTimestamp, setNextBlockTimestamp } from '@bush/v3-helpers/src/time';
-import { MAX_UINT256 } from '@bush/v3-helpers/src/constants';
-import * as expectEvent from '@bush/v3-helpers/src/test/expectEvent';
-import { expectEqualWithError } from '@bush/v3-helpers/src/test/relativeError';
-import { actionId } from '@bush/v3-helpers/src/models/misc/actions';
+import { DAY, advanceTime, currentTimestamp, setNextBlockTimestamp } from '@bush.fi/v3-helpers/src/time';
+import { MAX_UINT256 } from '@bush.fi/v3-helpers/src/constants';
+import * as expectEvent from '@bush.fi/v3-helpers/src/test/expectEvent';
+import { expectEqualWithError } from '@bush.fi/v3-helpers/src/test/relativeError';
+import { actionId } from '@bush.fi/v3-helpers/src/models/misc/actions';
 
 describe('StablePoolAmplification', () => {
   const TOKEN_AMOUNT = fp(1000);

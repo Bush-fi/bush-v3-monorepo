@@ -4,14 +4,14 @@ pragma solidity ^0.8.24;
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { ILBPool, LBPoolImmutableData } from "@bush/v3-interfaces/contracts/pool-weighted/ILBPool.sol";
-import { PoolConfig, Rounding } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
-import { IVaultErrors } from "@bush/v3-interfaces/contracts/vault/IVaultErrors.sol";
-import { IPoolInfo } from "@bush/v3-interfaces/contracts/pool-utils/IPoolInfo.sol";
-import { IBasePool } from "@bush/v3-interfaces/contracts/vault/IBasePool.sol";
+import { ILBPool, LBPoolImmutableData } from "@bush.fi/v3-interfaces/contracts/pool-weighted/ILBPool.sol";
+import { PoolConfig, Rounding } from "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IVaultErrors } from "@bush.fi/v3-interfaces/contracts/vault/IVaultErrors.sol";
+import { IPoolInfo } from "@bush.fi/v3-interfaces/contracts/pool-utils/IPoolInfo.sol";
+import { IBasePool } from "@bush.fi/v3-interfaces/contracts/vault/IBasePool.sol";
 
-import { WeightedMath } from "@bush/v3-solidity-utils/contracts/math/WeightedMath.sol";
-import { FixedPoint } from "@bush/v3-solidity-utils/contracts/math/FixedPoint.sol";
+import { WeightedMath } from "@bush.fi/v3-solidity-utils/contracts/math/WeightedMath.sol";
+import { FixedPoint } from "@bush.fi/v3-solidity-utils/contracts/math/FixedPoint.sol";
 
 import { WeightedLBPTest } from "./utils/WeightedLBPTest.sol";
 

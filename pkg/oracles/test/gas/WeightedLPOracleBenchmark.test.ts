@@ -1,16 +1,16 @@
 import { BaseContract } from 'ethers';
 
-import { LPOracleBenchmark, OracleInfo, PoolInfo } from '@bush/v3-benchmarks/src/OracleBenchmark.behavior';
-import { deploy, deployedAt } from '@bush/v3-helpers/src/contract';
-import { WeightedPoolFactory } from '@bush/v3-pool-weighted/typechain-types';
-import { MONTH } from '@bush/v3-helpers/src/time';
-import { ZERO_ADDRESS } from '@bush/v3-helpers/src/constants';
-import { PoolRoleAccountsStruct } from '@bush/v3-vault/typechain-types/contracts/Vault';
-import { buildTokenConfig } from '@bush/v3-helpers/src/models/tokens/tokenConfig';
-import { fp } from '@bush/v3-helpers/src/numbers';
-import { ZERO_BYTES32 } from '@bush/v3-helpers/src/constants';
-import * as expectEvent from '@bush/v3-helpers/src/test/expectEvent';
-import { AggregatorV3Interface } from '@bush/v3-interfaces/typechain-types';
+import { LPOracleBenchmark, OracleInfo, PoolInfo } from '@bush.fi/v3-benchmarks/src/OracleBenchmark.behavior';
+import { deploy, deployedAt } from '@bush.fi/v3-helpers/src/contract';
+import { WeightedPoolFactory } from '@bush.fi/v3-pool-weighted/typechain-types';
+import { MONTH } from '@bush.fi/v3-helpers/src/time';
+import { ZERO_ADDRESS } from '@bush.fi/v3-helpers/src/constants';
+import { PoolRoleAccountsStruct } from '@bush.fi/v3-vault/typechain-types/contracts/Vault';
+import { buildTokenConfig } from '@bush.fi/v3-helpers/src/models/tokens/tokenConfig';
+import { fp } from '@bush.fi/v3-helpers/src/numbers';
+import { ZERO_BYTES32 } from '@bush.fi/v3-helpers/src/constants';
+import * as expectEvent from '@bush.fi/v3-helpers/src/test/expectEvent';
+import { AggregatorV3Interface } from '@bush.fi/v3-interfaces/typechain-types';
 
 class WeightedLPOracleBenchmark extends LPOracleBenchmark {
   constructor(dirname: string) {

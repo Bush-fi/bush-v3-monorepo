@@ -3,10 +3,10 @@ import { ethers } from 'hardhat';
 import { Contract } from 'ethers';
 import { SignerWithAddress } from '@nomicfoundation/hardhat-ethers/dist/src/signer-with-address';
 
-import { fp } from '@bush/v3-helpers/src/numbers';
-import { deploy } from '@bush/v3-helpers/src/contract';
-import { ZERO_ADDRESS } from '@bush/v3-helpers/src/constants';
-import { sharedBeforeEach } from '@bush/v3-common/sharedBeforeEach';
+import { fp } from '@bush.fi/v3-helpers/src/numbers';
+import { deploy } from '@bush.fi/v3-helpers/src/contract';
+import { ZERO_ADDRESS } from '@bush.fi/v3-helpers/src/constants';
+import { sharedBeforeEach } from '@bush.fi/v3-common/sharedBeforeEach';
 import { TimelockExecutionHelper } from '../../typechain-types';
 
 describe('TimelockExecutionHelper', () => {

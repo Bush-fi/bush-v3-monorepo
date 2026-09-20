@@ -7,15 +7,15 @@ import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import { Math } from "@openzeppelin/contracts/utils/math/Math.sol";
 import { Errors } from "@openzeppelin/contracts/utils/Errors.sol";
 
-import { TokenConfig, TokenType, PoolRoleAccounts } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
-import { IRateProvider } from "@bush/v3-interfaces/contracts/solidity-utils/helpers/IRateProvider.sol";
-import { IVaultMock } from "@bush/v3-interfaces/contracts/test/IVaultMock.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
+import { TokenConfig, TokenType, PoolRoleAccounts } from "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { IRateProvider } from "@bush.fi/v3-interfaces/contracts/solidity-utils/helpers/IRateProvider.sol";
+import { IVaultMock } from "@bush.fi/v3-interfaces/contracts/test/IVaultMock.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 
-import { VaultContractsDeployer } from "@bush/v3-vault/test/foundry/utils/VaultContractsDeployer.sol";
-import { ERC20TestToken } from "@bush/v3-solidity-utils/contracts/test/ERC20TestToken.sol";
-import { MinTokenBalanceLib } from "@bush/v3-vault/contracts/lib/MinTokenBalanceLib.sol";
-import { RateProviderMock } from "@bush/v3-vault/contracts/test/RateProviderMock.sol";
+import { VaultContractsDeployer } from "@bush.fi/v3-vault/test/foundry/utils/VaultContractsDeployer.sol";
+import { ERC20TestToken } from "@bush.fi/v3-solidity-utils/contracts/test/ERC20TestToken.sol";
+import { MinTokenBalanceLib } from "@bush.fi/v3-vault/contracts/lib/MinTokenBalanceLib.sol";
+import { RateProviderMock } from "@bush.fi/v3-vault/contracts/test/RateProviderMock.sol";
 
 import { WeightedPoolContractsDeployer } from "./utils/WeightedPoolContractsDeployer.sol";
 import { WeightedPool8020Factory } from "../../contracts/WeightedPool8020Factory.sol";

@@ -7,17 +7,17 @@ import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import { Address } from "@openzeppelin/contracts/utils/Address.sol";
 import { IPermit2 } from "permit2/src/interfaces/IPermit2.sol";
 
-import { ILiquidityZapper } from "@bush/v3-interfaces/contracts/standalone-utils/ILiquidityZapper.sol";
-import { IRouter } from "@bush/v3-interfaces/contracts/vault/IRouter.sol";
-import { IVault } from "@bush/v3-interfaces/contracts/vault/IVault.sol";
-import { TokenConfig, PoolRoleAccounts } from "@bush/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { ILiquidityZapper } from "@bush.fi/v3-interfaces/contracts/standalone-utils/ILiquidityZapper.sol";
+import { IRouter } from "@bush.fi/v3-interfaces/contracts/vault/IRouter.sol";
+import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
+import { TokenConfig, PoolRoleAccounts } from "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
-import { SingletonAuthentication } from "@bush/v3-vault/contracts/SingletonAuthentication.sol";
+import { SingletonAuthentication } from "@bush.fi/v3-vault/contracts/SingletonAuthentication.sol";
 import {
     ReentrancyGuardTransient
-} from "@bush/v3-solidity-utils/contracts/openzeppelin/ReentrancyGuardTransient.sol";
+} from "@bush.fi/v3-solidity-utils/contracts/openzeppelin/ReentrancyGuardTransient.sol";
 
-import { WeightedPoolFactory } from "@bush/v3-pool-weighted/contracts/WeightedPoolFactory.sol";
+import { WeightedPoolFactory } from "@bush.fi/v3-pool-weighted/contracts/WeightedPoolFactory.sol";
 
 /**
  * @notice Buys a set of tokens through the Umbra aggregator (umbra.finance) and deposits them as liquidity
