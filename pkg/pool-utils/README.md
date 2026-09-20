@@ -1,8 +1,8 @@
-# <img src="../../logo.svg" alt="Balancer" height="128px">
+# <img src="../../logo.svg" alt="Bush" height="128px">
 
-# Balancer V3 Pool Utilities
+# Bush V3 Pool Utilities
 
-This package contains Solidity utilities for developing Balancer V3 Pools.
+This package contains Solidity utilities for developing Bush V3 Pools.
 
 ## Licensing
 

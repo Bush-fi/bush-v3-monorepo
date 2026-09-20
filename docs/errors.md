@@ -1,21 +1,7 @@
 <!-- AUTO-GENERATED. DO NOT EDIT MANUALLY. -->
-<!-- Generated: 2026-01-05T20:19:35.481Z -->
-<!-- Git commit: 098230b2b06b7f9f62abcd5d97b4342a85191e87 -->
+<!-- Generated: 2026-09-20T10:26:08.995Z -->
+<!-- Git commit: 9490692911d73f7eeb4f003b24750d82928c8bd4 -->
 <!-- Source: /pkg/*/contracts/**/*.sol (excluding /test/) -->
-
-# governance-scripts
-## BalancerContractRegistryInitializer
-| Error | Arguments | Comment | Signature |
-| --- | --- | --- | --- |
-| AlreadyInitialized |  | The initialization can only be done once. | `0x0dc149f0` |
-| PermissionNotGranted |  | A permission required to complete the initialization was not granted. | `0xe5557e90` |
-| VaultMismatch |  | The Vault passed in as a sanity check doesn't match the Vault associated with the registry. | `0xc1faacc5` |
-
-## ProtocolFeeControllerMigration
-| Error | Arguments | Comment | Signature |
-| --- | --- | --- | --- |
-| AlreadyMigrated |  | Migration can only be performed once. | `0xca1c3cbc` |
-| InvalidFeeController |  | Attempt to deploy this contract with invalid parameters. | `0xd6f1cb05` |
 
 # interfaces
 ## interfaces/oracles
@@ -24,11 +10,12 @@
 | --- | --- | --- | --- |
 | InvalidOraclePrice |  | Oracle prices must be greater than zero to prevent zero or negative TVL values. | `0x1f8f95a0` |
 | UnsupportedDecimals |  | A price feed has decimals greater than the maximum allowed. | `0xd4f1d302` |
+| VaultIsUnlocked |  | The vault is unlocked for an oracle that requires a locked Vault to guarantee non-manipulable prices. | `0xbe18e309` |
 
 ### ILPOracleFactoryBase
 | Error | Arguments | Comment | Signature |
 | --- | --- | --- | --- |
-| OracleAlreadyExists(IBasePool,bool,AggregatorV3Interface[],ILPOracleBase) | pool: IBasePool, shouldUseBlockTimeForOldestFeedUpdate: bool, feeds: AggregatorV3Interface[], oracle: ILPOracleBase | Oracle already exists for the given pool. | `0xbcb86005` |
+| OracleAlreadyExists(IBasePool,bool,bool,AggregatorV3Interface[],ILPOracleBase) | pool: IBasePool, shouldUseBlockTimeForOldestFeedUpdate: bool, shouldRevertIfVaultUnlocked: bool, feeds: AggregatorV3Interface[], oracle: ILPOracleBase | Oracle already exists for the given pool. | `0x9d2f8632` |
 | OracleFactoryIsDisabled |  | Oracle factory is disabled. | `0xb110e99d` |
 
 ### ISequencerUptimeFeed
@@ -51,23 +38,11 @@
 | ProtocolFeePercentageAboveLimit(uint256,uint256) | newProtocolFeePercentage: uint256, maxProtocolFeePercentage: uint256 | The `newProtocolFeePercentage` is above the maximum limit. | `0xe76c2b23` |
 | SwapDeadline |  | The swap transaction was not validated before the specified deadline timestamp. | `0xe08b8af0` |
 
-## interfaces/pool-gyro
-### IGyro2CLPPool
-| Error | Arguments | Comment | Signature |
-| --- | --- | --- | --- |
-| SqrtParamsWrong |  | The informed alpha is greater than beta. | `0x0579e1da` |
-
 ## interfaces/pool-hooks
-### IECLPSurgeHook
-| Error | Arguments | Comment | Signature |
-| --- | --- | --- | --- |
-| InvalidImbalanceSlope |  | Thrown when an invalid imbalance slope is provided. | `0x450a9fed` |
-| InvalidRotationAngle |  | The rotation angle is too small or too large for the surge hook to be used. | `0x4988ec15` |
-
 ### IMevCaptureHook
 | Error | Arguments | Comment | Signature |
 | --- | --- | --- | --- |
-| InvalidBalancerContractRegistry |  | The `BalancerContractRegistry` set in the constructor is invalid. | `0x5c84f39b` |
+| InvalidBushContractRegistry |  | The `BushContractRegistry` set in the constructor is invalid. | `0x43d865df` |
 | MevCaptureHookNotRegisteredInPool(address) | pool: address | The pool was not registered with the MEV Hook contract. | `0x7501acd8` |
 | MevSwapFeePercentageAboveMax(uint256,uint256) | feePercentage: uint256, maxFeePercentage: uint256 | The new max MEV swap fee percentage is above the allowed absolute maximum. | `0x20fb3f00` |
 | MevTaxExemptSenderAlreadyAdded(address) | sender: address | The sender is already registered as MEV tax-exempt. | `0x106fa5a4` |
@@ -85,13 +60,6 @@
 | InvalidInitializationAmount |  | An initialization amount is invalid (e.g., zero token balance, or non-zero reserve). | `0xfc3e9be7` |
 | InvalidProjectTokenRate |  | The token sale price cannot be zero. | `0x2d889800` |
 | TokenSwapsInUnsupported |  | All fixed price LBPools are "buy only;" token swaps in are not supported. | `0x0ad2684a` |
-
-### ILBPMigrationRouter
-| Error | Arguments | Comment | Signature |
-| --- | --- | --- | --- |
-| IncorrectMigrationRouter(address,address) | expectedRouter: address, actualRouter: address | A router called `migrate` on a pool that was not the one specified on deployment. | `0x2a6ef7fc` |
-| NoRegisteredWeightedPoolFactory |  | The Balancer Contract Registry did not return an active address for the "WeightedPool" alias. | `0x66d89320` |
-| SenderIsNotLBPOwner |  | The caller is not the owner of the LBP. | `0xea37ac06` |
 
 ### ILBPool
 | Error | Arguments | Comment | Signature |
@@ -112,7 +80,7 @@
 | SenderNotAllowed |  | The sender does not have permission to call a function. | `0x23dada53` |
 
 ## interfaces/standalone-utils
-### IBalancerContractRegistry
+### IBushContractRegistry
 | Error | Arguments | Comment | Signature |
 | --- | --- | --- | --- |
 | ContractAddressAlreadyRegistered(ContractType,address) | contractType: ContractType, contractAddress: address | A contract has already been registered under the given address. | `0x961be8b5` |
@@ -126,7 +94,7 @@
 | InvalidContractName |  | Cannot register (or deregister) a contract with an empty string as a name. | `0x830c907e` |
 | ZeroContractAddress |  | Cannot register or deprecate contracts, or add an alias targeting the zero address. | `0xb4d92c53` |
 
-### IBalancerFeeBurner
+### IBushFeeBurner
 | Error | Arguments | Comment | Signature |
 | --- | --- | --- | --- |
 | BufferNotInitialized(address) | wrappedToken: address | Buffer not initialized for the wrapped token. | `0x85f41299` |
@@ -134,6 +102,19 @@
 | InvalidBufferTokenOut(IERC20,uint256) | tokenOut: IERC20, step: uint256 | Invalid token out for buffer step. | `0x5a5e9413` |
 | TargetTokenOutMismatch |  | The last token in the path is not the same as the target token. | `0xa682e903` |
 | TokenDoesNotExistInPool(IERC20,uint256) | token: IERC20, step: uint256 | Token does not exist in pool. | `0x9ef7cd5c` |
+
+### IChainlinkRateProvider
+| Error | Arguments | Comment | Signature |
+| --- | --- | --- | --- |
+| InvalidRate(int256) | answer: int256 | The Chainlink price answer was not positive. | `0x9d71e753` |
+| StaleRate(uint256,uint256) | updatedAt: uint256, maxStaleness: uint256 | The Chainlink feed has not been updated within the allowed staleness window. | `0xd3d95bb0` |
+
+### IChainlinkRateProviderFactory
+| Error | Arguments | Comment | Signature |
+| --- | --- | --- | --- |
+| RateProviderAlreadyExists(AggregatorV3Interface,uint256,address) | feed: AggregatorV3Interface, maxStaleness: uint256, rateProvider: address | A rate provider already exists for the given feed and staleness window. | `0xda95f431` |
+| RateProviderFactoryIsDisabled |  | The factory is disabled. | `0x42fb89b8` |
+| RateProviderNotFound(AggregatorV3Interface,uint256) | feed: AggregatorV3Interface, maxStaleness: uint256 | The rate provider was not found for the given feed and staleness window. | `0xd6329c77` |
 
 ### ICowConditionalOrder
 | Error | Arguments | Comment | Signature |
@@ -157,6 +138,15 @@
 | RateProviderAlreadyExists(uint32,uint32,address) | tokenIndex: uint32, pairIndex: uint32, rateProvider: address | A rate provider already exists for the given token and pair. | `0xf4c64ee1` |
 | RateProviderFactoryIsDisabled |  | The factory is disabled. | `0x42fb89b8` |
 | RateProviderNotFound(uint32,uint32) | tokenIndex: uint32, pairIndex: uint32 | The rate provider was not found for the given token and pair. | `0xdc120e77` |
+
+### ILiquidityZapper
+| Error | Arguments | Comment | Signature |
+| --- | --- | --- | --- |
+| InputAmountMismatch |  | The sum of every swap's `amountIn` didn't match the native value/balance actually provided. | `0x7b7923da` |
+| NoSwaps |  | `zap` was called with an empty `swaps` array. | `0xabff335a` |
+| SwapProducedNoOutput(uint256) | swapIndex: uint256 | A swap's `callData` ran but delivered none of its declared `tokenOut`. | `0xcb12a698` |
+| ZapExpired |  | `zap`'s deadline has passed. | `0x360ea6cf` |
+| ZeroRecipient |  | `recipient` cannot be the zero address. | `0xd27b4443` |
 
 ### IPoolHelperCommon
 | Error | Arguments | Comment | Signature |
@@ -203,6 +193,12 @@
 | InvalidSimplePath(address) | path: address | The given address is not a valid pool or buffer. | `0xb309199b` |
 
 ## interfaces/vault
+### IAggregatorRouter
+| Error | Arguments | Comment | Signature |
+| --- | --- | --- | --- |
+| CannotReceiveEth |  | Thrown if native eth is received. | `0xf2238896` |
+| SwapInsufficientPayment |  | Thrown when the sender does not transfer the correct amount of tokens to the Vault. | `0xf70282c3` |
+
 ### IBasePoolFactory
 | Error | Arguments | Comment | Signature |
 | --- | --- | --- | --- |
@@ -234,7 +230,7 @@
 | --- | --- | --- | --- |
 | FactoryFeesNotSet(address) | factory: address | `setFactorySpecificProtocolFeePercentages` has not been called for this factory address. | `0xa589c09e` |
 | PoolNotFromFactory(address,address) | pool: address, factory: address | The given pool is not from the expected factory. | `0xf400ce63` |
-| UnknownFactory(address) | factory: address | Fees can only be set on recognized factories (i.e., registered in the `BalancerContractRegistry`). | `0xc2a47384` |
+| UnknownFactory(address) | factory: address | Fees can only be set on recognized factories (i.e., registered in the `BushContractRegistry`). | `0xc2a47384` |
 | WrongProtocolFeeControllerDeployment |  | The protocol fee controller was configured with an incorrect Vault address. | `0x1bbe95c7` |
 
 ### IRouterCommon
@@ -339,77 +335,24 @@
 | WrongVaultAdminDeployment |  | The `VaultAdmin` contract was configured with an incorrect Vault address. | `0x82cc28b6` |
 | WrongVaultExtensionDeployment |  | The `VaultExtension` contract was configured with an incorrect Vault address. | `0x1ab9d9d0` |
 
-### IWrappedBalancerPoolToken
+### IWrappedBushPoolToken
 | Error | Arguments | Comment | Signature |
 | --- | --- | --- | --- |
 | VaultIsUnlocked |  | The vault is unlocked | `0xbe18e309` |
 
-### IWrappedBalancerPoolTokenFactory
+### IWrappedBushPoolTokenFactory
 | Error | Arguments | Comment | Signature |
 | --- | --- | --- | --- |
-| BalancerPoolTokenNotRegistered |  | The Balancer pool token has not been registered. | `0x916f5d0e` |
+| BushPoolTokenNotRegistered |  | The Bush pool token has not been registered. | `0xe26a456a` |
 | WrappedBPTAlreadyExists(address) | wrappedToken: address | BPT can only be wrapped once, and cannot be overwritten. | `0x957f7dce` |
 
 # oracles
-## EclpLPOracle
-| Error | Arguments | Comment | Signature |
-| --- | --- | --- | --- |
-| TokenPriceTooSmall |  | One of the token prices is too small. | `0x1d2fcef0` |
-
 ## StableLPOracle
 | Error | Arguments | Comment | Signature |
 | --- | --- | --- | --- |
 | KDidNotConverge |  | The `k` parameter did not converge to the positive root. | `0xdc95cdb4` |
 | MinPriceTooLow |  | The minimum price of the feed array is too low. | `0x478b96d8` |
 | PriceRatioTooHigh |  | The ratio between the maximum and minimum prices is too high. | `0xb4c522e0` |
-
-# pool-gyro
-## Gyro2CLPPoolFactory
-| Error | Arguments | Comment | Signature |
-| --- | --- | --- | --- |
-| SupportsOnlyTwoTokens |  | 2-CLP pools support 2 tokens only. | `0x34e77320` |
-
-## GyroECLPPoolFactory
-| Error | Arguments | Comment | Signature |
-| --- | --- | --- | --- |
-| SupportsOnlyTwoTokens |  | E-CLP pools support 2 tokens only. | `0x34e77320` |
-
-## pool-gyro/lib
-### Gyro2CLPMath
-| Error | Arguments | Comment | Signature |
-| --- | --- | --- | --- |
-| AssetBoundsExceeded |  |  | `0x03ba4186` |
-
-### GyroECLPMath
-| Error | Arguments | Comment | Signature |
-| --- | --- | --- | --- |
-| AssetBoundsExceeded |  |  | `0x03ba4186` |
-| DerivedDsqWrong |  |  | `0xfb154af0` |
-| DerivedTauAlphaNotNormalized |  |  | `0xc196e496` |
-| DerivedTauAlphaYWrong |  |  | `0xec13362c` |
-| DerivedTauBetaNotNormalized |  |  | `0x25bbd708` |
-| DerivedTauBetaYWrong |  |  | `0xfa40768d` |
-| DerivedTauXWrong |  |  | `0x4071c5a8` |
-| DerivedUWrong |  |  | `0xf84d4b44` |
-| DerivedVWrong |  |  | `0xcfb498d5` |
-| DerivedWWrong |  |  | `0x83446b36` |
-| DerivedZWrong |  |  | `0x12e3e411` |
-| InvariantDenominatorWrong |  |  | `0xd1c17993` |
-| MaxAssetsExceeded |  |  | `0x2da2a5e5` |
-| MaxInvariantExceeded |  |  | `0xdc10196f` |
-| RotationVectorCWrong |  |  | `0x658639aa` |
-| RotationVectorNotNormalized |  |  | `0xa26d8c2e` |
-| RotationVectorSWrong |  |  | `0xa9587a74` |
-| StretchingFactorWrong |  |  | `0x77dfa312` |
-
-### SignedFixedPoint
-| Error | Arguments | Comment | Signature |
-| --- | --- | --- | --- |
-| AddOverflow |  |  | `0xa7f965e3` |
-| DivInterval |  |  | `0xe03f5d57` |
-| MulOverflow |  |  | `0x0cde6c26` |
-| SubOverflow |  |  | `0x8a5d6af4` |
-| ZeroDivision |  |  | `0x0a0c22c7` |
 
 # pool-hooks
 ## ExitFeeHookExample
@@ -430,18 +373,12 @@
 ## StablePool
 | Error | Arguments | Comment | Signature |
 | --- | --- | --- | --- |
-| AmplificationFactorTooHigh |  | The amplification factor is above the maximum of the range (1 - 5000). | `0x9b80d390` |
-| AmplificationFactorTooLow |  | The amplification factor is below the minimum of the range (1 - 5000). | `0xab923323` |
+| AmplificationFactorTooHigh |  | The amplification factor is above the maximum of the range (1 - 50,000). | `0x9b80d390` |
+| AmplificationFactorTooLow |  | The amplification factor is below the minimum of the range (1 - 50,000). | `0xab923323` |
 | AmpUpdateAlreadyStarted |  | Amplification update operations must be done one at a time. | `0x2f301e7e` |
 | AmpUpdateDurationTooShort |  | The amplification change duration is too short. | `0xcd6b022a` |
 | AmpUpdateNotStarted |  | Cannot stop an amplification update before it starts. | `0x4673a675` |
 | AmpUpdateRateTooFast |  | The amplification change rate is too fast. | `0x1c708b92` |
-
-# pool-utils
-## BasePoolFactory
-| Error | Arguments | Comment | Signature |
-| --- | --- | --- | --- |
-| StandardPoolWithCreator |  | A pool creator was specified for a pool type that doesn't support it. | `0x61ee1764` |
 
 # pool-weighted
 ## WeightedPool
@@ -454,12 +391,6 @@
 | Error | Arguments | Comment | Signature |
 | --- | --- | --- | --- |
 | InvalidTrustedRouter |  | The zero address was given for the trusted router. | `0x0307417b` |
-
-### BPTTimeLocker
-| Error | Arguments | Comment | Signature |
-| --- | --- | --- | --- |
-| BPTStillLocked(uint256) | unlockTimestamp: uint256 | The caller has a locked BPT balance, but is trying to burn it before the timelock expired. | `0x60489698` |
-| NoLockedBPT |  | The caller has no balance of the locked BPT. | `0x00e39db1` |
 
 ### LBPCommon
 | Error | Arguments | Comment | Signature |
@@ -478,13 +409,9 @@
 ### LBPValidation
 | Error | Arguments | Comment | Signature |
 | --- | --- | --- | --- |
-| InvalidBptLockDuration |  | The BPT lock duration is invalid. | `0xc715892a` |
-| InvalidBptPercentageToMigrate |  | The percentage of BPT to migrate is invalid (must be between 0-100%). | `0x14533421` |
-| InvalidMigrationWeights |  | The sum of migrated weights is not equal to 1. | `0x63ecd650` |
 | InvalidOwner |  | The owner is the zero address. | `0x49e27cff` |
 | InvalidProjectToken |  | The project token is the zero address. | `0x59977db3` |
 | InvalidReserveToken |  | The reserve token is the zero address. | `0xaaee807a` |
-| MigrationRouterRequired |  | Cannot create a pool with migration parameters if the migration router is not set. | `0xb199d1fa` |
 | TokensMustBeDifferent |  | The project and reserve tokens must be different. | `0xfbfc7a91` |
 
 ## pool-weighted/lib
@@ -558,6 +485,7 @@
 ### StableMath
 | Error | Arguments | Comment | Signature |
 | --- | --- | --- | --- |
+| MaxImbalanceRatioExceeded |  | The imbalance ratio exceeds the maximum allowed. | `0x8a3b7ff1` |
 | StableComputeBalanceDidNotConverge |  | The iterations to calculate the balance didn't converge. | `0xdcbda05c` |
 | StableInvariantDidNotConverge |  | The iterations to calculate the invariant didn't converge. | `0x010ca320` |
 
@@ -593,7 +521,7 @@
 | IndexOutOfBounds |  | An index is beyond the current bounds of the set. | `0x4e23d035` |
 
 # standalone-utils
-## BalancerContractRegistry
+## BushContractRegistry
 | Error | Arguments | Comment | Signature |
 | --- | --- | --- | --- |
 | InconsistentState(string,address) | contractName: string, contractAddress: address | A `_contractRegistry` entry has no corresponding `_contractInfo`. | `0x36a7ac0a` |
@@ -637,17 +565,22 @@
 | TokenInfoPrecompileFailed |  | The precompile had an error while fetching the token info. | `0x61c18134` |
 
 # vault
-## BalancerPoolToken
+## AggregatorBatchRouter
 | Error | Arguments | Comment | Signature |
 | --- | --- | --- | --- |
-| ERC2612ExpiredSignature(uint256) | deadline: uint256 | Operation failed due to an expired permit signature. | `0x62791302` |
-| ERC2612InvalidSigner(address,address) | signer: address, owner: address | Operation failed due to a non-matching signature. | `0x4b800e46` |
+| InsufficientFunds(address,uint256,uint256) | token: address, senderCredits: uint256, senderDebits: uint256 | Not enough tokens sent to cover the operation amount. | `0x5c54305e` |
 
 ## BasePoolMath
 | Error | Arguments | Comment | Signature |
 | --- | --- | --- | --- |
 | InvariantRatioAboveMax(uint256,uint256) | invariantRatio: uint256, maxInvariantRatio: uint256 | An add liquidity operation increased the invariant above the limit. | `0x3e8960dc` |
 | InvariantRatioBelowMin(uint256,uint256) | invariantRatio: uint256, minInvariantRatio: uint256 | A remove liquidity operation decreased the invariant below the limit. | `0xe31c95be` |
+
+## BushPoolToken
+| Error | Arguments | Comment | Signature |
+| --- | --- | --- | --- |
+| ERC2612ExpiredSignature(uint256) | deadline: uint256 | Operation failed due to an expired permit signature. | `0x62791302` |
+| ERC2612InvalidSigner(address,address) | signer: address, owner: address | Operation failed due to a non-matching signature. | `0x4b800e46` |
 
 ## CommonAuthentication
 | Error | Arguments | Comment | Signature |
@@ -674,6 +607,12 @@
 | VaultAlreadyDeployed(address) | vault: address | The Vault has already been deployed at this target address. | `0xe254a88b` |
 
 ## vault/lib
+### MinTokenBalanceLib
+| Error | Arguments | Comment | Signature |
+| --- | --- | --- | --- |
+| InvalidMinTokenBalance |  | A minimum token balance is less than the absolute minimum defined above. | `0xef6adad4` |
+| TokenBalanceBelowMin(uint256,uint256,uint256) | tokenIndex: uint256, actualBalance: uint256, minBalance: uint256 | An operation has caused a token balance to drop below the minimum allowed balance. | `0xd63c0233` |
+
 ### RouterWethLib
 | Error | Arguments | Comment | Signature |
 | --- | --- | --- | --- |

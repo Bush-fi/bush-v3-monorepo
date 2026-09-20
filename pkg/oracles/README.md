@@ -1,16 +1,15 @@
-# <img src="../../logo.svg" alt="Balancer" height="128px">
+# <img src="../../logo.svg" alt="Bush" height="128px">
 
-# Balancer V3 Oracles
+# Bush V3 Oracles
 
-This package contains oracle implementations for Balancer V3 pool types that determine the Balancer Pool Token (BPT)
+This package contains oracle implementations for Bush V3 pool types that determine the Bush Pool Token (BPT)
 price of each pool. These oracles provide price feeds that are compatible with Chainlink's AggregatorV3Interface,
 making them suitable for use in DeFi protocols that require reliable price data.
 
 ## Overview
 
-The oracles package provides three main oracle implementations:
+The oracles package provides two main oracle implementations:
 
-- **E-CLP Oracle** (`EclpLPOracle.sol`) - For [Gyro E-CLP Pools](../pool-gyro/contracts/GyroECLPPool.sol)
 - **Stable Oracle** (`StableLPOracle.sol`) - For [V3 Stable pools](../pool-stable/contracts/StablePool.sol)
 - **Weighted Oracle** (`WeightedLPOracle.sol`) - For [V3 Weighted pools](../pool-weighted/contracts/WeightedPool.sol)
 

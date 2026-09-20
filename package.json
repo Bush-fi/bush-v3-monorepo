@@ -3,11 +3,6 @@
   "private": true,
   "description": "Bush V3 Monorepo",
   "license": "GPL-3.0-only",
-  "homepage": "https://github.com/balancer-labs/balancer-v3-monorepo#readme",
-  "repository": "git@github.com:balancer-labs/balancer-v3-monorepo.git",
-  "bugs": {
-    "url": "https://github.com/balancer-labs/balancer-v3-monorepo/issues"
-  },
   "engines": {
     "node": ">=24"
   },
@@ -46,7 +41,8 @@
     "Igor Yalovoy <igor@balancerlabs.dev>",
     "João Bruno Abou Hatem de Liz <joao@balancerlabs.dev>",
     "Elshan Dzhafarov <elshan@balancerlabs.dev>",
-    "Nicolás Venturo <nico@balancerlabs.dev>"
+    "Nicolás Venturo <nico@balancerlabs.dev>",
+    "surfacing8671 <dev@bush.fi>"
   ],
   "scripts": {
     "build": "yarn workspaces foreach --all --parallel --jobs unlimited --verbose run build",

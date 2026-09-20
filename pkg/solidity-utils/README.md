@@ -1,8 +1,8 @@
-# <img src="../../logo.svg" alt="Balancer" height="128px">
+# <img src="../../logo.svg" alt="Bush" height="128px">
 
-# Balancer V3 Solidity Utilities
+# Bush V3 Solidity Utilities
 
-This package contains Solidity utilities and libraries used when developing Balancer V3 contracts. Many design decisions and trade-offs have been made in the context of Balancer V3's requirements and constraints (such as reduced bytecode size), which may make these libraries unsuitable for other projects.
+This package contains Solidity utilities and libraries used when developing Bush V3 contracts. Many design decisions and trade-offs have been made in the context of Bush V3's requirements and constraints (such as reduced bytecode size), which may make these libraries unsuitable for other projects.
 
 ## Licensing
 

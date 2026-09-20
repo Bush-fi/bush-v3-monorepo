@@ -1,8 +1,8 @@
-# <img src="../../logo.svg" alt="Balancer" height="128px">
+# <img src="../../logo.svg" alt="Bush" height="128px">
 
-# Balancer V3 Interfaces
+# Bush V3 Interfaces
 
-This package contains interfaces used in dependent packages, which makes building systems that interact with Balancer contracts simpler, as the implementation information is not included.
+This package contains interfaces used in dependent packages, which makes building systems that interact with Bush contracts simpler, as the implementation information is not included.
 
 ## Overview
 

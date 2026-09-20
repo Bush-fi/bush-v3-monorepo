@@ -3,15 +3,6 @@
   "version": "1.0.0",
   "description": "V3 Interfaces",
   "license": "GPL-3.0-only",
-  "homepage": "https://github.com/balancer-labs/balancer-v3-monorepo/tree/master/pkg/interfaces#readme",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/balancer-labs/balancer-v3-monorepo.git",
-    "directory": "pkg/interfaces"
-  },
-  "bugs": {
-    "url": "https://github.com/balancer-labs/balancer-v3-monorepo/issues"
-  },
   "files": [
     "contracts/**/*"
   ],
@@ -44,5 +35,11 @@
     "mocha": "^10.1.0",
     "nodemon": "^2.0.20",
     "solhint": "^3.4.1"
+  },
+  "dependencies": {
+    "@bush/v3-solidity-utils": "workspace:*",
+    "@chainlink/contracts": "^1.4.0",
+    "@openzeppelin/contracts": "~5.4.0",
+    "permit2": "https://github.com/Uniswap/permit2.git#cc56ad0f3439c502c246fc5cfcc3db92bb8b7219"
   }
 }

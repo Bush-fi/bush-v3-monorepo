@@ -16,6 +16,7 @@ remappings = [
     'solidity-utils/=../solidity-utils/',
     'ds-test/=../../node_modules/forge-std/lib/ds-test/src/',
     'forge-std/=../../node_modules/forge-std/src/',
+    '@chainlink/=../../node_modules/@chainlink/',
     '@openzeppelin/=../../node_modules/@openzeppelin/',
     'permit2/=../../node_modules/permit2/',
     '@bush/=../../node_modules/@bush/',
@@ -23,6 +24,7 @@ remappings = [
 ]
 optimizer = true
 optimizer_runs = 999
+via_ir = true
 solc_version = '0.8.27'
 auto_detect_solc = false
 evm_version = 'cancun'

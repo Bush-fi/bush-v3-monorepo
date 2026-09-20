@@ -14,7 +14,7 @@ interface IAggregatorRouter {
     /// @notice Thrown when the sender does not transfer the correct amount of tokens to the Vault.
     error SwapInsufficientPayment();
 
-    /// @notice Get the address of the Balancer Vault.
+    /// @notice Get the address of the Vault.
     function getVault() external view returns (IVault);
 
     /**

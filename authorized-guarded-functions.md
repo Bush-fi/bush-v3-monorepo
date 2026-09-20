@@ -120,11 +120,6 @@ rather than using the modifier — noted separately below.
 | `swapExactOutAndDonateSurplus(...)` | [147](pkg/pool-cow/contracts/CowRouter.sol#L147) |
 | `donate(address pool, uint256[] donationAmounts, bytes userData)` | [172](pkg/pool-cow/contracts/CowRouter.sol#L172) |
 
-### `pkg/governance-scripts/contracts/ProtocolFeeControllerMigration.sol`
-| Function | Line |
-|---|---|
-| `finalizeMigration()` | [116](pkg/governance-scripts/contracts/ProtocolFeeControllerMigration.sol#L116) |
-
 ---
 
 ## `onlyOwner`-guarded (plain OpenZeppelin Ownable, no timelock)

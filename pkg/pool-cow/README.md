@@ -1,6 +1,6 @@
-# <img src="../../logo.svg" alt="Balancer" height="128px">
+# <img src="../../logo.svg" alt="Bush" height="128px">
 
-# CoW AMM in Balancer V3
+# CoW AMM in Bush V3
 
 ## Licensing
 

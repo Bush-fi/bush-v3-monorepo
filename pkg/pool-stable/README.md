@@ -1,8 +1,8 @@
-# <img src="../../logo.svg" alt="Balancer" height="128px">
+# <img src="../../logo.svg" alt="Bush" height="128px">
 
-# Balancer V3 Stable Pools
+# Bush V3 Stable Pools
 
-This package contains the source code for Balancer V3 Weighted Pools, that is, Pools that swap tokens by enforcing a Stable Math invariant, based on Curve.
+This package contains the source code for Bush V3 Weighted Pools, that is, Pools that swap tokens by enforcing a Stable Math invariant, based on Curve.
 
 Another useful contract is [`StableMath`](../solidity-utils/contracts/math/StableMath.sol), which implements the low level calculations required for swaps, joins, exits and price calculations.
 

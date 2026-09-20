@@ -3,18 +3,9 @@
   "version": "1.0.0",
   "description": "Solidity libraries and utilities",
   "license": "GPL-3.0-only",
-  "homepage": "https://github.com/balancer-labs/balancer-v3-monorepo/tree/master/pkg/solidity-utils#readme",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/balancer-labs/balancer-v3-monorepo.git",
-    "directory": "pkg/solidity-utils"
-  },
-  "bugs": {
-    "url": "https://github.com/balancer-labs/balancer-v3-monorepo/issues"
-  },
   "files": [
     "contracts/**/*.sol",
-    "!contracts/test/**/*.sol"
+    "test/foundry/utils/**/*.sol"
   ],
   "scripts": {
     "build": "yarn compile && rm -rf artifacts/build-info",
@@ -37,7 +28,8 @@
     "slither:triage": "yarn compile && bash -c 'source ../../slither/bin/activate && slither --compile-force-framework hardhat --ignore-compile . --config-file ../../.slither.config.json --triage-mode'"
   },
   "dependencies": {
-    "@bush/v3-interfaces": "workspace:*"
+    "@bush/v3-interfaces": "workspace:*",
+    "@openzeppelin/contracts": "~5.4.0"
   },
   "devDependencies": {
     "@bush/solidity-toolbox": "workspace:*",

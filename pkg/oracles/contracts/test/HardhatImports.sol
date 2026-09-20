@@ -15,4 +15,3 @@ import { PoolHooksMock } from "@bush/v3-vault/contracts/test/PoolHooksMock.sol";
 import { CompositeLiquidityRouterMock } from "@bush/v3-vault/contracts/test/CompositeLiquidityRouterMock.sol";
 import { StablePoolFactory } from "@bush/v3-pool-stable/contracts/StablePoolFactory.sol";
 import { WeightedPoolFactory } from "@bush/v3-pool-weighted/contracts/WeightedPoolFactory.sol";
-import { GyroECLPPoolFactory } from "@bush/v3-pool-gyro/contracts/GyroECLPPoolFactory.sol";
