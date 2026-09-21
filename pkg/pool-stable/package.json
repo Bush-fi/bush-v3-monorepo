@@ -1,6 +1,6 @@
 {
   "name": "@bush.fi/v3-pool-stable",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Bush V3 Stable Pools",
   "license": "GPL-3.0-only",
   "files": [

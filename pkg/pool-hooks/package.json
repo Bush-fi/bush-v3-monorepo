@@ -1,6 +1,6 @@
 {
   "name": "@bush.fi/v3-pool-hooks",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Bush V3 Pool Hooks",
   "license": "GPL-3.0-only",
   "files": [

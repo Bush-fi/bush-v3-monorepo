@@ -1,6 +1,6 @@
 {
   "name": "@bush.fi/v3-pool-testing",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Meta-package bundling the Bush V3 test scaffolding (BaseVaultTest, BasePoolTest, contract deployers, mocks) needed to build Foundry test suites for new pools and hooks",
   "license": "GPL-3.0-only",
   "dependencies": {

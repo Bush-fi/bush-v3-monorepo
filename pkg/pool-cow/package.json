@@ -1,6 +1,6 @@
 {
   "name": "@bush.fi/v3-pool-cow",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "CoW AMM in Bush V3",
   "license": "GPL-3.0-only",
   "files": [

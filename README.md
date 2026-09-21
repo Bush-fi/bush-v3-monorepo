@@ -3,8 +3,11 @@
 # Bush V3 Monorepo
 
 [![License](https://img.shields.io/badge/License-GPLv3-green.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![NPM Package](https://img.shields.io/npm/v/@bush.fi/v3-vault.svg)](https://www.npmjs.com/package/@bush.fi/v3-vault)
 
 This repository contains the Bush Protocol V3 core smart contracts, including the `Vault` and standard Pools, along with their tests.
+
+Source: [github.com/Bush-fi/bush-v3-monorepo](https://github.com/Bush-fi/bush-v3-monorepo). Packages are published to npm under the [`@bush.fi`](https://www.npmjs.com/org/bush.fi) scope.
 
 ## Structure
 
@@ -14,13 +17,17 @@ Active development occurs in this repository, which means some contracts in it m
 
 ### Packages
 
-- [`v3-interfaces`](./pkg/interfaces): Solidity interfaces for all contracts.
-- [`v3-solidity-utils`](./pkg/solidity-utils): miscellaneous Solidity helpers and utilities used in many different contracts.
-- [`v3-pool-hooks`](./pkg/pool-hooks/): hook examples to illustrate potential capabilities and how to build one.
-- [`v3-pool-utils`](./pkg/pool-utils/): Solidity utilities used to develop Pool contracts.
-- [`v3-pool-stable`](./pkg/pool-stable/): contains [`StablePool`](./pkg/pool-stable/contracts/StablePool.sol), along with its associated factory.
-- [`v3-pool-weighted`](./pkg/pool-weighted): contains [`WeightedPool`](./pkg/pool-weighted/contracts/WeightedPool.sol), along with its associated factory.
-- [`v3-vault`](./pkg/vault): contains the main [`Vault`](./pkg/vault/contracts/Vault.sol) contract, which is the cornerstone of Bush V3, and its extensions. Also includes the standard [`Router`](./pkg/vault/contracts/Router.sol) and [`BatchRouter`](./pkg/vault/contracts/BatchRouter.sol), which supports end-user interactions with the Vault.
+- [`@bush.fi/v3-interfaces`](./pkg/interfaces): Solidity interfaces for all contracts.
+- [`@bush.fi/v3-solidity-utils`](./pkg/solidity-utils): miscellaneous Solidity helpers and utilities used in many different contracts.
+- [`@bush.fi/v3-pool-hooks`](./pkg/pool-hooks/): hook examples to illustrate potential capabilities and how to build one.
+- [`@bush.fi/v3-pool-utils`](./pkg/pool-utils/): Solidity utilities used to develop Pool contracts.
+- [`@bush.fi/v3-pool-stable`](./pkg/pool-stable/): contains [`StablePool`](./pkg/pool-stable/contracts/StablePool.sol), along with its associated factory.
+- [`@bush.fi/v3-pool-weighted`](./pkg/pool-weighted): contains [`WeightedPool`](./pkg/pool-weighted/contracts/WeightedPool.sol) and [`LBPool`](./pkg/pool-weighted/contracts/lbp/LBPool.sol), along with their associated factories.
+- [`@bush.fi/v3-pool-cow`](./pkg/pool-cow/): contains the CoW AMM pool and its factory.
+- [`@bush.fi/v3-pool-testing`](./pkg/pool-testing/): meta-package bundling the test scaffolding (`BaseVaultTest`, `BasePoolTest`, deployers, mocks) needed to write Foundry tests for new pools and hooks.
+- [`@bush.fi/v3-oracles`](./pkg/oracles/): LP token price oracles for Weighted and Stable pools.
+- [`@bush.fi/v3-standalone-utils`](./pkg/standalone-utils/): standalone helper contracts (e.g. protocol fee helpers, pool pausers, swap fee managers).
+- [`@bush.fi/v3-vault`](./pkg/vault): contains the main [`Vault`](./pkg/vault/contracts/Vault.sol) contract, which is the cornerstone of Bush V3, and its extensions. Also includes the standard [`Router`](./pkg/vault/contracts/Router.sol) and [`BatchRouter`](./pkg/vault/contracts/BatchRouter.sol), which supports end-user interactions with the Vault.
 
 ## Pre-requisites
 
@@ -169,5 +176,8 @@ Most of the Solidity source code is licensed under the GNU General Public Licens
 
 ### Exceptions
 
-
 - All other files, including tests and the [`pvt`](./pvt) directory are unlicensed.
+
+## Acknowledgements
+
+Bush V3 is derived from the [Balancer V3](https://github.com/balancer/balancer-v3-monorepo) codebase, licensed under GPL-3.0. Upstream contributors are credited in [`package.json`](./package.json), and the original security audits are preserved in the [`audits`](./audits) directory.
