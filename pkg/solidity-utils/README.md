@@ -1,4 +1,4 @@
-# <img src="../../logo.svg" alt="Bush" height="128px">
+# <img src="../../logo.png" alt="Bush" height="128px">
 
 # Bush V3 Solidity Utilities
 
