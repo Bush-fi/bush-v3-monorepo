@@ -22,11 +22,7 @@ import { MONTH } from '@bush.fi/v3-helpers/src/time';
 import { sortAddresses } from '@bush.fi/v3-helpers/src/models/tokens/sortingHelper';
 import { deployPermit2 } from './Permit2Deployer';
 import { IPermit2 } from '../typechain-types/permit2/src/interfaces/IPermit2';
-import {
-  ERC20TestToken,
-  ERC20TestToken__factory,
-  ERC4626TestToken,
-} from '@bush.fi/v3-solidity-utils/typechain-types';
+import { ERC20TestToken, ERC20TestToken__factory, ERC4626TestToken } from '@bush.fi/v3-solidity-utils/typechain-types';
 import { BalanceChange, expectBalanceChange } from '@bush.fi/v3-helpers/src/test/tokenBalance';
 import { BufferRouter } from '@bush.fi/v3-pool-weighted/typechain-types';
 import {

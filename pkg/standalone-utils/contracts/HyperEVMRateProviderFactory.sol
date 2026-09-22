@@ -5,9 +5,7 @@ pragma solidity ^0.8.24;
 import {
     IHyperEVMRateProviderFactory
 } from "@bush.fi/v3-interfaces/contracts/standalone-utils/IHyperEVMRateProviderFactory.sol";
-import {
-    IHyperEVMRateProvider
-} from "@bush.fi/v3-interfaces/contracts/standalone-utils/IHyperEVMRateProvider.sol";
+import { IHyperEVMRateProvider } from "@bush.fi/v3-interfaces/contracts/standalone-utils/IHyperEVMRateProvider.sol";
 import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 
 import { SingletonAuthentication } from "@bush.fi/v3-vault/contracts/SingletonAuthentication.sol";

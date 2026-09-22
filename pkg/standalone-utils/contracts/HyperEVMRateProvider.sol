@@ -1,9 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 pragma solidity ^0.8.24;
 
-import {
-    IHyperEVMRateProvider
-} from "@bush.fi/v3-interfaces/contracts/standalone-utils/IHyperEVMRateProvider.sol";
+import { IHyperEVMRateProvider } from "@bush.fi/v3-interfaces/contracts/standalone-utils/IHyperEVMRateProvider.sol";
 import { IRateProvider } from "@bush.fi/v3-interfaces/contracts/solidity-utils/helpers/IRateProvider.sol";
 
 import { HyperSpotPricePrecompile } from "./utils/HyperSpotPricePrecompile.sol";

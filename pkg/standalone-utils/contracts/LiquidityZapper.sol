@@ -43,21 +43,15 @@ contract LiquidityZapper is ILiquidityZapper, SingletonAuthentication, Reentranc
 
     address private _umbraRouter;
 
-    constructor(
-        IVault vault,
-        IRouter router,
-        IPermit2 permit2,
-        address umbraRouter
-    ) SingletonAuthentication(vault) {
+    constructor(IVault vault, IRouter router, IPermit2 permit2, address umbraRouter) SingletonAuthentication(vault) {
         _router = router;
         _permit2 = permit2;
         _setUmbraRouter(umbraRouter);
     }
 
     /// @inheritdoc ILiquidityZapper
-    function zap(
-        ZapParams calldata p
-    ) external payable nonReentrant returns (address pool, uint256 bptAmountOut) {
+    function zap(ZapParams calldata p) external payable nonReentrant returns (address pool, uint256 bptAmountOut) {
+        // solhint-disable-next-line not-rely-on-time
         if (block.timestamp > p.deadline) revert ZapExpired();
         if (p.recipient == address(0)) revert ZeroRecipient();
         if (p.swaps.length == 0) revert NoSwaps();
@@ -162,9 +156,7 @@ contract LiquidityZapper is ILiquidityZapper, SingletonAuthentication, Reentranc
 
     /// Collect this contract's balance of each token the existing pool holds, approving what's needed for the
     /// upcoming Router join along the way.
-    function _fundExistingPool(
-        address pool
-    ) private returns (IERC20[] memory tokens, uint256[] memory amounts) {
+    function _fundExistingPool(address pool) private returns (IERC20[] memory tokens, uint256[] memory amounts) {
         tokens = getVault().getPoolTokens(pool);
         amounts = new uint256[](tokens.length);
 

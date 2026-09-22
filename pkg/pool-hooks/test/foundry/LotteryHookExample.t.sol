@@ -8,11 +8,7 @@ import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 import { IRouter } from "@bush.fi/v3-interfaces/contracts/vault/IRouter.sol";
 import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
-import {
-    LiquidityManagement,
-    PoolRoleAccounts,
-    SwapKind
-} from "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
+import { LiquidityManagement, PoolRoleAccounts, SwapKind } from "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
 import { CastingHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/CastingHelpers.sol";
 import { FixedPoint } from "@bush.fi/v3-solidity-utils/contracts/math/FixedPoint.sol";

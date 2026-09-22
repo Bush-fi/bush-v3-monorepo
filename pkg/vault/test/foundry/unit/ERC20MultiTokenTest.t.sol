@@ -72,11 +72,7 @@ contract ERC20MultiTokenTest is Test, IERC20Errors, ERC20MultiToken, VaultContra
 
         vm.expectEmit();
         emit ERC20MultiToken.Approval(POOL, OWNER, SPENDER, remainingAllowance);
-        vm.mockCall(
-            POOL,
-            abi.encodeCall(BushPoolToken.emitApproval, (OWNER, SPENDER, remainingAllowance)),
-            bytes("")
-        );
+        vm.mockCall(POOL, abi.encodeCall(BushPoolToken.emitApproval, (OWNER, SPENDER, remainingAllowance)), bytes(""));
         token.manualSpendAllowance(POOL, OWNER, SPENDER, spendAmount);
 
         assertEq(token.allowance(POOL, OWNER, SPENDER), remainingAllowance, "Unexpected allowance");

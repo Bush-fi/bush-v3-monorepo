@@ -5,9 +5,7 @@ pragma solidity ^0.8.24;
 import { IERC20Metadata } from "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol";
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import {
-    IWrappedBushPoolTokenFactory
-} from "@bush.fi/v3-interfaces/contracts/vault/IWrappedBushPoolTokenFactory.sol";
+import { IWrappedBushPoolTokenFactory } from "@bush.fi/v3-interfaces/contracts/vault/IWrappedBushPoolTokenFactory.sol";
 import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 
 import { WrappedBushPoolToken } from "./WrappedBushPoolToken.sol";

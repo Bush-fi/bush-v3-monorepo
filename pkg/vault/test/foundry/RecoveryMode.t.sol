@@ -291,11 +291,7 @@ contract RecoveryModeTest is BaseVaultTest {
         IERC20(pool).approve(address(router), type(uint256).max - 1);
 
         // We only want a partial match of the call, triggered when BPT are burned.
-        vm.mockCallRevert(
-            pool,
-            abi.encodeWithSelector(BushPoolToken.emitApproval.selector, alice, router),
-            bytes("")
-        );
+        vm.mockCallRevert(pool, abi.encodeWithSelector(BushPoolToken.emitApproval.selector, alice, router), bytes(""));
         testRecoveryModeBalances();
     }
 

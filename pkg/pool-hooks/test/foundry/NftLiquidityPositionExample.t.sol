@@ -148,11 +148,7 @@ contract NftLiquidityPositionExampleTest is BaseVaultTest {
         assertEq(nftRouter.nftPool(expectedTokenId), pool, "pool mapping is wrong");
 
         // Router should receive BPT instead of bob, he gets the NFT
-        assertEq(
-            BushPoolToken(pool).balanceOf(address(nftRouter)),
-            DEFAULT_BPT_AMOUNT,
-            "NftRouter should hold BPT"
-        );
+        assertEq(BushPoolToken(pool).balanceOf(address(nftRouter)), DEFAULT_BPT_AMOUNT, "NftRouter should hold BPT");
         assertEq(nftRouter.ownerOf(expectedTokenId), bob, "bob should have an NFT");
         assertEq(balancesAfter.bobBpt, 0, "bob should not hold any BPT");
     }

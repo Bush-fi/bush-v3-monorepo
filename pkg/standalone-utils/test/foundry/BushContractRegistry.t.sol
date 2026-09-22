@@ -31,10 +31,7 @@ contract BushContractRegistryTest is BaseVaultTest {
         authorizer.grantRole(registry.getActionId(BushContractRegistry.registerBushContract.selector), admin);
         authorizer.grantRole(registry.getActionId(BushContractRegistry.deregisterBushContract.selector), admin);
         authorizer.grantRole(registry.getActionId(BushContractRegistry.deprecateBushContract.selector), admin);
-        authorizer.grantRole(
-            registry.getActionId(BushContractRegistry.addOrUpdateBushContractAlias.selector),
-            admin
-        );
+        authorizer.grantRole(registry.getActionId(BushContractRegistry.addOrUpdateBushContractAlias.selector), admin);
     }
 
     function testGetVault() public view {
@@ -98,11 +95,7 @@ contract BushContractRegistryTest is BaseVaultTest {
 
         // Try to register a new address with a contract name that is already used as an alias.
         vm.expectRevert(
-            abi.encodeWithSelector(
-                IBushContractRegistry.ContractNameInUseAsAlias.selector,
-                DEFAULT_ALIAS,
-                ANY_ADDRESS
-            )
+            abi.encodeWithSelector(IBushContractRegistry.ContractNameInUseAsAlias.selector, DEFAULT_ALIAS, ANY_ADDRESS)
         );
         registry.registerBushContract(ContractType.POOL_FACTORY, DEFAULT_ALIAS, SECOND_ADDRESS);
         vm.stopPrank();
@@ -113,25 +106,16 @@ contract BushContractRegistryTest is BaseVaultTest {
         registry.registerBushContract(ContractType.POOL_FACTORY, DEFAULT_NAME, ANY_ADDRESS);
 
         // Should return the registered contract as active.
-        assertTrue(
-            registry.isActiveBushContract(ContractType.POOL_FACTORY, ANY_ADDRESS),
-            "ANY_ADDRESS is not active"
-        );
+        assertTrue(registry.isActiveBushContract(ContractType.POOL_FACTORY, ANY_ADDRESS), "ANY_ADDRESS is not active");
         // Zero address should not be active.
-        assertFalse(
-            registry.isActiveBushContract(ContractType.POOL_FACTORY, ZERO_ADDRESS),
-            "ZERO_ADDRESS is active"
-        );
+        assertFalse(registry.isActiveBushContract(ContractType.POOL_FACTORY, ZERO_ADDRESS), "ZERO_ADDRESS is active");
         // Random address should not be active.
         assertFalse(
             registry.isActiveBushContract(ContractType.POOL_FACTORY, SECOND_ADDRESS),
             "SECOND_ADDRESS is active"
         );
         // Only active with the correct type.
-        assertFalse(
-            registry.isActiveBushContract(ContractType.ROUTER, ANY_ADDRESS),
-            "Address is active as a Router"
-        );
+        assertFalse(registry.isActiveBushContract(ContractType.ROUTER, ANY_ADDRESS), "Address is active as a Router");
     }
 
     function testContractGetters() public {
@@ -223,9 +207,7 @@ contract BushContractRegistryTest is BaseVaultTest {
     function testDeregisterNonExistentContract() public {
         vm.prank(admin);
 
-        vm.expectRevert(
-            abi.encodeWithSelector(IBushContractRegistry.ContractNameNotRegistered.selector, DEFAULT_NAME)
-        );
+        vm.expectRevert(abi.encodeWithSelector(IBushContractRegistry.ContractNameNotRegistered.selector, DEFAULT_NAME));
         registry.deregisterBushContract(DEFAULT_NAME);
     }
 
@@ -284,9 +266,7 @@ contract BushContractRegistryTest is BaseVaultTest {
 
         registry.deprecateBushContract(ANY_ADDRESS);
 
-        vm.expectRevert(
-            abi.encodeWithSelector(IBushContractRegistry.ContractAlreadyDeprecated.selector, ANY_ADDRESS)
-        );
+        vm.expectRevert(abi.encodeWithSelector(IBushContractRegistry.ContractAlreadyDeprecated.selector, ANY_ADDRESS));
         registry.deprecateBushContract(ANY_ADDRESS);
 
         vm.stopPrank();

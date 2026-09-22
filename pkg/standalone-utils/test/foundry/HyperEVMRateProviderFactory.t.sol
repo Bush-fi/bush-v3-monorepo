@@ -7,9 +7,7 @@ import { IVersion } from "@bush.fi/v3-interfaces/contracts/solidity-utils/helper
 import {
     IHyperEVMRateProviderFactory
 } from "@bush.fi/v3-interfaces/contracts/standalone-utils/IHyperEVMRateProviderFactory.sol";
-import {
-    IHyperEVMRateProvider
-} from "@bush.fi/v3-interfaces/contracts/standalone-utils/IHyperEVMRateProvider.sol";
+import { IHyperEVMRateProvider } from "@bush.fi/v3-interfaces/contracts/standalone-utils/IHyperEVMRateProvider.sol";
 
 import { BaseVaultTest } from "@bush.fi/v3-vault/test/foundry/utils/BaseVaultTest.sol";
 

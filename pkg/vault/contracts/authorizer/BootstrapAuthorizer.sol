@@ -4,7 +4,6 @@ pragma solidity ^0.8.24;
 
 import { IAuthorizer } from "@bush.fi/v3-interfaces/contracts/vault/IAuthorizer.sol";
 
-
 contract BootstrapAuthorizer is IAuthorizer {
     address public immutable owner;
 

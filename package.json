@@ -3,9 +3,15 @@
   "private": true,
   "description": "Bush V3 Monorepo",
   "license": "GPL-3.0-only",
+  "homepage": "https://github.com/Bush-fi/bush-v3-monorepo#readme",
+  "repository": "git@github.com:Bush-fi/bush-v3-monorepo.git",
+  "bugs": {
+    "url": "https://github.com/Bush-fi/bush-v3-monorepo/issues"
+  },
   "engines": {
     "node": ">=24"
   },
+  
   "resolutions": {
     "form-data": "^2.5.4",
     "pbkdf2": "^3.1.3",

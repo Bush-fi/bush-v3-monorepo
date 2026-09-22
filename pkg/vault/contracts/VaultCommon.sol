@@ -18,9 +18,7 @@ import { ScalingHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/Sca
 import {
     ReentrancyGuardTransient
 } from "@bush.fi/v3-solidity-utils/contracts/openzeppelin/ReentrancyGuardTransient.sol";
-import {
-    TransientStorageHelpers
-} from "@bush.fi/v3-solidity-utils/contracts/helpers/TransientStorageHelpers.sol";
+import { TransientStorageHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/TransientStorageHelpers.sol";
 
 import { VaultStateBits, VaultStateLib } from "./lib/VaultStateLib.sol";
 import { PoolConfigBits, PoolConfigLib } from "./lib/PoolConfigLib.sol";

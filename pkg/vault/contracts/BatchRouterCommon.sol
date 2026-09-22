@@ -8,9 +8,7 @@ import { IPermit2 } from "permit2/src/interfaces/IPermit2.sol";
 import { IWETH } from "@bush.fi/v3-interfaces/contracts/solidity-utils/misc/IWETH.sol";
 import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 
-import {
-    TransientEnumerableSet
-} from "@bush.fi/v3-solidity-utils/contracts/openzeppelin/TransientEnumerableSet.sol";
+import { TransientEnumerableSet } from "@bush.fi/v3-solidity-utils/contracts/openzeppelin/TransientEnumerableSet.sol";
 import {
     TransientStorageHelpers,
     AddressToUintMappingSlot

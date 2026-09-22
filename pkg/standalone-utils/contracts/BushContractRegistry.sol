@@ -217,10 +217,7 @@ contract BushContractRegistry is IBushContractRegistry, SingletonAuthentication 
     }
 
     /// @inheritdoc IBushContractRegistry
-    function addOrUpdateBushContractAlias(
-        string memory contractAlias,
-        address contractAddress
-    ) external authenticate {
+    function addOrUpdateBushContractAlias(string memory contractAlias, address contractAddress) external authenticate {
         // Ensure arguments are valid.
         if (bytes(contractAlias).length == 0) {
             revert InvalidContractAlias();
@@ -259,10 +256,7 @@ contract BushContractRegistry is IBushContractRegistry, SingletonAuthentication 
         return _isActiveBushContract(contractType, contractAddress);
     }
 
-    function _isActiveBushContract(
-        ContractType contractType,
-        address contractAddress
-    ) internal view returns (bool) {
+    function _isActiveBushContract(ContractType contractType, address contractAddress) internal view returns (bool) {
         ContractInfo memory info = _contractInfo[contractAddress];
 
         // Ensure the address was registered as the given type - and that it's still active.

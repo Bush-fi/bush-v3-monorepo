@@ -7,9 +7,7 @@ import { IPermit2 } from "permit2/src/interfaces/IPermit2.sol";
 
 import { IWETH } from "@bush.fi/v3-interfaces/contracts/solidity-utils/misc/IWETH.sol";
 import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
-import {
-    IUnbalancedAddViaSwapRouter
-} from "@bush.fi/v3-interfaces/contracts/vault/IUnbalancedAddViaSwapRouter.sol";
+import { IUnbalancedAddViaSwapRouter } from "@bush.fi/v3-interfaces/contracts/vault/IUnbalancedAddViaSwapRouter.sol";
 import "@bush.fi/v3-interfaces/contracts/vault/RouterTypes.sol";
 
 import { RouterHooks } from "./RouterHooks.sol";

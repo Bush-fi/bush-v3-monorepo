@@ -7,12 +7,7 @@ import { ERC20 } from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 contract SimpleTestToken is ERC20 {
     uint8 private immutable _decimals;
 
-    constructor(
-        string memory name,
-        string memory symbol,
-        uint8 decimals_,
-        uint256 initialSupply
-    ) ERC20(name, symbol) {
+    constructor(string memory name, string memory symbol, uint8 decimals_, uint256 initialSupply) ERC20(name, symbol) {
         _decimals = decimals_;
         _mint(msg.sender, initialSupply);
     }

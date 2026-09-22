@@ -4,9 +4,7 @@ pragma solidity ^0.8.24;
 
 import { Math } from "@openzeppelin/contracts/utils/math/Math.sol";
 
-import {
-    IBushContractRegistry
-} from "@bush.fi/v3-interfaces/contracts/standalone-utils/IBushContractRegistry.sol";
+import { IBushContractRegistry } from "@bush.fi/v3-interfaces/contracts/standalone-utils/IBushContractRegistry.sol";
 import { ISenderGuard } from "@bush.fi/v3-interfaces/contracts/vault/ISenderGuard.sol";
 import { IMevCaptureHook } from "@bush.fi/v3-interfaces/contracts/pool-hooks/IMevCaptureHook.sol";
 import { IHooks } from "@bush.fi/v3-interfaces/contracts/vault/IHooks.sol";

@@ -8,9 +8,7 @@ import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 import "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
 import { BushPoolToken } from "@bush.fi/v3-vault/contracts/BushPoolToken.sol";
-import {
-    AddAndRemoveLiquidityMedusaTest
-} from "@bush.fi/v3-vault/test/foundry/fuzz/AddAndRemoveLiquidity.medusa.sol";
+import { AddAndRemoveLiquidityMedusaTest } from "@bush.fi/v3-vault/test/foundry/fuzz/AddAndRemoveLiquidity.medusa.sol";
 
 import { WeightedPoolFactory } from "../../../contracts/WeightedPoolFactory.sol";
 import { WeightedPool } from "../../../contracts/WeightedPool.sol";

@@ -151,7 +151,7 @@ contract AggregatorRouter is IAggregatorRouter, SenderGuard, VaultGuard, Reentra
     }
 
     function _swapHook(
-       SwapSingleTokenHookParams calldata params
+        SwapSingleTokenHookParams calldata params
     ) internal returns (uint256 amountCalculated, uint256 amountIn, uint256 amountOut) {
         // The deadline is timestamp-based: it should not be relied upon for sub-minute accuracy.
         // solhint-disable-next-line not-rely-on-time

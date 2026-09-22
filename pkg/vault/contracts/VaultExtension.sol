@@ -26,9 +26,7 @@ import { CastingHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/Cas
 import { InputHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/InputHelpers.sol";
 import { RevertCodec } from "@bush.fi/v3-solidity-utils/contracts/helpers/RevertCodec.sol";
 import { FixedPoint } from "@bush.fi/v3-solidity-utils/contracts/math/FixedPoint.sol";
-import {
-    TransientStorageHelpers
-} from "@bush.fi/v3-solidity-utils/contracts/helpers/TransientStorageHelpers.sol";
+import { TransientStorageHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/TransientStorageHelpers.sol";
 
 import { VaultStateBits, VaultStateLib } from "./lib/VaultStateLib.sol";
 import { PoolConfigLib, PoolConfigBits } from "./lib/PoolConfigLib.sol";

@@ -13,12 +13,8 @@ import "@bush.fi/v3-interfaces/contracts/vault/BatchRouterTypes.sol";
 import "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
 import { EVMCallModeHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/EVMCallModeHelpers.sol";
-import {
-    TransientEnumerableSet
-} from "@bush.fi/v3-solidity-utils/contracts/openzeppelin/TransientEnumerableSet.sol";
-import {
-    TransientStorageHelpers
-} from "@bush.fi/v3-solidity-utils/contracts/helpers/TransientStorageHelpers.sol";
+import { TransientEnumerableSet } from "@bush.fi/v3-solidity-utils/contracts/openzeppelin/TransientEnumerableSet.sol";
+import { TransientStorageHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/TransientStorageHelpers.sol";
 
 import { BatchRouterCommon } from "./BatchRouterCommon.sol";
 

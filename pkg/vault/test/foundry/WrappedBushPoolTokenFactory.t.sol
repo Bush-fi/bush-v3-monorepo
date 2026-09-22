@@ -4,9 +4,7 @@ pragma solidity ^0.8.24;
 
 import { IERC20Metadata } from "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol";
 
-import {
-    IWrappedBushPoolTokenFactory
-} from "@bush.fi/v3-interfaces/contracts/vault/IWrappedBushPoolTokenFactory.sol";
+import { IWrappedBushPoolTokenFactory } from "@bush.fi/v3-interfaces/contracts/vault/IWrappedBushPoolTokenFactory.sol";
 
 import { WrappedBushPoolTokenFactory } from "../../contracts/WrappedBushPoolTokenFactory.sol";
 import { BaseVaultTest } from "./utils/BaseVaultTest.sol";
@@ -49,9 +47,7 @@ contract WrappedBushPoolTokenFactoryTest is BaseVaultTest {
     function testCreateWhenPoolNotRegistered() public {
         vault.manualSetPoolRegistered(pool, false);
 
-        vm.expectRevert(
-            abi.encodeWithSelector(IWrappedBushPoolTokenFactory.BushPoolTokenNotRegistered.selector)
-        );
+        vm.expectRevert(abi.encodeWithSelector(IWrappedBushPoolTokenFactory.BushPoolTokenNotRegistered.selector));
         factory.createWrappedToken(pool);
     }
 

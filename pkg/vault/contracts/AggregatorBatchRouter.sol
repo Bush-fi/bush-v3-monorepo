@@ -14,12 +14,8 @@ import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 import "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
 
 import { EVMCallModeHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/EVMCallModeHelpers.sol";
-import {
-    TransientEnumerableSet
-} from "@bush.fi/v3-solidity-utils/contracts/openzeppelin/TransientEnumerableSet.sol";
-import {
-    TransientStorageHelpers
-} from "@bush.fi/v3-solidity-utils/contracts/helpers/TransientStorageHelpers.sol";
+import { TransientEnumerableSet } from "@bush.fi/v3-solidity-utils/contracts/openzeppelin/TransientEnumerableSet.sol";
+import { TransientStorageHelpers } from "@bush.fi/v3-solidity-utils/contracts/helpers/TransientStorageHelpers.sol";
 
 import { BatchRouterCommon } from "./BatchRouterCommon.sol";
 
@@ -44,8 +40,6 @@ contract AggregatorBatchRouter is IAggregatorBatchRouter, BatchRouterCommon {
      * @param senderDebits Amounts sent by the sender
      */
     error InsufficientFunds(address token, uint256 senderCredits, uint256 senderDebits);
-
-
 
     constructor(
         IVault vault,
@@ -321,7 +315,7 @@ contract AggregatorBatchRouter is IAggregatorBatchRouter, BatchRouterCommon {
             // Backwards iteration: the exact amount out applies to the last step, so we cannot iterate from first to
             // last. The calculated input of step (j) is the exact amount out for step (j - 1).
             for (int256 j = int256(path.steps.length - 1); j >= 0; --j) {
-               SwapPathStep memory step = path.steps[uint256(j)];
+                SwapPathStep memory step = path.steps[uint256(j)];
                 SwapStepLocals memory stepLocals;
                 stepLocals.isLastStep = (j == 0);
                 stepLocals.isFirstStep = (uint256(j) == path.steps.length - 1);
