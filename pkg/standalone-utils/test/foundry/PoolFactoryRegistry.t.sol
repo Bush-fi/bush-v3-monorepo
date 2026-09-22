@@ -637,7 +637,11 @@ contract PoolFactoryRegistryTest is BaseVaultTest {
         vm.startPrank(admin);
         registry.registerPoolFactory(SECOND_NAME, secondFactory, STABLE, HookMode.SPECIFIC, anyHook);
         assertTrue(registry.isActivePoolFactory(secondFactory), "Factory not active");
-        uint32 registeredAt = uint32(block.timestamp);
+        // Use `vm.getBlockTimestamp()`, not `block.timestamp`: under via-ir, solc can treat plain `block.timestamp`
+        // reads as reorderable/interchangeable across this function (real chains can't change it mid-transaction),
+        // so a read taken here could get resolved to the value after the `skip` below. The cheatcode call can't be
+        // reordered by the optimizer, so it reliably captures the pre-skip time.
+        uint32 registeredAt = uint32(vm.getBlockTimestamp());
 
         skip(1 days);
         registry.deprecatePoolFactory(secondFactory);
@@ -654,7 +658,11 @@ contract PoolFactoryRegistryTest is BaseVaultTest {
         assertFalse(info.isActive, "Deprecated factory active");
         assertEq(info.hook, anyHook, "Hook lost on deprecation");
         assertEq(info.registeredAt, registeredAt, "registeredAt changed on deprecation");
-        assertEq(info.deprecatedAt, uint32(block.timestamp), "Wrong deprecatedAt");
+        // Use `vm.getBlockTimestamp()` rather than `block.timestamp`: with via-ir, solc treats the two reads of
+        // `block.timestamp` in this function as equivalent and caches the first (pre-warp) value, since on real
+        // chains it cannot change mid-transaction. `vm.getBlockTimestamp()` is an external call the optimizer can't
+        // fold away, so it reflects the `skip` above.
+        assertEq(info.deprecatedAt, uint32(vm.getBlockTimestamp()), "Wrong deprecatedAt");
         assertEq(registry.getPoolFactoryCount(), 1, "Deprecated factory removed from enumeration");
     }
 

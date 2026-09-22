@@ -21,6 +21,7 @@ contract PoolFactoryMock is IBasePoolFactory, SingletonAuthentication, FactoryWi
     // Avoid dependency on BasePoolFactory; copy storage here.
     mapping(address pool => bool isFromFactory) private _isPoolFromFactory;
     bool private _disabled;
+    uint256 private _poolCount;
 
     constructor(
         IVault vault,
@@ -184,8 +185,8 @@ contract PoolFactoryMock is IBasePoolFactory, SingletonAuthentication, FactoryWi
         return _isPoolFromFactory[pool];
     }
 
-    function getPoolCount() external pure returns (uint256) {
-        revert("Not implemented");
+    function getPoolCount() external view returns (uint256) {
+        return _poolCount;
     }
 
     function getPools() external pure returns (address[] memory) {
@@ -226,6 +227,7 @@ contract PoolFactoryMock is IBasePoolFactory, SingletonAuthentication, FactoryWi
         _ensureEnabled();
 
         _isPoolFromFactory[pool] = true;
+        _poolCount++;
 
         emit PoolCreated(pool);
     }

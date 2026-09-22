@@ -30,8 +30,8 @@ contract ExitFeeHookExampleWeightedPoolTest is WeightedPoolContractsDeployer, Ex
 
     string constant POOL_VERSION = "Pool v1";
 
-    // The minimum swap fee for a Weighted Pool is 0.001%.
-    uint256 internal constant MIN_WEIGHTED_SWAP_FEE = 0.001e16;
+    // The minimum swap fee for a Weighted Pool is 0.05%.
+    uint256 internal constant MIN_WEIGHTED_SWAP_FEE = 0.05e16;
 
     uint256[] internal weights;
 
