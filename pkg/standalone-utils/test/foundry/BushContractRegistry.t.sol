@@ -40,94 +40,91 @@ contract BushContractRegistryTest is BaseVaultTest {
 
     function testRegisterWithoutPermission() public {
         vm.expectRevert(IAuthentication.SenderNotAllowed.selector);
-        registry.registerBushContract(ContractType.POOL_FACTORY, DEFAULT_NAME, ANY_ADDRESS);
+        registry.registerBushContract(ContractType.HOOK, DEFAULT_NAME, ANY_ADDRESS);
     }
 
     function testRegisterWithBadAddress() public {
         vm.prank(admin);
 
         vm.expectRevert(IBushContractRegistry.ZeroContractAddress.selector);
-        registry.registerBushContract(ContractType.POOL_FACTORY, DEFAULT_NAME, ZERO_ADDRESS);
+        registry.registerBushContract(ContractType.HOOK, DEFAULT_NAME, ZERO_ADDRESS);
     }
 
     function testRegisterWithBadName() public {
         vm.prank(admin);
 
         vm.expectRevert(IBushContractRegistry.InvalidContractName.selector);
-        registry.registerBushContract(ContractType.POOL_FACTORY, "", ANY_ADDRESS);
+        registry.registerBushContract(ContractType.HOOK, "", ANY_ADDRESS);
     }
 
     function testDuplicateRegistrationName() public {
         vm.startPrank(admin);
-        registry.registerBushContract(ContractType.POOL_FACTORY, DEFAULT_NAME, ANY_ADDRESS);
+        registry.registerBushContract(ContractType.HOOK, DEFAULT_NAME, ANY_ADDRESS);
 
         // Try to register the same address under a different name (must use aliases for this).
         vm.expectRevert(
             abi.encodeWithSelector(
                 IBushContractRegistry.ContractAddressAlreadyRegistered.selector,
-                ContractType.POOL_FACTORY,
+                ContractType.HOOK,
                 ANY_ADDRESS
             )
         );
-        registry.registerBushContract(ContractType.POOL_FACTORY, "Different Name", ANY_ADDRESS);
+        registry.registerBushContract(ContractType.HOOK, "Different Name", ANY_ADDRESS);
         vm.stopPrank();
     }
 
     function testDuplicateRegistrationAddress() public {
         vm.startPrank(admin);
-        registry.registerBushContract(ContractType.POOL_FACTORY, DEFAULT_NAME, ANY_ADDRESS);
+        registry.registerBushContract(ContractType.HOOK, DEFAULT_NAME, ANY_ADDRESS);
 
         vm.expectRevert(
             abi.encodeWithSelector(
                 IBushContractRegistry.ContractNameAlreadyRegistered.selector,
-                ContractType.POOL_FACTORY,
+                ContractType.HOOK,
                 DEFAULT_NAME
             )
         );
-        registry.registerBushContract(ContractType.POOL_FACTORY, DEFAULT_NAME, SECOND_ADDRESS);
+        registry.registerBushContract(ContractType.HOOK, DEFAULT_NAME, SECOND_ADDRESS);
         vm.stopPrank();
     }
 
     function testRegistrationUsingAliasName() public {
         vm.startPrank(admin);
-        registry.registerBushContract(ContractType.POOL_FACTORY, DEFAULT_NAME, ANY_ADDRESS);
+        registry.registerBushContract(ContractType.HOOK, DEFAULT_NAME, ANY_ADDRESS);
         registry.addOrUpdateBushContractAlias(DEFAULT_ALIAS, ANY_ADDRESS);
 
         // Try to register a new address with a contract name that is already used as an alias.
         vm.expectRevert(
             abi.encodeWithSelector(IBushContractRegistry.ContractNameInUseAsAlias.selector, DEFAULT_ALIAS, ANY_ADDRESS)
         );
-        registry.registerBushContract(ContractType.POOL_FACTORY, DEFAULT_ALIAS, SECOND_ADDRESS);
+        registry.registerBushContract(ContractType.HOOK, DEFAULT_ALIAS, SECOND_ADDRESS);
         vm.stopPrank();
     }
 
     function testValidRegistration() public {
         vm.prank(admin);
-        registry.registerBushContract(ContractType.POOL_FACTORY, DEFAULT_NAME, ANY_ADDRESS);
+        registry.registerBushContract(ContractType.HOOK, DEFAULT_NAME, ANY_ADDRESS);
 
         // Should return the registered contract as active.
-        assertTrue(registry.isActiveBushContract(ContractType.POOL_FACTORY, ANY_ADDRESS), "ANY_ADDRESS is not active");
+        assertTrue(registry.isActiveBushContract(ContractType.HOOK, ANY_ADDRESS), "ANY_ADDRESS is not active");
         // Zero address should not be active.
-        assertFalse(registry.isActiveBushContract(ContractType.POOL_FACTORY, ZERO_ADDRESS), "ZERO_ADDRESS is active");
+        assertFalse(registry.isActiveBushContract(ContractType.HOOK, ZERO_ADDRESS), "ZERO_ADDRESS is active");
         // Random address should not be active.
-        assertFalse(
-            registry.isActiveBushContract(ContractType.POOL_FACTORY, SECOND_ADDRESS),
-            "SECOND_ADDRESS is active"
-        );
+        assertFalse(registry.isActiveBushContract(ContractType.HOOK, SECOND_ADDRESS), "SECOND_ADDRESS is active");
         // Only active with the correct type.
         assertFalse(registry.isActiveBushContract(ContractType.ROUTER, ANY_ADDRESS), "Address is active as a Router");
     }
 
     function testContractGetters() public {
         vm.prank(admin);
-        registry.registerBushContract(ContractType.POOL_FACTORY, DEFAULT_NAME, ANY_ADDRESS);
+        registry.registerBushContract(ContractType.HOOK, DEFAULT_NAME, ANY_ADDRESS);
 
-        (address contractAddress, bool active) = registry.getBushContract(ContractType.POOL_FACTORY, DEFAULT_NAME);
+        (address contractAddress, bool active) = registry.getBushContract(ContractType.HOOK, DEFAULT_NAME);
         assertEq(contractAddress, ANY_ADDRESS, "Wrong contract address");
         assertTrue(active, "Contract not active");
 
         IBushContractRegistry.ContractInfo memory info = registry.getBushContractInfo(ANY_ADDRESS);
-        assertEq(uint8(info.contractType), uint8(ContractType.POOL_FACTORY), "Wrong contract type");
+        assertEq(uint8(info.contractType), uint8(ContractType.HOOK), "Wrong contract type");
         assertTrue(info.isRegistered, "Contract not registered");
         assertTrue(info.isActive, "Contract not active");
 
@@ -163,7 +160,7 @@ contract BushContractRegistryTest is BaseVaultTest {
     function testWrongTypeGetter() public {
         vm.startPrank(admin);
         // Register a contract and add an alias.
-        registry.registerBushContract(ContractType.POOL_FACTORY, DEFAULT_NAME, ANY_ADDRESS);
+        registry.registerBushContract(ContractType.HOOK, DEFAULT_NAME, ANY_ADDRESS);
         registry.addOrUpdateBushContractAlias(DEFAULT_ALIAS, ANY_ADDRESS);
 
         // Getting a valid entry with the wrong type should return 0.
@@ -190,10 +187,10 @@ contract BushContractRegistryTest is BaseVaultTest {
 
     function testValidRegistrationEmitsEvent() public {
         vm.expectEmit();
-        emit IBushContractRegistry.BushContractRegistered(ContractType.POOL_FACTORY, DEFAULT_NAME, ANY_ADDRESS);
+        emit IBushContractRegistry.BushContractRegistered(ContractType.HOOK, DEFAULT_NAME, ANY_ADDRESS);
 
         vm.prank(admin);
-        registry.registerBushContract(ContractType.POOL_FACTORY, DEFAULT_NAME, ANY_ADDRESS);
+        registry.registerBushContract(ContractType.HOOK, DEFAULT_NAME, ANY_ADDRESS);
     }
 
     function testIsTrustedRouter() public {
@@ -262,7 +259,7 @@ contract BushContractRegistryTest is BaseVaultTest {
 
     function testDoubleDeprecation() public {
         vm.startPrank(admin);
-        registry.registerBushContract(ContractType.POOL_FACTORY, DEFAULT_NAME, ANY_ADDRESS);
+        registry.registerBushContract(ContractType.HOOK, DEFAULT_NAME, ANY_ADDRESS);
 
         registry.deprecateBushContract(ANY_ADDRESS);
 
@@ -274,23 +271,23 @@ contract BushContractRegistryTest is BaseVaultTest {
 
     function testValidDeprecation() public {
         vm.startPrank(admin);
-        registry.registerBushContract(ContractType.POOL_FACTORY, DEFAULT_NAME, ANY_ADDRESS);
+        registry.registerBushContract(ContractType.HOOK, DEFAULT_NAME, ANY_ADDRESS);
 
-        (address contractAddress, bool active) = registry.getBushContract(ContractType.POOL_FACTORY, DEFAULT_NAME);
+        (address contractAddress, bool active) = registry.getBushContract(ContractType.HOOK, DEFAULT_NAME);
         assertEq(contractAddress, ANY_ADDRESS, "Wrong active contract address");
         assertTrue(active, "Contract is not active");
 
         registry.deprecateBushContract(ANY_ADDRESS);
         vm.stopPrank();
 
-        (contractAddress, active) = registry.getBushContract(ContractType.POOL_FACTORY, DEFAULT_NAME);
+        (contractAddress, active) = registry.getBushContract(ContractType.HOOK, DEFAULT_NAME);
         assertEq(contractAddress, ANY_ADDRESS, "Wrong deprecated contract address");
         assertFalse(active, "Deprecated contract is active");
     }
 
     function testDeprecationEmitsEvent() public {
         vm.startPrank(admin);
-        registry.registerBushContract(ContractType.POOL_FACTORY, DEFAULT_NAME, ANY_ADDRESS);
+        registry.registerBushContract(ContractType.HOOK, DEFAULT_NAME, ANY_ADDRESS);
 
         vm.expectEmit();
         emit IBushContractRegistry.BushContractDeprecated(ANY_ADDRESS);
@@ -301,14 +298,14 @@ contract BushContractRegistryTest is BaseVaultTest {
 
     function testDeprecationWithAliases() public {
         vm.startPrank(admin);
-        registry.registerBushContract(ContractType.POOL_FACTORY, DEFAULT_NAME, ANY_ADDRESS);
+        registry.registerBushContract(ContractType.HOOK, DEFAULT_NAME, ANY_ADDRESS);
         registry.addOrUpdateBushContractAlias(DEFAULT_ALIAS, ANY_ADDRESS);
 
-        (address contractAddress, bool active) = registry.getBushContract(ContractType.POOL_FACTORY, DEFAULT_NAME);
+        (address contractAddress, bool active) = registry.getBushContract(ContractType.HOOK, DEFAULT_NAME);
         assertEq(contractAddress, ANY_ADDRESS, "Wrong default address");
         assertTrue(active, "Default contract is not active");
 
-        (contractAddress, active) = registry.getBushContract(ContractType.POOL_FACTORY, DEFAULT_ALIAS);
+        (contractAddress, active) = registry.getBushContract(ContractType.HOOK, DEFAULT_ALIAS);
         assertEq(contractAddress, ANY_ADDRESS, "Wrong WeightedPool address");
         assertTrue(active, "Canonical contract is not active");
 
@@ -316,11 +313,11 @@ contract BushContractRegistryTest is BaseVaultTest {
         vm.stopPrank();
 
         // Deprecate the address, and all aliases show as inactive.
-        (contractAddress, active) = registry.getBushContract(ContractType.POOL_FACTORY, DEFAULT_NAME);
+        (contractAddress, active) = registry.getBushContract(ContractType.HOOK, DEFAULT_NAME);
         assertEq(contractAddress, ANY_ADDRESS, "Wrong deprecated default address");
         assertFalse(active, "Deprecated default contract is active");
 
-        (contractAddress, active) = registry.getBushContract(ContractType.POOL_FACTORY, DEFAULT_ALIAS);
+        (contractAddress, active) = registry.getBushContract(ContractType.HOOK, DEFAULT_ALIAS);
         assertEq(contractAddress, ANY_ADDRESS, "Wrong deprecated WeightedPool address");
         assertFalse(active, "Deprecated canonical contract is active");
     }
@@ -347,12 +344,12 @@ contract BushContractRegistryTest is BaseVaultTest {
 
     function testAliasNameCollision() public {
         vm.startPrank(admin);
-        registry.registerBushContract(ContractType.POOL_FACTORY, DEFAULT_NAME, ANY_ADDRESS);
+        registry.registerBushContract(ContractType.HOOK, DEFAULT_NAME, ANY_ADDRESS);
 
         vm.expectRevert(
             abi.encodeWithSelector(
                 IBushContractRegistry.ContractAliasInUseAsName.selector,
-                ContractType.POOL_FACTORY,
+                ContractType.HOOK,
                 DEFAULT_NAME
             )
         );
@@ -362,22 +359,22 @@ contract BushContractRegistryTest is BaseVaultTest {
 
     function testValidAlias() public {
         vm.startPrank(admin);
-        registry.registerBushContract(ContractType.POOL_FACTORY, DEFAULT_NAME, ANY_ADDRESS);
+        registry.registerBushContract(ContractType.HOOK, DEFAULT_NAME, ANY_ADDRESS);
         registry.addOrUpdateBushContractAlias(DEFAULT_ALIAS, ANY_ADDRESS);
         vm.stopPrank();
 
-        (address contractAddress, bool active) = registry.getBushContract(ContractType.POOL_FACTORY, DEFAULT_NAME);
+        (address contractAddress, bool active) = registry.getBushContract(ContractType.HOOK, DEFAULT_NAME);
         assertEq(contractAddress, ANY_ADDRESS, "Wrong default address");
         assertTrue(active, "Default contract is not active");
 
-        (contractAddress, active) = registry.getBushContract(ContractType.POOL_FACTORY, DEFAULT_ALIAS);
+        (contractAddress, active) = registry.getBushContract(ContractType.HOOK, DEFAULT_ALIAS);
         assertEq(contractAddress, ANY_ADDRESS, "Wrong alias address");
         assertTrue(active, "Alias is not active");
     }
 
     function testAddingAliasEmitsEvent() public {
         vm.startPrank(admin);
-        registry.registerBushContract(ContractType.POOL_FACTORY, DEFAULT_NAME, ANY_ADDRESS);
+        registry.registerBushContract(ContractType.HOOK, DEFAULT_NAME, ANY_ADDRESS);
 
         vm.expectEmit();
         emit IBushContractRegistry.ContractAliasUpdated(DEFAULT_ALIAS, ANY_ADDRESS);
@@ -388,12 +385,12 @@ contract BushContractRegistryTest is BaseVaultTest {
 
     function testUpdatingAlias() public {
         vm.startPrank(admin);
-        registry.registerBushContract(ContractType.POOL_FACTORY, "v3-pool-weighted", ANY_ADDRESS);
-        registry.registerBushContract(ContractType.POOL_FACTORY, "v3-pool-weighted-v2", SECOND_ADDRESS);
+        registry.registerBushContract(ContractType.HOOK, "v3-pool-weighted", ANY_ADDRESS);
+        registry.registerBushContract(ContractType.HOOK, "v3-pool-weighted-v2", SECOND_ADDRESS);
         registry.addOrUpdateBushContractAlias(DEFAULT_ALIAS, ANY_ADDRESS);
 
         // The alias points to v1.
-        (address contractAddress, bool active) = registry.getBushContract(ContractType.POOL_FACTORY, DEFAULT_ALIAS);
+        (address contractAddress, bool active) = registry.getBushContract(ContractType.HOOK, DEFAULT_ALIAS);
         assertEq(contractAddress, ANY_ADDRESS, "Wrong alias address");
         assertTrue(active, "Alias is not active");
 
@@ -401,16 +398,16 @@ contract BushContractRegistryTest is BaseVaultTest {
         registry.addOrUpdateBushContractAlias(DEFAULT_ALIAS, SECOND_ADDRESS);
         vm.stopPrank();
 
-        (contractAddress, active) = registry.getBushContract(ContractType.POOL_FACTORY, DEFAULT_ALIAS);
+        (contractAddress, active) = registry.getBushContract(ContractType.HOOK, DEFAULT_ALIAS);
         assertEq(contractAddress, SECOND_ADDRESS, "Wrong alias address");
         assertTrue(active, "Alias is not active");
 
         // Can also still get by version.
-        (contractAddress, active) = registry.getBushContract(ContractType.POOL_FACTORY, "v3-pool-weighted");
+        (contractAddress, active) = registry.getBushContract(ContractType.HOOK, "v3-pool-weighted");
         assertEq(contractAddress, ANY_ADDRESS, "Wrong alias address");
         assertTrue(active, "Alias is not active");
 
-        (contractAddress, active) = registry.getBushContract(ContractType.POOL_FACTORY, "v3-pool-weighted-v2");
+        (contractAddress, active) = registry.getBushContract(ContractType.HOOK, "v3-pool-weighted-v2");
         assertEq(contractAddress, SECOND_ADDRESS, "Wrong alias address");
         assertTrue(active, "Alias is not active");
     }

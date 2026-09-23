@@ -6,9 +6,10 @@ import "forge-std/Test.sol";
 
 import { IAuthentication } from "@bush.fi/v3-interfaces/contracts/solidity-utils/helpers/IAuthentication.sol";
 import {
-    IPoolFactoryRegistry,
+    IBushContractRegistry,
+    ContractType,
     HookMode
-} from "@bush.fi/v3-interfaces/contracts/standalone-utils/IPoolFactoryRegistry.sol";
+} from "@bush.fi/v3-interfaces/contracts/standalone-utils/IBushContractRegistry.sol";
 import { IPoolVersion } from "@bush.fi/v3-interfaces/contracts/solidity-utils/helpers/IPoolVersion.sol";
 import { IVersion } from "@bush.fi/v3-interfaces/contracts/solidity-utils/helpers/IVersion.sol";
 import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
@@ -16,9 +17,9 @@ import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 import { PoolFactoryMock } from "@bush.fi/v3-vault/contracts/test/PoolFactoryMock.sol";
 import { BaseVaultTest } from "@bush.fi/v3-vault/test/foundry/utils/BaseVaultTest.sol";
 
-import { PoolFactoryRegistry } from "../../contracts/PoolFactoryRegistry.sol";
+import { BushContractRegistry } from "../../contracts/BushContractRegistry.sol";
 
-contract PoolFactoryRegistryTest is BaseVaultTest {
+contract BushContractRegistryPoolFactoryTest is BaseVaultTest {
     // Addresses with no code, for negative tests.
     address private constant EOA = 0x388C818CA8B9251b393131C08a736A67ccB19297;
     address private constant EOA_HOOK = 0x2222222222222222222222222222222222222222;
@@ -35,7 +36,7 @@ contract PoolFactoryRegistryTest is BaseVaultTest {
     string private constant POOL_VERSION =
         '{"name":"WeightedPool","version":1,"deployment":"20241205-v3-weighted-pool"}';
 
-    PoolFactoryRegistry private registry;
+    BushContractRegistry private registry;
 
     // Real factory mocks (so that registration validation and pool lookups work).
     address private anyFactory;
@@ -47,7 +48,7 @@ contract PoolFactoryRegistryTest is BaseVaultTest {
     function setUp() public override {
         BaseVaultTest.setUp();
 
-        registry = new PoolFactoryRegistry(vault);
+        registry = new BushContractRegistry(vault);
 
         // `poolFactory` (and `pool`) come from BaseVaultTest.
         anyFactory = poolFactory;
@@ -56,9 +57,11 @@ contract PoolFactoryRegistryTest is BaseVaultTest {
         anyHook = poolHooksContract;
 
         // Grant permissions.
-        authorizer.grantRole(registry.getActionId(PoolFactoryRegistry.registerPoolFactory.selector), admin);
-        authorizer.grantRole(registry.getActionId(PoolFactoryRegistry.deregisterPoolFactory.selector), admin);
-        authorizer.grantRole(registry.getActionId(PoolFactoryRegistry.deprecatePoolFactory.selector), admin);
+        authorizer.grantRole(registry.getActionId(BushContractRegistry.registerPoolFactory.selector), admin);
+        authorizer.grantRole(registry.getActionId(BushContractRegistry.deregisterBushContract.selector), admin);
+        authorizer.grantRole(registry.getActionId(BushContractRegistry.deprecateBushContract.selector), admin);
+        authorizer.grantRole(registry.getActionId(BushContractRegistry.registerBushContract.selector), admin);
+        authorizer.grantRole(registry.getActionId(BushContractRegistry.addOrUpdateBushContractAlias.selector), admin);
     }
 
     function testGetVault() public view {
@@ -76,25 +79,25 @@ contract PoolFactoryRegistryTest is BaseVaultTest {
 
     function testRegisterWithBadAddress() public {
         vm.prank(admin);
-        vm.expectRevert(IPoolFactoryRegistry.ZeroFactoryAddress.selector);
+        vm.expectRevert(IBushContractRegistry.ZeroContractAddress.selector);
         registry.registerPoolFactory(DEFAULT_NAME, ZERO_ADDRESS, WEIGHTED, HookMode.OPTIONAL, ZERO_ADDRESS);
     }
 
     function testRegisterWithBadName() public {
         vm.prank(admin);
-        vm.expectRevert(IPoolFactoryRegistry.InvalidFactoryName.selector);
+        vm.expectRevert(IBushContractRegistry.InvalidContractName.selector);
         registry.registerPoolFactory("", anyFactory, WEIGHTED, HookMode.OPTIONAL, ZERO_ADDRESS);
     }
 
     function testRegisterWithBadPoolType() public {
         vm.prank(admin);
-        vm.expectRevert(IPoolFactoryRegistry.InvalidPoolType.selector);
+        vm.expectRevert(IBushContractRegistry.InvalidPoolType.selector);
         registry.registerPoolFactory(DEFAULT_NAME, anyFactory, "", HookMode.OPTIONAL, ZERO_ADDRESS);
     }
 
     function testRegisterNonContractFactory() public {
         vm.prank(admin);
-        vm.expectRevert(abi.encodeWithSelector(IPoolFactoryRegistry.FactoryNotAContract.selector, EOA));
+        vm.expectRevert(abi.encodeWithSelector(IBushContractRegistry.FactoryNotAContract.selector, EOA));
         registry.registerPoolFactory(DEFAULT_NAME, EOA, WEIGHTED, HookMode.OPTIONAL, ZERO_ADDRESS);
     }
 
@@ -104,7 +107,7 @@ contract PoolFactoryRegistryTest is BaseVaultTest {
 
         vm.prank(admin);
         vm.expectRevert(
-            abi.encodeWithSelector(IPoolFactoryRegistry.FactoryVaultMismatch.selector, wrongVaultFactory, otherVault)
+            abi.encodeWithSelector(IBushContractRegistry.FactoryVaultMismatch.selector, wrongVaultFactory, otherVault)
         );
         registry.registerPoolFactory(DEFAULT_NAME, wrongVaultFactory, WEIGHTED, HookMode.OPTIONAL, ZERO_ADDRESS);
     }
@@ -115,7 +118,7 @@ contract PoolFactoryRegistryTest is BaseVaultTest {
 
         vm.prank(admin);
         vm.expectRevert(
-            abi.encodeWithSelector(IPoolFactoryRegistry.FactoryVaultMismatch.selector, notAFactory, ZERO_ADDRESS)
+            abi.encodeWithSelector(IBushContractRegistry.FactoryVaultMismatch.selector, notAFactory, ZERO_ADDRESS)
         );
         registry.registerPoolFactory(DEFAULT_NAME, notAFactory, WEIGHTED, HookMode.OPTIONAL, ZERO_ADDRESS);
     }
@@ -135,20 +138,20 @@ contract PoolFactoryRegistryTest is BaseVaultTest {
 
     function testRegisterSpecificHookWithZeroHook() public {
         vm.prank(admin);
-        vm.expectRevert(IPoolFactoryRegistry.ZeroHookAddress.selector);
+        vm.expectRevert(IBushContractRegistry.ZeroHookAddress.selector);
         registry.registerPoolFactory(DEFAULT_NAME, anyFactory, STABLE, HookMode.SPECIFIC, ZERO_ADDRESS);
     }
 
     function testRegisterSpecificHookWithNonContractHook() public {
         vm.prank(admin);
-        vm.expectRevert(abi.encodeWithSelector(IPoolFactoryRegistry.HookNotAContract.selector, EOA_HOOK));
+        vm.expectRevert(abi.encodeWithSelector(IBushContractRegistry.HookNotAContract.selector, EOA_HOOK));
         registry.registerPoolFactory(DEFAULT_NAME, anyFactory, STABLE, HookMode.SPECIFIC, EOA_HOOK);
     }
 
     function testRegisterNoHookWithHookAddress() public {
         vm.prank(admin);
         vm.expectRevert(
-            abi.encodeWithSelector(IPoolFactoryRegistry.UnexpectedHookAddress.selector, HookMode.NONE, anyHook)
+            abi.encodeWithSelector(IBushContractRegistry.UnexpectedHookAddress.selector, HookMode.NONE, anyHook)
         );
         registry.registerPoolFactory(DEFAULT_NAME, anyFactory, WEIGHTED, HookMode.NONE, anyHook);
     }
@@ -156,7 +159,7 @@ contract PoolFactoryRegistryTest is BaseVaultTest {
     function testRegisterOptionalHookWithHookAddress() public {
         vm.prank(admin);
         vm.expectRevert(
-            abi.encodeWithSelector(IPoolFactoryRegistry.UnexpectedHookAddress.selector, HookMode.OPTIONAL, anyHook)
+            abi.encodeWithSelector(IBushContractRegistry.UnexpectedHookAddress.selector, HookMode.OPTIONAL, anyHook)
         );
         registry.registerPoolFactory(DEFAULT_NAME, anyFactory, WEIGHTED, HookMode.OPTIONAL, anyHook);
     }
@@ -168,9 +171,9 @@ contract PoolFactoryRegistryTest is BaseVaultTest {
         // Try to register the same address under a different name.
         vm.expectRevert(
             abi.encodeWithSelector(
-                IPoolFactoryRegistry.FactoryAddressAlreadyRegistered.selector,
-                anyFactory,
-                DEFAULT_NAME
+                IBushContractRegistry.ContractAddressAlreadyRegistered.selector,
+                ContractType.POOL_FACTORY,
+                anyFactory
             )
         );
         registry.registerPoolFactory(SECOND_NAME, anyFactory, STABLE, HookMode.NONE, ZERO_ADDRESS);
@@ -183,7 +186,11 @@ contract PoolFactoryRegistryTest is BaseVaultTest {
 
         // Try to register a different address under the same name.
         vm.expectRevert(
-            abi.encodeWithSelector(IPoolFactoryRegistry.FactoryNameAlreadyRegistered.selector, DEFAULT_NAME, anyFactory)
+            abi.encodeWithSelector(
+                IBushContractRegistry.ContractNameAlreadyRegistered.selector,
+                ContractType.POOL_FACTORY,
+                DEFAULT_NAME
+            )
         );
         registry.registerPoolFactory(DEFAULT_NAME, secondFactory, STABLE, HookMode.NONE, ZERO_ADDRESS);
         vm.stopPrank();
@@ -201,15 +208,13 @@ contract PoolFactoryRegistryTest is BaseVaultTest {
         assertFalse(registry.isRegisteredPoolFactory(secondFactory), "Unregistered factory is registered");
         assertFalse(registry.isActivePoolFactory(ZERO_ADDRESS), "Zero address is active");
 
-        IPoolFactoryRegistry.FactoryInfo memory info = registry.getPoolFactoryInfo(anyFactory);
+        IBushContractRegistry.FactoryInfo memory info = registry.getPoolFactoryInfo(anyFactory);
         assertEq(info.name, DEFAULT_NAME, "Wrong name");
         assertEq(info.poolType, WEIGHTED, "Wrong pool type");
         assertEq(uint8(info.hookMode), uint8(HookMode.OPTIONAL), "Wrong hook mode");
         assertEq(info.hook, ZERO_ADDRESS, "Wrong hook");
         assertTrue(info.isRegistered, "Not registered");
         assertTrue(info.isActive, "Not active");
-        assertEq(info.registeredAt, uint32(block.timestamp), "Wrong registeredAt");
-        assertEq(info.deprecatedAt, 0, "Unexpected deprecatedAt");
 
         assertEq(registry.getPoolFactoryHook(anyFactory), ZERO_ADDRESS, "Optional hook should be zero");
         assertEq(registry.getPoolFactoryCount(), 1, "Wrong count");
@@ -220,7 +225,7 @@ contract PoolFactoryRegistryTest is BaseVaultTest {
         vm.prank(admin);
         registry.registerPoolFactory(SECOND_NAME, secondFactory, STABLE, HookMode.SPECIFIC, anyHook);
 
-        IPoolFactoryRegistry.FactoryInfo memory info = registry.getPoolFactoryInfo(secondFactory);
+        IBushContractRegistry.FactoryInfo memory info = registry.getPoolFactoryInfo(secondFactory);
         assertEq(info.name, SECOND_NAME, "Wrong name");
         assertEq(info.poolType, STABLE, "Wrong pool type");
         assertEq(uint8(info.hookMode), uint8(HookMode.SPECIFIC), "Wrong hook mode");
@@ -235,14 +240,22 @@ contract PoolFactoryRegistryTest is BaseVaultTest {
         vm.prank(admin);
         registry.registerPoolFactory(DEFAULT_NAME, anyFactory, WEIGHTED, HookMode.NONE, ZERO_ADDRESS);
 
-        IPoolFactoryRegistry.FactoryInfo memory info = registry.getPoolFactoryInfo(anyFactory);
+        IBushContractRegistry.FactoryInfo memory info = registry.getPoolFactoryInfo(anyFactory);
         assertEq(uint8(info.hookMode), uint8(HookMode.NONE), "Wrong hook mode");
         assertEq(info.hook, ZERO_ADDRESS, "Wrong hook");
     }
 
     function testValidRegistrationEmitsEvent() public {
         vm.expectEmit();
-        emit IPoolFactoryRegistry.PoolFactoryRegistered(secondFactory, SECOND_NAME, STABLE, HookMode.SPECIFIC, anyHook);
+        emit IBushContractRegistry.BushContractRegistered(ContractType.POOL_FACTORY, SECOND_NAME, secondFactory);
+        vm.expectEmit();
+        emit IBushContractRegistry.PoolFactoryRegistered(
+            secondFactory,
+            SECOND_NAME,
+            STABLE,
+            HookMode.SPECIFIC,
+            anyHook
+        );
 
         vm.prank(admin);
         registry.registerPoolFactory(SECOND_NAME, secondFactory, STABLE, HookMode.SPECIFIC, anyHook);
@@ -256,7 +269,7 @@ contract PoolFactoryRegistryTest is BaseVaultTest {
         vm.prank(admin);
         registry.registerPoolFactory(SECOND_NAME, secondFactory, STABLE, HookMode.SPECIFIC, anyHook);
 
-        (address factory, IPoolFactoryRegistry.FactoryInfo memory info) = registry.getPoolFactory(SECOND_NAME);
+        (address factory, IBushContractRegistry.FactoryInfo memory info) = registry.getPoolFactory(SECOND_NAME);
         assertEq(factory, secondFactory, "Wrong factory address");
         assertEq(info.name, SECOND_NAME, "Wrong name");
         assertEq(info.poolType, STABLE, "Wrong pool type");
@@ -266,17 +279,16 @@ contract PoolFactoryRegistryTest is BaseVaultTest {
     }
 
     function testGetByUnknownName() public view {
-        (address factory, IPoolFactoryRegistry.FactoryInfo memory info) = registry.getPoolFactory("unknown");
+        (address factory, IBushContractRegistry.FactoryInfo memory info) = registry.getPoolFactory("unknown");
         assertEq(factory, ZERO_ADDRESS, "Unknown name resolved");
         assertFalse(info.isRegistered, "Unknown name is registered");
         assertFalse(info.isActive, "Unknown name is active");
         assertEq(bytes(info.poolType).length, 0, "Unknown name has type");
         assertEq(uint8(info.hookMode), uint8(HookMode.NONE), "Unknown name has hook mode");
-        assertEq(info.registeredAt, 0, "Unknown name has registeredAt");
     }
 
     function testGetUnknownInfo() public view {
-        IPoolFactoryRegistry.FactoryInfo memory info = registry.getPoolFactoryInfo(anyFactory);
+        IBushContractRegistry.FactoryInfo memory info = registry.getPoolFactoryInfo(anyFactory);
         assertFalse(info.isRegistered, "Unknown factory is registered");
         assertEq(bytes(info.name).length, 0, "Unknown factory has name");
         assertEq(registry.getPoolFactoryHook(anyFactory), ZERO_ADDRESS, "Unknown factory has hook");
@@ -298,9 +310,9 @@ contract PoolFactoryRegistryTest is BaseVaultTest {
         _registerThree();
 
         vm.prank(admin);
-        registry.deprecatePoolFactory(secondFactory);
+        registry.deprecateBushContract(secondFactory);
 
-        (address[] memory factories, IPoolFactoryRegistry.FactoryInfo[] memory infos) = registry.getAllPoolFactories();
+        (address[] memory factories, IBushContractRegistry.FactoryInfo[] memory infos) = registry.getAllPoolFactories();
 
         assertEq(factories.length, 3, "Wrong number of factories");
         assertEq(infos.length, 3, "Wrong number of infos");
@@ -323,7 +335,7 @@ contract PoolFactoryRegistryTest is BaseVaultTest {
     }
 
     function testGetAllPoolFactoriesEmpty() public view {
-        (address[] memory factories, IPoolFactoryRegistry.FactoryInfo[] memory infos) = registry.getAllPoolFactories();
+        (address[] memory factories, IBushContractRegistry.FactoryInfo[] memory infos) = registry.getAllPoolFactories();
 
         assertEq(factories.length, 0, "Unexpected factories");
         assertEq(infos.length, 0, "Unexpected infos");
@@ -334,7 +346,7 @@ contract PoolFactoryRegistryTest is BaseVaultTest {
 
         // Deprecate one of the weighted factories.
         vm.prank(admin);
-        registry.deprecatePoolFactory(anyFactory);
+        registry.deprecateBushContract(anyFactory);
 
         address[] memory weighted = registry.getPoolFactoriesByType(WEIGHTED, false);
         assertEq(weighted.length, 2, "Wrong number of weighted factories");
@@ -361,7 +373,7 @@ contract PoolFactoryRegistryTest is BaseVaultTest {
         _registerThree();
 
         // `pool` was created by `anyFactory` (the BaseVaultTest factory).
-        (address factory, IPoolFactoryRegistry.FactoryInfo memory info) = registry.getFactoryForPool(pool);
+        (address factory, IBushContractRegistry.FactoryInfo memory info) = registry.getFactoryForPool(pool);
         assertEq(factory, anyFactory, "Wrong factory for pool");
         assertEq(info.name, DEFAULT_NAME, "Wrong name for pool");
         assertEq(info.poolType, WEIGHTED, "Wrong type for pool");
@@ -389,7 +401,7 @@ contract PoolFactoryRegistryTest is BaseVaultTest {
         address rogueFactory = address(new PoolFactoryMock(IVault(address(vault)), PAUSE_WINDOW_DURATION));
         address roguePool = PoolFactoryMock(rogueFactory).createPool("Rogue", "RGE");
 
-        (address factory, IPoolFactoryRegistry.FactoryInfo memory info) = registry.getFactoryForPool(roguePool);
+        (address factory, IBushContractRegistry.FactoryInfo memory info) = registry.getFactoryForPool(roguePool);
         assertEq(factory, ZERO_ADDRESS, "Rogue pool resolved to a factory");
         assertFalse(info.isRegistered, "Rogue pool info is registered");
         assertEq(bytes(info.poolType).length, 0, "Rogue pool has type");
@@ -413,9 +425,9 @@ contract PoolFactoryRegistryTest is BaseVaultTest {
 
         // Deprecation does not affect the status of existing pools.
         vm.prank(admin);
-        registry.deprecatePoolFactory(anyFactory);
+        registry.deprecateBushContract(anyFactory);
 
-        (address factory, IPoolFactoryRegistry.FactoryInfo memory info) = registry.getFactoryForPool(pool);
+        (address factory, IBushContractRegistry.FactoryInfo memory info) = registry.getFactoryForPool(pool);
         assertEq(factory, anyFactory, "Pool from deprecated factory no longer resolves");
         assertFalse(info.isActive, "Deprecated factory active");
         assertTrue(registry.isPoolFromRegisteredFactory(pool), "Pool from deprecated factory not registered");
@@ -427,7 +439,7 @@ contract PoolFactoryRegistryTest is BaseVaultTest {
 
         // Deregistration revokes trust in the factory's pools.
         vm.prank(admin);
-        registry.deregisterPoolFactory(DEFAULT_NAME);
+        registry.deregisterBushContract(DEFAULT_NAME);
 
         (address factory, ) = registry.getFactoryForPool(pool);
         assertEq(factory, ZERO_ADDRESS, "Pool from deregistered factory still resolves");
@@ -449,6 +461,8 @@ contract PoolFactoryRegistryTest is BaseVaultTest {
         assertEq(factory, anyFactory, "Reverting factory broke the lookup");
     }
 
+
+
     /***************************************************************************
                                   Factory details
     ***************************************************************************/
@@ -457,7 +471,7 @@ contract PoolFactoryRegistryTest is BaseVaultTest {
         _registerThree();
         _mockVersions(anyFactory, FACTORY_VERSION, POOL_VERSION);
 
-        IPoolFactoryRegistry.FactoryDetails memory details = registry.getPoolFactoryDetails(anyFactory);
+        IBushContractRegistry.FactoryDetails memory details = registry.getPoolFactoryDetails(anyFactory);
         assertEq(details.factory, anyFactory, "Wrong factory");
         assertEq(details.info.name, DEFAULT_NAME, "Wrong name");
         assertEq(details.info.poolType, WEIGHTED, "Wrong pool type");
@@ -472,7 +486,7 @@ contract PoolFactoryRegistryTest is BaseVaultTest {
         // `PoolFactoryMock` doesn't implement `IVersion` / `IPoolVersion`; the details should still resolve.
         _registerThree();
 
-        IPoolFactoryRegistry.FactoryDetails memory details = registry.getPoolFactoryDetails(secondFactory);
+        IBushContractRegistry.FactoryDetails memory details = registry.getPoolFactoryDetails(secondFactory);
         assertEq(details.factory, secondFactory, "Wrong factory");
         assertEq(details.info.name, SECOND_NAME, "Wrong name");
         assertEq(details.info.hook, anyHook, "Wrong hook");
@@ -489,7 +503,7 @@ contract PoolFactoryRegistryTest is BaseVaultTest {
         vm.prank(admin);
         PoolFactoryMock(thirdFactory).disable();
 
-        IPoolFactoryRegistry.FactoryDetails memory details = registry.getPoolFactoryDetails(thirdFactory);
+        IBushContractRegistry.FactoryDetails memory details = registry.getPoolFactoryDetails(thirdFactory);
         assertTrue(details.isDisabled, "Factory not disabled");
         assertTrue(details.info.isActive, "Registry status changed by on-chain disable");
     }
@@ -499,7 +513,7 @@ contract PoolFactoryRegistryTest is BaseVaultTest {
         _mockVersions(EOA, FACTORY_VERSION, POOL_VERSION);
 
         // Unregistered addresses return blank details, and are never called.
-        IPoolFactoryRegistry.FactoryDetails memory details = registry.getPoolFactoryDetails(EOA);
+        IBushContractRegistry.FactoryDetails memory details = registry.getPoolFactoryDetails(EOA);
         assertEq(details.factory, ZERO_ADDRESS, "Unregistered factory resolved");
         assertFalse(details.info.isRegistered, "Unregistered factory registered");
         assertEq(bytes(details.factoryVersion).length, 0, "Unregistered factory has version");
@@ -510,7 +524,7 @@ contract PoolFactoryRegistryTest is BaseVaultTest {
         _registerThree();
         _mockVersions(anyFactory, FACTORY_VERSION, POOL_VERSION);
 
-        IPoolFactoryRegistry.FactoryDetails memory details = registry.getFactoryDetailsForPool(pool);
+        IBushContractRegistry.FactoryDetails memory details = registry.getFactoryDetailsForPool(pool);
         assertEq(details.factory, anyFactory, "Wrong factory for pool");
         assertEq(details.info.poolType, WEIGHTED, "Wrong type for pool");
         assertEq(details.factoryVersion, FACTORY_VERSION, "Wrong factory version for pool");
@@ -525,9 +539,9 @@ contract PoolFactoryRegistryTest is BaseVaultTest {
         _mockVersions(secondFactory, FACTORY_VERSION, POOL_VERSION);
 
         vm.prank(admin);
-        registry.deprecatePoolFactory(anyFactory);
+        registry.deprecateBushContract(anyFactory);
 
-        IPoolFactoryRegistry.FactoryDetails[] memory details = registry.getAllPoolFactoryDetails();
+        IBushContractRegistry.FactoryDetails[] memory details = registry.getAllPoolFactoryDetails();
         assertEq(details.length, 3, "Wrong number of details");
 
         assertEq(details[0].factory, anyFactory, "Wrong factory 0");
@@ -549,19 +563,19 @@ contract PoolFactoryRegistryTest is BaseVaultTest {
 
     function testDeregisterWithoutPermission() public {
         vm.expectRevert(IAuthentication.SenderNotAllowed.selector);
-        registry.deregisterPoolFactory(DEFAULT_NAME);
+        registry.deregisterBushContract(DEFAULT_NAME);
     }
 
     function testDeregisterNonExistent() public {
         vm.prank(admin);
-        vm.expectRevert(abi.encodeWithSelector(IPoolFactoryRegistry.FactoryNameNotRegistered.selector, DEFAULT_NAME));
-        registry.deregisterPoolFactory(DEFAULT_NAME);
+        vm.expectRevert(abi.encodeWithSelector(IBushContractRegistry.ContractNameNotRegistered.selector, DEFAULT_NAME));
+        registry.deregisterBushContract(DEFAULT_NAME);
     }
 
     function testInvalidDeregisterName() public {
         vm.prank(admin);
-        vm.expectRevert(IPoolFactoryRegistry.InvalidFactoryName.selector);
-        registry.deregisterPoolFactory("");
+        vm.expectRevert(IBushContractRegistry.InvalidContractName.selector);
+        registry.deregisterBushContract("");
     }
 
     function testValidDeregistration() public {
@@ -569,18 +583,18 @@ contract PoolFactoryRegistryTest is BaseVaultTest {
         registry.registerPoolFactory(SECOND_NAME, secondFactory, STABLE, HookMode.SPECIFIC, anyHook);
         assertTrue(registry.isActivePoolFactory(secondFactory), "Factory not active");
 
-        registry.deregisterPoolFactory(SECOND_NAME);
+        registry.deregisterBushContract(SECOND_NAME);
         vm.stopPrank();
 
         assertFalse(registry.isActivePoolFactory(secondFactory), "Factory still active");
         assertFalse(registry.isRegisteredPoolFactory(secondFactory), "Factory still registered");
         assertEq(registry.getPoolFactoryCount(), 0, "Factory still enumerated");
 
-        IPoolFactoryRegistry.FactoryInfo memory info = registry.getPoolFactoryInfo(secondFactory);
+        IBushContractRegistry.FactoryInfo memory info = registry.getPoolFactoryInfo(secondFactory);
         assertFalse(info.isRegistered, "Factory still registered");
         assertEq(info.hook, ZERO_ADDRESS, "Hook not cleared");
         assertEq(bytes(info.name).length, 0, "Name not cleared");
-        assertEq(info.registeredAt, 0, "registeredAt not cleared");
+        assertEq(bytes(info.poolType).length, 0, "Pool type not cleared");
 
         (address factory, ) = registry.getPoolFactory(SECOND_NAME);
         assertEq(factory, ZERO_ADDRESS, "Name still resolves");
@@ -596,9 +610,9 @@ contract PoolFactoryRegistryTest is BaseVaultTest {
         registry.registerPoolFactory(DEFAULT_NAME, anyFactory, WEIGHTED, HookMode.OPTIONAL, ZERO_ADDRESS);
 
         vm.expectEmit();
-        emit IPoolFactoryRegistry.PoolFactoryDeregistered(anyFactory, DEFAULT_NAME);
+        emit IBushContractRegistry.BushContractDeregistered(ContractType.POOL_FACTORY, DEFAULT_NAME, anyFactory);
 
-        registry.deregisterPoolFactory(DEFAULT_NAME);
+        registry.deregisterBushContract(DEFAULT_NAME);
         vm.stopPrank();
     }
 
@@ -608,28 +622,30 @@ contract PoolFactoryRegistryTest is BaseVaultTest {
 
     function testDeprecateWithoutPermission() public {
         vm.expectRevert(IAuthentication.SenderNotAllowed.selector);
-        registry.deprecatePoolFactory(anyFactory);
+        registry.deprecateBushContract(anyFactory);
     }
 
     function testDeprecateZeroAddress() public {
         vm.prank(admin);
-        vm.expectRevert(IPoolFactoryRegistry.ZeroFactoryAddress.selector);
-        registry.deprecatePoolFactory(ZERO_ADDRESS);
+        vm.expectRevert(IBushContractRegistry.ZeroContractAddress.selector);
+        registry.deprecateBushContract(ZERO_ADDRESS);
     }
 
     function testDeprecateNonExistent() public {
         vm.prank(admin);
-        vm.expectRevert(abi.encodeWithSelector(IPoolFactoryRegistry.FactoryAddressNotRegistered.selector, anyFactory));
-        registry.deprecatePoolFactory(anyFactory);
+        vm.expectRevert(
+            abi.encodeWithSelector(IBushContractRegistry.ContractAddressNotRegistered.selector, anyFactory)
+        );
+        registry.deprecateBushContract(anyFactory);
     }
 
     function testDoubleDeprecation() public {
         vm.startPrank(admin);
         registry.registerPoolFactory(DEFAULT_NAME, anyFactory, WEIGHTED, HookMode.OPTIONAL, ZERO_ADDRESS);
-        registry.deprecatePoolFactory(anyFactory);
+        registry.deprecateBushContract(anyFactory);
 
-        vm.expectRevert(abi.encodeWithSelector(IPoolFactoryRegistry.FactoryAlreadyDeprecated.selector, anyFactory));
-        registry.deprecatePoolFactory(anyFactory);
+        vm.expectRevert(abi.encodeWithSelector(IBushContractRegistry.ContractAlreadyDeprecated.selector, anyFactory));
+        registry.deprecateBushContract(anyFactory);
         vm.stopPrank();
     }
 
@@ -637,14 +653,8 @@ contract PoolFactoryRegistryTest is BaseVaultTest {
         vm.startPrank(admin);
         registry.registerPoolFactory(SECOND_NAME, secondFactory, STABLE, HookMode.SPECIFIC, anyHook);
         assertTrue(registry.isActivePoolFactory(secondFactory), "Factory not active");
-        // Use `vm.getBlockTimestamp()`, not `block.timestamp`: under via-ir, solc can treat plain `block.timestamp`
-        // reads as reorderable/interchangeable across this function (real chains can't change it mid-transaction),
-        // so a read taken here could get resolved to the value after the `skip` below. The cheatcode call can't be
-        // reordered by the optimizer, so it reliably captures the pre-skip time.
-        uint32 registeredAt = uint32(vm.getBlockTimestamp());
 
-        skip(1 days);
-        registry.deprecatePoolFactory(secondFactory);
+        registry.deprecateBushContract(secondFactory);
         vm.stopPrank();
 
         assertFalse(registry.isActivePoolFactory(secondFactory), "Factory still active");
@@ -652,17 +662,12 @@ contract PoolFactoryRegistryTest is BaseVaultTest {
         assertFalse(registry.isActivePoolFactoryOfType(STABLE, secondFactory), "Still active by type");
 
         // Still registered and resolvable by name, just inactive; metadata is preserved.
-        (address factory, IPoolFactoryRegistry.FactoryInfo memory info) = registry.getPoolFactory(SECOND_NAME);
+        (address factory, IBushContractRegistry.FactoryInfo memory info) = registry.getPoolFactory(SECOND_NAME);
         assertEq(factory, secondFactory, "Deprecated factory no longer resolves");
         assertTrue(info.isRegistered, "Deprecated factory not registered");
         assertFalse(info.isActive, "Deprecated factory active");
         assertEq(info.hook, anyHook, "Hook lost on deprecation");
-        assertEq(info.registeredAt, registeredAt, "registeredAt changed on deprecation");
-        // Use `vm.getBlockTimestamp()` rather than `block.timestamp`: with via-ir, solc treats the two reads of
-        // `block.timestamp` in this function as equivalent and caches the first (pre-warp) value, since on real
-        // chains it cannot change mid-transaction. `vm.getBlockTimestamp()` is an external call the optimizer can't
-        // fold away, so it reflects the `skip` above.
-        assertEq(info.deprecatedAt, uint32(vm.getBlockTimestamp()), "Wrong deprecatedAt");
+        assertEq(info.poolType, STABLE, "Pool type lost on deprecation");
         assertEq(registry.getPoolFactoryCount(), 1, "Deprecated factory removed from enumeration");
     }
 
@@ -671,10 +676,84 @@ contract PoolFactoryRegistryTest is BaseVaultTest {
         registry.registerPoolFactory(DEFAULT_NAME, anyFactory, WEIGHTED, HookMode.OPTIONAL, ZERO_ADDRESS);
 
         vm.expectEmit();
-        emit IPoolFactoryRegistry.PoolFactoryDeprecated(anyFactory);
+        emit IBushContractRegistry.BushContractDeprecated(anyFactory);
 
-        registry.deprecatePoolFactory(anyFactory);
+        registry.deprecateBushContract(anyFactory);
         vm.stopPrank();
+    }
+
+    /***************************************************************************
+                          Integration with the contract registry
+    ***************************************************************************/
+
+    function testRegisterBushContractRejectsPoolFactory() public {
+        vm.prank(admin);
+        vm.expectRevert(IBushContractRegistry.UseRegisterPoolFactory.selector);
+        registry.registerBushContract(ContractType.POOL_FACTORY, DEFAULT_NAME, anyFactory);
+    }
+
+    function testPoolFactoryIsBushContract() public {
+        vm.prank(admin);
+        registry.registerPoolFactory(DEFAULT_NAME, anyFactory, WEIGHTED, HookMode.OPTIONAL, ZERO_ADDRESS);
+
+        assertTrue(registry.isActiveBushContract(ContractType.POOL_FACTORY, anyFactory), "Not an active factory");
+        assertFalse(registry.isActiveBushContract(ContractType.ROUTER, anyFactory), "Factory is a router");
+
+        (address factory, bool active) = registry.getBushContract(ContractType.POOL_FACTORY, DEFAULT_NAME);
+        assertEq(factory, anyFactory, "Wrong factory by name");
+        assertTrue(active, "Factory not active by name");
+
+        IBushContractRegistry.ContractInfo memory info = registry.getBushContractInfo(anyFactory);
+        assertEq(uint8(info.contractType), uint8(ContractType.POOL_FACTORY), "Wrong contract type");
+        assertTrue(info.isRegistered, "Not registered");
+        assertTrue(info.isActive, "Not active");
+    }
+
+    function testNamesSharedAcrossTypes() public {
+        vm.startPrank(admin);
+        registry.registerBushContract(ContractType.ROUTER, DEFAULT_NAME, EOA);
+
+        // A factory cannot take a name already used by another contract type.
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                IBushContractRegistry.ContractNameAlreadyRegistered.selector,
+                ContractType.ROUTER,
+                DEFAULT_NAME
+            )
+        );
+        registry.registerPoolFactory(DEFAULT_NAME, anyFactory, WEIGHTED, HookMode.OPTIONAL, ZERO_ADDRESS);
+        vm.stopPrank();
+
+        // Pool factory lookups ignore non-factory entries.
+        (address factory, IBushContractRegistry.FactoryInfo memory info) = registry.getPoolFactory(DEFAULT_NAME);
+        assertEq(factory, ZERO_ADDRESS, "Router resolved as a factory");
+        assertFalse(info.isRegistered, "Router info is registered");
+        assertFalse(registry.isRegisteredPoolFactory(EOA), "Router is a registered factory");
+        assertEq(registry.getPoolFactoryCount(), 0, "Router enumerated as a factory");
+    }
+
+    function testGetPoolFactoryByAlias() public {
+        vm.startPrank(admin);
+        registry.registerPoolFactory(DEFAULT_NAME, anyFactory, WEIGHTED, HookMode.OPTIONAL, ZERO_ADDRESS);
+        registry.addOrUpdateBushContractAlias("WeightedPool", anyFactory);
+        vm.stopPrank();
+
+        (address factory, IBushContractRegistry.FactoryInfo memory info) = registry.getPoolFactory("WeightedPool");
+        assertEq(factory, anyFactory, "Alias did not resolve");
+        assertEq(info.name, DEFAULT_NAME, "Alias resolved to wrong name");
+        assertEq(info.poolType, WEIGHTED, "Alias resolved to wrong type");
+    }
+
+    function testDeregisterRouterDoesNotAffectFactories() public {
+        _registerThree();
+
+        vm.startPrank(admin);
+        registry.registerBushContract(ContractType.ROUTER, "Router", EOA);
+        registry.deregisterBushContract("Router");
+        vm.stopPrank();
+
+        assertEq(registry.getPoolFactoryCount(), 3, "Factories affected by router deregistration");
+        assertTrue(registry.isPoolFromRegisteredFactory(pool), "Pool lookup affected by router deregistration");
     }
 
     /***************************************************************************
@@ -692,5 +771,13 @@ contract PoolFactoryRegistryTest is BaseVaultTest {
         registry.registerPoolFactory(SECOND_NAME, secondFactory, STABLE, HookMode.SPECIFIC, anyHook);
         registry.registerPoolFactory(THIRD_NAME, thirdFactory, WEIGHTED, HookMode.NONE, ZERO_ADDRESS);
         vm.stopPrank();
+    }
+}
+
+contract GasGuzzler {
+    fallback() external {
+        while (true) {
+            // solhint-disable-previous-line no-empty-blocks
+        }
     }
 }

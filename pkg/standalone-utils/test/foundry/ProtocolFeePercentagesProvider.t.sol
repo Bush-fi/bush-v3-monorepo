@@ -13,7 +13,7 @@ import {
 } from "@bush.fi/v3-interfaces/contracts/vault/IProtocolFeePercentagesProvider.sol";
 import {
     IBushContractRegistry,
-    ContractType
+    HookMode
 } from "@bush.fi/v3-interfaces/contracts/standalone-utils/IBushContractRegistry.sol";
 import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 
@@ -46,7 +46,7 @@ contract ProtocolFeePercentagesProviderTest is BaseVaultTest {
 
         // Mark the poolFactory as trusted, so that operations on it won't fail.
         authorizer.grantRole(
-            trustedContractRegistry.getActionId(BushContractRegistry.registerBushContract.selector),
+            trustedContractRegistry.getActionId(BushContractRegistry.registerPoolFactory.selector),
             admin
         );
         authorizer.grantRole(
@@ -54,7 +54,7 @@ contract ProtocolFeePercentagesProviderTest is BaseVaultTest {
             admin
         );
         vm.prank(admin);
-        trustedContractRegistry.registerBushContract(ContractType.POOL_FACTORY, "MockFactory", poolFactory);
+        trustedContractRegistry.registerPoolFactory("MockFactory", poolFactory, "MOCK", HookMode.OPTIONAL, address(0));
 
         percentagesProviderAuth = IAuthentication(address(percentagesProvider));
         feeControllerAuth = IAuthentication(address(feeController));

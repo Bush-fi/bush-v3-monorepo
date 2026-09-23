@@ -4,7 +4,7 @@ pragma solidity ^0.8.24;
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { ContractType } from "@bush.fi/v3-interfaces/contracts/standalone-utils/IBushContractRegistry.sol";
+import { HookMode } from "@bush.fi/v3-interfaces/contracts/standalone-utils/IBushContractRegistry.sol";
 import { IVault } from "@bush.fi/v3-interfaces/contracts/vault/IVault.sol";
 
 import { BushContractRegistry } from "@bush.fi/v3-standalone-utils/contracts/BushContractRegistry.sol";
@@ -80,7 +80,7 @@ abstract contract BaseLBPTest is BaseVaultTest, WeightedPoolContractsDeployer {
 
         bushContractRegistry = new BushContractRegistry(IVault(address(vault)));
         authorizer.grantRole(
-            bushContractRegistry.getActionId(BushContractRegistry.registerBushContract.selector),
+            bushContractRegistry.getActionId(BushContractRegistry.registerPoolFactory.selector),
             admin
         );
         authorizer.grantRole(
@@ -89,10 +89,12 @@ abstract contract BaseLBPTest is BaseVaultTest, WeightedPoolContractsDeployer {
         );
 
         vm.prank(admin);
-        bushContractRegistry.registerBushContract(
-            ContractType.POOL_FACTORY,
+        bushContractRegistry.registerPoolFactory(
             "WeightedPool",
-            address(weightedPoolFactory)
+            address(weightedPoolFactory),
+            "WEIGHTED",
+            HookMode.OPTIONAL,
+            address(0)
         );
     }
 
