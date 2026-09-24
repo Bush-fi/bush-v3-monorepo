@@ -620,9 +620,7 @@ contract BushContractRegistry is IBushContractRegistry, SingletonAuthentication 
         for (uint256 i = 0; i < numFactories; ++i) {
             address factory = _poolFactories.at(i);
 
-            try IBasePoolFactory(factory).isPoolFromFactory(pool) returns (
-                bool isFromFactory
-            ) {
+            try IBasePoolFactory(factory).isPoolFromFactory(pool) returns (bool isFromFactory) {
                 if (isFromFactory) {
                     return factory;
                 }

@@ -461,8 +461,6 @@ contract BushContractRegistryPoolFactoryTest is BaseVaultTest {
         assertEq(factory, anyFactory, "Reverting factory broke the lookup");
     }
 
-
-
     /***************************************************************************
                                   Factory details
     ***************************************************************************/
