@@ -33,7 +33,7 @@ contract BigWeightedPoolTest is WeightedPoolContractsDeployer, BasePoolTest {
 
         BasePoolTest.setUp();
 
-        poolMinSwapFeePercentage = 0.001e16; // 0.001%
+        poolMinSwapFeePercentage = 0.05e16; // 0.05%
         poolMaxSwapFeePercentage = 10e16;
     }
 

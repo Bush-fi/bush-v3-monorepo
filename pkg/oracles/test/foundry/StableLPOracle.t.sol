@@ -7,6 +7,7 @@ import "forge-std/Test.sol";
 import { AggregatorV3Interface } from "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
 import { IERC20Metadata } from "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol";
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import { Math } from "@openzeppelin/contracts/utils/math/Math.sol";
 
 import { ISequencerUptimeFeed } from "@bush.fi/v3-interfaces/contracts/oracles/ISequencerUptimeFeed.sol";
 import { PoolRoleAccounts, Rounding } from "@bush.fi/v3-interfaces/contracts/vault/VaultTypes.sol";
@@ -42,6 +43,8 @@ contract StableLPOracleTest is BaseLPOracleTest, StablePoolContractsDeployer {
     uint256 constant MIN_PRICE = 1e10;
 
     uint256 constant PRICE_RATIO_LIMIT = 1e7;
+
+    uint256 constant SWAP_PRICE_MIN_AMOUNT_OUT = 1e9;
 
     event Log(address indexed value);
     event LogUint(uint256 indexed value);
@@ -185,14 +188,34 @@ contract StableLPOracleTest is BaseLPOracleTest, StablePoolContractsDeployer {
         uint256[MAX_TOKENS] memory poolInitAmountsRaw,
         uint256[MAX_TOKENS] memory pricesRaw
     ) public {
+        _fuzzComputeMarketPriceBalances(totalTokens, amplificationParameter, poolInitAmountsRaw, pricesRaw, false);
+    }
+
+    /// @dev Same as `testComputeMarketPriceBalances__Fuzz`, but checks the prices by simulating a tiny swap.
+    function testComputeMarketPriceBalancesSwapPrice__Fuzz(
+        uint256 totalTokens,
+        uint256 amplificationParameter,
+        uint256[MAX_TOKENS] memory poolInitAmountsRaw,
+        uint256[MAX_TOKENS] memory pricesRaw
+    ) public {
+        _fuzzComputeMarketPriceBalances(totalTokens, amplificationParameter, poolInitAmountsRaw, pricesRaw, true);
+    }
+
+    function _fuzzComputeMarketPriceBalances(
+        uint256 totalTokens,
+        uint256 amplificationParameter,
+        uint256[MAX_TOKENS] memory poolInitAmountsRaw,
+        uint256[MAX_TOKENS] memory pricesRaw,
+        bool checkPricesWithSwap
+    ) private {
         totalTokens = bound(totalTokens, MIN_TOKENS, getMaxTokens());
         amplificationParameter = bound(amplificationParameter, StableMath.MIN_AMP, StableMath.MAX_AMP);
 
-        uint256[] memory prices = new uint256[](totalTokens);
         int256[] memory pricesInt = new int256[](totalTokens);
         IStablePool pool;
         StableLPOracleMock oracle;
         {
+            uint256[] memory prices = new uint256[](totalTokens);
             uint256[] memory poolInitAmounts = new uint256[](totalTokens);
             address[] memory _tokens = new address[](totalTokens);
 
@@ -226,7 +249,12 @@ contract StableLPOracleTest is BaseLPOracleTest, StablePoolContractsDeployer {
         int256[] memory normalizedPrices = oracle.normalizePrices(pricesInt);
 
         uint256[] memory marketPriceBalancesScaled18 = oracle.computeMarketPriceBalances(D, normalizedPrices);
-        _checkPricesAndInvariant(amplificationParameter, marketPriceBalancesScaled18, D, totalTokens, pricesInt);
+        D = _checkInvariant(amplificationParameter, marketPriceBalancesScaled18, D);
+        if (checkPricesWithSwap) {
+            _checkPricesWithSwap(amplificationParameter, marketPriceBalancesScaled18, D, totalTokens, pricesInt);
+        } else {
+            _checkPricesWithGradient(amplificationParameter, marketPriceBalancesScaled18, D, totalTokens, pricesInt);
+        }
     }
 
     function testLatestRoundDataMinPriceTooSmall() public {
@@ -390,14 +418,11 @@ contract StableLPOracleTest is BaseLPOracleTest, StablePoolContractsDeployer {
         oracle.computeK(pricesInt);
     }
 
-    function _checkPricesAndInvariant(
+    function _checkInvariant(
         uint256 amplificationParameter,
         uint256[] memory balancesForPricesScaled18,
-        uint256 D,
-        uint256 totalTokens,
-        int256[] memory prices
-    ) private view {
-        uint256 newD;
+        uint256 D
+    ) private view returns (uint256 newD) {
         try
             StableLPOracleTest(address(this)).computeInvariant(
                 amplificationParameter * StableMath.AMP_PRECISION,
@@ -410,7 +435,42 @@ contract StableLPOracleTest is BaseLPOracleTest, StablePoolContractsDeployer {
         }
 
         assertApproxEqRel(D, newD, 1e12, "Invariant does not match");
+    }
 
+    function _checkPricesWithGradient(
+        uint256 amplificationParameter,
+        uint256[] memory balancesForPricesScaled18,
+        uint256 newD,
+        uint256 totalTokens,
+        int256[] memory prices
+    ) private pure {
+        // The spot price of token[i] is proportional to the gradient of the invariant with respect to x[i]. We compute
+        // it analytically instead of simulating a tiny swap: `StableMath.computeBalance` truncates intermediate
+        // products, which yields errors of thousands of wei when some balances are tiny relative to D, and that
+        // dominates the output of a small swap (while a larger swap adds price impact).
+        uint256[] memory gradients = _computeInvariantGradients(
+            amplificationParameter,
+            balancesForPricesScaled18,
+            newD
+        );
+        for (uint256 i = 1; i < totalTokens; i++) {
+            // gradient[i] / gradient[0] is the price of token[i] in terms of token[0].
+            assertApproxEqRel(
+                Math.mulDiv(uint256(prices[0]), gradients[i], gradients[0]),
+                uint256(prices[i]),
+                0.1e16, // 0.1% error
+                "Price does not match"
+            );
+        }
+    }
+
+    function _checkPricesWithSwap(
+        uint256 amplificationParameter,
+        uint256[] memory balancesForPricesScaled18,
+        uint256 newD,
+        uint256 totalTokens,
+        int256[] memory prices
+    ) private pure {
         uint256 amountInScaled18 = balancesForPricesScaled18[0].mulDown(0.00001e16); // 0.00001% of first token balance.
         for (uint256 i = 1; i < totalTokens; i++) {
             // `amountOutScaled18` is how much of token[i] you get for a tiny (infinitesimal) fraction of token[0].
@@ -424,12 +484,40 @@ contract StableLPOracleTest is BaseLPOracleTest, StablePoolContractsDeployer {
                 amountInScaled18,
                 newD
             );
+            // `StableMath.computeBalance` can be off by thousands of wei when some balances are tiny relative to D
+            // (see `_checkPricesWithGradient`), so a swap this small cannot resolve the price to 0.1% when its output
+            // is below ~1e9 wei. Those cases are covered by the gradient check instead.
+            vm.assume(amountOutScaled18 >= SWAP_PRICE_MIN_AMOUNT_OUT);
             assertApproxEqRel(
                 uint256(prices[0]).mulDown(amountInScaled18).divDown(amountOutScaled18),
                 uint256(prices[i]),
                 0.1e16, // 0.1% error
                 "Price does not match"
             );
+        }
+    }
+
+    /**
+     * @dev The stable invariant is `A * n^n * S + D = A * n^n * D + D^(n+1) / (n^n * P)`. Its gradient with respect
+     * to x[i] (up to a common factor) is `A * n^n + D^(n+1) / (n^n * P * x[i])`. In StableMath,
+     * `amplificationParameter = A * n^(n-1)`, so `A * n^n = amplificationParameter * n`.
+     */
+    function _computeInvariantGradients(
+        uint256 amplificationParameter,
+        uint256[] memory balances,
+        uint256 D
+    ) private pure returns (uint256[] memory gradients) {
+        uint256 n = balances.length;
+
+        // D^n / (n^n * P), computed as a product of FP ratios to avoid overflow.
+        uint256 dPowNDivNnP = FixedPoint.ONE;
+        for (uint256 j = 0; j < n; j++) {
+            dPowNDivNnP = dPowNDivNnP.mulDown(D.divDown(n * balances[j]));
+        }
+
+        gradients = new uint256[](n);
+        for (uint256 i = 0; i < n; i++) {
+            gradients[i] = amplificationParameter * n * FixedPoint.ONE + dPowNDivNnP.mulDown(D.divDown(balances[i]));
         }
     }
 

@@ -39,7 +39,7 @@ contract WeightedPoolExtremeAmountsTest is BaseExtremeAmountsTest {
             tokenConfig,
             [uint256(50e16), uint256(50e16)].toMemoryArray(),
             roleAccounts,
-            0.001e16,
+            0.05e16,
             address(0),
             false,
             false,
